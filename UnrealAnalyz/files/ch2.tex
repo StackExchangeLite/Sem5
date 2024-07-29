@@ -1,0 +1,330 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\chapter{Introduction to Sequences and Series of Real Numbers}
+Covers some of the elementary results regarding sequences and series, more of which will be explored after the section on metric spaces. 
+\section{On Sequences (Introduction)}
+\defn{(Sequence of Real numbers)}{$X:=(x_n:n\in \NN)$ is a function $x:\NN \to \RR$. The mapping from $N$ allows us natural ordering.}
+
+\defn{(Limit of a sequence)}{A sequence $(x_n)$ in $\RR$ is said to converge to $x\in \RR$ if: $$(\forall \varepsilon>0)(\exists \ n_0 \in \NN)(\forall n \in \NN, n \geq n_0)(|x_n-x|<\varepsilon)$$ Whose negation reads: A sequence is \emph{not convergent} to $x \in \RR$ if:
+$$(\exists \varepsilon_0>0)(\forall \ k \in \NN)(\exists n_k \in \NN, n_k \geq k)(|x_n-x|\geq \varepsilon_0)$$
+
+}
+\thmp{Uniqueness of Limits}{If $x_n \to x$, then its limit is unique.}{Suppose two limits exist, $x$ and $x'$.
+$$(\forall \varepsilon>0)(\exists \ n_1 \in \NN)(\forall n \in \NN, n \geq n_1)(|x_n-x|<\frac{\varepsilon}{2})$$
+$$(\forall \varepsilon>0)(\exists \ n_2 \in \NN)(\forall n \in \NN, n \geq n_2)(|x_n-x'|<\frac{\varepsilon}{2})$$
+Choosing $j=max{n_1,n_2}$ we have:
+$$(\forall \varepsilon>0)(\exists \ j \in \NN)(\forall n \in \NN, n \geq n_0)(|x_n-x|<\frac{\varepsilon}{2} \& |x_n-x'|<\frac{\varepsilon}{2}) \implies$$
+
+$$(\forall \varepsilon>0)(\exists \ j \in \NN)(\forall n \in \NN, n \geq n_0)(|x-x'|<\varepsilon)$$
+From "The Lemma", $x=x'$
+
+}
+
+\thmp{}{Convergence $\implies$ Boundedness}{$$(\forall \varepsilon>0)(\exists \ n_1 \in \NN)(\forall n \in \NN, n \geq n_1)(-\varepsilon<x_n-x<\varepsilon)$$ Fix $\varepsilon=1$, and let the corresponding $n$ we get, be $n_1$. We see that for $n \geq n_1$, the set is bounded. For the numbers $x_1$ to $x_{n_1-1}$, by virtue of being a finite set, it is readily bounded. Hence, the whole sequence is bounded.}
+\fact{Elementary Results: \begin{enumerate}
+    \item If $\{x_n\}$ such that $x_n \geq 0 \forall n \in \NN$, then, if limit exists, limit($x_n$)$\geq 0$.
+    \item Given $\{x_n\}$ and $\{y_n\}$ such that $y_n > x_n \forall n \in \NN$, then $lim(y_n) \geq lim(x_n) $
+    \item If $x_n \to x$ and $a \leq x_n \leq b$, then $a \leq x \leq b$.
+\end{enumerate}}
+\thmp{Squeeze Play}{Given sequences $x_n, y_n, z_n$ such that $\forall n \geq n_l, y_n \leq x_n \leq z_n$, and $z_n \to a, y_n \to a$, then $x_n \to a$.}{$$(\forall \varepsilon>0)(\exists \ n_y \in \NN)(\forall n \in \NN, n \geq n_y)(a-\varepsilon<y_n\leq x_n)$$
+$$(\forall \varepsilon>0)(\exists \ n_z \in \NN)(\forall n \in \NN, n \geq n_z)(x_n\geq a+\varepsilon)$$ Combining the two and setting $j= max\{n_y, n_z, n_l \}$ we get $$(\forall \varepsilon>0)(\exists \ j \in \NN)(\forall n \in \NN, n \geq j)(a-\varepsilon<x_n<a+\varepsilon)$$}
+\defn{(Unbounded sequence)}{A sequence $x_n$ is unbounded if it is neither bounded below, nor bounded above. It is not bounded above if: $$\forall \xi \in \RR, \exists n_k, x_{n_k}> \xi$$
+It is not bounded below if: $$\forall \xi \in \RR, \exists n_k, x_{n_k}<\xi $$
+}
+\defn{(Divergence to infinity)}{A sequence is said to diverge to +infinity if $\forall \xi \in \RR, \exists n_0$ such that $x_n>\xi \forall n \geq n_0$. It is divergent to -infinity if $\forall \xi \in \RR, \exists n_0$ such that $x_n<\xi \forall n \geq n_0$. }
+\thmp{Multiplication and division of sequences}{Multiplication of sequences $x_n \to x$ and $y_n \to y$ gives a sequence $x_ny_n$ that converges to $xy$.\\ 
+If $x_n \to x$ and $y_n \to y$ with $y_n \neq 0 \forall n \in \NN$ and $y \neq 0$, we have: $\frac{x_n}{y_n} \to \frac{x}{y}$}{$\forall \varepsilon>0$, $\exists n_0 \in \NN$ such that $\forall n \in \NN, n \geq n_0$ we have $|x_n-x|<\varepsilon$. Similarly, $\forall \varepsilon>0$, $\exists n_1 \in \NN$ such that $\forall n \in \NN, n \geq n_1$ we have $|y_n-y|<\varepsilon$. Consider $|x_ny_n-xy|=|x_ny_n-xy_n+xy_n-xy|\leq |y_n||(x_n-x)|+|(x)||(y_n-y)|$. For $\varepsilon=1$ we have $n_{y1}$ such that $\forall n \geq n_{y1}$, $y-1<y_n<y+1$. And obviously, for $n<n_{y1}$, there exists maxima $M$. Since $y_n$ is bounded, forall $n \geq n_{y1}$, we have $|y_n||x_n-x|+|x||y_n-y| \leq (Max)|x_n-x|+|x||y_n-y|.$ This means that, $\forall \varepsilon >0, \exists n_0$ such that $|x_ny_n-xy| \leq |y_n||x_n-x|+|x||y_n-y| \leq (Max)|x_n-x|+|x||y_n-y| \leq Max(\varepsilon)+|x|(\varepsilon).$ Hence, we are done.
+\\\\ 
+$$(\forall \varepsilon>0)(\exists n_{\varepsilon} \in \NN)(\forall n \in \NN, n \geq n_{\varepsilon})(|x_n-x|<\varepsilon)$$
+$$(\forall \varepsilon>0)(\exists n'_{\varepsilon} \in \NN)(\forall n \in \NN, n \geq n'_{\varepsilon})(|y_n-y|<\varepsilon)$$
+
+Choose $\varepsilon=1$. After some $k_1 \in \NN$, we have $y-1<y_n$, which implies $\{|y_n|\}$ has a lower bound. Call this $L$. Cosider the difference $|\frac{x_n}{y_n}-\frac{x}{y}|=|\frac{x_ny-xy_n}{yy_n}| \leq \frac{|x||y_n-y|+|y||x_n-x|}{|y_n||y|} \implies $
+$$\forall n \geq k_1, |\frac{x_n}{y_n}-\frac{x}{y}|\leq \frac{|x||y_n-y|+|y||x_n-x|}{|L||y|} $$
+$$\forall \varepsilon, \exists n_i \geq n_0,n_1,k_1, \forall n \in \NN, n \geq n_i, |\frac{x_n}{y_n}-\frac{x}{y}| < \frac{1}{|L||y|} {|x|\varepsilon + |y|\varepsilon}$$
+Whence, we are done.
+}
+\thmp{Some Results}{\begin{enumerate}
+    \item if $a>1$, then $a^n \to \infty$
+    \item if $a>0$, then $a^{\frac{1}{n}} \to 1$
+\end{enumerate}}{$a=1+\delta \implies a^n=1+n\delta + \frac{n(n-1)}{2} \delta^2 \dots >1+n\delta$. This implies $a^n$ diverges to infinity.\\
+Given $a>0$, if $a>1$, $a^{1/n} >1 $. We have $a^{1/n}=1+\delta_n$. $a=(1+\delta_n)^n=1+n\delta_n+ \frac{n(n-1)}{2}\delta_n^2 \cdots\implies \frac{a}{n} \leq \delta_n$. This means that $\delta_n$ converges to 0, which means that $a^{1/n}$ converges to $1$.\\
+Suppose $0<a<1$, then $\frac{1}{a} >1$. Therefore $(\frac{1}{a})^{\frac{1}{n}}=(a^{\frac{1}{n}})^{-1}$ converges to $1$. This implies $a^{\frac{1}{n}}$ converges to $1$ aswell (from the previous theorem on division) 
+}
+
+\thmp{Slick Theorem}{Let $\{x_n\}$ be a given sequence and $\{a_n\}; a_n \geq 0$ be a sequence converging to $0$. Suppose, also, that for some $C>0$, we have $$|x_n-x| \leq Ca_n \forall n \geq n_0$$, then the sequence $x_n$ converges to $x$.}{$\forall \varepsilon \exists n_1: \forall n \in \NN, n \geq n_1, Ca_n<\varepsilon \implies |x_n-x|< \varepsilon \forall n \geq max\{n_0,n_1 \}$}
+
+\defn{(Monotone Sequence)}{A sequence is said to be \emph{monotone increasing} if $\forall n \in \NN, x_n \geq x_{n-1}$. It would be "ultimately" monotone increasing if $\exists n_0 \in \NN \forall n \in \NN, n\geq n_0, x_n \geq x_{n-1}$
+\\\\ Likewise, a sequence is said to be \emph{monotone decreasing} if $\forall n \in \NN, x_n \leq x_{n-1}$. It would be "ultimately" monotone decreasing if $\exists n_0 \in \NN \forall n \in \NN, n\geq n_0, x_n \leq x_{n-1}$
+\\\\ A sequence is "monotone" if its either monotone increasing or decreasing.
+}
+\thmp{Monotone Convergence Theorem}{A monotone sequence is convergent $\iff$ it is bounded}{$\implies$) Every convergent sequence is bounded.\\
+$\impliedby$) We take the case of monotone increasing sequence that is bounded above. $\exists M \in \RR$ such that $x_n \leq M \forall n \in \NN$. Consider the set $\{x_n : n\in \NN\}$, which is bounded and non empty. Let $z$ be the supremum of this set. Consider an arbitrary $\varepsilon>0$. $\exists x_{n_0}$ such that $ z-\varepsilon \leq x_{n_0} \leq x_{n} \forall n \geq n_0$. This means: $\forall \varepsilon>0, \exists n_0 \in \NN$ such that $\forall n \geq n_0, n \in \NN$ we have $z-\varepsilon<x_n<z+\varepsilon$. Hence, $x_n \to sup(\{x_n \})$}
+\Large{\textbf{Euler's Number}}
+\normalsize\thmp{}{Consider the sequence $$e_n:= (1+\frac{1}{n})^n$$ This sequences is convergent, and lim($e_n$):=$e$ is called the Napier's Constant or Euler's Number.}{$$e_n=(1+\frac{1}{n})^n=1+n(\frac{1}{n})+\frac{n(n-1)}{2}(\frac{1}{n^2})+\frac{n(n-1)(n-2)}{3!} \frac{1}{n^3} \cdots$$
+$$= 1+1+\frac{1}{2!}(1-\frac{1}{n})+\frac{1}{3!}(1-\frac{1}{n})(1-\frac{2}{n})+\frac{1}{4!}(1-\frac{1}{n})(1-\frac{2}{n})(1-\frac{3}{n}) \cdots $$ And $e_n$ has $n+1$ terms from the binomial theorem.\\
+Consider $$e_{n+1}= (1+ \frac{1}{n+1})^{n+1}=1+1+\frac{(n+1)(n)}{2}\frac{1}{(n+1)^2}+\frac{(n+1)(n)(n-1)}{3!}\frac{1}{(n+1)^3} \cdots =$$ 
+$$2+\frac{1}{2!}(1-\frac{1}{n+1}) +\frac{1}{3!}(1-\frac{1}{n+1})(1-\frac{2}{n+1})+\frac{1}{4!}(1-\frac{1}{n+1})(1-\frac{2}{n+1})(1-\frac{3}{n+1})+ \cdots$$ and $e_{n+1}$ has $n+2$ terms from Binomial.  Notice that every term in $e_{n+1}$ is greater than (or equal to) every term of $e_{n}$, with there being more terms in $e_{n+1}$. Therefore, $e_n$ is monotone increasing.\\
+$$e_n= 2+\frac{1}{2!}(1-\frac{1}{n})+\frac{1}{3!}(1-\frac{1}{n})(1-\frac{2}{n})+\frac{1}{4!}(1-\frac{1}{n})(1-\frac{2}{n})(1-\frac{3}{n}) \cdots$$
+$$\leq 2+\frac{1}{2!}+\frac{1}{3!}+\frac{1}{4!} \cdots$$
+Since for $n \geq 3$ we have $2^n \leq n!$, this means $\frac{1}{2^n} \geq \frac{1}{n!}$ and hence, $$e_n \leq 2+\frac{1}{2}+\frac{1}{2^2} \cdots \leq 2+\frac{1}{1-\frac{1}{2}} \leq 4$$ $e_n$ is bounded, hence convergent.
+}
+\thmp{Three Beauties}{\begin{enumerate}
+    \item (Ratio Test) Let $\{a_n \}$ such that $a_n>0 \forall n \in \NN$. Let $lim(\frac{a_{n+1}}{a_n})=L$. If $L>1$, then $lim(a_n)=\infty$. If $L<1$, $lim(a_n)=0$ (Test fails if $L=1$, with the example of $a_n=n$)
+    \item (Average Convergence Theorem) If $\{a_n\} \to L$, then $\frac{a_1+a_2+\cdots +a_n}{n} \to L$
+    \item (Cauchy's 2nd) $a_n >0$, then $lim (a_n)^{\frac{1}{n}} = lim(\frac{a_{n+1}}{a_n})$ provided either $\frac{a_{n+1}}{a_n}$ converges or properly diverges. 
+    
+\end{enumerate}
+}{1) Let $\frac{a_{n+1}}{a_n}$ converge to $L$. $$\forall \varepsilon>0, \exists n_0 \in \NN: \forall n \in \NN, n \geq n_0, L-\varepsilon<\frac{a_{n+1}}{a_n}<L+\varepsilon $$ This means that: $$L-\varepsilon <\frac{a_{n_0+1}}{a_{n_0}}<L+\varepsilon$$ $$L-\varepsilon<\frac{a_{n_0+2}}{a_{n_0+1}}<L+\varepsilon$$ $$\vdots$$ $$L-\varepsilon <\frac{a_{m}}{a_{m-1}}<L+\varepsilon $$ Multiplying throughout we have: \begin{equation}\tag{(x)}
+a_{n_0}(L-\varepsilon)^{m-{n_0}} < a_m<a_{n_0}(L+\varepsilon)^{m-{n_0}}\end{equation}
+
+If $L<1$ choose a number $\varepsilon$ such that $L+\varepsilon <1$. Therefore, there exists a corresponding $n_k$ such that $$a_{n_k}(L-\varepsilon)^{m-{n_k}} < a_m<a_{n_k}(L+\varepsilon)^{m-{n_k}}< a_{n_k}(z)^{m-n_k} : \forall m \geq n_k,n_0 $$ where $z<1$. Therefore, $a_{n_k}(z)^{m-n_k}$ converges to $0$. From squeeze play $a_m \to 0$.\\
+If $L>1$, choose a number $\varepsilon$ such that $L-\varepsilon>1$. Therefore, there exists a corresponding $n_l$ and a number $v$ such that $$a_{n_l}(v)^{m-n_{l}} < a_{n_l}(L-\varepsilon)^{m-{n_l}} < a_m<a_{n_l}(L+\varepsilon)^{m-{n_l}}: \forall m \geq n_k,n_0 $$ where $v>1$. Hence, we see that $a_m$ is properly divergent.\\\\
+2)$\forall \varepsilon>0, \exists n_0 \in \NN$ such that $\forall n \in \NN, n\geq n_0, L-\varepsilon<a_n<L+\varepsilon \implies$
+$$L-\varepsilon < a_{n_0+1}<L+\varepsilon $$
+$$L-\varepsilon < a_{n_0+2}<L+\varepsilon $$
+$$\vdots$$
+$$L-\varepsilon < a_{n}<L+\varepsilon $$
+Adding all these we get:
+$$(n-n_0)(L-\varepsilon)<a_{n_0+1}+a_{n_0+2}+\cdots+a_n <(n-n_0)(L+\varepsilon)$$
+Consider the set $\{a_1,a_2, \dots, a_{n_0}\},$ this is a finite set, hence, it has a maximum and a minimum $M$ and $m$ respectively, which means $\forall n \leq n_0, m\leq a_n \leq M$. Therefore, for every $\varepsilon>0$, $\exists n_0 \in \NN$ and a maxima and minima $m$ and $M$ so that $$(n_0)m+(n-n_0)(L-\varepsilon)<a_{1}+a_{2}+\cdots+a_n <(n-n_0)(L+\varepsilon)+(n_0)M \implies$$
+$$\mathfrak{L}(\varepsilon,n)=\frac{n_0 m}{n}+\frac{(n-n_0)}{n}(L-\varepsilon)< \frac{a_1+a_2\cdots+a_n}{n}<\frac{n_0 M}{n}+\frac{(n-n_0)}{n}(L+\varepsilon)=\mathfrak{U}(\varepsilon,n) $$ It is clear that $\mathfrak{L}(\varepsilon,n)$ and $\mathfrak{U}(\varepsilon,n)$ converge to $L-\varepsilon$ and $L+\varepsilon$ respectively. Therefore:
+$$(\forall \varepsilon')( \exists j_l \in \NN) (\forall n \in \NN: n \geq j_l)(L-\varepsilon-\varepsilon'<\mathfrak{L}(\varepsilon,n) \leq \frac{a_1+a_2+\cdots_a+n}{n})$$
+and
+$$(\forall \varepsilon')( \exists j_u \in \NN) (\forall n \in \NN: n \geq j_u)(\frac{a_1+a_2+\cdots_a+n}{n} \leq \mathfrak{U}(\varepsilon,n)<L+\varepsilon+\varepsilon')$$ Whence we see that $\forall \varepsilon \forall \varepsilon$ there is some $n_p \geq j_l, j_u, n_0$ such that $\forall n \in \NN: n \geq n_p$, $$L-\varepsilon-\varepsilon'<\frac{a_1+a_2+\cdots_a+n}{n}<L+\varepsilon+\varepsilon' $$ Therefore, $\frac{a_1+a_2 \cdots +a_n}{n}$ converges to $L$\\\\
+3)From equation $(x)$, we have that $\forall \varepsilon, \exists n_0(\varepsilon)$ such that $$a_{n_0}(L-\varepsilon)^{m-{n_0}} < a_m<a_{n_0}(L+\varepsilon)^{m-{n_0}}: \forall m \geq n_0(\varepsilon)$$
+Either $(L-\varepsilon)$ is positive, whence it is possible to take $m-th$ root which gives: $$a_{n_0}^{\frac{1}{m}}(L-\varepsilon)^{1-\frac{n_0}{m} }<a_m^{\frac{1}{m}}<a_{n_0}^{\frac{1}{m}} (L+\varepsilon)^{1-\frac{n_0}{m}}$$ Or it is negative, where it is pretty obvious that $$a_{n_0}^{\frac{1}{m}}(L-\varepsilon)<a_m^{\frac{1}{m}}<a_{n_0}^{\frac{1}{m}} (L+\varepsilon)^{1-\frac{n_0}{m}}$$ Hence, $\forall \varepsilon>0$, $\exists n_0(\varepsilon) \in \NN$ such that $\forall m \geq n_0(\varepsilon)$ 
+$$
+\begin{cases}
+    a_{n_0}^{\frac{1}{m}}(L-\varepsilon)^{1-\frac{n_0}{m} }<a_m^{\frac{1}{m}}<a_{n_0}^{\frac{1}{m}} (L+\varepsilon)^{1-\frac{n_0}{m}} \ \text{ if } L-\varepsilon>0 \\
+    a_{n_0}^{\frac{1}{m}}(L-\varepsilon)<a_m^{\frac{1}{m}}<a_{n_0}^{\frac{1}{m}} (L+\varepsilon)^{1-\frac{n_0}{m}} \ \text{ if } L- \varepsilon <0
+    
+\end{cases}
+$$
+Call $a_{n_0}^{ \frac{1}{m} }(L+\varepsilon)^{1-\frac{n_0}{m}}= \mathfrak{U}(\varepsilon,m)$\\
+Call $a_{n_0}^{\frac{1}{m}}(L-\varepsilon)^{1-\frac{n_0}{m}}= \mathfrak{L}(\varepsilon,m) $\\\\
+It is clear to see that both $\mathfrak{U}(\varepsilon,m)$ and $\mathfrak{L}(\varepsilon,m)$ converge, and do so to $(L+\varepsilon)$ and $(L-\varepsilon)$ respectively. Therefore: $\forall \varepsilon'>0$ $\exists j \in \NN$ such that $$L-\varepsilon-\varepsilon'<\mathfrak{L}(\varepsilon,n) \forall n \geq j$$ and 
+$$\mathfrak{U}(\varepsilon,n)<L+\varepsilon+\varepsilon' \forall n \geq j \implies$$
+$$L-\varepsilon-\varepsilon'<a_m^{\frac{1}{m}}<L+\varepsilon+\varepsilon': \forall m \geq t=\max\{j,n_0\}$$ This means that $\forall \varepsilon \forall \varepsilon' >0$, $\exists t \in \NN$ such that $\forall m \in \NN, m \geq t$ we have: $$ L-\varepsilon-\varepsilon'<a_m^{\frac{1}{m}}<L+\varepsilon+\varepsilon'$$
+The same argument can be applied for $\varepsilon's$ where $(L-\varepsilon)$ is negative.
+Hence, $a_m^{\frac{1}{m}} \to L$\\
+Suppose that $\frac{a_{m+1}}{a_m} \to \infty$, then $\frac{a_{m}}{a_{m+1}} \to 0$. Therefore, applying the previous result to this, we have $(\frac{1}{a_m})^{\frac{1}{m}} \to 0 \implies (a_m)^{\frac{1}{m}} \to \infty$ (Proof left as an exercise to the reader) 
+}
+\defn{(Subsequences)}{Given a sequence $\{x_n\}$, we define the subsequence $\{x_{n_k}\}$ as the sequence within $\{x_n\}$ generated through the increasing sequence of natural numbers $n_1<n_2<n_3< \dots$ with $k \geq n_k$}.
+
+\thmp{}{Given $x_n \to x$, then all subsequences of $x_n$ converge to $x$.}{$$(\forall \varepsilon>0)(\exists n_0 \in \NN)(\forall n \in \NN: n \geq n_0)(|x_n-x|<\varepsilon) \implies$$
+$$(\forall \varepsilon>0)(\exists n_0 \in \NN)(\forall n_k \in \NN: n_k \geq k \geq n_0)(|x_{n_k}-x|<\varepsilon)$$}
+\thmp{}{Let $A\subseteq \RR$ be an infinite subset that is bounded, and non empty, with supremum $S$. Then, $\exists \{ x_n \}$ in $A$ such that $x_n \to S$, with $x_n$ being monotone increasing.}{Choose $\delta_1=1$. There would exist some $x_1 \in A$ such that $S-1\leq x_1<S$. Choose $\delta_2=\frac{d(x_1,S)}{2}$ where $d(x_1,S)$ is the Euclidean distance from $S$ to $x_1$. There would exist, again, some $x_2$ such that $S-\delta_2=S-\frac{d(x_1,S)}{2} \leq x_2 <S$. It is easy to see here that $x_1\leq x_2$. Having found $x_n$ using $\delta_n= \frac{d(x_{n-1},S)}{n}$, now choose $x_{n+1}$ using $\delta_{n+1}= \frac{d(x_n,S)}{n+1}$. Via this compression, we see that the sequence converges to $S$ through squeeze play. Moreover, by construction this sequence is increasing.}
+
+\thmp{Equivalent statements pertaining to Divergence}{\begin{enumerate}
+    \item $X_n \not\to x$
+    \item $\exists \varepsilon>0$ such that $\forall k \in \NN$ $\exists n_k \geq k$ $|x_{n_k}-x| \geq \varepsilon$
+    \item $\exists \varepsilon>0$ and a subsequence $x_{n_k}$ such that $\forall k \in \NN$ $|x_{n_k}-x| \geq \varepsilon$
+\end{enumerate}}{$(1) \implies (2)$) Comes directly from the negation of convergence, with tweaks to the notation.\\
+$(2) \implies (3)$) For $k=1$, $\exists n_1$ such that $|x_{n_1}-x| \geq \varepsilon$, likewise, $for k=j$, $\exists n_j$ such that $|x_{n_j}-x| \geq \varepsilon$. Note that $n_k \geq k$ which means that $x_{n_k}$ would form a subsequence of $x_n$.\\
+$(3)\implies (1)$) If $x_n$ on the contrary, converged to $x$, then all its subsequences converge to $x$ as well, but for the subsequence $x_{n_k}$ from (2), we have that $\exists \varepsilon>0$ such that $\forall k \in \NN$ $\exists n_k \in \NN, n_k \geq k$ such that $|x_{n_k}-x| \geq \varepsilon$ which is the definition of divergence. Absurd. }
+
+\thmp{Monotone Subsequence Theorem}{Every sequence $x_n$ has a monotone subsequence}{\textbf{First Proof}:\\\\
+Call a point $x_n$ a "peak" if $x_n \geq x_m \forall m \geq n$. i.e, it is larger than all the terms that come after it. Consider the case where there are finite peak points. List them as $x_{n_1}, x_{n_2} , x_{n_3} .... x_{n_k}$. The term $x_{n_k+1}$ is not a peak, which means after $n_k+1$-th term, there exists another term such that it is larger than this one. Since that term is not a peak either, there must exist another term with an index larger than both the previous terms, such that it is larger than both. As such, keep choosing such non peak terms to generate a monotone increasing sequence. If there are infinite peak points, $x_{n_1}, x_{n_2} \cdots x_{n_k} \cdots$, simply set the sequence to be these peak points. This would be a monotone decreasing sequence
+\\\\ \textbf{Alternate Proof:}\\\\
+\emph{Case 1:} The sequence is unbounded:\\
+Call $S_0:=\{ x_1,x_2, \cdots x_n \cdots\}$. For $
+\varepsilon=1, \exists x_{n_0}$ such that $x_{n_0} \geq 1$. Consider the set $S_1:=S_0-\{x_1,x_2,\cdots,x_{n_0}\}$. This is still unbounded, hence, choose $\varepsilon=x_{n_0}$ $\exists x_{n_1} \geq x_{n_0}$ with $n_1>n_2$. Having chosen $x_{n_k}$, choose $x_{n_{k+1}}$ by taking the set $S_{k+1}:=S_0-\{x_1,x_2, \cdots x_{n_k}\}$. This set is unbounded. Therefore, for $\varepsilon_{k+1}=x_{n_{k}}$, $\exists x_{n_{k+1}} \geq x_{n_k}$ with $n_{k+1}>n_{k}$. This forms a subsequence that is monotonic increasing.\\
+\emph{Case 2:} The sequence is bounded:\\
+Consider the set $S_{k}$ to be defined as $S_{k}:=\{x_n: n\geq m\}=\{x_m,x_{m+1},x_{m+2}, \cdots, x_{n} \cdots \}$ and define the supremum's of each of these sets as $U_k=sup(S_k)$ (easy to see that they exist)
+Notice that $U_{k+1} \leq U_{k}$.\\ If only finite sets $S_{n_1}, S_{n_2} \cdots S_{n_j}$ has its own supremum, then for the sets $\{ S_{n_j+1}, S_{n_j+2} \cdots \}$, the supremum of these sets are not within themselves. This would mean that all the sets $\{ S_{n_j+1}, S_{n_j+2} \cdots \}$ contain the same supremum. To see this, suppose that $S_{n_j+1}$ and $S_{n_j+2}$ have different supremums. The fact is that these sets differ by just one element $x_{n_j}$. If, due to removing this one element, the supremum changes, that would imply that element is the supremum. But since supremums don't exist in these sets, we conclude they share the same supremum $U$. We deal with the set $S_{n_j+1}=\{x_{n_j+1},x_{n_j+2},\cdots\}$ whose supremum is $U$, lying outside the set. For $\varepsilon=1$, $\exists x_{a_1} \in S_{n_j+1}$ such that $U-1 \leq x_{a_1} <U$. Take the set $S_{a_1+1}:=\{x_{a_1+1},x_{a_1+2}\cdots\}$ Whose supremum is also $U$. Choose $\varepsilon=U-x_{a_1}$. We have then $U-\varepsilon=U-(U-x_{a_1} \leq x_{a_2} <U$. Having found $x_{a_k}$, consider the set $S_{a_k+1}=\{x_{a_k+1},x_{a_k+2} \cdots \}$ whose supremum is $U$. Now we take $\varepsilon$ to be $u-x_{a_k}$ which would imply $\exists x_{a_{k+1}} \in S_{a_k+1}$ such that $ U-\varepsilon=U-(U-x_{a_k}) \leq x_{a_{k+1}} <U$. Hence we see that $x_{a_k} \leq x_{a_{k+1}} \forall k \in \NN$ and by construction, $a_k <a_{k+1}$. This is then, a monotone increasing subsequence. \\
+If there are infinitely many sets $S_{k_n}$ that contain their own supremum, then simply create a sequence of these supremums $U_{k_1},U_{k_2}, \cdots$. This is obviously monotone decreasing, and it is a subsequence since, by construction, $k_n \leq k_{n+1}$.
+}
+\thmp{Bolzano Weierstrass}{Every bounded sequence has a convergent subsequence.}{From monotone subsequence theorem, every sequence has a monotone subsequence. If the main sequence is bounded, every subsequence is bounded. Hence, this monotone sequence is bounded, hence, convergent.}
+\thmp{}{If $x_n$ is a bounded sequence such that every convergent subsequence converges to $x$, then the main sequence converges to $x$.}{Suppose that the main sequence \emph{does not} converge to $x$, which means that there exists $\varepsilon>0 \in \RR$ and a subsequce $x_{n_k}$ such that $\forall k \in \NN$, $|x_{n_k}-x| \geq \varepsilon$. This subsequence is bounded, hence it has a sub-subsequence $x_{n_{k_j}}$ that is convergent. This sub-subsequence converges to $x$. But this raises a contradiction since for a particular $\varepsilon$, every term in this subsequence, and by extention, the sub-subsequence, falls outside the $\varepsilon$ neighbourhood of $x$. }
+\defn{(LimSup and LimInf)}{Given a sequence that is bounded (hence forth, all theorems involving limsup and liminf assumes a bounded sequence as given): \begin{enumerate}
+    \item $Limsup(x_n):= inf (V:=\{v \in \RR: \exists n_v \in \NN$ such that $ \forall n \geq n_v, x_n \leq v \})$
+    \item $Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$
+    
+\end{enumerate}}
+
+\thmp{}{The following are equivalent: \begin{enumerate}
+    \item $x$ is the LimSup($x_n$)
+    \item if $\varepsilon>0$, then $\exists$ utmost finite $n \in \NN$ such that $x+\varepsilon<x_n$ but infinite $n\in \NN$ such that $x-\varepsilon<x_n$. This implies $x+\varepsilon \in V$ but $x-\varepsilon \not\in V$ 
+    \item If $S_m:\{x_m,x_{m+1},\cdots \}$ and $U_m=sup(S_m)$, ,then $lim(U_m)=inf(U_m)=x$
+    \item If $S$ is the set of all subsequential limits of $x_n$, then $sup(S)=x$
+\end{enumerate}}{$(1) \implies (2)$) Since $x$ is the infimum of $V$, $\forall \varepsilon>0$, $\exists z \in V$ such that $z \leq x+\varepsilon$. We see that, $\exists n_z$ such that $\forall n\geq n_z, x_n < z \leq x+\varepsilon$. Hence, $x+\varepsilon \in V$, or rather, there exists utmost finite $n$ such that $x_n> x+\varepsilon$. $x-\varepsilon$ cannot belong in $V$ since $x$ is the infimum, therefore, $\forall k \in \NN, \exists n_k \geq k$ such that $x_{n_k}>x-\varepsilon$, or rather, there would exist infinite $n$ such that $x-\varepsilon<x_n$. \\\\
+$(2) \implies (3))$ We know that $U_m \geq U_{m+1}$, is a monotone decreasing sequence that is bounded below. Hence, from monotone convergence theorem, we have $lim(U_m)=inf(\{U_m\})$. From (2), we know that $\forall \varepsilon>0$, $\exists n_\varepsilon$ such that $\forall n \geq n_z$ we have $x_n \leq x+\varepsilon$. Therefore, $U_{n_{\varepsilon}} \leq x+\varepsilon$. Hence, $\forall \varepsilon>0, inf(U_n)=lim(U_n) \leq x+\varepsilon$. There exists infinite $x_n$ such that $x-\varepsilon<x_n$ which means that $x-\varepsilon<U_n \forall n \in \NN$. This implies $x-\varepsilon \leq inf(U_n)$. Therefore means $\forall \varepsilon>-, |inf(U_n)-x| \leq \varepsilon$. From the lemma, $inf(U_n)=x$.\\\\
+$(3) \implies (4))$ Since $inf(U_n)=x$, $\forall \varepsilon, \exists n_0(\varepsilon) \in \NN$ such that $U_{n_0(\varepsilon)} \leq x+\varepsilon \implies $ $\forall n \geq n_0(\varepsilon), x_n \leq x+\varepsilon$ so for every convergent subsequence, $x_{n_k}$, $lim(x_{n_k}) \leq x+ \varepsilon$. Since the set of all subsequential limits is bounded (and non empty from Bolzano Weierstrass Theorem), $sup(S=$ set of all subsequential limits) $\leq x+\varepsilon$. $\forall \varepsilon>0, x-\varepsilon<inf(U_n) \implies \forall \varepsilon \forall n \in \NN, x-\varepsilon< U_n$.\\
+Choose $\varepsilon=1$ and the set $S_1$, for which $\exists x_{n_1} \in S_1$ such that $U_1-1\leq x_{n_1}<U_1$. Choose $\varepsilon=\frac{1}{2}$ and the set $S_{n_1}$ for which $\exists x_{n_2} \in S_{n_1}$ such that $U_{n_1}-\frac{1}{2}\leq x_{n_2}<U_{n_1}$. From construction, $n_2>n_1$. Having chosen $\varepsilon=\frac{1}{j}$ and the set $S_{n_{j-1}}$ and obtaining $n_j$ such that $\exists x_{n_j} \in S_{n_{j-1}}$ so that $U_{n_{j-1}}-\frac{1}{j} \leq x_{n_j}<U_{n_{j-1}}$ such that $n_j>n_{j-1}$, we choose $\varepsilon=\frac{1}{j+1}$ and the set $S_{n_j}$. The construction continues and we create a sequence $x_{n_j}$ which from squeeze play, converges to $x$.To see this, we have that $\forall j \in \NN$ $$U_{n_{j-1}}-\frac{1}{j} \leq x_{n_j}<U_{n_{j-1}}$$
+Taking limit on both LHS and RHS we see that $x_{n_j}$ converges to $x$. Therefore $x$ itself is a subsequential limit, which means $x \leq sup(S)$. We already had $\forall \varepsilon>0, sup(S) \leq x+\varepsilon$, which gives, $\forall \varepsilon>0, x\leq sup(S) \leq x+ \varepsilon$, which means $sup(S)=x$.\\\\
+$(4) \implies (1))$ Consider the set $V:=\{v \in \RR: \exists n_v \in \NN$ such that $ \forall n \geq n_v, x_n \leq v \}$. if $z \in V$, it means that every subsequential limit of $x_n$ goes below $z$. Therefore, $sup(S)=x \leq z \forall z\in V$. This means $x \leq limsup(x_n)$. Suppose $sup(S)=x<limsup(x_n)$. This means $Sup(S)+\delta=limsup(x_n)$ or $x=limsup(x_n)-\delta$. $limsup(x_n)$ is an upper bound to the set of all subsequential limits $S$. Consider an arbitrary subsequential limit $y$. $\forall \varepsilon>0, \exists n_{\varepsilon} \in \NN$ such that $\forall n \in \NN, n \geq n_{\varepsilon}$ we have $y-\varepsilon<x_n<y+\varepsilon<limsup(x_n)-\delta+\varepsilon$. Choose an $\varepsilon$ slightly larger than $\delta$, which would make $limsup(x_n)-(\delta-\varepsilon)$ slightly smaller than $limsup(x_n)$. This gives: for the chosen $\varepsilon \exists n_{\varepsilon} \in \NN$ such that $\forall n \in \NN, n \geq n_{\varepsilon}$ we have $x_n<limsup(x_n)-\delta+\varepsilon<limsup(x_n)$. This means that a number slightly smaller than $inf(V)$ exists in $V$. This is absurd. Hence, $limsup(x_n)=sup(S=\text{ set of all subsequential limits })$.
+
+
+}
+\newpage
+\thmp{}{The following are equivalent: \begin{enumerate}
+    \item $y$ is the Liminf($x_n$)
+    \item if $\varepsilon>0$, then $\exists$ utmost finite $n \in \NN$ such that $x_n<y-\varepsilon$ but infinite $n\in \NN$ such that $x_n<y+\varepsilon$. This implies $y+\varepsilon \not\in U$ but $y-\varepsilon \in U$ 
+    \item If $S_m:\{x_m,x_{m+1},\cdots \}$ and $L_m=inf(S_m)$, ,then $lim(L_m)=sup(L_m)=y$
+    \item If $S$ is the set of all subsequential limits of $x_n$, then $inf(S)=y$
+\end{enumerate}}{$(1)\implies(2))$ Given $y=Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$.
+If $\varepsilon>0$ we have a $z\in U$ such that $ y-\varepsilon \leq z$. There exists only finite $n$ such that $x_n<z$ which means there exists only finite $n$ such that $x_n<y-\varepsilon$. Therefore, $y-\varepsilon \in U$. Consider $y+\varepsilon$. Since $y+\varepsilon \not\in U$, we have that $\forall k \in \NN$ $\exists n_k \geq k$ such that $x_n <y+\varepsilon $ or infinite $n_k$ such that $x_{n_k}$ such that $x_{n_k}<y+\varepsilon$.\\\\
+$(2) \implies (3))$ We can see that, if $S_m:=\{x_n: n\geq m\}$, and $L_m:=inf(S_m)$, then $L_m \leq L_{m-1}$, which is a monotone increasing sequence, which is bounded, hence is convergent to $sup(\{L_m\})=lim(L_m)$. Since from (2), $\exists $ infinite $n_k$ such that $x_n<y+\varepsilon$, we see that $\forall m, inf(S_m)=L_m \leq y+\varepsilon \implies$ $lim(L_m) \leq y+\varepsilon \forall \varepsilon>0$. Since there exists only finite $n$ such that $x_n<y-\varepsilon \implies \forall n\geq n_y(\varepsilon), x_n \geq y-\varepsilon$. This means that $y-\varepsilon \leq L_{n_y} \implies y-\varepsilon \leq lim(L_m)=sup(L_m)$. Hence $\forall \varepsilon>0$, $y-\varepsilon \leq lim(L_m) \leq y+ \varepsilon$, hence $y=lim(L_m)$.\\\\
+$(3) \implies (4))$ Sunce $y=sup(L_m)=lim(L_m)$. For an $\varepsilon>0$, we have an $L_{n_1}$ such that $y-\varepsilon \leq L_{n_l}$. Since $L_{n_1}$ is the infimum of $S_{n_1}$, we have $y-\varepsilon< x_n, \forall n \geq n_l$. This would mean that every subsequence converges to a point larger than $y-\varepsilon$. Therefore $y-\varepsilon<t$ $\forall t \in S$ where $S$ is the set of all subsequential limits (This set is non empty from Bolzano Weierstrass, and is bounded, hence has a supremum and infinmum). Hence $\forall \varepsilon>0$, $y-\varepsilon\leq inf(S)$. $y+\varepsilon$ is an upper bound for $\{L_m: m\in \NN\}$. Choose $\varepsilon=1$ and the set $S_1$. $L_1+1\geq L_1$. Since $L_1$ is infimum of $S_1$, then $\exists x_{n_1} \in S_1$ such that $L_1 \leq x_{n_1} \leq L_1+1$. Choose $\varepsilon=\frac{1}{2}$, and the set $S_{n_1}$. $\exists x_{n_2} \in S_{n_1}$ such that $L_{n_1} \leq x_{n_2} \leq L_{n_1}+\frac{1}{2}$. Having chosen $\varepsilon=\frac{1}{j}$ and the set $S_{n_{j-1}}$, we have an $x_{n_j} \in S_{n_{j-1}}$ such that $$L_{n_{j-1}} \leq x_{n_j} \leq L_{n_{j-1}}+\frac{1}{j}$$ Notice that, by construction of our sets, $n_j>n_{j-1}$. Hence, we have a subsequence of $x_n$ which is $x_{n_j}$ which, from squeeze play theorem, converges to $y$. Therefore, $y \in S$, which means $inf(S) \leq y$. We therefore have $\forall \varepsilon>0$, $y-\varepsilon \leq inf(S) \leq y$. This means $inf(S)=y$.\\\\
+$(4)\implies (1))$ Given $y$ is the infimum of the set of all subsequential limits. Say $\alpha=Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$. If $z \in U$, it means that after some $n_z$, every $x_n \geq z$ which means every subsequence converges above $z$. Therefore, $z$ is a lowerbound for the set of all subsequential limits $S$. $z \leq inf(S)=y, \forall z \in U$. We can see that $sup(U)=\alpha \leq y$ from this. Suppose $Sup(U)=\alpha < y \implies \alpha=y-\delta$ for some $\delta$. Consider an arbitrary subsequential limit $q$. $\forall \varepsilon, \exists n_q(\varepsilon) \in \NN$ such that $\forall n \in \NN, n \geq n_q(\varepsilon)$ we have $y-\varepsilon+\delta-\delta \leq q-\varepsilon<x_n<q+\varepsilon$. 
+$(y-\delta)-(\varepsilon-\delta)=\alpha+(\delta-\varepsilon) \leq q-\varepsilon<x_n<q+\varepsilon$. 
+This means that $\exists n_0$ such that $\forall n \geq n_0$, $\alpha+(\delta-\varepsilon)<x_n$. This means that, if we choose $\varepsilon$ smaller than $\delta$, we would have a number larger than $sup(U)=\alpha$ being inside $U$. Absurd. Hence $\alpha=y$.
+}
+\thmp{}{A bounded sequence is convergent if and only if $limsup(x_n)=liminf(x_n)$}{$\implies$) If a bounded sequence is convergent, all its subsequences converge to the same limit $x$. Therefore $x$ is both the supremum and the infimum of the set of all subsequential limits, which is also the limsup and liminf.\\\\
+$\impliedby$) If limsup=liminf, then the set of all subsequential limits has infimum and the supremum equal. This means that the set of all subsequential limits is singleton, with $x\in S$. If $x_n$ is bounded and all its convergent subsequences converge to $x$, then $x_n$ converges to $x$.}
+\thmp{Shuffle Lemma}{If $x_n$ and $y_n$ are sequences in $\RR$, let the shuffled sequence $z_n$ be defined as $z_{2n}=y_n$ and $z_{2n-1}=x_n$. Then, $z_n$ is convergent $\iff$ $x_n$ and $y_n$ are convergent, and $lim(x_n)=lim(y_n)$.}{$\implies$) If $z_n$ converges, then for all $\varepsilon>0$, there exists $n_0(\varepsilon) \in \NN$ such that after $n_0$ every term of $z_n$ lies in the $\varepsilon$ neighbourhood of some limit $z$. This means that beyond some $n_{\text{something else}}$, every term of $x_n$ and $y_n$ - the sequences that make up $z_n$ - falls into the $\varepsilon$ neighbourhood of $z$. Therefore, both $x_n$ and $y_n$ are convergent, and to $z$.\\\\
+$\impliedby$) If $x_n$ and $y_n$ are convergent to $z$, then $\forall \varepsilon>0$ ,$\exists n_x,n_y \in \NN$ such that $\forall n \in \NN, n \geq n_x$, $z-\varepsilon<x_n<z+\varepsilon$ and $z-\varepsilon<y_n<z+\varepsilon \implies $ $z-\varepsilon<z_{2n}<z+\varepsilon$ and $z-\varepsilon<z_{2n-1}<z+\varepsilon$. Hence $z_n$ is also convergent, and converges to $z$.
+}
+\defn{Cauchy Sequences}{A sequence is said to be \textbf{Cauchy} if $\forall \varepsilon>0$, $\exists n_0(\varepsilon) \in \NN$ such that $\forall n,m \in \NN, n,m \geq n_0$ we have $|x_n-x_m|<\varepsilon$}
+\thmp{}{Cauchy Sequences are bounded}{Suppose $x_n$ is cauchy. In the definition, fix $\varepsilon=1$ and fix one element $x_j \geq n_0$. We then have $\forall n \in N, n \geq n_0$ $|x_n-x_j<1\implies x_j-1<x_n<x_j+1 $. We can see that $\forall n\geq n_0$, it is bounded, Since $x_1,x_2,\cdots x_{n_0}$ is a finite set, it too is bounded. Therefore, Cauchy sequences are bounded.}
+\defn{Contractive sequence}{A sequence $x_n$ is contractive if $\exists C>0$ and $n_0 \in \NN$ such that $\forall n\in \NN, n \geq n_0$ we have $|x_{n+2}-x_{n+1}|<C|x_{n+1}-x_{n}|$}
+\thmp{}{A sequence is cauchy in $\RR$ if and only if it is convergent in $\RR$}{$\impliedby)$ $\forall \varepsilon>0$ $\exists n_1 \in \NN$ such that $\forall n \in \NN, n \geq n_1$ $$|x_n-x|<\frac{\varepsilon}{2} $$
+$\forall \varepsilon>0$ $\exists n_1 \in \NN$ such that $\forall m \in \NN, m \geq n_1$ $$|x-x_m|<\frac{\varepsilon}{2} $$ Adding these two we get: $\forall \varepsilon>0$ $\exists n_1 \in \NN$ such that $\forall n,m \in \NN, n,m \geq n_1$ $$|x_n-x_m| \leq |x_n-x|+|x-x_m|<2\frac{\varepsilon}{2}=\varepsilon $$
+$\implies)$Say $x_n$ is Cauchy, but not convergent. Since $x_n$ is bounded, it has a convergent subsequence $x_{n_k} \to x$. Suppose $x_n$ doesn't converge to $x$. This means that $\exists \varepsilon>0$ and a subsequence $x_{n_j}$ such that $\forall j \in \NN$, we have $|x_{n_j}-x| \geq \varepsilon$. Since $x_n$ is Cauchy,$\forall \varepsilon$, $\exists n_0$ such that $\forall j,k \in \NN, j,k \geq n_0$ $$|x_{n_j}-x_{n_k}|<\frac{\varepsilon}{2}$$ Since $x_{n_k} \to x$, we have $\forall \varepsilon>0$ $\exists l\in \NN$ such that $\forall n_k \in \NN, n_k \geq l$ $$|x_{n_k}-x|<\frac{\varepsilon}{2}$$ Adding those two we have $\forall \varepsilon$ $\exists n_{\text{something}} \in \NN$ such that $\forall n_j, n_k \geq n_{\text{something}}$ we have $$|x_{n_j}-x| \leq |x_{n_j}-x_{n_k}|+|x_{n_k}-x|<2\frac{\varepsilon}{2}=\varepsilon $$ We see that $x_{n_j}$ actually converges to $x$, contrary to the divergence criteria.
+
+}
+\thmp{}{Contractive sequences are Cauchy.}{$\forall n \geq n_0$ we have $\forall n \geq n_0$, $|x_n-x_{n-1}| \leq C|x_{n-1}-x_{n-2}|$ where $C<1$. $|x_n-x_{n-1}|\leq C|x_{n-1}-x_{n-2}| \leq C^2|x_{n-2}-x_{n-3}|\leq C^3|x_{n-3}-x_{n-4}| \cdots \leq C^{n-n_0-1} |x_{n_0+1}-x_{n_0}|$\\\\
+Consider $|x_m-x_n|$ where WLOG $m>n$. $|x_m-x_n|=|x_m-x_{m-1}+x_{m-1}-x_{m-2}+x_{m-2}-x_{m-3}+x_{m-3}-\cdots x_{n+1}-x_n| \leq |x_m-x_{m-1}|+|x_{m-1}-x_{m-2}|+\cdots+|x_{n+1}-x_n|\leq (C^{m-n_0-1}+C^{m-n_0-2}+C^{m-n_0-3} \cdots + C^{n-n_0})|x_{n_0+1}-x_{n_0}| $. The term in the brackets can be made smaller than any $\varepsilon$ for large enough $m,n$. This means that, $x_n$ is Cauchy, hence convergent.
+}
+
+
+\exm{(Applying Contraction) If $x_n=\frac{x_{n-1}+x_{n-2}}{2}$ Then $x_n$ is cauchy.}{We see that $2x_n=x_{n-1}+x_{n-2} \implies 2x_n-2x_{n-1}=-(x_{n-1}-x_{n-2})$. This implies: $2(|x_n-x_{n-1}|)=|x_{n-1}-x_{n-2}| \implies |x_n-x_{n-1}| \leq \frac{2}{3}|x_{n-1}-x_{n-2}|$. Therefore, $x_n$ is Cauchy by virtue of being contractive. There are two methods to find the limit of this sequence.\\\\
+\textbf{Method 1 (Courtesy of TYS Arjun):}\\
+$$x_{n+1}=\frac{1}{2}(x_n+x_{n-1})$$
+$$x_{n}=\frac{1}{2}(x_{n-1}+x_{n-2})$$
+$$x_{n-1}=\frac{1}{2}(x_{n-2}+x_{n-3})$$
+$$ \vdots$$
+$$x_4=\frac{1}{2}(x_3+x_2)$$
+$$x_3=\frac{1}{2}(x_2+x_1)$$
+Add all these to get:
+$$x_3+x_4+\cdots x_{n-1}+x_{n}+x_{n+1}= \frac{1}{2}(x_n)+x_{n-1}+x_{n-2} \cdots+x_3+x_2+\frac{1}{2}(x_1) \implies$$
+$$\frac{1}{2}(x_n)+x_{n+1}=x_2+\frac{1}{2}(x_1) $$
+Passing to the limit which was shown to exist we get:
+$$\frac{1}{2}x+x=x_2+\frac{1}{2}(x_1)$$
+\textbf{Method 2:}\\
+$$(x_n-x_{n-1})=-\frac{1}{2}(x_{n-1}-x_{n-2})=\frac{1}{2^2}(x_{n-2}-x_{n-3})=-\frac{1}{2^3}(x_{n-3}-x_{n-4}) \cdots$$ $$=(-1)^j\frac{1}{2^j}(x_{n-j}-x_{n-j-1})=(-1)^{n-n_0+1}\frac{1}{2^{n-n_0+1}}(x_{n-(n-n_0+1)}-x_{n_0})$$
+$\implies $ $$x_n-x_1=(x_n-x_{n-1})+(x_{n-1}-x_{n-2})+(x_{n-2}-x_{n-3})\cdots (x_2-x_1) \implies$$
+$$x_n-x_1=\sum_{k=1}^{n-1} (x_{k+1}-x_{k}) =\sum_{k=1}^n(-1)^{-n_0}(-1)^{k}((-2)^{n_0-1})(\frac{1}{2^{k}}(x_{n_0+1}-x_{n_0}))=$$
+$$x_n-x_1=(-1)^{-n_0}(-2)^{n_0-1}(x_{n_0+1}-x_{n_0}) \sum_{k=1}^n (\frac{-1}{2})^k= $$ $$(-1)^{-n_0}(-2)^{n_0-1}(x_{n_0+1}-x_{n_0})(\frac{1}{3})((\frac{-1}{2})^n-1) $$
+Therefore, $$lim(x_n-x_1)=(-1)^{-n_0}(-2)^{n_0-1}(x_{n_0+1}-x_{n_0}) \sum_{k=1}^n (\frac{-1}{2})^k= $$ $$(-1)^{-n_0}(-2)^{n_0-1}(x_{n_0+1}-x_{n_0})(\frac{1}{3})lim((\frac{-1}{2})^n-1)$$
+}
+\exm{(Fibonacci) $f_1=1$, $f_2=1$ and $f_n=f_{n-1}+f_{n-2}$ characterises the fibonacci sequence. The sequence $x_n=\frac{f_n}{f_{n+1}}$ is convergent.}{$x_n=\frac{f_n}{f_{n+1}}=\frac{f_n}{f_n+f_{n-1}}=\frac{1}{1+\frac{f_{n-1}}{f_n}}=\frac{1}{1+x_{n-1}}$. Since $x_{n-1}=\frac{1}{1+x_{n-2}}$, we have 
+$x_n=\frac{1}{1+\frac{1}{1+x_{n-2}}}$. Notice that $x_1>x_3>x_5$ and $x_2<x_4<x_6$. Suppose, till $n=n_0$, we have $x_{2n-1}<x_{2n-3}$ and $x_{2n}>x_{2n-2}$. Consider $x_{2n_0+1}$ and $x_{2n_0-1}$. $x_{2n_0+1}=\frac{1}{1+x_{2n_0}}$ and $x_{2n_0-1}=\frac{1}{1+x_{2n_0-2}}$. Since $1+x_{2n_0-2}<1+x_{2n_0}$ we have $\frac{1}{1+x_{2n_0-2}}>\frac{1}{1+x_{2n_0}} \implies x_{2n_0-1}>x_{2n_0+1}$. Hence, it is true for all $n \in \NN$ from induction.\\
+In a similar fashion, we can show via induction that the even subsequences are monotone increasing. Both the odd subsequences and even subsequences are monotone decreasing and increasing respectively, whilst being bounded. Hence, they are convergent. From the fact that $x_n=\frac{1}{1+x_{n-1}}$, we can see that both of these converge to the same number. 
+
+}
+
+\defn{(Proper Divergence)}{A sequence is said to diverge to +infinity if $\forall \xi \in \RR, \exists n_0$ such that $x_n>\xi \forall n \geq n_0$.\\\\ It is divergent to -infinity if $\forall \xi \in \RR, \exists n_0$ such that $x_n<\xi \forall n \geq n_0$. }
+\thmp{}{If $x_n$ is monotone, then it is unbounded $\iff$ it is properly divergent.}{$\implies$) $\forall \varepsilon>0$, $\exists n(\varepsilon)\in \NN$ such that $x_{n(\varepsilon)}>\varepsilon \implies x_n>\varepsilon \forall n \geq n(\varepsilon)$.\\\\
+$\impliedby$)Properly Divergent is stronger than unboundedness. }
+
+\thmp{Comparision test \#1}{If $lim(x_n)=\infty$ and $x_n \leq y_n$, then $y_n \to \infty$. Similarly, if $lim(y_n) \to -\infty$, then $x_n \to -\infty$}{Obvious}
+
+\thmp{Comparision test \#2}{If $x_n$ and $y_n$ and Positive sequences, and if $L>0$, and if $lim(\frac{x_n}{y_n})=L$ , then $x_n \to \infty$ $\iff$ $y_n \to \infty$.}{
+$\forall \varepsilon \exists n_0 \in \NN$ such that $\forall n \in \NN, n \geq n_0$ we have $y_n(L-\varepsilon)<x_n<(L+\varepsilon)y_n$. Choose $\varepsilon=\frac{L}{2}$ so that we have $\forall n \geq n_0$, $\frac{L}{2}y_n < x_n <\frac{3}{2}y_n$ whence we see from test \#1 that $x_n \to \infty \iff y_n \to \infty$. If $L=0$.}
+
+\lemp{Useful Lemma}{A monotone sequence is bounded if one of its subsequences is bounded}{Say the main sequence is properly divergent (which essentially means unboundede), then after some $n_0$ dependent on $\varepsilon$, all terms of all the subsequences coming after the index $n_0$ will be greater than $\varepsilon$. This is true for every $\varepsilon$, which means that all subsequences are unbounded. Therefore, the contrapositive gives that if one subsequence is bounded, the main sequence is bounded.}
+
+\section{On Series (Introduction)}
+\defn{Series}{Given a sequence $x_n$, we say the series generated by $x_n$ is $s_n$ if $s_n=\sim_{i=1}^n x_i$. (Sequence of partial sums defined inductively) }
+\lemp{n-th Term Test}{A series $s_n=\sum_{i=1}^n x_i$ is convergent $\implies$ $lim(x_n)=0$}{$s_n=x_n+s_{n-1} \implies x_n=s_n-s_{n-1}$, and passing to the limit gives $lim(x_n)=0$}
+\thm{Cauchy Criterion for Series}{A series $s_n=\sum_{i=1}^n x_i$ is convergent $\iff$ $\forall \varepsilon>0$ $\exists n_0 \in \NN$ such that $\forall m,n \in \NN, m,n \geq n_0$ we have $|s_m-s_n|=|x_{n+1}+x_{n+2} \cdots +x_m|<\varepsilon$ }
+
+\exm{The 1 harmonic: $\sum_{i=1}^n\frac{1}{i}$ is divergent.}{\textbf{Method 1}:\\\\
+Let $H_n=\sum_{i=1}^n \frac{1}{i}$, and consider the subsequence of $H_n$ which is $H_{2^n}=1+\frac{1}{2}+\frac{1}{3}+ \cdots +\frac{1}{2^{n-1}}+ \cdots \frac{1}{2^n} $
+$$H_{2^1}=1+\frac{1}{2} \geq 1+\frac{1}{2}$$
+$$H_{2^2}=1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4} >1+\frac{1}{2}+(\frac{1}{4}+\frac{1}{4})=1+\frac{1}{2}+\frac{1}{2}$$
+$$=1+\frac{2}{2}$$
+$$H_{2^n}=1+\frac{1}{2}+(\frac{1}{3}+\frac{1}{4})+(\frac{1}{5}+\frac{1}{6}+\frac{1}{7}+\frac{1}{8}) \cdots+(\frac{1}{2^{n-1}}+\frac{1}{2^{n-1}+1} \cdots \frac{1}{2^n}$$
+$$\geq 1+\frac{n}{2}$$
+Hence, we see that $H_{2^n}$ is properly divergent, which means that the main sequence is properly divergent.\\\\
+\textbf{Method 2:}\\\\
+Consider $|H_m-H_n|=|\frac{1}{n+1}+\frac{1}{n+2}+\cdots +\frac{1}{m}$ with the assumption that $m>n$. Note that $H_m-H_n$ has $m-n$ terms. $|H_m-H_n|>\frac{m-n}{m}$.
+Suppose $m=2n$. We then have $|H_m-H_n|>\frac{n}{2n}=\frac{1}{2}$. Choose $\varepsilon=\frac{1}{2}$. We now have: $\exists \varepsilon=\frac{1}{2}$ such that $\forall k \in \NN$, $\exists m(k),n(k) \in \NN, m(k),n(k) \geq k$ with $m(k)=2n(k)$ such that $|H_{m(k)}-H_{n(k)}| \geq \varepsilon=\frac{1}{2}$. Hence, from negation of cauchy criteria, the 1 harmonic properly diverges.\\\\
+\textbf{Method 3:}\\\\
+Suppose that $H_n$ is actually convergent. Consider $H_{2n}$. We have $$H_{2n}=1+\frac{1}{2}+\frac{1}{3}+\cdots +\frac{1}{n}+\frac{1}{n+1} \cdots \frac{1}{2n}$$
+$$H_{2n}>1+\frac{1}{2}+(\frac{1}{4}+\frac{1}{4})+(\frac{1}{6}+\frac{1}{6})+(\frac{1}{8}+\frac{1}{8})+\cdots +(\frac{1}{2n}+\frac{1}{2n})=$$
+$$H_{2n}=\frac{1}{2}+1+\frac{1}{2}+\frac{1}{3}+\cdots +\frac{1}{n}= \frac{1}{2}+H_n$$
+Passing to the limit we have:
+$$H\geq \frac{1}{2}+H$$ which is absurd. 
+
+}
+\lemp{}{A positive termed series either converges or properly diverges}{Obvious}
+
+\exm{The 2 harmonic $S_n=\sum_{i=1}^n\frac{1}{i^2}$ is convergent}{\textbf{Method 1:}\\\\
+$$S_n=\frac{1}{1}+\frac{1}{2^2}+\frac{1}{3^2}+\cdots +\frac{1}{n^2}\leq \frac{1}{1}+\frac{1}{(2)(1)}+\frac{1}{(3)(2)}+\cdots +\frac{1}{(n)(n-1)}\implies$$
+$$S_n \leq 1+\frac{2-1}{(2)(1)}+\frac{3-2}{(3)(2)}+\cdots+\frac{n-({n-1})}{n(n-1)}=$$
+$$1+1-\frac{1}{2}+\frac{1}{2}-\frac{1}{3}+\cdots \frac{1}{n-1}-\frac{1}{n} \implies $$
+$1 \leq S_n \leq 2-\frac{1}{n} \leq 2$ which means this monotone increasing sequence is bounded above.\\\\
+\textbf{Method 2:}\\\\
+Consider the subsequence of $S_n$, $S_{2^n-1}$. 
+$$S_{2^1-1}=S_1=\frac{1}{1}$$
+$$S_{2^2-1}=S_3=\frac{1}{1}+\frac{1}{2^2}+\frac{1}{3^2}\leq 1+\frac{1}{2}$$
+$$S_{2^3-1}=S_7=1+\frac{1}{2^2}+\frac{1}{3^2}+\frac{1}{4^2}\cdots \frac{1}{7^2}\leq1+\frac{1}{2^2}+\frac{1}{2^2}+\frac{1}{4^2}+\frac{1}{4^2}+\frac{1}{4^2}+\frac{1}{4^2} $$
+$$\leq1+\frac{1}{2}+\frac{1}{2^2}$$
+We can likewise easily see that $S_{2^n-1} \leq 1+\frac{1}{2}+\frac{1}{2^2}+\cdots \frac{1}{2^{n-1}}\leq 2$. Which means $S_n$ is convergent.
+}
+\thmp{Comparision test}{Given $X_n$ and $Y_n$, and $S_n=\sum X_i$ and $T_n=\sum Y_i$, and $\forall n \geq k_{\text{something}}, 0 \leq x_n \leq y_n$, then, if $T_n$ converges, then $S_n$ converges.}{If $T_n$ converges, we have from cauchy criteria that $\forall \varepsilon>0$ $\exists n_0 \in \NN$ such that $\forall m,n \in \NN; m,n \geq n_0$ we have $|y_{n+1}+y_{n+2}\cdots y_m|<\varepsilon$. After $n \geq max\{n_0,k_{\text{something}} \}$ we have $|x_{n+1}+x_{n+2}\cdots +x_{m}|<\varepsilon$ which fulfils the cauchy criteria for $S_n$. 
+}
+\exm{The alternating harmonic series: $S_n=\frac{(-1)^{1+1}}{1}-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots \frac{(-1)^{n+1}}{n}$ is convergent.}{Consider the odd subsequences: 
+$$S_{2n+1}=\frac{(-1)^{1+1}}{1}-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots \frac{(-1)^{2n+1}}{2n}+\frac{(-1)^{2n+2}}{2n+1} $$
+
+$$S_{2n+1}=\frac{(-1)^{2}}{1}-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots \frac{(-1)}{2n}+\frac{(1)}{2n+1}=S_{2n}+\frac{1}{2n+1}=S_{2n-1}-(\frac{1}{2n}-\frac{1}{2n+1}) $$
+We see that odd subsequences are decreasing.
+$$S_{2n}=\frac{(-1)^{2}}{1}-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots \frac{(-1)}{2n}=S_{2n-1}+\frac{-1}{2n}=S_{2n-2}+(\frac{1}{2n-1}-\frac{1}{2n}) $$
+We see that even subsequences are increasing.
+$S_{2n+1}$ has $2n+1$ terms, with $$S_{2n+1}=(1-\frac{1}{2})+(\frac{1}{3}-\frac{1}{4}) \cdots +(\frac{1}{2n-1}-\frac{1}{2n})+\frac{1}{2n+1}$$ Hence, odd subsequences are bounded below by $0$. Therefore, $S_{2n+1}>0, \forall n \in \NN$. For even subsequences, $S_{2n}$ has $2n$ terms, and $$S_{2n}=1-(\frac{1}{2}-\frac{1}{3})-(\frac{1}{4}-\frac{1}{5}) \cdots -(\frac{1}{2n-1}-\frac{1}{2n})$$
+We see that even terms are bounded above by $1$. Hence, both even and odd subsequences converge.
+
+we have $S_{2n+2}-S_{2n}=\frac{1}{2n+1}-\frac{1}{2n+2}\implies S_{2n+2}=S_{2n}+\frac{1}{2n+1}-\frac{1}{2n+2}$. Hence, even limit$=$ odd limit. From shuffle play theorem, the alternating harmonic series converges.
+ }
+
+\thmp{Limit Comparision Test}{Given that $x_n$ and $y_n$ are such that $x_n>0$ and $y_n>0$ $\forall n \in \NN$, and $\exists r\in \RR^+ \cup \{U\}$ such that $$r= lim(\frac{x_n}{y_n})$$Then: \begin{enumerate}
+    \item if $r\neq 0$, $\sum x_n$ converges $iff$ $\sum y_n$ converges.
+    \item if $r=0$, then $\sum y_n$ converges $\implies$ $\sum x_n$ converges.
+\end{enumerate}}{$\forall \varepsilon>0$, $\exists n_0>0$ such that $\forall n \geq n_0$, we have $$y_n(r-\varepsilon)<x_n<y_n(r+\varepsilon)$$ If we choose $\varepsilon$ appropriately, we would have $\forall n \geq n_0$ $$y_n(\frac{r}{2})<x_n<y_n(\frac{3r}{2})$$ Whence we can see that the $\iff$ statement is true from the first comparision test for series'. \\\\
+If $r=0$, then we would have $y_n(-\varepsilon) <x_n<y_n(\varepsilon)$, where we see that from the first comparision test, if $\sum y_n$ converges, we have $\sum x_n$ converges. To see that the forward implication does not hold, consider $x_n=\frac{1}{n^2}$ and $y_n=\frac{1}{n}$. $lim(\frac{x_n}{y_n})=0$, but $\sum x_n$ converges, whilst $\sum y_n$ diverges.
+}
+\thmp{Addition of Series}{If $\sum x_n$ and $\sum y_n$ converge, then the series $\sum x_n+y_n$ also converges.}{
+$\forall \varepsilon>0$, $\exists n_x \in \NN$ such that $\forall n,m \in \NN, n,m \geq n_x$ we have $$|x_{n+1}+x_{n+2}\cdots +x_m|<\frac{\varepsilon}{2}$$ And
+$\forall \varepsilon>0$, $\exists n_y \in \NN$ such that $\forall n,m \in \NN, n,m \geq n_y$ we have $$|y_{n+1}+y_{n+2}\cdots +y_m|<\frac{\varepsilon}{2}$$
+Hence, $\forall \varepsilon>0$, $\exists j=max\{n_x,n_y\} \in \NN$ such that $\forall n,m \in \NN, n,m \geq j$ we have $$|(x_{n+1}+y_{n+1})+\cdots (x_{m}+y_{m})|\leq|x_{n+1}+x_{n+2}\cdots +x_m|+|y_{n+1}+y_{n+2}\cdots +y_m|<\varepsilon$$
+Which is the cauchy criteria for $\sum x_n+y_n$.
+
+}
+\thmp{}{Let $S_n=\sum_{j=1}^n a_j$ be a given series constructed from $\{ a_n \}$, and suppose $T_n:=\sum_{i=1}^n b_i$ constructed from the non-zero terms of $\{a_n\}$, maintaining order. Then $lim(S_n)=a$ $\iff$ $lim(T_n)=a $}{$\implies$) $$a_1+a_2+\cdots a_n$$ is the same as $$b_1+b_2+\cdots b_k$$ WLOG, assume infinite terms exists (non-zero). This means, $\forall k \in \NN$, $\exists n(k)\geq k \in \NN$ such that $$\sum_{j=1}^k b_j= \sum_{i=1}^{n(k)} a_i$$ We see that $\sum_{i=1}^{n(k)}$ is a subsequence of $\sum a_j$, hence is convergent to $a$.
+\\\\ $\impliedby$) Suppose that (and assume WLOG that there are infinite non zero terms) $lim (\sum_{j=1}^k b_j)=a$ 
+$\forall \varepsilon>0, \exists n_0 \in \NN$ such that $\forall k \geq n_0, k \in \NN$ we have $$|\sum_{j=1}^k b_j-a|<\varepsilon$$
+$\forall k \in \NN$, $\exists n(k) \in \NN, n(k) \geq k$ such that $$\sum_{i=1}^{n(k)} a_i=\sum_{j=1}^k b_j$$
+Note that $n(k) \geq k, n(k+1)>n(k)$ and $\forall n \not\in \{n_1,n_2,\cdots\}$ we have $a_n=0$. If our $n$ in consideration falls on some $n_k$, then for such an $n$, we already have $$\sum_{i=1}^na_i=\sum_{i=1}^{n(k)}a_i=\sum_{j=1}^k b_j$$ and as such, for sufficiently large $n$ in this consideration, $$|\sum_{i=1}^n a_i-a|<\varepsilon$$ 
+Suppose our $n$ doesn't fall on some $n_k$. Then it must belong between some $n_{k_0}$ and $n_{k_0+1}$. Therefore, $\sum_{i=1}^n a_i=\sum_{i=1}^{n_{k_0}} a_i=\sum_{j=1}^{k_0} b_j$ which means, for sufficiently large $n$ (sufficiency governed by the $\varepsilon$), we have $$|\sum_{i=1}^{n}-a|<\varepsilon $$ Therefore, we have covered all the $n$-s. We finally have: $\forall \varepsilon$ $\exists n_0 \in \NN$ such that $\forall n \in \NN, n \geq n_0$ $$|S_n-a|<\varepsilon$$
+}
+\thmp{}{Convergence of a series is not affected by altering a finite number of terms. The limit, ofcourse, can change.}{Let $S_n$ be the given series, and $S'_n$ be the altered series, altering the terms $\{a_{n_1}, a_{n_2} \cdots a_{n_k} \}$. We have $\forall \varepsilon>0$, $\exists n_0\in \NN$ such that $\forall n,m \in \NN, n,m \geq n_0$, $$|S_m-S_n|<\varepsilon$$
+Let $j(\varepsilon)=max(\{n_0,k\})$. We are done.
+}
+\thmp{Cauchy Condensation Test}{Suppose $a(n)$ is a monotone decreasing, positive termed sequence. Then $\sum_{i=1}^n a(i)$ converges $\iff$ $\sum_{j=1}^n 2^j a(2^j)$ converges.}{We are told $a_1\geq a_2 \geq a_3 \cdots$. Consider $$2S_{2^n}=2a_1+2a_2+\cdots {2a_{2^{n-1}}+2a_{2^{n-1}+1}+\cdots +2a_{2^n} } $$ 
+$$2S_{2^n} \geq a_1+2a_2+2a_4+2a_4+2a_8+2a_8+2a_8+2a_8+\cdots+\underbrace{2a_{2^n}+\cdots2a_{2^n}}_{2^n-1-2^{n-1}-1+1= \text{ terms}} +2a_{2^n} $$
+We therefore have: $$2S_{2^n} \geq a_1+2a_2+4a_4+8a_8\cdots + 2a_{2^n}(2^n-1-\frac{2^n}{2})+2a_{2^n}=$$ $$a_1+2a_2+4a_4+\cdots 2^na_{2^n}$$ Or $$\frac{1}{2}(a(1)+2a(2)+4a(4)+\cdots 2^na(2^n) \leq S_{2^n}$$
+Consider another distribution scheme: 
+$$2S_{2^n}=2a_1+2a_2+2a_3+2a_4\cdots 2a_{2^{n-1}}+2a_{2^{n-1}+1}+\cdots 2a_{2^n-1}+2a_{2^n}$$
+$$2S_{2^n} \leq 2a_1+2a_2+2a_2+2a_4+2a_4+2a_4+2a_4+\cdots 2a_{2^{n-1}}+2({2^n-1-2^{n-1}})a_{2^{n-1}}+2a_{2^n}\implies$$
+$$2S_{2^n} \leq 2a_1+4a_2+8a_4 +\cdots 2^na_{2^{n-1}}+2a_{2^n} \implies$$
+$$S_{2^n} \leq a_1+2a_2+4a_4+\cdots 2^{n-1}a_{2^{n-1}}+a_{2^n}$$
+Finally we have $$\sum_{j=1}^n \frac{1}{2}2^ja(2^j) \leq S_{2^n} \leq \sum_{i=1}^{n-1} 2^j a(2^j) + a_{2^n}$$
+And from Limit comparision test, the result is obvious.
+}
+\exm{The $p$-harmonic series: $H^p_n=\sum_{i=1}^n \frac{1}{i^p}$ diverges if $p\leq 1$ and Converges if $p>1$}{We already know from limit comparision test that the $p$ series, by virtue of the $1$ series diverging, diverges for $p \leq 1$. Consider the case of $p>1$.
+\\\\ \textbf{Method 1:}\\\\
+Consider the subsequence $H^p(2^n-1)$.
+$$H^p(1)=1$$
+$$H^p(3)=1+\frac{1}{2^p}+\frac{1}{3^p} \leq 1+\frac{1}{2^{p-1}}$$
+$$H^p(7)=1+\frac{1}{2^p}+\frac{1}{3^p}+ \cdots \frac{1}{7^p}$$ $$\leq 1+(\frac{1}{2^p}+\frac{1}{2^p})+(\frac{1}{4^p}+\frac{1}{4^p}+\frac{1}{4^p}+\frac{1}{4^p})\leq 1+\frac{1}{2^{p-1}}+\frac{1}{2^{2(p-1)}}$$
+Likewise, we can see that $H^p(2^n-1)\leq 1+\frac{1}{2^{p-1}}+\frac{1}{(2^{p-1})^2}+\cdots \frac{1}{(2^{p-1})^{n-1}}$. Hence, the sequence $H^p(n)$ converges by virtue of being bounded.
+\\\\ \textbf{Method 2}: \\\\
+Applying cauchy condensation: $$\sum_{j=1}^n 2^ja(2^j)=\sum_{j=1}^n 2^j\frac{1}{(2^j)^{p}}=\sum_{j=1}^n (\frac{1}{2^j})^{p-1}$$ This series converges (geometric series), and hence, from Cauchy Condensation, the main series converges.
+
+
+}
+
+\end{document}
