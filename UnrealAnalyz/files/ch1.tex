@@ -25,6 +25,13 @@
 $\implies$) If $f$ has a left inverse $g$, Consider $x,y \in A$ such that $f(x)=f(y)=p$. 
 
 We have $g \circ f(x)=g(p)=x=g \circ f(y)=y$. Hence, $x=y$, Injective.\\
+$\implies$) \textbf{Alternative proof when assuming $f$ has left inverse} \\
+Hence, $\exist g:B\to A$ such that $g(f(x))=x \implies f(x) = g^{-1}(x)$ \implies 
+$g^{-1}$ exists.\\
+Let $a_1, a_2 \in A$ such that $a_1 \neq a_2$ and $g(f(a_1)) = a_1$ and $g(f(a_2)) = a_2$\\
+Since $a_1 \neq a_2 \implies g(f(a_1)) \neq g(f(a_2))$\\
+Taking $g^{-1}$ both sides, we get\\
+$f(a_1) \neq f(a_2)$\\ \\
 $\impliedby$) Given that $f:A \to B$ is injective, define $g:B \to A$ as: 
 $$
 g(z \in B)=
