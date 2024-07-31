@@ -1,0 +1,17 @@
+# .gitignore
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xml
+*.gz
+*.toc
+*.lof
+*.lot
+*.ptc
+*.toc
+*.pdf
