@@ -173,7 +173,7 @@ Hence, every point on the rim is a limit point. Moreover, no point $w$ so that $
     \label{fig:perfectunctbl}
 \end{figure}
 \newpage
-\rmkb{It is easily seen that, closed intervals in $\RR^n$ are perfect: From density theorem, for every point in $I$, there would exist a sequence of rationals converging to that point. Moreover, closed intervals in $\RR^n$ are closed since closed balls in metric spaces are closed. Therefore, we see that intervals are uncountable.}
+\rmkb{It is easily seen that, closed intervals in $\RR$ are perfect: From density theorem, for every point in $I$, there would exist a sequence of rationals converging to that point. Moreover, closed intervals in $\RR$ are closed since closed balls in metric spaces are closed. Therefore, we see that intervals are uncountable.}
 \subsection{The Cantor Set}
 The following is the construction of an uncountable, perfect set that contains no intervals: The Cantor Set.
 \\\\ Let $I_0=[0,1]$. size of the interval(s) in $I_0$ is $1$, and there are $2^0=1$ intervals.
@@ -182,5 +182,34 @@ The following is the construction of an uncountable, perfect set that contains n
 \\\\Inductively keep making these trisections+tossings to make a sequence of closed, nested intervals (Compact, too) $I_k$, each containing $2^k$ intervals each of size $\frac{1}{3^k}$.
 \\\\ Finally, define the Cantor set $P$ as $$P:= \big.\cap_{i=1}^{\infty}I_i $$ Note that $P$ is compact since it is the closed subset of a compact set. It is also non empty by virtue of being the intersection of a sequence of nested, non empty, compact sets.
 \\\\Note that, no interval of the kind $[a,b]$ exists in the Cantor Set. The size of each interval in $I_j$ is $\frac{1}{3^j}$. We can find $j$ so that $\frac{1}{3^j}<b-a \implies \frac{1}{b-a}<3^j \implies \log_{3}(\frac{1}{b-a})<j$. For such $I_j$, we notice that $[a,b]$ has "inbetween" points that doesn't exist in any of $I_j$'s intervals. Hence, taking the intersection, these "inbetween" terms don't survive. Hence, no intervals exist.
-\thmp{}{The Cantor set $P$ is perfect.}{We already know that the Cantor set is closed. We need to show that every point in the cantor set is a limit point. First, observe that, for any $I_k$, if $z$ is the end point of any of the sub interval of $I_k$, it survives the $\infty$-intersection. This is because, after $I_k$-s trisection, the end points still stay endpoints. Let $\xi$ be any point in the cantor set, which means it is a point in evert $I_k$. Let $\delta>0$ be given. Consider the interval $(\xi-\delta,\xi+\delta)$. This interval is sized $2\delta$. $\xi$ exists in one of the sub intervals of $I_k$ for all $K \geq k_0$ for some $k_0$. Choose $j$ so that $\frac{1}{3^j}<\delta$. Then, the interval in $I_j$ containing $\xi$ would fall completely inside $(\xi-\delta,\xi+\delta)$. Choose $q$ as one of the end points of this sub interval of $I_j$. Therefore, $\forall \xi \in P$, $\forall \delta>0$, $\exists q \in P, q \neq \xi$ so that $q\in (\xi-\delta,\xi+\delta)$. Therefore, every $\xi \in P$ is a limit point of $P$. Hence, $P$ is perfect.}
+\thmp{}{The Cantor set $P$ is perfect.}{We already know that the Cantor set is closed. We need to show that every point in the cantor set is a limit point. First, observe that, for any $I_k$, if $z$ is the end point of any of the sub interval of $I_k$, it survives the $\infty$-intersection. This is because, after $I_k$-s trisection, the end points still stay endpoints. Let $\xi$ be any point in the cantor set, which means it is a point in every $I_k$. Let $\delta>0$ be given. Consider the interval $(\xi-\delta,\xi+\delta)$. This interval is sized $2\delta$. $\xi$ exists in one of the sub intervals of $I_k$ for all $K \geq k_0$ for some $k_0$. Choose $j$ so that $\frac{1}{3^j}<\delta$. Then, the interval in $I_j$ containing $\xi$ would fall completely inside $(\xi-\delta,\xi+\delta)$. Choose $q$ as one of the end points of this sub interval of $I_j$. Therefore, $\forall \xi \in P$, $\forall \delta>0$, $\exists q \in P, q \neq \xi$ so that $q\in (\xi-\delta,\xi+\delta)$. Therefore, every $\xi \in P$ is a limit point of $P$. Hence, $P$ is perfect.}
+
+\subsection{Connected Sets}
+\defn{Separated Sets}{$A \subset X$ and $B \subset X$ are said to be \emph{separated} if $\bar{A} \cap B=
+\bar{B}\cap A=\phi$, i.e, they are disjoint and no point of one, is the limit point of the other.}
+\defn{Connected Set}{A set $E\subset X$ is said to be \emph{connected} if it is \emph{not} the union of two non-empty separated sets.
+In other words, for every "split" of $E$ into two non empty sets, none of them are separated. Even if one split of $E$ is separated, then $E$ is \emph{not connected}.}
+\exm{Separated $\implies$ Disjoint, but Disjoint $\not\implies$ Separated.}{$[0,1]$and $(1,2)$ are disjoint, but are not connected since a sequence in $(1,2)$ converges to $1$ in $[0,1]$.}
+\thmp{}{$E \subset \RR$ is connected $\iff$ $\forall x,y \in E$, $x<z<y \implies z\in E$.}{$\implies$)
+Suppose $\exists x_0,y_0 \in E$ so that $\exists z, x_0<z<y_0$, but $z \not\in E$. Consider $A:=(-\infty,z)$ and $B:=(z,\infty)$.
+$A$ and $B$ are seen to be separated, and $E$ is a subset of $A \cup B$, which makes it disconnected.
+\\\\ $\impliedby)$ Suppose that we have $E$ disconnected, which means it is the union of two 
+separated sets $A$ and $B$ that are non-empty. $x_0 \in A$ and $y_0 \in B$. Consider $z(t)=x_0+t(y_0-x_0)$ for $t\in [0,1]$.
+Note that $z(0)=x_0$ and $z(1)=y_0$.
+\\\\ Conjecture: There exists a $t_B \in (0,1)$ so that for every $t<t_B$, $z(t)$ does not belong in $B$. If it is not true,
+then for every $t \in (0,1)$, there exists a point $t_B<t$ so that $z(t_B)$ is in B. Choose $t=1$ to get $z(t_1)$ in $B$.
+Chooe $t=\frac{t_1}{2}$ to get $z(t_2)$ in $B$ with $t_2<t_1$ and $t_2<\frac{1}{2}$. Keep going with $t=\frac{t_{n-1}}{2^{n-1}}$ to get $z(t_n)$ in $B$ with $t_n<t_{n-1}$ and $t_n<\frac{1}{2^{n-1}}$. 
+This gives us a sequence $z(t_k)$ which we can see is monotone decreasing assuming $x_0<y_0$. This sequence converges to $z(0)$ which is in $A$ which means that there exists a sequence in $B$, $z(t_n)$ that converges to $A$. Absurd.
+\\\\ In a similar vein, we can show that there exists $t_A \in (0,1)$ so that for every $t>t_A$, $z(t)$ is not in $A$. 
+Consider $$S_A:=\{ t \in [0,1]: z(t)\in A\cap [x_0,y_0]\}$$ and $$S_B:=\{t\in[0,1]: z(t)\in B\cap [x_0,y_0]\}$$
+
+}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Images/connectednessprof.png}
+    \caption{Figure: Proof for the equivalence for connectedness for sets in $\RR$. A look at $A\cap[x_0,y_0]$ and $B\cap [x_0,y_0]$.}
+    \label{fig:contced}
+\end{figure}
+
 \end{document}
