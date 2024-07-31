@@ -202,7 +202,22 @@ Chooe $t=\frac{t_1}{2}$ to get $z(t_2)$ in $B$ with $t_2<t_1$ and $t_2<\frac{1}{
 This gives us a sequence $z(t_k)$ which we can see is monotone decreasing assuming $x_0<y_0$. This sequence converges to $z(0)$ which is in $A$ which means that there exists a sequence in $B$, $z(t_n)$ that converges to $A$. Absurd.
 \\\\ In a similar vein, we can show that there exists $t_A \in (0,1)$ so that for every $t>t_A$, $z(t)$ is not in $A$. 
 Consider $$S_A:=\{ t \in [0,1]: z(t)\in A\cap [x_0,y_0]\}$$ and $$S_B:=\{t\in[0,1]: z(t)\in B\cap [x_0,y_0]\}$$
-
+\\\\ It is easy to see that $S_A$ and $S_B$ are disjoint. If a sequence in one converges in another, say
+$t_n \in S_B$ converges to $t_0 \in S_A$. Then $z(t_n)\in B$ by definition, for every $n$.
+But then by definition, $z(t_n)=x_0+t_n(y_0-x_0) \in B$ such that
+$lim(z(t_n))=x_0+t_0(y_0-x_0) \in A$, which means a sequence in $B$ converges in A. Absurd. So $S_A$ and $S_B$ are separated.
+\\\\Note that, for $t>t_A$, no $z(t)$ is in $A$. Hence, we see that for every $t$ so that $z(t)$ falls in $A$, there is an upperbound. Likewise, for every $t$ such that $z(t)$ falls in $B$, there is a lowerbound.
+Hence, $S_A$ has a supremum $sup(S_A)$ and $S_B$ has an infimum $inf(S_B)$.
+\\\\ At this point, we may as well assume that for every $t<inf(S_B)$, $t \in S_A$ for if not, what we wanted to prove would get proved. 
+Suppose then, for argument sake, that for every $t>Sup(S_A)$, $t\in S_B$, and
+likewise, for every $t<Inf(S_B)$. $t \in S_A$. Now then, does $Sup(S_A)$ belong
+in $S_A$? we see that for every $t>sup(S_A)$, $t \in S_B$ which means we can construct a sequence in $S_B$ using those $t$s, which converge to $Sup(S_A)$ in $S_A$. So that is ruled out.
+So is $Sup(S_A)$ in $S_B$? That is not possible either, since $S_A$ is a bounded, infinite set (mainly because supremum isn't in the set), we know that there is a monotone subsequence in $S_A$ converging to $Sup(S_A)$ which is in $S_B$. We therefore conclude that, there exists a point $t \in (0,1)$ so that $t$ is neither in $S_A$, nor in $S_B$. This translates to there being a point $z=z(t)$, between $x_0$ and $y_0$ so that $z(t)\not\in A \cup B \implies \not\in E$. We are, therefore, done. 
+\\\\ \textbf{Slicker Argument:} Suppose $E=A \cup B$ with $\bar{A}\cap B=\bar{B} \cap A=\phi$. Consider $x_0 \in A$ and $y_0 \in B$ and WLOG assume $x_0<y_0$. Define $z=sup(A\cap[x_0,y_0])$.
+There would be a sequence in $A$ that converges to $z$, by virtue of being the supremum. $z \in \bar{A} \implies z \not\in B$. This means $x_0 \leq z<y_0$. If $z \not\in A$, we would be done.
+If $z \in A$, then $z \not\in \bar{B}$. Therefore, $z$ is in an open set $\bar{B}^C$. There would exist
+an $\varepsilon_z$-ball around $z$ so that it is fully contained outside $\bar{B}$. Choose $z+\frac{\varepsilon_z}{2}$ as your $z'$.
+Note that $z'$ is greater than the supremum of $A$. We see that $z'$ is not in $B$, and not in $A$ either. Hence, we are done.
 }
 
 \begin{figure}[h]
@@ -212,4 +227,25 @@ Consider $$S_A:=\{ t \in [0,1]: z(t)\in A\cap [x_0,y_0]\}$$ and $$S_B:=\{t\in[0,
     \label{fig:contced}
 \end{figure}
 
+\section{Misc Theorems}
+\thmp{}{Suppose $A_1, A_2 \cdots, A_n \cdots \in X $. Then,
+\begin{enumerate}
+\item If $B_n= \cup_{i=1}^n A_i$, then $\bar{B_n}=\cup_{i=1}^{n} \bar{A_i}$ 
+\item $B=\cup_{i=1}^{\infty} A_i$, $\bar{B} \supseteq \cup_{i=1}^{\infty}\bar{A_i}$ with possibility of strict inequality.
+\end{enumerate} }{Suppose $x \in \cup_{i=1}^{n}\bar{A_i}$. Which means
+$x \in \bar{A_i}$ for some $i$. It is clear that $x$ is either a 
+point of $A_i$ or a limit point of $A_i$. We have that, whatever maybe the case
+either $x$ is a point in $B_n$ or a limit point of $B_n$. Therfore
+$\bar{B_n}\supset \cup_{i=1}^{n} \bar{A_i}$. 
+\\\\ Suppose $x$ is a point in $\bar{B_n}$. If it is a point of $B_n$,
+we are done. Suppose it is the limit point of $B_n$, but not a point. Also
+suppose that $x$ is not a limit point of any $A_i: i=1 \to n$. This means that,
+$$\exists \varepsilon_1 \text{ such that } \forall q\in A_1, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_1$$
+$$\exists \varepsilon_2 \text{ such that } \forall q\in A_2, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_2$$
+$$\vdots$$
+$$\exists \varepsilon_n \text{ such that } \forall q\in A_n, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_n$$
+If we choose $0<\varepsilon_0<min\{\varepsilon_i: i=1 \to n \}$, we would have that,
+for every point $q$ in $A_1 \cup A_2 \cdots A_n$, $q \neq x $(which is needless to say), we have $d(q,x) \geq \varepsilon_0$ which 
+makes $x$ a non-limit point of $B_n$, which is absurd. Hence we see that if $x$ is point of $B_n$ or a limit point of $B_n$, then it is a point or the limit point of some $A_j$.
+}
 \end{document}
