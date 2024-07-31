@@ -1,3 +1,4 @@
+# .gitignore
 *.aux
 *.bbl
 *.bcf
@@ -9,5 +10,8 @@
 *.xml
 *.gz
 *.toc
-
-
+*.lof
+*.lot
+*.ptc
+*.toc
+*.pdf

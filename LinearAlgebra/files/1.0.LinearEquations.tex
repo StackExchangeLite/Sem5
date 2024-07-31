@@ -1,0 +1,69 @@
+
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\chapter{Linear Equations}
+
+\intro{
+   We'll go through the Basic formalisms and proof, along with few elementary operations and matrix theory.
+}
+
+\section{Fields}
+
+\defn{Fields}{
+   A field $\mathcal{F}$ is a set of objects that satisfy the following the properties.
+   \begin{enumerate}
+      \item $\forall$ x, y $\in$ $\mathcal{F}$, $x+y = y+x$.
+      \item $\forall$ x, y $\in$ $\mathcal{F}$, $x+(x+y)=(x+y)+z$.
+      \item $\forall$ x $\in$ $\mathcal{F}$, $\exists$! 0 $\in$ $\mathcal{F}$, s.t. $x+0=x$. 
+      \item $\forall$ x $\in$ $\mathcal{F}$, $\exists$! $(-x)$ $\in$ $\mathcal{F}$, s.t. $x+(-x)=0$.
+      \item $\forall$ x, y $\in$ $\mathcal{F}$, $xy=yx$.
+      \item $\forall$ x, y, z $\in$ $\mathcal{F}$, $x(yz)=(xy)z$.
+      \item $\forall$ x $\in$ $\mathcal{F}$, $\exists$! 1 $\in$ $\mathcal{F}$, s.t. $x1=x$.
+      \item \label{multiplicative inverse} $\forall$ non-zero $x$ $\in$ $\mathcal{F}$, $\exists$! $x^{-1}$ $\in$ $\mathcal{F}$, s.t. $x^{-1}x=1$.
+      \item $\forall$ x, y, z $\in$ $\mathcal{F}$, $x(y+z)=xy+xz$.
+   \end{enumerate}}
+\rmkb{All fields are closed under addition and multiplication.}
+\defn{Subfields}{
+   A field $\mathcal{S}$ is a subfield of a field $\mathcal{F}$ if, all $x$ $\in$ $\mathcal{S}$, also $\in$ $\mathcal{F}$.
+}
+\textbf{Examples:}
+
+$\mathbb{R}$, the field of real numbers is a subfield of $\mathbb{C}$.
+
+$\mathbb{Q}$, the field of rational numbers is a subfield of $\mathbb{R}$.
+
+\textbf{Non-examples:}
+
+$\mathbb{N}$, the set of positive integers, is not a subfield of $\mathbb{R}$, since 0 $\notin \mathbb{N}$.
+
+$\mathbb{Z}$, the set of integers, is not a subfield of $\mathbb{R}$ (multiplicative inverses not included in field)
+
+\defn{Characteristic of a Field}{
+   (this part needs to be re-written for clarity)
+
+   The least $n$ such that $n 1's$ is 0 is called the Characteristic of the field $\mathcal{F}$. If it does not happen in a field $\mathcal{F}$, then it is called characteristic zero.
+}
+
+\section{Systems of Linear Equations}
+A collection of $m$ linear equations with $n$ unknowns, where $y_1, y_2, \dots y_{m}$ and $A_{ij}$, $1 \leq i \leq m, 1 \leq j \leq n,$ are given elements of F. 
+$$\begin{matrix}
+   A_{11}x_{1} &+& A_{12}x_{2} &+ &\cdots&+& A_{1n}x_{n} &=& y_{1}\\
+   A_{21}x_{1} &+& A_{22}x_{2} &+ &\cdots&+& A_{2n}x_{n} &=& y_{2}\\
+   \vdots\\
+   A_{m1}x_{1} &+& A_{m2}x_{2} &+ &\cdots&+& A_{mn}x_{n} &=& y_{m} 
+\end{matrix}$$
+Any n-tuple $(x_1, x_2, \dots, x_n)$ of elements in $\mathcal{F}$ which satisfies each of the equations above is called a \textbf{Solution} of the system.\\
+If $y_1=y_2=\dots=y_m=0$, then we say that the system of linear equations is \textbf{Homogeneous}.
+
+\fact{\textbf{Equivalent Systems}: Two systems of linear equations are said to be Equivalent if each equation in each system is a linear combination of the equations in the other system.
+}
+\thmp{}{Equivalent systems of linear equations have exactly the same solutions}{I mean, it is clear from fact 2.1, since they are linear combinations one can be converted into another, hence the solutions are exactly same.}
+
+\rmk{
+   TODO: (once i understand characteristic of a field thing) Prove that each field of chracteristic zero contains a copy of the rational number field
+}
+
+
+
+\end{document}
