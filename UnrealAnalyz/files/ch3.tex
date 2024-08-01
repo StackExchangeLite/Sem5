@@ -1,7 +1,9 @@
-\documentclass[../Main.tex]{subfiles}
+\documentclass[Main.tex]{subfiles}
 
 \begin{document}
+
 \chapter{Metric Spaces}
+
 \section{Fundamental Definitions n' Stuff}
 \defn{Metric Space}{A set $X$ along with a function $d:X \times X \to \RR^{+} \cup \{0\}$ called distance, is said to be a metric space if: \begin{enumerate}
     \item $d(x,y)=0 \iff x=y$ (Positivity)
@@ -227,7 +229,8 @@ Note that $z'$ is greater than the supremum of $A$. We see that $z'$ is not in $
     \label{fig:contced}
 \end{figure}
 
-\section{Misc Theorems}
+\section{Misc Knowledge}
+
 \thmp{}{Suppose $A_1, A_2 \cdots, A_n \cdots \in X $. Then,
 \begin{enumerate}
 \item If $B_n= \cup_{i=1}^n A_i$, then $\bar{B_n}=\cup_{i=1}^{n} \bar{A_i}$ 
@@ -247,5 +250,51 @@ $$\exists \varepsilon_n \text{ such that } \forall q\in A_n, q\neq x, \text{ we 
 If we choose $0<\varepsilon_0<min\{\varepsilon_i: i=1 \to n \}$, we would have that,
 for every point $q$ in $A_1 \cup A_2 \cdots A_n$, $q \neq x $(which is needless to say), we have $d(q,x) \geq \varepsilon_0$ which 
 makes $x$ a non-limit point of $B_n$, which is absurd. Hence we see that if $x$ is point of $B_n$ or a limit point of $B_n$, then it is a point or the limit point of some $A_j$.
+\\\\ For a good counterexample, we look to $\QQ:=\{q: \text{ q is rational} \}$. This set is 
+countable. Let $\{q_1, q_2, \cdots \}$ be the enumeration of $\QQ$. Consider $\QQ:=\cup_{j=1}^n \{q_j\}$. The closure
+of $\QQ$ is $\RR$ but since these singleton sets are by definition closed, the union of them only gives you $\QQ$.}
+
+\defn{Interior of a Set}{Given $S \in X$, the interior $\underbar{S}$ is defined as:
+$$\underbar{S}:=\{x\in X: \exists \varepsilon_x>0 \text{ such that } B_{\varepsilon_x}(x) \subset S \} $$}
+\thmp{}{The Interior is an open set}{Consider $(\underbar{S})^C:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x) \cap S^C \neq \phi \}$.
+It is possible that $x$ is a point of $S^C$, if it is in $\underbar{S}^C$. Suppose
+it is a point of $\underbar{S}^C$ but not a point of $^C$. From the definition, we see
+that $\forall \varepsilon>0, \exists q \in S^C, q\neq x$ such that $d(q,x)<\varepsilon$.
+This makes $x$ a limit point of $S^C$, which means, for every $x$ in $\underbar{S}^C$,
+$x$ is either a point of $S^C$ or a limit point of $S^C$. Hence,
+$$\underbar{S}^C \subseteq \bar{S^C} $$
+Suppose $x$ is a point of $\bar{S^C}$. Say it is a point of $S^C$, then obviously,
+it is a point of $(\underbar{S})^C$. Suppose $x$ is not a point of $S^C$, but a limit
+point of $S^C$. This means $\forall \varepsilon>0, \exists q \in S^C, q \neq x$ so that
+$d(q,x)<\varepsilon$. This is precisely the condition for which $x$ is a point of $(\underbar{S})^C$.
+Hence we see $(\underbar{S})^C \supseteq \bar{(S^C)} $. Therefore, $(\underbar{S})^C=\bar{(S^C)}$. From here we 
+see that $\underbar{S}$ is an open set.
+\\\\ \textbf{Alternate Argument (similar):} Consider $(\underline{S})^C:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x)\cap S^C \neq \phi \}$
+Consider a limit point $p$ of $(\underbar{S})^C$. $\forall \varepsilon>0, \exists q_{\varepsilon} \in \underbar{S}^C$ such that $d(q_{\varepsilon},p)<\frac{\varepsilon}{2} $. 
+Since $q_{\varepsilon}$ is in $(\underline{S})^C$, we have that: $\forall \delta>0, \exists r_{\delta} \in S^C, r_{\delta}\neq q_{\varepsilon}$ such that $d(r_{\delta},q_{\varepsilon})<\delta$
+
+Combining these we have:
+$$(\forall \varepsilon>0)(\exists q_{\varepsilon} \in \underbar{S}^C)(\exists \delta>0)(\exists q_{\delta} \in S^C)$$
+$$(d(q_{\delta},p)\leq d(q_{\delta},q_{\varepsilon})+d(q_{\varepsilon},p)<\frac{\varepsilon}{2}+\delta<\varepsilon) $$
+This means $p$ is a limit point of $S^C$. Hence, $\underbar{S}^C$ is closed.}
+\thmp{}{$\underbar{S}=S$ $\iff$ $S$ is open}{$\implies $) if $\underbar{S}=S$, obviously 
+$S$ is open.
+\\\\ $\impliedby)$ If $S$ is open, then by definition $\underbar{S}=$ set of all
+points in $S$ so that there's an $\varepsilon$-ball of $x$ in $S$. But that is every point
+of $S$. }
+\thmp{}{$\underbar{S}$ is the largest open set contained in $S$}{Consider an open
+subset of $S$. These are subsets of $S$ whose each point has an $\varepsilon$-ball
+around it so that the ball is contained in the subset, which is contained in $S$. So by 
+definition, these points in these subsets are contained in $\underbar{S}$.}
+\thmp{}{$$(\underbar{S})^C=\overline{(S^C)}$$ \centering{"The compliment of the interior is the closure of the compliment"}}{Refer to the proof of "Interiors of sets are Open", to see this construction.
+\\\\ \textbf{Alternate method(slicker):}
+\\\\ $\underbar{S} \subseteq S\implies S^C \subset (\underbar{S})^C$ where $(\underbar{S})^C$
+is a closed set containing $S^C$. Since $\overline{S^C}$ is the smallest closed set that contains $S^C$, we
+have $\overline{S^C} \subseteq (\underbar{S})^C $.
+\\\\ Note that $S^C \subseteq \overline{S^C} \implies (\overline{S^C})^C \subseteq S$ where $(\overline{S^C})^C$
+is an open set inside $S$. Since $\underline{S}$ is the largest open set containing $S$,
+we have that $ (\overline{S^C})^C \subseteq \underline{S} \implies \underline{S}^C \subseteq \overline{S^C}$. Combining these
+two set inequalities, we are done.
 }
+
 \end{document}
