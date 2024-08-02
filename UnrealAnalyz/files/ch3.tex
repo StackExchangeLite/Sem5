@@ -297,4 +297,21 @@ we have that $ (\overline{S^C})^C \subseteq \underline{S} \implies \underline{S}
 two set inequalities, we are done.
 }
 
+\thmp{}{\begin{enumerate}
+\item If $A$ and $B$ are closed, disjoint subsets of $X$, then $A$ and $B$ are separated.
+\item If $A$ and $B$ are open, disjoint sets, then $A$ and $B$ are separated.
+\end{enumerate} }{(1) $A$ $B$ closed implies $A=\overline{A}$ and $B=\overline{B}$ which are disjoint. From here it is obvious.
+\\\\ (2) $A$ and $B$ are open disjoint sets, then we see that $A \subseteq B^C $ and $B \subseteq A^C$ where 
+$A^C$ and $B^C$ are closed by definition. Since closure is the smallest closed set containing $A$ (and $B$), we see that $\overline{A} \subseteq B^C$ and $\overline{B}\subseteq A^C$.
+It is now trivial to see that $\overline{A}\cap B \subseteq B^C \cap B=\phi=\overline{B}\cap A $ which is the definition of separated.
+}
+\corp{Let $p\in X$ and $\delta>0$. Define $A:=B_{\delta}(p)$ and $B=(B_{[\delta]}(p))^C$. $A$ and $B$ are, then, separeted. }{Easy to see that they are both open sets that are disjoint.}{}
+
+\thmp{}{Every connected metric space with atleast two points is uncountable.}{Let $a$ and $b$ be in $X$. Let $\xi\leq d(a,b)$. 
+Note that, $P=B_{\xi}(a)$ and $Q=(B_{[\xi]}(a))^C$ are non empty, separated sets (from the previous corollary).
+If $X$ is not the union of $P$ and $Q$, then there is a point $z_{\xi}$ in $X$ so that it is neither in $P$
+not in $Q$. That means that it is exactly $\xi$ distance away from $p$. For every $\xi<d(a,b)$,
+there exists a point $z_{\xi}$ so that its distance from $p$ is exactly $\xi$. Therefore, every $z_{\xi}$ 
+is unique (from positivity property of metric spaces) which means there are uncountable $z_{\xi}$-s.
+}
 \end{document}

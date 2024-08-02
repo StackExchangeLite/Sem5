@@ -274,6 +274,44 @@ putting $r_0$ in the 2nd equation we see: $$b=(a-bq_0)q_1+r_1 \implies r_1= b-(a
 Putting $r_1$ and $r_0$ into the 3rd equation, we get, likewise, $r_2$ in terms of $a$ and $b$ (a linear combination of $a$ and $b$)
 As such, we can keep doing this to express $r_{n_0+1}$ as a linear combination of $a$ and $b$, like, $xa+yb$.}
 
-\thmp{Fundamental Theorem of Arithmetic}{}{}
+\thmp{Fundamental Theorem of Arithmetic}{Given an integer $a>1$, we can decompose $a$ as a product of primes uniquely (upto ordering)}{If $a=2$, obviously we can. Suppose we can decompose every positive integer $q$ $1<q<n_0$ as a product of primes. Consider $n_0+1=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}+1$. Either $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}+1$
+is a prime or is composite. If it is prime, we are done. If it is a composite number, then $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}+1=xy$ where $x$ and $y$ are numbers smaller than $n_0+1$.
+But since $x$ and $y$ can be expressed as a product of primes, we see that $n_0+1$ can also be represented as a product of primes.
+\\\\ Suppose $a=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}$, but also $a=p_1^{\alpha'_1}p_2^{\alpha'_2}\cdots p_m^{\alpha'_m}$.
+\\ We have ($m\geq n$): $$1=p_1^{\alpha_1-\alpha'_1}p_2^{\alpha_2-\alpha'_2} \cdots p_n^{\alpha_n-\alpha'_n} p_{n+1}^{-\alpha'_{n+1}} \cdots p_m^{-\alpha'_m}$$
+$$1=p_1^{\alpha'_1-\alpha_1}p_2^{\alpha'_2-\alpha_2} \cdots p_n^{\alpha'_n-\alpha_n} p_{n+1}^{\alpha'_{n+1}} \cdots p_m^{\alpha'_m}$$
+Obviously, not all $\alpha_j-\alpha'_j$ are positive, in the same way they all aren't negative. Suppose some of these
+powers are positive, while some negative. Consider some $p_j^{\delta_j}$ for which the power is negative, which moves it to the denominator.
+We have: $$1=\frac{\text{some primes raised to negative}\cdot {\text{ some primes raised to positive} }}{p_j^{\delta_j}}$$
+If we multiply the negative powers out to both sides, we get to a stage where we see that $p_j$ divides a product of primes (raised to positive powers).
+But, $p_j$ is different from all the primes, and hence does not divide any of them individually, which means,
+from the lemma(s) below, that $p_j$ actually does not divide the whole product. A contradiction. Hence, the only case remaining is that of
+product of primes raised to $0$ powers, which makes it unique.
+
+$$\textbf{Requisite Lemmas:}$$ 
+\\\\Lemma: Suppose $m$ is such that gcd($a,m$)$=1$, and $|ab$. Then, we have that $m|b$.
+\\ To see this, we use Bezout's Theorem: there exists $x$ and $y$ integers such that $ax+my=1$.
+This means $abx+mby=b \implies \frac{ab}{m}x+by=\frac{b}{m}$ whence it becomes clear.
+\\\\Lemma: If a prime $p$ divides $z^n$ for some integer $z$ and some natural $n$, then $p$ divides $z$.
+\\ To see this, Suppose that $p$ does not divide $z$. Which means, from the lemma above, that 
+$p$ divides $z^{n-1}$, which likewise means it divides $z^{n-2}$ and finally reaching to a contradiction that
+it finally divides $z$.
+}
+If we arrange the primes $p_1,p_2,\cdots p_n$ in ascending order, we find that this representation becomes the only one (no order permutations).
+\\\\\textbf{AN ALTERNATE LOOK AT GCD AND LCM:}
+\\\\ Suppose that $a=p_1^{q_1} p_2^{q_2}\cdots p_n^{q_n}$ and $b=p_1^{r_1} p_2^{r_2} \cdots p_n^{r_n}\cdots p_m^{r_m}$. Since all numbers whatsoever are
+product of primes, we have that every divisor is of the form (for a number $z=p_1^{l_1}p_2^{l_2}\cdots p_k^{l_k}$) $p_1^{j_1}p_2^{j_2}\cdots p_k^{j_k}$
+with $j_1\leq l_1, j_2\leq l_2 \cdots j_k \leq l_k$. The number of divisors for a given $z=p_1^{l_1}p_2^{l_2}\cdots p_k^{l_k}$ would therefore be:
+${(l_1+1)\choose{1}} {(l_2+1)\choose{1}} \cdots {(l_k+1)\choose{1}}$.
+\\\\ We note that, given $a=p_1^{x_1}p_2^{x_2}\cdots p_m^{x_m}$ and $b=p_1^{y_1}p_2^{y_2}\cdots p_m^{y_m}$ with $x_j, y_j \geq 0$,
+$$gcd(a,b)=p_1^{min(x_1,y_1)}p_2^{min(x_2,y_2)} \cdots p_m^{min(x_m,y_m)} $$
+and 
+$$lcm(a,b)=p_1^{max(x_1,y_1)}p_2^{max(x_2,y_2)} \cdots p_m^{max(x_m,y_m)} $$
+\\\\ \textbf{Euler Totient Function ($\phi$):}
+\\\\ The Euler Totient function $\phi$ is defined as follows:
+$$\phi(n)=\text{ number of positive integers } z \text{ less than or equal to } n \text{ such that } gcd(n,z)=1 $$
+For primes $p$, every number smaller than $p$ is coprime to $p$, hence $\phi(p)=p-1$
+More generally we have for primes $p$ and natural $q$, 
+$\phi(p^q)=p^q-p^{q-1}$. 
 
 \end{document}
