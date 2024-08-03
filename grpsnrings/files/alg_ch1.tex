@@ -313,5 +313,75 @@ $$\phi(n)=\text{ number of positive integers } z \text{ less than or equal to } 
 For primes $p$, every number smaller than $p$ is coprime to $p$, hence $\phi(p)=p-1$
 More generally we have for primes $p$ and natural $q$, 
 $\phi(p^q)=p^q-p^{q-1}$. 
+\\\\ \emph{\textbf{Just accept the following fact}}
+\fact{If $(m,n)=1$, then $\phi(mn)=\phi(m)\phi(n)$}
+\subsection{Modular Arithmetic:}
+Given $n \in \NN$ and the set of all integers $\ZZ$, we define the following equivalence
+class:
+$$aRb \iff n|(b-a) $$
+We have $aR$ obviously. If $aRb$, obviously
+$bRa$. If $aRb$ and $bRc$, then $n|(b-a)$
+and $n|(c-b)$ which means $n|(b-a)+(c-b) \implies n|c-a$.
+Hence, $R$ is an equivalce relation. Consider
+arbitrary $a \in \ZZ$. A number $x$ is in the 
+equivalence class of $a$ under the relation 
+defined above if and only if $n|(x-a)$
+which means $\exists z\in \ZZ$ so that
+$nz=x-a \implies x=a+nz$. A number $x$ is in  
+the equivalence class of $a$ under $R$ (also
+called as \emph{congruence class of $a\text{mod}n$})
+if and only if $x$ is $a$ plus an integral
+multiple of $n$.
+\\\\ It is also fruitful to view this from the following
+perspective: 
+\\\\ \textbf{Conjecture:} \emph{$zRa$ (i.e, $n|z-a$) if and only if $z$, when divided by $n$, gives the same remainder as $a$ when divided by $n$.}
+\pf{($\implies$) Consider $n|z-a$ which means 
+$\exists p$ so that $z=a+pn$. If $a<n$, we have
+the remainder when $a$ is divided by $n$, as $a$ itself,
+whence we see that the remainder when $z$ is 
+divided by $x$ is $a$ as well.
+If $a>n$, then $a=qn+r_0$ with $0 \geq r_0<n$.
+We then have $z=pn+a=pn+qn+r_0=z_0n+r_0$ where $r_0<n$.
+Therefore, same remainder.
+\\\\($\impliedby$) Suppose $z$ and $a$
+give the same remainder when divided by $n$. 
+This means $z=q_z n+ r$ and $a=q_an+r$
+which means $z-a=(q_z-q_a)n$ which means 
+$n|z-a$.
+}
+\textbf{Notation:} We say $zRb$ in the above context if 
+either $n|z-b$ or $z$ and $b$ share the same remainders
+when divided by $n$. The equivalence class of $a$ in this context
+is sometimes also called as \emph{congruence class of $a$mod($n$)}.
+A symbolic way to say $zRa$ in this context is 
+$$z\equiv a \text{mod}(n)$$
+We also denote the congruence class (or residue class) of an integer $a$ by $\overline{a}$.
+\thmp{}{If $z$ is a given integer, and $n$ is a given
+natural number, then the congruence class that
+$z$ falls in would be one of the congruence classes 
+formed by the $n-1$ numbers before $n$. Therefore, the 
+entire partition created by $R$ can be listed out as the 
+congruence classes of the $n-1$ numbers before $n$}{Suppose $z<n$. then 
+obviously there is an integer $q$ less than $n$ (which is $z$ itself) so 
+that $q\equiv z \text{mod}(n)$. If $z>n$, then $z=qn+r$ 
+where $0\leq r<n$, which also means that, when $r$ is divided by $n$, the remainder is $r$, just like $z$.
+This means $z \equiv r \text{mod}(n)$. From here it is clear that every number in $Z$ would be 
+in the equivalence class of some integer less than $n$. It is also obvious that for any two
+integers less than $n$, they each form unique residue classes. }
+
+From the previous lemma, it is clear to see that all the residue classes,
+or "partitions" of $\ZZ$ under the congruence mod (n) relation, can be succinctly listed out as
+$$\overline{0},\overline{1},\overline{2}\cdots \overline{n-1}$$. 
+\defn{$\ZZ/{n\ZZ}$}{The set of all equivalence classes (or residue classes) under the relation
+defined by $n$ on $\ZZ$ is denoted by $$\ZZ/{n\ZZ} $$ which is basically $\overline{0},\overline{1},\overline{2}\cdots \overline{n-1}$}
+\thmp{}{If $a_1\equiv b_1 \text{mod}(n)$ and $a_2\equiv b_2 \text{mod}(n)$, then
+$a_1+a_2 \in \overline{b_1+b_2}$ and $a_1 a_2 \in \overline{b_1b_2}$}{(1) We have $a_1=b_1+kn$ and $a_2=b_2+ln$
+which gives $a_1+b_1=(k_l)n+b_1+b_2$ where we see that $a_1+a_2$ is integer multiple of $n$ $+$ $b_1+b_2$. Therefore,
+$a_1+a_2 \in \overline{b_1+b_2}$.
+\\\\ Consider $a_1 a_2=(kn+b_1)(ln+b_2)=(kln^2+b_2kn+b_1ln)+b_1b_2$. Obvious from here.}
+
+\defn{Modular Arithmetic}{Treating the residue classes that form $\ZZ/n\ZZ$ as elements with which arithmetic can be done, we define addition and multiplication as follows:
+$$ \overline{a}+\overline{b}=\overline{a+b}$$ i.e, the sum of two residue classes is the residue class of the sum of an element from the class of $a$ and the class of $b$. (This sum is well defined from the previous theorem.)
+$$\overline{a}\overline{b}=\overline{ab}$$ i.e, the product of residue class of $a$ and $b$ is the residue class of the product of an element in the class of $a$ and an element from the class of $b$. (Yet again, well defined) }
 
 \end{document}
