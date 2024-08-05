@@ -54,5 +54,47 @@ limit of $x_n+y_n$ is equal to the sum of the smallest
 subsequential limits of $x_n$ and $y_n$ respectively.
 
 \section{Problem 4}
+Suppose $\forall n \geq N$, we have $x_n \leq y_n$. 
+It is clear to see that for every $n \geq N$, $U_n^x=sup(x_n,x_{n+1},\cdots)\leq 
+U_n^y=sup(y_n,y_{n+1},\cdots)$. We have, in other words:
+$U_n^x \leq U_n^y$ for all $n \geq N$. Hence, $Limsup(x_n)\leq limsup(y_n)$.
+\\\\ Again consider $\forall n \geq N$, $x_n \leq y_n$
+This means that $\forall n \geq N$, $L_n^x= inf(x_n,x_{n+1}\cdots) \leq y_n$
+Since for a given $n$, we have $L_n^x \leq y_n$, and owing 
+to the fact that $L_n^x$ is a monotone increasing sequence, we
+see:
+$$L_n^x\leq y_n $$
+$$L_n^x \leq L_{n+1}^x \leq y_{n+1} $$
+$$\vdots $$
+Therefore, we see that $L_n^x \leq inf\{y_n,y_{n+1}\cdots\}=L_y^x$.
+From here we can conclude that $Liminf(x_n) \leq Limsup(y_n)$
 
+\section{Problem 5}
+Consider $(x_n)^{\frac{1}{n}}$ and $\frac{x_{n+1}}{x_n}$. Where $x_n$ is a positive, bounded sequence.
+Let $V=\{v \in \RR: \exists \ n_v \in \NN : \ \forall n \geq n_v, \ x_n \leq v^n \}$
+and $V*=\{v \in \RR: \exists \ n_v \in \NN : \ \forall n \geq n_v, \ \frac{x_{n+1}}{x_n} \leq v \}$
+
+Consider arbitrary $v \in V$. We have an $n_v$ so that $\forall n \geq n_v$
+we have $x_n \leq v^n \implies x_{n+1} \leq v^{n+1} \implies \frac{x_{n+1}}{x_n}\leq v$.
+Hence, we see that this $v \in V*$ aswell, which gives $V \subseteq V*$.
+
+Consider arbitrary $v \in V*$. We have $n_v$ so that
+$\forall n \geq n_v$, we have $\frac{x_{n+1}}{x_n} \leq v$
+
+$$\frac{x_{n_v+1}}{x_{n_v}}\leq v$$
+$$\frac{x_{n_v+2}}{x_{n_v+1}}\leq v$$
+$$ \vdots$$
+$$\frac{x_{v_v+(n-n_v)}}{x_{n-1}} \leq v$$
+Multiply all these equations. We then get:
+$$\frac{x_n}{x_{n_v}}\leq v^{n-n_v} $$
+which gives, $\forall n \geq n_v$, $$x_n \leq x_{n_v}v^n v^{-n_v} \implies (x_n)^{1/n} \leq x_{n_v}^{1/n}v (v^{-n_v})^{1/n} $$
+We see that, for large enough $n$, the RHS can be made to go below $v$. Whence, we 
+see that beyond a certain $n$,  $(x_n)^{1/n}\leq v$. Hence,
+$v$ that was initially assumed to be in $V*$, is shown to 
+exist in $V$. Therefore, $V=V*$. Hence, $inf(V)=inf(V*)$ which
+means $limsup((x_n)^{1/n})=limsup(\frac{x_{n+1}}{x_n})$.
+
+The very same argument can be re-run, by interchanging the $\leq$-s with $\geq$-s to conclude that
+$liminf((x_n)^{1/n})=liminf(\frac{x_{n+1}}{x_n})$. Therefore, if $\frac{x_{n+1}}{x_n}$
+converges, then we see $(x_n)^{1/n}$ also does. (See Notes for more info)
 \end{document}
