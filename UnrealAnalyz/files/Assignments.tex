@@ -1,0 +1,58 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\chapter{Assignment 1}
+\lemp{}{If $\alpha$ is the supremum of a set $S$, then $-\alpha$ is the infimum
+of the set $-S$ defined as $$-S:=\{-x: x \in S\} $$}{If $\alpha$ is the supremum,
+then $\alpha\geq x, \forall x \in S$ and $\alpha \leq M, \forall M$ such that $M\geq x, \forall x \in S$. 
+This means that $-\alpha \leq -x, \forall x \in S$ and $-\alpha \geq -M, \forall -M$ such that $-M \leq -x, \forall -x \in S $
+If we re-notate the whole thing we have:
+
+$-\alpha \leq z, \forall z \in -S$ and $-\alpha \geq L, \forall L$ such that
+$L \leq z \forall z \in -S$. This is precisely the definition for infimum of $-S$, whence we see, we are done.
+
+}
+Recall the definitions:
+
+$$LimSup(x_n):=inf(U_n: U_n:=sup(\{x_n,x_{n+1} \cdots \})) $$
+
+$$LimInf(x_n):=sup(L_n: L_n:=inf(\{x_n,x_{n+1} \cdots \})) $$
+
+\section{Problem 2}
+Let $x$ be $limsup(-x_n)$. $$x=inf(U_n: U_n=sup\{-x_n,-x_{n+1} \cdots \})$$
+$$\implies x=inf(U_n:U_n=-inf\{x_n,x_{n+1},\cdots\})$$
+$$\implies x=inf(-inf\{x_n,x_{n+1}\cdots \}, -inf\{x_{n+1},x_{n+2}\cdots \},\cdots)$$ 
+$$\implies x=-sup(inf\{x_n,x_{n+1}\cdots \},inf\{x_{n+1},x_{n+2}\cdots \},\cdots) $$
+Whence, we are done.
+\section{Problem 3}
+
+$$Liminf(x_n)\leq (\text{every subsequential limit of} x_n) \leq Limsup(x_n) $$
+Where $Liminf(x_n)$ is the infimum, and $Limsup(x_n)$ the 
+supremum of the set of all subsequential limits of $x_n$
+$$Liminf(y_n)\leq (\text{every subsequential limit of} y_n) \leq Limsup(y_n) $$
+Where $Liminf(y_n)$ is the infimum, and $Limsup(y_n)$ the 
+supremum of the set of all subsequential limits of $y_n$
+
+Adding these two inequalities we get:
+
+$Liminf(x_n)+Liminf(y_n)\leq$ $(\text{every subsequential limit of } x_n+ \text{every subsequential limit of } y_n)$ $\leq Limsup(x_n)+Limsup(y_n) $
+\\\\ Since the set of all subsequential limits of $x_n+y_n$ falls as a subset of the sum of the set of all subsequential limits of $x_n$ and $y_n$ respectively, we have: 
+
+$Liminf(x_n)+Liminf(y_n)\leq$ $(\text{every subsequential limit of } x_n+y_n)$ $\leq Limsup(x_n)+Limsup(y_n) $
+We see now that $Liminf(x_n)+Liminf(y_n)$ is a lowerbound
+for the set of all subsequential limits of $x_n+y_n$ 
+which gives us $$Liminf(x_n)+Liminf(y_n)\leq liminf(x_n+y_n) $$
+Similarly we see that $Limsup(x_n)+Limsup(y_n)$ is an upperbound
+for the set of all subsequential limits of $x_n+y_n$
+which gives us $$Limsup(x_n+y_n) \leq Limsup(x_n)+Limsup(y_n) $$
+
+Equality of (I) holds when the smallest subsequential limit of $x_n+y_n$ is the sum
+of the smallest possible subsequential limits of $x_n$ and $y_n$ respectively. 
+
+Similarly, (II) equailty holds when the largest subsequential
+limit of $x_n+y_n$ is equal to the sum of the smallest
+subsequential limits of $x_n$ and $y_n$ respectively.
+
+\section{Problem 4}
+
+\end{document}

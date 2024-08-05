@@ -340,7 +340,7 @@ $\exists p$ so that $z=a+pn$. If $a<n$, we have
 the remainder when $a$ is divided by $n$, as $a$ itself,
 whence we see that the remainder when $z$ is 
 divided by $x$ is $a$ as well.
-If $a>n$, then $a=qn+r_0$ with $0 \geq r_0<n$.
+If $a>n$, then $a=qn+r_0$ with $0 \leq r_0<n$.
 We then have $z=pn+a=pn+qn+r_0=z_0n+r_0$ where $r_0<n$.
 Therefore, same remainder.
 \\\\($\impliedby$) Suppose $z$ and $a$
@@ -376,12 +376,49 @@ $$\overline{0},\overline{1},\overline{2}\cdots \overline{n-1}$$.
 defined by $n$ on $\ZZ$ is denoted by $$\ZZ/{n\ZZ} $$ which is basically $\overline{0},\overline{1},\overline{2}\cdots \overline{n-1}$}
 \thmp{}{If $a_1\equiv b_1 \text{mod}(n)$ and $a_2\equiv b_2 \text{mod}(n)$, then
 $a_1+a_2 \in \overline{b_1+b_2}$ and $a_1 a_2 \in \overline{b_1b_2}$}{(1) We have $a_1=b_1+kn$ and $a_2=b_2+ln$
-which gives $a_1+b_1=(k_l)n+b_1+b_2$ where we see that $a_1+a_2$ is integer multiple of $n$ $+$ $b_1+b_2$. Therefore,
+which gives $a_1+a_2=(k_l)n+b_1+b_2$ where we see that $a_1+a_2$ is integer multiple of $n$ $+$ $b_1+b_2$. Therefore,
 $a_1+a_2 \in \overline{b_1+b_2}$.
 \\\\ Consider $a_1 a_2=(kn+b_1)(ln+b_2)=(kln^2+b_2kn+b_1ln)+b_1b_2$. Obvious from here.}
 
 \defn{Modular Arithmetic}{Treating the residue classes that form $\ZZ/n\ZZ$ as elements with which arithmetic can be done, we define addition and multiplication as follows:
 $$ \overline{a}+\overline{b}=\overline{a+b}$$ i.e, the sum of two residue classes is the residue class of the sum of an element from the class of $a$ and the class of $b$. (This sum is well defined from the previous theorem.)
 $$\overline{a}\overline{b}=\overline{ab}$$ i.e, the product of residue class of $a$ and $b$ is the residue class of the product of an element in the class of $a$ and an element from the class of $b$. (Yet again, well defined) }
+
+\defn{$(\ZZ / n\ZZ)^{*}$}{$$(\ZZ / n \ZZ)^{*}:=\{\overline{a}\in \ZZ /n\ZZ: \exists \overline{c}\in \ZZ / n\ZZ \text{ such that } \overline{c} \cdot \overline{a}=\overline{1}\} $$}
+
+\lemp{}{If $gcd(a,n)=1$, i.e, $a$ and $n$ are coprimes, then every element in the residue class of $a \text{mod}(n)$ is coprimes with $n$}{Consider $z=a+kn$ for some $k$ to be "non coprimes with $n$". i.e, $gcd(z,n)=j \neq 1$. We have $j|a+kn$ and $j|n$. But this means directly that $j|a$ whence we see that $j \neq 1$ is a divisor of $a$ and $n$. Absurd.}
+\lemp{}{If $a \in \overline{a} \in \ZZ /n \ZZ$, $a\leq n$ and if $gcd(a,n)=j$, then for any $z\in \overline{a}$, $gcd(z,n)=j$.}{
+$gcd(a,n)=k$. Consider $gcd(a+gn,n)$. We apply the division 
+algorithm:
+$$(a+gn)=g_0(n)+a$$
+$$ n=g_1a+r_1$$
+$$ \vdots$$
+Notice that after step (1), the procedure is exactly the same
+as the procedure to find $gcd(a,n)$. The last living
+remainder is the GCD, and from here we can clearly see 
+that the gcd are the same.
+
+}
+\lemp{}{If $1\leq a \leq n$, with $n \geq 2$, and $(a,n)=j\neq 1 (\geq 2)$, then there exists a number $1 \leq b<n$}{}
+\prop{$\ZZ /n\ZZ^*$ is the same as $\{\overline{a} \in \ZZ/n\ZZ:
+(a,n)=1 \}$}
+\pf{Let $$A=\{\overline{a} \in \ZZ/ n\ZZ:
+\exists \overline{z} \in \ZZ/ n\ZZ \text{ such that }  
+\overline{z} \cdot \overline{a}=\overline{1}\}$$ and 
+$$B=\{\overline{b} \in \ZZ/ n\ZZ:(b,n)=1\}$$
+Consider an arbitrary $\overline{a}$ in $B$ such that $\forall z \in \overline{a}$ we have
+$gcd(z,n)=1$. We know that $z=a+k_z n$. From Bezout Identity,
+we have $x_z$ and $y_z$ so that $x_z(a+k_zn)+y_z(n)=1$
+which gives us $x_za=(-y_z-k_zx_z)(n)+1$. We see That
+$x_za \in \overline{1}$. Consider arbitrary $t \in \overline{x_z}$.
+We have $t=x_z+jn$ or $x_z=t-jn$. Plugging this back we have
+$x_za=(t-jn)a=(-y_z-k_z(t-jn))n+1$ whence we can easily see that $ta \in \overline{1}$.
+Therefore, $\overline{a} \cdot \overline{x}=\overline{1}$. Therefore, if 
+$\overline{b}$ is such that $(b,n)=1$, then an inverse exists for it. Hence, $B \subseteq A$.
+\\\\ Consider $\overline{a}\in A$. There exists $\overline{c} \in \ZZ/ n \ZZ$
+so that $\overline{a} \cdot \overline{c}=\overline{1}$. 
+
+}
+
 
 \end{document}

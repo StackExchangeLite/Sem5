@@ -161,7 +161,16 @@ If $f(n+1) \not\in T$, then $T \subseteq S-\{f(n+1)\}$, we are done.\\\\
 
 The point $(m,n)$ occurs on the $(m+n-1$ th diagonal, on which the number $m+n$ is an invariant. The $(m,n)$ point occurs $m$ points down the diagonal. So, to characterise a point, it is enough to specify the diagonal it falls in, and its ordinate (the "rank" of that point on that diagonal). Count the elements till the $m+n-2$nd diagonal, then add $m$, and this would be the position of the point $(m,n)$.\\
 Define $r:\mathbb{N}\times \mathbb{N} \to  \mathbb{N} $ given by $r(m,n)= \psi(m+n-2)+m$
-That this is a bijection is pretty clear because we are counting the position of the point $(m,n)$. For a given point $(m,m)$, there can only be one unique diagnonal on which it exists, and on the diagonal, its rank is unique. Moreover, for every $q \in N$, there corresponds an $(m,n)$ such that $r(m,n)=q$, for, we simply count along each diagonal in the "zig-zag" manner until we reach that $(m,n)$ for which the position is given by $q$. Therefore, $r$ is a bijection. (There are other explicit bijections too)}
+That this is a bijection is pretty clear because we are counting the position of the point $(m,n)$. For a given point $(m,m)$, there can only be one unique diagnonal on which it exists, and on the diagonal, its rank is unique. Moreover, for every $q \in N$, there corresponds an $(m,n)$ such that $r(m,n)=q$, for, we simply count along each diagonal in the "zig-zag" manner until we reach that $(m,n)$ for which the position is given by $q$. Therefore, $r$ is a bijection. (There are other explicit bijections too)
+\\\\ \textbf{Alt Proof (Slicker):}
+Define the explicit map $f: \NN \times \NN \to \NN$ as:
+$$f(m,n)=2^m(2n-1)$$
+For every $k \in \NN$, there exists a unique prime decomposition.
+Let $m$ be the power of $2$ in that, and $n$ be so that the 
+product of the rest of the primes (which is odd) comes to be $2n-1$.
+From here, it is easy to see a bijection.
+
+}
 
 \thmp{}{The following are equivalent:
 \begin{enumerate}
@@ -203,6 +212,36 @@ Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
 \thmp{}{If $f:A \to B$ is a surjection, then $B$ is bijective to a subset of $A$}{We are told that $f(A)=B$, i.e, for every $b\in B$, $\exists x_b$(many such $x_b$-s are possible) such that $f(x_b)=b$. Define a functino $g:B \to A$ as: $g(b)=\text{one of those } x_b \text{ such that } f(x_b)=b$. $g$ is bijective to the set of all the chosen $x_b$ for every $b$ }
 \rmkb{We make use of the Axiom of Choice in the previous theorem when we choose an $x_b$ from a set of all possible $x_b$-s for $b$. Let $A_b$ be the set of all possible $x_b$-s. Then the collection $\{A_b:b\in B\}$ is a collection of non-empty sets. And we are to select "one" element from each $A_b$. This requires AC.}
 \defn{(Power Set of a set)}{Power set of $A$, denoted by $P(A)$ is the set of all subsets of $A$.}
+\defn{Partial ordering relation on a set $P$}{A "partial order" on a set is a relation $\leq$ defined on a set that follows:
+\begin{enumerate}
+\item $\forall x \in P, x \leq x$ (reflexive)
+\item If $x,y \in P$ such that $x\leq y$ and $y\leq x$, then $x=y$ (antisymmetry)
+\item forall $x,y,z \in P$, if $x\leq z$ and $z \leq y$, then $x \leq y$
+\end{enumerate}
+Any set $P$ that is partially ordered is called a \textbf{poset}. A set $C$ which is totally ordered and is a subset of a poset $P$ is called a \textbf{chain} of $P$.
+}
+\defn{Total Order on a set $C$}{An ordering relation (that obeys the above conditions),
+added with the condition that, if $x,y \in C$, then it definitely must be that one of 
+$x\leq y$ or $y\leq x$ is true. Then the set $C$ is \emph{totally} ordered.}
+\rmkb{For example, the order relation on $R$ is a total ordering from the trichotomy property. Consider the ordering relation on $\ZZ$ as follows:
+If $a\in \ZZ$ divides $b \in \ZZ$, then $a \leq b$. This is a partial order, certainly. It is reflexive, anti symmetric and transitive. But $3$ and $5$ are 
+unrelated in this definition. Whereas, consider the same ordering but in the space $1,p,p^2,\cdots$ where $p$ is a prime, we then see that the set is totally ordered here.
+}
+\defn{Boundedness of a subset $C$ of $P$, where a partial order is defined}{We say set $C$
+in a poset $P$ is bounded, or has an upper bound, if $\exists M \in P$ so that 
+$\forall q \in C, q \leq M$.}
+\exm{}{We consider the power set of a set $P$, where inclusion is defined by $S \subseteq T$ if $\forall x \in S, x \in T$. This defines a partial ordering on the power set.}
+\asum{Zorn's Lemma}{Given a poset $P$, if for every chain $C$ of $P$, there exists an upper bound $M_c$ in $P$, then $P$ has a maximal emement with respect to $\leq$
+(i.e, there exists $M$ in $P$ so that $x\leq M, \forall \ x \in P$)}
+
+\thmp{}{AC $\iff$ Zorn's Lemma}{hmm}
+
+\textbf{Some Corollaries of AC:}
+\thmp{}{Every vector space has a basis}{}
+\thmp{}{$|S|=|\text{set of all finite subsets of }S|$}{}
+\thmp{}{For an arbitrary dimensioned vector space, every linearly independent set is injective to any spanning set.}{}
+
+\newpage
 
 \thmp{Cantor's Theorem}{For any set $A$, there \emph{does not exist} any surjection from $A$ onto $P(A)$}{Suppose, on the contrary, a surjection $\psi:A \to P(A)$ exists. For every subset $A_s$ of $A$, there exists an element $x$ of $A$ such that $\psi(x)=A_s$. Either this $x$ exists in $A_s$, or it doesnt. Conider $D:=\{x \in A: x \not\in \psi(x) \}$. $D$ is a subset of $A$, so there must be some element $y \in A$ such that $\psi(y)=D$. does $y$ belong in $D$? If so, $y \not\in \psi(y)=D$. Which means $y \not\in D$. If, though, $y \not\in D$, that implies $y\not\in \psi(y) \implies y\in D$. Contradictions left and right.}
 \newpage
@@ -421,5 +460,22 @@ Note that, since $a_n \leq p-1$, we have $$ \sum_{n=1}^{\infty} \frac{a_n}{p^n} 
 $a_n$ as the largest integer $a_n \leq p-1$ such that $\sum_{i=1}^n \frac{a_i}{p^i}<x$. Now, the decimal expansions proof proves that $x$ is the supremum of the set of all $$\sum_{i=1}^n \frac{a_i}{p^i}$$. An alternate approach is to see that, by asserting that $a_n$ is the \emph{largest such} integer following the above property, we note that:
 $$\sum_{i=1}^n \frac{a_i}{p^i}<x \leq \sum_{i=1}^n \frac{a_i}{p^i}+\frac{1}{p^n}$$
 Taking limit on both sides proves the result.
+}
+
+\section{Misc Results}
+
+\thmp{(A perhaps useful theorem for LimSup LimInf)}{If $A+B:=\{a+b: a \in A, b \in B \}$, then $\gamma = sup(A+B)=sup(A)+sup(B)=\alpha+\beta$.}{
+$\alpha \geq a, \forall a \in A$ and 
+$\beta \geq b, \forall b \in B$. 
+We hence see that $\alpha+\beta \geq a+b \forall a\in A, b\in B$.
+Therefore, $\alpha+\beta \geq \gamma$.
+
+Now consider $a+b \leq \gamma$ $\forall a \in A, b\in B$.
+This means that $\alpha+b \leq \gamma$ $\forall b \in B$.
+From here we see that $\alpha+\beta \leq \gamma$ whence we
+see that $\gamma=\alpha+\beta$
+
+
+
 }
 \end{document}

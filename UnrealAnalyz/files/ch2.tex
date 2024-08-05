@@ -51,7 +51,6 @@ Whence, we are done.
 Given $a>0$, if $a>1$, $a^{1/n} >1 $. We have $a^{1/n}=1+\delta_n$. $a=(1+\delta_n)^n=1+n\delta_n+ \frac{n(n-1)}{2}\delta_n^2 \cdots\implies \frac{a}{n} \leq \delta_n$. This means that $\delta_n$ converges to 0, which means that $a^{1/n}$ converges to $1$.\\
 Suppose $0<a<1$, then $\frac{1}{a} >1$. Therefore $(\frac{1}{a})^{\frac{1}{n}}=(a^{\frac{1}{n}})^{-1}$ converges to $1$. This implies $a^{\frac{1}{n}}$ converges to $1$ aswell (from the previous theorem on division) 
 }
-
 \thmp{Slick Theorem}{Let $\{x_n\}$ be a given sequence and $\{a_n\}; a_n \geq 0$ be a sequence converging to $0$. Suppose, also, that for some $C>0$, we have $$|x_n-x| \leq Ca_n \forall n \geq n_0$$, then the sequence $x_n$ converges to $x$.}{$\forall \varepsilon \exists n_1: \forall n \in \NN, n \geq n_1, Ca_n<\varepsilon \implies |x_n-x|< \varepsilon \forall n \geq max\{n_0,n_1 \}$}
 
 \defn{(Monotone Sequence)}{A sequence is said to be \emph{monotone increasing} if $\forall n \in \NN, x_n \geq x_{n-1}$. It would be "ultimately" monotone increasing if $\exists n_0 \in \NN \forall n \in \NN, n\geq n_0, x_n \geq x_{n-1}$
