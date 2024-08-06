@@ -399,7 +399,8 @@ remainder is the GCD, and from here we can clearly see
 that the gcd are the same.
 
 }
-\lemp{}{If $1\leq a \leq n$, with $n \geq 2$, and $(a,n)=j\neq 1 (\geq 2)$, then there exists a number $1 \leq b<n$}{}
+\lemp{}{If $1\leq a \leq n$, with $n \geq 2$, and $(a,n)=j\neq 1 (\geq 2)$, then there exists a number $1 \leq b<n$ so that $\overline{a} \cdot \overline{b}=\overline{0}$. A corollary of this is that there exists \emph{no} $c \in \ZZ$ so that $\overline{a}\cdot \overline{c}=\overline{1}$}{We know $gcd(a,n)=j \neq 1(\geq 2)$. This means $j\alpha=a$, $j\mu=n$ where $\alpha<a$ and $\mu<n$. We can see that $a\mu=j\mu \alpha=n\alpha$. So the $b$ in the lemma is the $\mu$ here. Therefore, $\overline{a} \cdot \overline{b}=\overline{0}$. Suppose $ac\equiv 1 mod(n)$. This means from the multiplicative property of 
+mod(n), we have $ac(b) \equiv b mod(n)$, but if you commute the multiplication, we see $$c(ab)=\overline{c} \cdot \overline{ab}=\overline{c}\cdot \overline{0}\equiv 0 mod(n) $$ But this would imply $b\equiv 0 mod(n)$ which is not true. Hence, there can be no $c$ so that $ac \equiv 1 mod(n)$.}
 \prop{$\ZZ /n\ZZ^*$ is the same as $\{\overline{a} \in \ZZ/n\ZZ:
 (a,n)=1 \}$}
 \pf{Let $$A=\{\overline{a} \in \ZZ/ n\ZZ:
@@ -415,9 +416,12 @@ We have $t=x_z+jn$ or $x_z=t-jn$. Plugging this back we have
 $x_za=(t-jn)a=(-y_z-k_z(t-jn))n+1$ whence we can easily see that $ta \in \overline{1}$.
 Therefore, $\overline{a} \cdot \overline{x}=\overline{1}$. Therefore, if 
 $\overline{b}$ is such that $(b,n)=1$, then an inverse exists for it. Hence, $B \subseteq A$.
-\\\\ Consider $\overline{a}\in A$. There exists $\overline{c} \in \ZZ/ n \ZZ$
-so that $\overline{a} \cdot \overline{c}=\overline{1}$. 
+\\\\ We showed that if $x$ is in $B$, it must be in $A$. Consider $x$ not in $B$. i.e, it is not coprimes with $n$. From the previous proposition, we see that there would exist no $c$ so that $\overline{x}\cdot \overline{c}=\overline{1}$, i.e, no inverse element for any $x$ not in $B$. Inexistence in $B$ therefore implies inexistsnce in $A$, which gives us $A \subseteq B$. We can conclude that $A=B$ or in pithy words: 
+\\ \begin{center}"The set of all congruence classes $b$ so that $gcd(b,n)=1$ is the same as the set of all congruence classes $b$ so that there exists another congruence clas $c$ so that $\overline{b} \cdot \overline{c}=\overline{1}$ "
+\end{center}
 
+Symbolically: 
+$$\{\overline{b} \in \ZZ/ n\ZZ: gcd(b,n)=1 \}=\{\overline{b} \in \ZZ/n\ZZ: \exists \overline{c} \in \ZZ/n\ZZ: \overline{b}\cdot \overline{c}=\overline{1} \}=(\ZZ/n\ZZ)* $$
 }
 
 
