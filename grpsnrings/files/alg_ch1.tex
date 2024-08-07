@@ -1,0 +1,260 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\chapter{Prelimnaries}
+
+\section{Sets, functions and all that}
+
+\defn{Prelimnary definitions}{
+\begin{enumerate}
+    \item (Cartesian Product): if $A$ and $B$ are non empty sets, the \emph{Cartesian Product} $A \times B$ is defined as the set of ordered pairs $a,b$ wherein $a \in A, b \in B$. i.e, $ A \times B := \{ (a,b): a \in A, b \in B  \}$ 
+    \item (Function): A function from $A$ to $B$ is a set $f \subseteq A \times B$ such that, $a,b \in f \text{ and } a,c \in f \implies b=c$. A is called the \textbf{Domain of $f$}. $Range(f):=f(A)$ (see next definition)
+    \item (Direct Image): Direct image $f(A):=\{y \in B: \exists x\in A \text{ such that } f(x)=y \}$
+    \item (Inverse Image):$f^{-1}(S\subseteq B):=\{x \in A: f(x) \in S\}$
+    \item (Relation): Any subset $R\subseteq A \times B$ is a relation from $A$ to $B$.\\We say $x \in X$ is "related to" $y \in Y$ under the relation $R$, or simply $xRy$ or $R(x)=y$ if $(x,y) \in R \subseteq X \times Y$. 
+    \item (Injection): $f: A \to B$ is injective if $\forall x_1,x_2 \in A, (x_1,b) \in f \text{ and } (x_2,b) \in f \iff x_1=x_2$
+    \item (Surjection): $f:A \to B$ is surjective if $\forall b \in B, \exists a \in A \text{ such that } f(a)=b$
+    \item (Bijection): $f:A\to B$ is bijective if its both surjective and injective.
+    \item {(Identity function on a set)}: $I_A: A \to A$ defined by $\forall x \in A, I_A(x)=x$
+    \item  (Permutation): Simply a bijection from $A$ to itself is called a permutation.
+\end{enumerate}
+}
+
+\defn{(Left Inverse)}{ We say $f:A \to B$ has a left inverse if there is a function $g: B \to A$ such that $g \circ f=I_A$}
+\thmp{}{$f:A \to B$ has a left inverse if and only if it is injective.}{
+$\implies$) If $f$ has a left inverse $g$, Consider $x,y \in A$ such that $f(x)=f(y)=p$. 
+
+We have $g \circ f(x)=g(p)=x=g \circ f(y)=y$. Hence, $x=y$, Injective.\\
+$\impliedby$) Given that $f:A \to B$ is injective, define $g:B \to A$ as: 
+$$
+g(z \in B)=
+\begin{cases}
+a, \text{ where } f(a)=z, \ \text{if } z\in f(A) \\
+\text{whatever}, \ \text{if } z \not\in f(A)\end{cases}
+$$
+consider $g \circ f (x \in A) = g \circ (f(x))$.
+
+Obviously, $f(x) \in f(A)$, therefore, $g(f(x))=$ that $a$ such that $f(a)=f(x)$. 
+
+That $a$ is $x$. 
+Hence, $g(f(x))=x$
+}
+\defn{(Right Inverse)}{$f:A \to B$ is said to have a right inverse if there is a function $g:B \to A$ such that $f \circ g=I_B$}
+
+\thmp{}{$f:A \to B$ has a right inverse if and only if $f$ is Surjective.}
+{$\implies$) If $f$ has a right inverse $g$, such that $f \circ g=I_B:B \to B$, then it is evident that the range of $f$ is B, for if not, range of $f \circ g$ wouldn't be $B$ either.\\
+$\impliedby$) If $f$ is surjective, then for all $b \in B$, there exists atleast one $a \in A$ such that $f(a)=b$ define $g$ as:
+$$g(x \in B)= \text{one of those a} \in A \text{ such that} f(a)=b$$
+Consider $f \circ g (x \in B) = f ( \text{ one of the } a \text{ such that } f(a)=b)=b, \forall b \in B$
+
+Hence, $f \circ g=I_B$
+}
+
+\thmp{}{If $f$ has left inverse $g_1$ and right inverse $g_2$, then $g_1=g_2$.
+\rmk{(True for anything that is Associative, and function composition is associative.)}}{$g_1 \circ f=I_A$ and $f \circ g_2 =I_B$
+
+$g_1 \circ (f \circ g_2)=g_1 \circ I_B= g$
+
+$= (g_1\circ f) \circ g_2=I_A \circ g_2=g_2$
+
+Hence $g_1=g_2$}
+\corp{ $f$ is invertible (i.e, both left and right inverse exist) if and only if it is bijective.}{Obvious}
+
+
+\subsection{Operations on Relations}
+If $R$ and $S$ are binary relations over $X \times Y$:
+\begin{enumerate}
+  \item $R \bigcup U := \{(x,y) | xRy \text{ or } xSy \}$
+  \item $R \bigcap S := \{(x,y) | xRy \text{ and } xSy \}$
+  \item Given $S:Y \to Z$ and $R:X \to Y$, $S \circ R:=\{(x,z) | \exists y \text{ such that } ySz \ \& \ xRy \}$
+  \item If $R$ is binary over $X \times Y$, $\bar{R} := \{(x,y) | \neg (xRy)\}$
+\end{enumerate}
+
+\subsection{Homogeneous Relations}
+If $R$ is a binary relation over $X \times X$, it is Homogeneous.
+\defn{Definitions Regarding Relations}{
+\begin{enumerate}
+  \item (Reflexive): $\forall x \in X, xRx$
+  \item (Symmetric): $\forall x,y \in X, xRy \implies yRx$
+  \item (Transitive): $\forall x,y,z \in X, \text{ if } xRy \ \& \ yRz \implies xRz$
+  \item (Dense): $\forall x,y \in X, \ \text{if} \ xRy, \text{ then there is some } z \in X \text{ such that } xRz \ \& \ zRy$
+  \item (\textbf{Equivalence Relation}): $R$ is an equivalence relation if it is Reflexive, Symmetric and Transitive.
+  \item (Equivalence class of $a\in A$(where there is an equivalence relation defined)): Set of all $b \in A$ such that $bRa$. 
+  \item (Partition of $A$): Any collection of sets $\{A_i :i\in I \}$ (where $I$ is some indexing set) such that: $$A= \bigcup_{i\in I} A_i$$ $$A_i \cap A_j = \phi \text{ if } \forall i,j \in I, i \neq j$$
+\end{enumerate}
+  }
+
+\thmp{}{Let $A$ be a non-empty set. If $R$ defines an equivalence Relation on $A$, then the set of all equivalence classes of $R$ form a partition of A}{Define our collection $\{ A_{\alpha}\}$ as the set of all equivalence classes of $A$. Clearly, $\bigcup_{\alpha \in I} A_{\alpha}=A$. If $A$ only has one element, obviously, that singleton set makes up the partition. Let $A_{\alpha}$ and $A_{\alpha'}$ be equivalence classes of two elements $a$ and $a'$ in $A$. If $a R a'$, then $A_{\alpha}=A_{\alpha'}$ since every element in the equivalence class of $a$ will, from the transitive property, be in the equivalence class of $a'$ . Suppose $\neg (a R a')$. If, then, $\exists x \in A_{\alpha}$ such that $x\in A_{\alpha'}$, this means that $xR\alpha$ and $xR\alpha'$, but from transitive property, this means $\alpha R\alpha'$, which is a contradiction. Therefore, the pairwise intersection is disjoint.}
+
+\thmp{}{If $\{A_i: i \in I \}$ is a partition of A, then there exists an equivalence relation $R$ on $A$ whose equivalence classes are $\{A_i:i \in I\}$.}{ Define $R(x,y)$ if and only if $\exists$ unique $m \in I$ such that $x \in A_m$ and $y \in A_m$.
+    
+
+$R(x,x)$ is obvious if non empty, hence $R$ is reflexive.\\\\   
+Suppose $R(x,y)$ and $R(y,z)$. Then, there exists a unique $m \in I$ such that $x,y$ are in $A_m$. Similarly, there exists a unique $n \in I$ such that $y,z$ are in $A_n$ . Obviously, if $n \neq m$, intersection of $A_n$ and $A_m$ would be non empty, hence, $n=m$. Hence, $R$ is transitive.\\\\
+Consider $R(x,y)$, which means $\exists$ unique $n\in I$ such that $x,y \in A_n \implies R(y,x)$. 
+Hence, $R$ is an equivalence relation.}
+
+\section{Induction, Naturals, Rationals and the Axiom of Choice }
+\asum{Peano Axioms, characterisation of $\mathbb{N}$}{\begin{enumerate}
+  \item $1\in \mathbb{N}$
+  \item every $n \in \mathbb{N}$ has a predecessor $n-1 \in \mathbb{N}$ except $1$
+  \item $\text{if } n \in \mathbb{N} \implies n+1 \in \mathbb{N}$
+\end{enumerate} }
+\defn{(Sequence of something)}{A sequence of some object is simply a collection of objects $\{O_l: l\in \mathbb{N}\}$ which can be counted.}
+
+\asum{Well Ordering Property of $\mathbb{N}$}{Every non empty subset of $\mathbb{N}$ has a least element.}
+
+\asum{Weak Induction}{For all subsets $S \subseteq \mathbb{N}$, (($1\in S$)\&(($\forall k \in \mathbb{N}$)($k\in S \implies k+1 \in S$))
+$\iff$ $S=\mathbb{N}$)\\\\\textbf{Weak Induction's Negation}:(One direction)
+
+There exists subset $S_0 \subseteq \mathbb{N}$, (($1\in S_0$)\&(($\forall k \in \mathbb{N}$)($k\in S_0 \implies k+1 \in S_0$))
+but $S_0 \neq \mathbb{N}$)}
+
+\asum{Strong Induction}{For all subsets $S \subseteq \mathbb{N}$, (($1\in S$)\&(($\forall k \in \mathbb{N}$)(${1,2,...k}\in S' \implies k+1 \in S'$))
+$\iff$ $S=\mathbb{N}$)\\\\ \textbf{Strong Induction's Negation}:(One direction)
+
+There exists subset $S' \subseteq \mathbb{N}$, (($1\in S'$)\&(($\forall k \in \mathbb{N}$)(${1,2,...k}\in S' \implies k+1 \in S'$))
+but $S' \neq \mathbb{N}$)}
+
+\thmp{}{Weak Induction $\iff$ Strong Induction.}{$\implies$) Suppose Weak induction is true, but not strong induction. Take our set to be that $S'$ in the negation of the Strong Induction Statement. $S' \neq \mathbb{N}$ implies that, either $1 \not\in S'$ or $\exists k \in \mathbb{N}$ such that $k\in S'$ but $k+1 \not\in S'$. We know that $1 \in S'$, so it must be that $\exists k \in \mathbb{N}$ such that $k \in S'$ but $k+1 \not\in S'$. $\{1\} \in S' \implies \{1,2\} \in S'$. Assume that for $n$, $\{1,2,..n\} \in S'$. This means that $\{1,2,...n+1\} \in S'$. This means that for every $n \in \mathbb{N}$, $\{1,2,...n \}\in S' \implies n \in S'$. Contradiction.\\
+$\impliedby$)Suppose Strong Induction is true, but not weak induction. Take the set $S_0$ from the negation of Weak Induction. $S_0 \neq \mathbb{N}$. This means, from strong induction, either $1\not\in S_0$ or $\exists k \in \mathbb{N}$ such that $1,2, \dots , k \in S_0$ but $k+1 \not\in S_0$. $1 \in S_0$, hence, $2 \in S_0$ and $\{1,2\}\in S_0$. assume that $\{1,2,....n\} \in S_0$. This means, $n\in S_0 \implies n+1 \in S_0$, which means that $\forall k \in \mathbb{N}, \{1,2,..k\} \in S_0 \implies k+1 \in S_0$. Therefore, $S_0$ is $\mathbb{N}$.}
+
+\thmp{}{Weak Induction $\iff$ Strong Induction $\iff$ Well ordering.}{$\implies$) Suppose that, on the contrary, $S_0$ is a non empty subset of $\mathbb{N}$ , with no least element. Does $1$ exist in $S_0$? No, for that will be the least element. Likewise, then, $2$ does not belong in $S_0$. Assume that $\{1,2,...n\} \not\in S_0$. Does $n+1$ exist in $S_0$? No, for that will become the least element then. From Strong Induction, $\mathbb{N}-S_0=\mathbb{N}\implies S_0=\phi$. Contradiction.\\
+$\impliedby$)Suppose $\exists S_0 \subseteq \mathbb{N}$ such that $1 \in S_0$ and $\forall k \in \mathbb{N}$, $k\in S_0 \implies k+1 \in S_0$. Suppose on the contrary, $S_0$ is not $\mathbb{N}$. $\mathbb{N}-S_0$ is then, non-empty. From Well Ordering, there is a least element $q \in \mathbb{N}-S_0$. $\implies, q-1 \in S_0$. But this would imply $q-1+1 \in S_0$. Contradiction. $\mathbb{N}-S_0$ is empty.}
+
+\defn{(Finite Sets)}{A set $X$ is said to be finite, with $n$ elements in it, if $\exists n \in \mathbb{N}$ such that there exists a bijection $f: \{1,2..,n\} \to X$. Set $X$ is \emph{infinite} if it is non-finite.}
+
+
+\thmp{}{If $A$ and $B$ are finite sets with $m$ and $n$ elements respectively, and $A \cap B=\phi$, then $A \cup B$ is finite, with $m+n$ elements.}{$f:\mathbb{N}_m \to A$ and $g:\mathbb{N}_n \to B$.
+
+Define $h:\mathbb{N}_{m+n} \to A \cup B$ given by:
+$$h(i)=\begin{cases}f(i) \text{ if } i=1,2...m\\
+g(i-1) \text{ if } i=m+1,m+2,...m+n
+
+\end{cases}$$
+
+If $i=1,2,...m$,$h(i)$ covers all the elements in $A$ through $f$. If $i=m+1,...m+n$, $h(i)$ covers all the elements in $B$ through $g$.
+
+Moreover, $h(i) \neq h(j); i \in [1,m], j\in[m+1,m+n] $ since $A\cap B= \phi$}
+
+\thmp{}{If $C$ is infinite, and $B$ is finite, then $C-B$ is infinite.}{Suppose $C-B$ is finite. We have $B \cap (C-B)=\phi$ and $B \cup (C-B)=C \cup B$
+
+$n(C \cup B)=n(B \cup (C-B))=n(B)+n(C-B)$
+This implies $C \cup B$ is finite. Contradiction.
+}
+
+\thmp{}{\textbf{Theorem}: Suppose $T$ and $S$ are sets such that $T \subseteq S$. Then:\\
+
+a) If $S$ is finite, $T$ is finite.\\
+
+b)If $T$ is infinite, $S$ is infinite.}{Given that $S$ is finite, there is a function $f:\mathbb{N}_{m} \to S$. Suppose that $S$ has $1$ element. Then either $T$ is empty, or $S$ itself, which means $T$ is finite. Suppose that, upto $n$, it is true that, if $S$ is finite with $n$ elements, all its subsets are finite. Consider $S$ with $n+1$ elements. 
+
+$f:\mathbb{N}_{n+1} \to S$.\\
+If $f(n+1) \in T$, consider $T_1:=T-\{f(n+1)\}$
+We have $T_1 \subseteq S-\{f(n+1)\}$, and since $S-\{f(n+1)\}$ is a finite set with $n-1$ elements, from induction hypothesis, $T_1$ is finite. Moreover, since $T=T \cup \{f(n+1) \}$, $T$ is also finite with one more element than $T_1$.\\
+If $f(n+1) \not\in T$, then $T \subseteq S-\{f(n+1)\}$, we are done.\\\\
+(b) is simply the contrapositive of (a).}
+
+\defn{(Countable Sets)}{A set $S$ is said to be \emph{countable},or \emph{denumerable} if, either $S$ is finite, or $\exists f:\mathbb{N} \to S$ which is a bijection. If $S$ is \emph{not countable}, $S$ is said to be \emph{uncountable}}
+
+\thmp{}{The set $\mathbb{N} \times \mathbb{N}$ is countable.}{The number of points on diagonals $1,2,...l$ are: $\psi(k)=1+2+...k=\frac{k(k+1)}{2}$
+
+The point $(m,n)$ occurs on the $(m+n-1$ th diagonal, on which the number $m+n$ is an invariant. The $(m,n)$ point occurs $m$ points down the diagonal. So, to characterise a point, it is enough to specify the diagonal it falls in, and its ordinate (the "rank" of that point on that diagonal). Count the elements till the $m+n-2$nd diagonal, then add $m$, and this would be the position of the point $(m,n)$.\\
+Define $r:\mathbb{N}\times \mathbb{N} \to  \mathbb{N} $ given by $r(m,n)= \psi(m+n-2)+m$
+That this is a bijection is pretty clear because we are counting the position of the point $(m,n)$. For a given point $(m,m)$, there can only be one unique diagnonal on which it exists, and on the diagonal, its rank is unique. Moreover, for every $q \in N$, there corresponds an $(m,n)$ such that $r(m,n)=q$, for, we simply count along each diagonal in the "zig-zag" manner until we reach that $(m,n)$ for which the position is given by $q$. Therefore, $r$ is a bijection. (There are other explicit bijections too)}
+
+\thmp{}{The following are equivalent:
+\begin{enumerate}
+  \item $S$ is countable
+  \item $\exists$ a surjective function from $\mathbb{N} \to S$
+  \item $\exists$ an injective function from $S \to \mathbb{N}$
+\end{enumerate}}{($1\implies2)$ is obvious\\
+($2\implies3)$ $f:\mathbb{N}\to S$, every element of of $S$ has atleast one preimage in $\mathbb{N}$. Define a function from $S \to \mathbb{N}$ by taking for each $s \in S$ the least such $n \in \mathbb{N}$ such that $f(n)=s$. This defines an injection.\\
+($3\implies1$) If there is an injection from $S \to \mathbb{N}$, then there is a bijection from $S \to $ a subset of $\mathbb{N}$, which implies $S$ is countable.}
+
+\corp{The set of Rational Numbers $\mathbb{Q}$ is countable.}{We know that a surjection from $\mathbb{N} \times \mathbb{N}$ to $\mathbb{Q}$ exists (where $f(0,0)=0$, and $f(m,n)=\frac{m}{n}$).
+We know that $\mathbb{N}\times \mathbb{N}$ is bijective to $\mathbb{N}$. This means $\mathbb{N}$ is surjective to $\mathbb{Q}$. We are Done.}
+
+\thmp{}{Every infinite subset of a countable set is countable.}{Consider $N_s \subseteq \mathbb{N}$ which is infinite. 
+
+Define $g(1)=$ least number in $N_s$\\
+
+Having defined $g(n)$, define $g(n+1)$= least number in $N_s$ which is larger than $g(n)$.\\
+
+That it is an injection is obvious, for $g(m)>g(n)$ if $m>n$.\\
+
+Suppose it is not a surjection, i.e, $g(\mathbb{N}) \neq N_s \implies g(\mathbb{N})\subset N_s\implies N_s-g(\mathbb{N}) \neq \phi$\\
+Therefore, $N_s-g(\mathbb{N})$ has a least element, $k$. This means that $k-1$ is in $g(\mathbb{N})$. Therefore, there exists $q$ in $\mathbb{N}$ such that $g(q)=k-1$. But then, $g(q+1)$= least number in $N_s$ such that it is bigger than $g(q)$. This would, ofcourse be, $k$, which means $k=g(q+1)$, which puts $k$ in $g(\mathbb{N})$. Contradicton. Hence, $g(\mathbb{N})=N_s$, therefore, $g$ is a bijection from $\mathbb{N} \to N_s$. Since every countable set is bijective to $\mathbb{N}$, and every infinite subset of a countable set is bijective to an infinite subset of $\mathbb{N}$, the theorem holds generally for countable sets.}
+
+\thmp{}{$\mathbb{N} \times \mathbb{N} \cdots \mathbb{N}$ is bijective to $\mathbb{N}$}{$\mathbb{N} \times \mathbb{N}$ is bijective to $\mathbb{N}$ obviously. Assuume that $f:\mathbb{N} \to \mathbb{N} \cdots \mathbb{N} (\text{ n times })$ is bijective.\\
+
+Consider $g:\mathbb{N}\times \mathbb{N}\to \mathbb{N} \cdots \mathbb{N} (n+1\text{ times })$
+given by $g(m,n)=(f(m),n)$. Clearly, this is bijective. }
+
+
+
+\subsection{Axiom of Choice}
+\asum{Axiom of Choice (AC)}{For any collection of non empty sets $C=\{ A_l: l \in L\}$, there exists a function $f$ called the "counting function" which maps each set $A_l$ to an element in $A_l$.\\
+Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
+\thmp{}{Countable union of Countable sets is countable
+\rmk{(This theorem is an example of a theorem that requires \emph{Axiom of Choice})}}{Suppose we are given a sequence of countable sets $\{S_n : n\in \mathbb{N}\}$. Since each $S_j$ is countable, we have for each $j$, at least one bijective map $f_j:\mathbb{N} \to S_j$. Define $k:\mathbb{N} \times \mathbb{N} \to \bigcup_j S_j$ given by: $k(m,n)=f_m(n)$. Suppose $x \in \bigcup_j S_j$, i.e, $x \in S_j$ for some $j$. This means that, $f(n)=x$ for some $n$. Therefore, $k(j,n)=x$. Hence, $k$ is surjective. From theorem 2.14, we are done.\\\\
+(\textbf{Remark:}{ Keep in mind, for each $S_j$, there are a myriad of functions $(f_j)_k:\mathbb{N}\to S_j$. For each $S_j$, which is countably infinite, we have to choose one of the many functions that biject $\mathbb{N}$ to $S_j$. So we have a countable collection of sets $C=\{E_j: j\in \mathbb{N}\}$, where $E_j$ denotes the set of all functions that biject $\mathbb{N}$ into $S_j$. So for every element in $C$, we need to choose one element in each element of $C$. This is where the Axiom of Choice comes into play.)}}
+
+\thmp{}{If $f:A \to B$ is a surjection, then $B$ is bijective to a subset of $A$}{We are told that $f(A)=B$, i.e, for every $b\in B$, $\exists x_b$(many such $x_b$-s are possible) such that $f(x_b)=b$. Define a functino $g:B \to A$ as: $g(b)=\text{one of those } x_b \text{ such that } f(x_b)=b$. $g$ is bijective to the set of all the chosen $x_b$ for every $b$ }
+\rmkb{We make use of the Axiom of Choice in the previous theorem when we choose an $x_b$ from a set of all possible $x_b$-s for $b$. Let $A_b$ be the set of all possible $x_b$-s. Then the collection $\{A_b:b\in B\}$ is a collection of non-empty sets. And we are to select "one" element from each $A_b$. This requires AC.}
+\defn{(Power Set of a set)}{Power set of $A$, denoted by $P(A)$ is the set of all subsets of $A$.}
+
+\thmp{Cantor's Theorem}{For any set $A$, there \emph{does not exist} any surjection from $A$ onto $P(A)$}{Suppose, on the contrary, a surjection $\psi:A \to P(A)$ exists. For every subset $A_s$ of $A$, there exists an element $x$ of $A$ such that $\psi(x)=A_s$. Either this $x$ exists in $A_s$, or it doesnt. Conider $D:=\{x \in A: x \not\in \psi(x) \}$. $D$ is a subset of $A$, so there must be some element $y \in A$ such that $\psi(y)=D$. does $y$ belong in $D$? If so, $y \not\in \psi(y)=D$. Which means $y \not\in D$. If, though, $y \not\in D$, that implies $y\not\in \psi(y) \implies y\in D$. Contradictions left and right.}
+\newpage
+
+\section{Elementary Results regarding Integers}
+\defn{}{\begin{enumerate}
+\item (Divides) We say $a \in \ZZ \setminus \{0\}$ divides $b \in \ZZ$ if there exists an integer $\delta$ such that $a\delta=b$. We denote it by $a|b$.
+\item (GCD) We call a number $d$ the "Greatest Common Divisor" of two integers $a$ and $b$ if $d|a$ and $d|b$, and $d$ is the largest such number that divides both $a$ and $b$ (that the largest such number exists is clear, since divisors are finite).
+\item (LCM) We call a number $l$ the "Least Common Multiple" of two integers $a$ and $b$ if $a|l$ and $b|l$ and $l$ is the smallest such integer. 
+\end{enumerate}}
+
+\thmp{}{\begin{enumerate}
+\item The GCD $d$ of $a,b \in \ZZ$ is unique, and has the property that, if any other integer $q$ is a divisor of $a$ and $b$, then $q$ divides $d$.
+\item The LCM $l$ of $a,b \in \ZZ$ is unique, and has the property that, if another integer $p$ is a multiple of $a$ and $b$, then $l$ divides $p$.
+\item If LCM of $a,b$ and GCD of $a,b$ are $l$ and $d$ respectively, then $dl=ab$.
+\end{enumerate}}{(1) If $d$ is the GCD of $a,b$, obviously $d|a$ and $d|b$ $\implies dz_a=a, dz_b=b$ for some $z_a,z_b \in \ZZ$. Consider an arbitrary divisor $q$ such that $\exists r_a,r_b \in \ZZ$ such that $qr_a=a,qr_b=b$. Therefore, $dz_a=qr_a$ and $dz_b=qr_b$ $\implies \frac{dz_a}{q}=r_a$ and $\frac{dz_b}{q}=r_b$. Now either $q$ divides $d$, or $q$ divides $z_a$ and $z_b$ which means there would be $\delta_a$ and $\delta_b$ so that $q\delta_a=z_a$ and $q\delta_b=z_b$. If thats the case,
+then $dq\delta_a=a$ and $dq\delta_b=b$. Hence, $dq$ is a divisor of $a$ and $b$, which makes it larger than $d$. This can't be, since $d$ is the largest such divisor. From here, uniqueness is clear.
+\\\\(2) If $l$ is the LCM of $a$ and $b$, we have $ag_a=l$ and $bg_b=l$ for integers $g_a$ and $g_b$. Suppose that $m$ is another multiple of $a$ and $b$ but $l$ doesn't divide $m$. Meaning, there exists integers $y_a$ and $y_b$ so that $ay_a=m$ and $by_b=m$. This means $ly_a=mg_a$ and $ly_b=mg_b$. Since $l \leq m$, we have $y_a=\frac{mg_a}{l}$ and $y_b=\frac{mg_b}{l}$ and that $l$ divides $g_a$ and $g_b$. If $l$ divides $g_a$ and $g_b$, we would have $a\frac{g_a}{l}=1$ and $b\frac{g_b}{l}=1$ which is absurd. Hence, $l$ has to divide $m$. Uniqueness is clear from here. 
+\\\\(3) Suppose $d$ is the unique GCD of $a,b$ and $l$ is the unique LCM of $a,b$.\\\\
+Note that $d|ab$ which means $dc_0=ab$ for some $c_0$.
+$c_0=a(\frac{b}{d})$ and $c_0=b(\frac{a}{d})$. This means $c_0$
+is a multiple of $a$ and $b$ which means $l|c_0$. We have
+$lq_0=c_0$ for some $q_0$. This means $dlq_0=dc_0=ab$.
+$(dq_0)(\frac{l}{a})=b$ and $(dq_0)(\frac{l}{b})=a$ which 
+makes $dq_0$ a divisor. This would necessarily mean $q_0=1$, whence, we are done.
+
+}
+\subsection{Euclid's Divison Algorithm}
+\lemp{The Lemma}{Given integers $a,b \in \ZZ$ with $b \neq 0$, we get a unique $q \in \ZZ$ and $r\in \ZZ$ such that:
+$$a=bq+r$$ with $0 \leq r<|b|$.
+}{We Prove for the case that $a,b \in \NN$. Assume that for $a_0 \in \NN$, the divison lemma works, 
+i.e, $\exists q_0$ and $r_0$ so that $$a_0=bq_0+r_0$$ with $0\leq r<|b|$.
+Look at $a_0+1=bq_0+r_0+1$. We have that, either $r_0+1=b$, or $r_0+1<b$. If its the former,
+then we see that $a_0+1=bq_0+b=b(q_0+1)+0$ whence we see that the new quotient is $q_0+1$ and the new remainder is $0$.
+Hence, by induction, the lemma is proved.\\\\
+For the cases where $a<0$ or $b<0$, we can simply multiply by $-1$ to get the result.
+}
+\textbf{The Algorithm:}
+\\\\ We start with $a,b \in \ZZ \setminus \{ 0\}$, and without loss of 
+generality, we assume that $a\geq b$. We then have:
+
+$$\centering{a=bq_0+r_0} \text{ with } 0 \leq r_0<|b|$$
+$$\centering{b=r_0q_1+r_1} \text{ with } 0 \leq r_1<r_0<|b|$$
+$$\centering{r_0=r_1q_2+r_2} \text{ with } 0 \leq r_2<r_1<r_0<|b|$$
+$$\centering{r_1=r_2q_3+r_3} \text{ with } 0 \leq r_3<r_2<r_1<r_0<|b|$$
+$$\vdots$$
+$$r_{n_0-1}=r_{n_0}q_{n_0+1}+r_{n_0+1} \text{ with } 0 \leq r_{n_0+1}<r_{n_0} \cdots b $$
+$$r_{n_0}=r_{n_0+1}q_{n_0+2}+r_{n_0+2} \text{ with } 0 \leq r_{n_0+2}<r_{n_0+1} \cdots <b$$
+Since we cannot have a sequence of strictly decreasing positive integers, we note that at some point, $r_{n}=0(=r_{n_0+2} \text{ for our sake})$. 
+
+We would then have (in the last step), $$r_{n_0}=r_{n_0+1}q_{n_0+2}+0$$ and back substituting,
+$$r_{n_0-1}=r_{n_0+1}(q_{n_0+2}q_{n_0+1}+1)$$
+$$r_{n_0-2}=(r_{n_0+1}(q_{n_0+2}q_{n_0+1}+1))q_{n_0}+r_{n_0+1}q_{n_0+2} $$
+And finally we would end up with $$a=r_{n_0+1}(\text{something}_1) $$
+and $$b=r_{n_0+1}(\text{something}_2) $$ with the added fact that $r_{n_0+1}$ divides every remainder $r_n$ in the division algorithm performed with $a$ and $b$. \end{document}
