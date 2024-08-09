@@ -450,7 +450,7 @@ $$\sum_{i=1}^k |x_i y_i| \leq (\sum_{i=1}^k |x_i|)^{1/p} (\sum_{i=1}^k |y_i|^q)^
 \thmp{Nested Interval Theorem}{Given a sequence of closed and bounded, and non empty nested intervals $\{I_n: n \in \NN \}, \ \exists \xi \in I_n \ \forall n \in \NN$ or equivalently, 
 $\xi \in \big.\cap_{n=1}^{\infty} I_n$.}{Let $I_n=[a_n,b_n]$. From the definition, it is clear that $\{a_n\}$ is an increasing sequence of reals, while $\{b_n\}$ is a decreasing sequence. Moreover, from the non empty property of each interval, we have that $a_m < b_n, \forall n \in \NN, \forall m \in \NN$. This implies that the set of $\{a_n\}$ has a supremum $S_a$, while the set $\{b_n \}$ has an infimum $L_b$. $a_n \leq L_b \forall n \in \NN$ while $S_a \leq b_n \forall n \in \NN$. $a_n \leq $. Moreover, $a_n \leq S_a \forall n \in \NN$ while $L_b \leq b_n \forall n \in \NN$. since $a_n$ is a lower bound of $\{b_n\}$, $a_n \leq L_b$, and since $L_b$ is an upper bound of $\{a_n\}$, $a_n \leq S_a \leq L_b \leq b_n: \forall n \in \NN$. From Density, $\exists \xi \in [S_a,L_b]$ such that $\xi \in \cap_{i=1}^{\infty} I_i$
 }
-
+\corp{In the previous theorem, if the size of the nested intervals converges to $0$, then the intersection contains only one point.}{We see that $len(I_n) \to 0$ which means $\forall \varepsilon>0$ $\exists n_0$ such that $\forall n \geq n_0$ $$len(I_n)<\varepsilon$$ Say two points survive the intersection, call them $x$ and $y$. They have a finite, non zero distance $d$ between them. Let $\varepsilon < d$. This means that after $n_0$, the length of the intervals go below $\varepsilon<d$. So, if $x$ is in the intersection, $y$, by virtue of being $d$ distance away, wont survive the intersection.}{}
 
 \newpage
 \subsection{Decimal Expansions, and related results}
@@ -491,4 +491,6 @@ see that $\gamma=\alpha+\beta$
 
 
 }
+
+\thmp{Real numbers in $[0,1]$ are equivalent to the set of all $0,1-$sequences (i.e, sequences containing only $1$ or $2$) (\textbf{p-adic proof})}{We see that for }{Consider a point $x$ in $[0,1]$. By virtue of the above decmial expansion results, we can find a sequence $a_n$ consisting of just $0$ and $1$ so that $\sum_{i=1}^{\infty} \frac{a_n}{2^n}$ converges to $x$. For every $0,1$ sequence, we can map a unique number in $[0,1]$ so that that sequence becomes the $2-$adic or binary representation of that number. This is a well defined surjection from the set of all $0,1$ sequences to $[0,1]$. }
 \end{document}

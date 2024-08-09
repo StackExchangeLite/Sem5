@@ -319,5 +319,55 @@ is unique (from positivity property of metric spaces) which means there are unco
 
 \lemp{}{Given two balls $B_1$ and $B_2$ in $\RR^n$ that are closed, with $B_1 \cap B_2=\{z\}$ with $z \in \RR^n$, then the interior of $B_1 \cup B_2$, i.e, $\underline{B_1 \cup B_2}$, is $\underline{B_1} \cup \underline{B_2}$, which are their respective open ball counterparts.}{We understand that $\underline{B_1} \cup \underline{B_2} \subseteq \underline{B_1 \cup B_2}$. Note that none of the "rim" points of $B_1$ or $B_2$, are in the interior. This would conclude the result.}
 
+\corp{If $A \subset X$ is connected, it needn't be true that $\underline{A}$ is connected.}{Consider the set $B_1 \cup B_2$ from the previous lemma. We note that, its interior is the disjoint union of two non empty open balls. These two sets are separated, which makes $\underline{B_1 \cup B_2}$ a separated set.}{}
+
+\thmp{}{Let $E$ be the set of all $x \in [0,1] \subseteq \RR$ so that the decimal expansion of $x$ only contains $4$ and $7$. Then:
+\begin{enumerate}
+\item $E$ is uncountable
+\item $E$ is not dense in $[0,1]$
+\item $E$ is compact
+\item $E$ is prefect
+\end{enumerate}
+}{(1) $E$ is uncountable via the diagonal argument. If $\{x_1,x_2,\cdots \}$ is the enumeration of $E$, simply take the first decimal place of $x_1$ and flip it (i.e. to $4$ if $7$ or vice versa). Likewise for $x_2$ and so on to get a new decimal expansion that is unlike all $x_1,x_2\cdots x_n \cdots$ which is a contradiction.
+\\\\ (2) Obviously, since $0.4 \leq x \leq 0.8$ for any $x\in E$.
+\\\\ (3) We already know $E$ is bounded. Consider $E^c$. This is the set of all numbers in $[0,1]$ so that not all points in the decimal expansion is $4$ or $7$. i.e, there would be a point in the expansion that is neither $4$, nor $7$. Suppose we take one such arbitrary $x \in E^c$. Let the first non $4,7$ number occur at the $j-$th place. $0.z_1z_2z_3\cdots x_j \cdots $. Look for another non $4,7$ after the $j-$th place (if it exists). If it doesn't exist, then all the numbers after $x_j$ would be $4$ or $7$ so safely add $10^{-(j+1)}$ as our $\varepsilon$. This $\varepsilon$ range around $x$ would contain only points of $E^c$. Suppose another point exists that is non $4,7$ after $j$, perhaps at $k>j$-th index. Then it would look something like:
+$0.z_1z_2 \cdots z_jx_{j+1}x_{j+2} \cdots z_k \cdots$. Here we simply take $\varepsilon=10^{-(k+1)}$ so that all points in the $\varepsilon$-neighbourhood of $x$ is in $E^c$. Therefore, $E^c$ is open, which means $E$ is closed. Closed and bounded implies compact in $\RR$.
+\\\\ We saw that $E$ is closed. We need only show that every point of $E$ is a limit point of $E$. This can be done easily for any $\varepsilon$-ball, using the technique that follows:
+Choose a $k$ so that $\frac{1}{10^k}<\varepsilon$. Look at the interval $x-\frac{1}{10^k},x+\frac{1}{10^k}$ that is contained in $E$. Just find some $n>k$, and flip the $4$ to a $7$ or vice versa to land in a "different" element from $x$, yet within the neighbourhood in consideration. Hence, every point is a limit point, making $E$ a perfect set.
+
+}
+
+\thmp{Existence of a compact set in $\RR$ with countable limit points.}{Title}{Consider the points $x_1=1, x_0=0, x_2=\frac{1}{2}, \cdots x_{n}=\frac{1}{n} \cdots$. Let $x_{11}<x_{12} \cdots <x_{1n}$ be a sequence that converges to $x_1=1$. Let $x_{21}<x_{22}<x_{23} \cdots <x_{2n} \cdots $ be a sequence convergent to $x_2=\frac{1}{2}$, with the added condition that $x_{2j} < x_{1k}$ for every $j,k \in \NN$. Likewise for every $x_n$, create a sequence $x_{nk}$ that converges to $x_n$. Make sure that $x_{an}<x_{bm}$ if $a>b$, for every $m,n$. We therefore have:
+$$x_{11}<x_{12}\cdots \to x_1 $$  
+$$x_{21}<x_{22}\cdots \to x_2$$
+$$ \vdots$$
+We claim that the set $\Phi=$ $x_0,x_1,x_2, \cdots$ along with $x_{11},x_{12}\cdots, x_{21},x_{22}\cdots x_{n1}$ etc. forms a Compact set in $\RR$ that has countable limit points. 
+\\\\ Suppose that $q \in \RR \neq 0$ and $q \neq \frac{1}{j}$ for any $j$ be a limit point of $\Phi$. This means a subsequence $z_n$ in $\Phi$ converges to $q$. Does infinite points of $x_{1j}$ exist in the subsequence $z_n$ convergent to $q$? Obviously not, since that would make a subsequence of $z_n$ convergent to one of $1$. So only utmost finite elements of $x_{1j}$ are in $z_n$. Same way one can argue that utmost finite elements of $x_{kj}$ are in $z_n$ for every $k$. If we establish a subsequence of $z_n$ that converges to $0$, then the only limit point of $\{z_n\}$ would be $0$ which would mean $0$ is where $z_n$ would converge. Enough wishful thinking; Does any point of $x_{1j}$ exist in $z_n$? If yes, choose that point. If not, find the next $n_1$ so that a point in $x_{n_1 j}$ is in $z_n$. Find, then $n_2>n_1$ so that some point in $x_{n_2 j}$ is in $z_n$. As such keep going, making $n_1<n_2<\cdots$ and a sequence that is monotone decreasing by construction, that converges to $0$. Hence, this is a subsequence in $\{z_n\}$ that converges to $0$. If $z_n$ converged to $q$, then the only limit point would be $q$. Hence, $q=0$. This means that the only limit points of $\Phi$ other than $\frac{1}{j}$ is $0$. Hence, we have a countable limit point. Hence, $\Phi$ is a closed set and bounded obviously, with countable limit points. }
+
+\thmp{technique weve already seen}{If $A$ and $B$ are separated sets in $\RR^n$ (that are non empty), and $\vec{x_0} \in A$ and $\vec{y_0} \in B$, define $p(t)=\vec{x_0}+t(\vec y_0 -\vec x_0)$ for $t\in [-\infty,\infty]$ and $$S_A:=\{ t \in \RR: p(t) \in A \} $$ $$S_B:=\{t \in \RR: p(t) \in B \} $$ Then:
+\begin{enumerate}
+    \item $S_A$ and $S_B$ are separated sets
+    \item $\exists t_0 \in (0,1)$ so that $t_0 \not\in S_A \cup S_B$
+\end{enumerate}
+}{(1) If $S_A$ and $S_B$ weren't disjoint, then obviously $A$ and $B$ wont be. If there is a sequencei n $S_A$ converging in $S_B$ or vice-versa, it is easy to see that this would lead to there exiting a sequence in $A$ converging to $B$ (or vice-versa). Therefore, $S_A$ and $S_B$ are separated.
+\\\\ (2) Since $S_A$ and $S_B$ are separated and non-empty, there are two points $x_0$ and $y_0$ in $S_A$ and $S_B$ respectively. Define $z(l)=x_0+l(y_0-x_0)$ for $l \in [0,1]$. Now, for some $l_A$, we have that for every $l>l_A$, $z(l) \not\in S_A$, the set $G_A:=\{l: z(l) \in S_A \}$ is therefore bounded above with supremum $u_A$. Likewise for some $l_B$, we have that for every $l<l_B$, $z(l) \not\in S_B$, the set $G_B:=\{l: z(l) \in S_B \}$ is therefore bounded below with infimum $v_B$. Note that $G_A$ and $G_B$ are separated sets. We may as well assume that for every $l<l_B$, $l$ is in $G_A$, or $z(l)$ falls in $S_A$. If not, we would be done. We now ask: does $v_B$ fall in $G_A$ or $G_B$? If it falls in $G_B$, there exists a sequence in $G_A$ that would converge to $v_B$, which is absurd. If it falls in $G_A$, then by virtue of being the infimum of $G_B$, there is a sequence in $G_B$ converging in $G_A$. Hence, there exists a point $l$ between $x_0$ and $y_0$ $l \not\in G_A$ or $G_B$ which means $z(l) \not \in S_A$ or $S_B$. This again means that $p(z(l)) \not \in A$ or $B$. Phew.   
+}
+
+\corp{Every convex set in $\RR^n$ is connected.}{If they were not connected, then there would exist sets $A$ and $B$, non empty, disjoint and separated so that our convex set $C$ would be $A \cup B$. Suppose $x_0 \in A$ and $y_0 \in B$. From the previous theorem we see that, if $z(t)=x_0 +t(y_0-x_0)$, then there would exist $t'$ so that $z(t') \not\in A $ or $B$, which means it wont be in $C$. But if $x_0$ and $y_0$ are in $C$, by definition of convexity, $z(t)$ for any $t$ must exist in $C$. Contradiction. }{}
+
+\exm{A Pedagogical Example.}{If $E:=\{ q \in \QQ: 2<q^2<3\}$ is considered a set in the metric subspace of $\QQ$ with the usual distance, then we have:
+\begin{enumerate}
+    \item $E$ is closed and bounded (wrt $\QQ$ obviously)
+    \item $E$ is \emph{non compact}.
+    \item $E$ is open with respect to $\QQ$
+\end{enumerate} 
+\begin{proof}
+Consider an arbitrary convergent sequence $p_n$ in $E$. We see that if $p_n$ is contained in $E$, then $2<p_n^2<3$. If we pass to the limit, we would have $2 \leq q^2 \leq 3$ but the limit $q$ would either not exist in $\QQ$ (whence the sequence $p_n$ wouldn't be convergent anyway) or it does, in which case it follows $2<q^2<3$ (since no rational number has its square as $2$ or $3$). Therefore, we can see that every convergent sequence in $E$ converges in $E$. Hence, $E$ is closed. Boundedness is obvious.
+\\\\ One way to see that $E$ is non compact is simply by making use of the "conservation" of compactness going from one space to a bigger space or vice-versa. Since $E$ is clearly not compact in $\RR$, it wont be compact in the metric subspace $\QQ$. Another way to see that it is non compact is to consider the following construction:
+Look at the union of the two split intervals $(-\sqrt{3},-\sqrt{2})$ and $(\sqrt{2},\sqrt{3})$. Let $h=\sqrt{3}-\sqrt{2}$. We construct it for the right side interval, and simply copy it to the left one. Choose the point $\sqrt{3}$ and a $h/2$-ball around $\sqrt{3}$ and call it $V_0$. This would intersect the right interval at a distance $h/2$ from $\sqrt{3}$. Choose this intersection point and a $h/4$-ball around this called $V_2$. Both $V_1$ and $V_2$ together covers $3h/4$ of the interval. Choose this intersection point and let the $h/8$-ball around this point be $V_3$. $V_1$, $V_2$ and $V_3$ together cover $7h/8$ of the interval. Keep going as such to construct $V_n$ so that $(V_i)_{i=1}^n$ covers $\frac{(n-1)h}{n}$ of the whole interval. As $n$ tends to $\infty$, the "coverage" converges to $h$. This means that for every $\varepsilon$ distance away, there exists a finite $n_0$ so that $V_1 \to V_{n_0}$ covers up to that $\varepsilon$ distance. Every point $e$ in the strict interval would therefore be covered up by some $V_k$ by our construction. But obviously, this "open cover" has no finite subcover, for no finite "coverage" covers all the way till $h$ distance of the interval. Some $\varepsilon$-gap is always left, hence missing points.
+\\\\ $E$ can also be written as the disjoint union of the set $A$ of all $p$ so that $\sqrt{2}<p<\sqrt{3}$ and the set $B$ of all $p$ so that $-\sqrt{3}<p<-\sqrt{2}$. WLOG say $q \in A$. Obviously $\sqrt{2}<q<\sqrt{3}$. Choose $\delta< min\{\sqrt{3}-q, q-\sqrt{2}\}$ and the $\delta-$ball called $V$ around $q$. Easy to see that this ball $V$ is fully contained in $A$. Likewise, it can be shown for $B$ as well. Hence, $E$ is open with respect to $Q$. 
+\end{proof}
+
+}
 
 \end{document}
