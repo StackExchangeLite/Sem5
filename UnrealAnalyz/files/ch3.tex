@@ -1,4 +1,4 @@
-\documentclass[Main.tex]{subfiles}
+\documentclass[../Main.tex]{subfiles}
 
 \begin{document}
 
@@ -314,4 +314,10 @@ not in $Q$. That means that it is exactly $\xi$ distance away from $p$. For ever
 there exists a point $z_{\xi}$ so that its distance from $p$ is exactly $\xi$. Therefore, every $z_{\xi}$ 
 is unique (from positivity property of metric spaces) which means there are uncountable $z_{\xi}$-s.
 }
+
+\thmp{}{If $P$ and $Q$ are connected such that $P \cap Q \neq \phi$, then $P \cup Q$ is also connected.}{Suppose $P \cup Q$ is actually not connected. This means $P \cup Q= A \cup B$ for non empty, separated sets $A$ and $B$. Suppose $P$ is fully contained in $A$. This means that $Q$ has intersection with $A$ and intersection with $B$ which are non empty. Obviously $Q \subseteq A \cup B$ which means $Q= (A \cap Q)\cup(B \cap Q)$ where $(A \cap Q)$ and $(B \cap Q)$ are separated and non empty. Since $Q$ is connected, this is absurd. Suppose then that $P$ is not fully contained in $A$. This means that $P \cap A$ and $P \cap B$ is non empty each. This means $P=(P \cap A) \cup (P \cap B)$. From the same reasoning, this is absurd.}
+
+\lemp{}{Given two balls $B_1$ and $B_2$ in $\RR^n$ that are closed, with $B_1 \cap B_2=\{z\}$ with $z \in \RR^n$, then the interior of $B_1 \cup B_2$, i.e, $\underline{B_1 \cup B_2}$, is $\underline{B_1} \cup \underline{B_2}$, which are their respective open ball counterparts.}{We understand that $\underline{B_1} \cup \underline{B_2} \subseteq \underline{B_1 \cup B_2}$. Note that none of the "rim" points of $B_1$ or $B_2$, are in the interior. This would conclude the result.}
+
+
 \end{document}
