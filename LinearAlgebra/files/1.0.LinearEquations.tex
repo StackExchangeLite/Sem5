@@ -2,7 +2,7 @@
 \documentclass[../Main.tex]{subfiles}
 
 \begin{document}
-\chapter{Linear Equations}
+\chapter{Harry Potter and the Linear Equations}
 
 \intro{
    We'll go through the Basic formalisms and proof, along with few elementary operations and matrix theory.
@@ -47,23 +47,134 @@ $\mathbb{Z}$, the set of integers, is not a subfield of $\mathbb{R}$ (multiplica
 
 \section{Systems of Linear Equations}
 A collection of $m$ linear equations with $n$ unknowns, where $y_1, y_2, \dots y_{m}$ and $A_{ij}$, $1 \leq i \leq m, 1 \leq j \leq n,$ are given elements of F. 
-$$\begin{matrix}
+\begin{equation}
+<<<<<<< Updated upstream
+   \begin{matrix} \label{linear eq sys}
+      A_{11}x_{1} &+& A_{12}x_{2} &+ &\cdots&+& A_{1n}x_{n} &=& y_{1}\\
+      A_{21}x_{1} &+& A_{22}x_{2} &+ &\cdots&+& A_{2n}x_{n} &=& y_{2}\\
+      \vdots\\
+      A_{m1}x_{1} &+& A_{m2}x_{2} &+ &\cdots&+& A_{mn}x_{n} &=& y_{m}
+   \end{matrix}
+=======
+\begin{matrix}
    A_{11}x_{1} &+& A_{12}x_{2} &+ &\cdots&+& A_{1n}x_{n} &=& y_{1}\\
    A_{21}x_{1} &+& A_{22}x_{2} &+ &\cdots&+& A_{2n}x_{n} &=& y_{2}\\
    \vdots\\
    A_{m1}x_{1} &+& A_{m2}x_{2} &+ &\cdots&+& A_{mn}x_{n} &=& y_{m} 
-\end{matrix}$$
+\end{matrix}
+>>>>>>> Stashed changes
+\end{equation}
 Any n-tuple $(x_1, x_2, \dots, x_n)$ of elements in $\mathcal{F}$ which satisfies each of the equations above is called a \textbf{Solution} of the system.\\
 If $y_1=y_2=\dots=y_m=0$, then we say that the system of linear equations is \textbf{Homogeneous}.
 
 \fact{\textbf{Equivalent Systems}: Two systems of linear equations are said to be Equivalent if each equation in each system is a linear combination of the equations in the other system.
 }
-\thmp{}{Equivalent systems of linear equations have exactly the same solutions}{I mean, it is clear from fact 2.1, since they are linear combinations one can be converted into another, hence the solutions are exactly same.}
+\thmp{}{Equivalent systems of linear equations have exactly the same solutions}{ Let $A$ and $B$ be two equivalent systems of linear equations. From fact 2.1, We can write some $r$th equation in $A$ and $B$ as a linear combination of other. (TO BE CONTINUED) I'm looking for ways to prove it nicely without using the thoery introduced after this proof.}
 
 \rmk{
    TODO: (once i understand characteristic of a field thing) Prove that each field of chracteristic zero contains a copy of the rational number field
 }
 
+\section{Matrices and Elementary Row Operations}
+<<<<<<< Updated upstream
+A $m \times n$ \textbf{matrix over a field} $\mathcal{F}$ is a function A from the set of pairs of integers $(i,j)$, $1 \leq i \leq m$, $1 \leq j \leq n$, into the field $\mathcal{F}$. 
 
+\begin{equation}
+   A =
+   \begin{bmatrix} \label{Matrix A}
+      A_{11} & A_{12} & \dots & A_{1n}\\
+      A_{21} & A_{22} & \dots & A_{2n}\\
+      \vdots &&& \vdots\\
+      A_{m1} & A_{m2} & \dots & A_{mn}
+   \end{bmatrix}
+\end{equation}
+
+\rmkb{
+   The system of linear equations \ref*{linear eq sys} can be represented using matrices as $AX=Y$, where
+   \begin{equation}
+   X=
+   \begin{bmatrix}
+      x_0\\
+      x_1\\
+      \vdots\\
+      x_n\\
+   \end{bmatrix}
+   Y=
+   \begin{bmatrix}
+      y_1\\
+      y_2\\
+      \vdots\\
+      y_m\\
+   \end{bmatrix}
+   \end{equation}\\\\
+   Also note that this also a case of matrix multiplication.
+}
+
+\subsection{Elementary Row Operations}
+
+\fact{
+   An elementary rwo operation is a special kind of function (rule) $e$ which associates each $m \times n$ matrix $A$ with a $m \times n$ matrix $e(A)$. We can precisely describe e in the three cases as follows:
+\begin{enumerate}
+   \item for $i \neq r$, when $e(A_{rj}) = cA_{rj}$, then $e(A_{ij}) = A_{ij}$ holds.
+   \item for $i \neq r$, when $e(A_{rj}) = A_{rj} + A_{sj}$, then $e(A_{ij}) = A_{ij}$ holds.
+   \item for $i \neq r$ and $i \neq s$, when $e(A_{rj}) = A_{sj}$, then $e(A_{ij}) = A_{ij}$ holds.
+\end{enumerate}
+Here $A_{rj}$ and $A_{sj}$ are $r$th and $s$th rows of the matrix.
+}
+\begin{remark}
+   The elementary row operation $e$ is defined on a class of all $m \times n$ matrices over $\mathcal{F}$, for some fixed $m$ but any $n$.
+\end{remark}
+
+\thmp{}{
+   To each elementary row operation $e$ there is corresponds an elementary row operation $e_1$, of the same type as $e$, such that $e_1(e(A)) = e(e_1(A)) = A$ for each $A$. In other words, the inverse operation (function) of an elementary row operation exists and is an elementary row operation of the same type.
+}{
+   \begin{enumerate}
+      \item Suppose e is the operation which multiplies the $r$th row of a matrix by the non-zero scalar $c$. Clearly, there exists a $c^{-1}$ multipying with which will bring back the matrix A.
+      \item Suppose $e$ is the operation which replaces row $r$ by the row $r$ plus $c$ times the row $s$, $r \neq s$. Let $e_1$ be the operation which replaces row $r$ by row $r$ plus $(-c)$ times row $s$.
+      \item If e interchange rows $r$ and $s$, let $e_1=e$.
+   \end{enumerate}
+   In each of these three cases we clearly have a $e_1(e(A)) = e(e_1(A)) = A$  for each $A$.
+}
+
+\defn{}{
+   If $A$ and $B$ are $m \times n$ matrices over a field $\mathcal{F}$, we can say that $B$ is row equivalent of \textit{$A$ if $B$ can be obtained from $A$ by a finite sequence of elementary row operations.} 
+}
+
+\thmp{}{
+   If $A$ and $B$ are two row-equivalent $m \times n$ matrices, the Homogeneous systems of linear equations $AX=0$ and $BX=0$ have exactly the same solutions. 
+}{ 
+Suppose we pass $A$ through some $k$ number of elementary operations to B.
+   \begin{equation}
+      A \to A_0 \to A_1 \to \dots \to A_k = B
+   \end{equation}
+Since these are homogeneous system of linear equations it is clear that the elementary row operations do not distrub the set of solutions.\\
+Note that, no matter what elementary operation you perform each equation in the system $BX = 0$ will be a linear combination of the equations in the system $AX = 0$.\\
+Since the inverse of an elementary row operation is an elementary row operation, each equation in $AX = 0$ will also be a linear combination of the equations in $BX = 0$.\\
+Hence these two are equaivalent, and by Theorem 1, they have the same solutions.
+}
+
+\defn{Row Reduced Matrix}{ An $m \times n$ matrix $R$ is called \textbf{Row Reduced} if:
+\begin{enumerate}
+   \item \textit{the first non-zero entry in each non-zero row of $R$ is equal to 1;}
+   \item \textit{each column of $R$ which contains the leading non-zero entry of some row has all its entries 0.}
+\end{enumerate}
+}
+
+\defn{Identify Matrix}{
+A $n \times n$ matrix defined by
+   \begin{equation}
+      I_{ij} = \delta_{ij} = 
+      \begin{cases} 
+         0 & \text{if } i = j, \\
+         1 & \text{if } i \neq j.
+      \end{cases}
+   \end{equation}
+The $\delta$ is also known as the \textbf{kronecker delta}. 
+}
+
+\thmp{}{Every $m \times n$ matrix over the field $\mathcal{F}$ is a row-equivalent to a row-reduced matrix.}{}
+=======
+A $m \times n$ \textbf{matrix over a field} $\mathcal{F}$ is a function A from the set of pairs of integers $(i,j)$, $1 \leq i \leq m$, $1 \leq j \leq n$, 
+>>>>>>> Stashed changes
 
 \end{document}
