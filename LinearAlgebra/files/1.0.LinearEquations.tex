@@ -46,37 +46,30 @@ $\mathbb{Z}$, the set of integers, is not a subfield of $\mathbb{R}$ (multiplica
 }
 
 \section{Systems of Linear Equations}
+
 A collection of $m$ linear equations with $n$ unknowns, where $y_1, y_2, \dots y_{m}$ and $A_{ij}$, $1 \leq i \leq m, 1 \leq j \leq n,$ are given elements of F. 
+
 \begin{equation}
-<<<<<<< Updated upstream
    \begin{matrix} \label{linear eq sys}
       A_{11}x_{1} &+& A_{12}x_{2} &+ &\cdots&+& A_{1n}x_{n} &=& y_{1}\\
       A_{21}x_{1} &+& A_{22}x_{2} &+ &\cdots&+& A_{2n}x_{n} &=& y_{2}\\
       \vdots\\
       A_{m1}x_{1} &+& A_{m2}x_{2} &+ &\cdots&+& A_{mn}x_{n} &=& y_{m}
    \end{matrix}
-=======
-\begin{matrix}
-   A_{11}x_{1} &+& A_{12}x_{2} &+ &\cdots&+& A_{1n}x_{n} &=& y_{1}\\
-   A_{21}x_{1} &+& A_{22}x_{2} &+ &\cdots&+& A_{2n}x_{n} &=& y_{2}\\
-   \vdots\\
-   A_{m1}x_{1} &+& A_{m2}x_{2} &+ &\cdots&+& A_{mn}x_{n} &=& y_{m} 
-\end{matrix}
->>>>>>> Stashed changes
 \end{equation}
+
 Any n-tuple $(x_1, x_2, \dots, x_n)$ of elements in $\mathcal{F}$ which satisfies each of the equations above is called a \textbf{Solution} of the system.\\
 If $y_1=y_2=\dots=y_m=0$, then we say that the system of linear equations is \textbf{Homogeneous}.
 
-\fact{\textbf{Equivalent Systems}: Two systems of linear equations are said to be Equivalent if each equation in each system is a linear combination of the equations in the other system.
+\fact{
+   \textbf{Equivalent Systems}: Two systems of linear equations are said to be Equivalent if each equation in each system is a linear combination of the equations in the other system.
 }
-\thmp{}{Equivalent systems of linear equations have exactly the same solutions}{ Let $A$ and $B$ be two equivalent systems of linear equations. From fact 2.1, We can write some $r$th equation in $A$ and $B$ as a linear combination of other. (TO BE CONTINUED) I'm looking for ways to prove it nicely without using the thoery introduced after this proof.}
-
-\rmk{
-   TODO: (once i understand characteristic of a field thing) Prove that each field of chracteristic zero contains a copy of the rational number field
+\thm{}{
+   Equivalent systems of linear equations have exactly the same solutions
 }
 
 \section{Matrices and Elementary Row Operations}
-<<<<<<< Updated upstream
+
 A $m \times n$ \textbf{matrix over a field} $\mathcal{F}$ is a function A from the set of pairs of integers $(i,j)$, $1 \leq i \leq m$, $1 \leq j \leq n$, into the field $\mathcal{F}$. 
 
 \begin{equation}
@@ -106,20 +99,20 @@ A $m \times n$ \textbf{matrix over a field} $\mathcal{F}$ is a function A from t
       \vdots\\
       y_m\\
    \end{bmatrix}
-   \end{equation}\\\\
-   Also note that this also a case of matrix multiplication.
+   \end{equation}
+   .
 }
 
 \subsection{Elementary Row Operations}
 
 \fact{
-   An elementary rwo operation is a special kind of function (rule) $e$ which associates each $m \times n$ matrix $A$ with a $m \times n$ matrix $e(A)$. We can precisely describe e in the three cases as follows:
-\begin{enumerate}
-   \item for $i \neq r$, when $e(A_{rj}) = cA_{rj}$, then $e(A_{ij}) = A_{ij}$ holds.
-   \item for $i \neq r$, when $e(A_{rj}) = A_{rj} + A_{sj}$, then $e(A_{ij}) = A_{ij}$ holds.
-   \item for $i \neq r$ and $i \neq s$, when $e(A_{rj}) = A_{sj}$, then $e(A_{ij}) = A_{ij}$ holds.
-\end{enumerate}
-Here $A_{rj}$ and $A_{sj}$ are $r$th and $s$th rows of the matrix.
+   An \textbf{elementary rwo operation} is a special kind of function (rule) $e$ which associates each $m \times n$ matrix $A$ with a $m \times n$ matrix $e(A)$. We can precisely describe e in the three cases as follows:
+   \begin{enumerate}
+      \item for $i \neq r$, when $e(A_{rj}) = cA_{rj}$, then $e(A_{ij}) = A_{ij}$ holds.
+      \item for $i \neq r$, when $e(A_{rj}) = A_{rj} + A_{sj}$, then $e(A_{ij}) = A_{ij}$ holds.
+      \item for $i \neq r$ and $i \neq s$, when $e(A_{rj}) = A_{sj}$, then $e(A_{ij}) = A_{ij}$ holds.
+   \end{enumerate}
+   Here $A_{rj}$ and $A_{sj}$ are $r$th and $s$th rows of the matrix.
 }
 \begin{remark}
    The elementary row operation $e$ is defined on a class of all $m \times n$ matrices over $\mathcal{F}$, for some fixed $m$ but any $n$.
@@ -143,14 +136,14 @@ Here $A_{rj}$ and $A_{sj}$ are $r$th and $s$th rows of the matrix.
 \thmp{}{
    If $A$ and $B$ are two row-equivalent $m \times n$ matrices, the Homogeneous systems of linear equations $AX=0$ and $BX=0$ have exactly the same solutions. 
 }{ 
-Suppose we pass $A$ through some $k$ number of elementary operations to B.
-   \begin{equation}
-      A \to A_0 \to A_1 \to \dots \to A_k = B
-   \end{equation}
-Since these are homogeneous system of linear equations it is clear that the elementary row operations do not distrub the set of solutions.\\
-Note that, no matter what elementary operation you perform each equation in the system $BX = 0$ will be a linear combination of the equations in the system $AX = 0$.\\
-Since the inverse of an elementary row operation is an elementary row operation, each equation in $AX = 0$ will also be a linear combination of the equations in $BX = 0$.\\
-Hence these two are equaivalent, and by Theorem 1, they have the same solutions.
+   Suppose we pass $A$ through some $k$ number of elementary operations to B.
+      \begin{equation}
+         A \to A_0 \to A_1 \to \dots \to A_k = B
+      \end{equation}
+   Since these are homogeneous system of linear equations it is clear that the elementary row operations do not distrub the set of solutions.\\
+   Note that, no matter what elementary operation you perform each equation in the system $BX = 0$ will be a linear combination of the equations in the system $AX = 0$.\\
+   Since the inverse of an elementary row operation is an elementary row operation, each equation in $AX = 0$ will also be a linear combination of the equations in $BX = 0$.\\
+   Hence these two are equaivalent, and by Theorem 1, they have the same solutions.
 }
 
 \defn{Row Reduced Matrix}{ An $m \times n$ matrix $R$ is called \textbf{Row Reduced} if:
@@ -163,7 +156,7 @@ Hence these two are equaivalent, and by Theorem 1, they have the same solutions.
 \defn{Identify Matrix}{
 A $n \times n$ matrix defined by
    \begin{equation}
-      I_{ij} = \delta_{ij} = 
+      \mathcal{I}_{ij} = \delta_{ij} = 
       \begin{cases} 
          0 & \text{if } i = j, \\
          1 & \text{if } i \neq j.
@@ -173,8 +166,88 @@ The $\delta$ is also known as the \textbf{kronecker delta}.
 }
 
 \thmp{}{Every $m \times n$ matrix over the field $\mathcal{F}$ is a row-equivalent to a row-reduced matrix.}{}
-=======
-A $m \times n$ \textbf{matrix over a field} $\mathcal{F}$ is a function A from the set of pairs of integers $(i,j)$, $1 \leq i \leq m$, $1 \leq j \leq n$, 
->>>>>>> Stashed changes
+
+\section{Row-Reduced Echleon Matrices}
+
+\defn{RREF}{
+   An $m \times n$ matrix $\mathcal{R}$ is called a row-reduced echeleon matrix if:
+   \begin{enumerate}
+      \item $\mathcal{R}$ is row-reduced.
+      \item every row of $\mathcal{R}$ which all the entries zero occur below every row which has non-zero entries.
+      \item if rows 1, $\dots$, $r$ are the non-zero rows of $\mathcal{R}$, and if the leading non-zero entry of row $i$ occurs in column $k_i$, $i = 1, \dots, r$ then $ k_1 < k_2 < \dots < k_r.$
+   \end{enumerate}
+}
+
+\cor{
+   An \textbf{alternate definition} for row-reduced echeleon matrix $\mathcal{R}$ is as follows:\\
+      Either every entry in $\mathcal{R}$ is 0, or $\exists$ a positive integer $r$, $1 \leq r \leq m$, and $r$ positive intergers $k_1, \dots, k_r$ with $1 \leq k_i \leq n$ and
+      \begin{enumerate}
+         \item $R_{ij} = 0$ for $i>r$, and $R_{ij} = 0$ if $j < k_i$.
+         \item $R_{i{k_j}} = \delta_{ij}$, $1 \leq i \leq r$, $1 \leq j \leq r$.
+         \item $k_1 < \dots < k_r$. 
+      \end{enumerate}
+}
+
+\thmp{Existance of a RREF for every $m \times n$ matrix}{
+   Every $m \times n$ matrix $\mathcal{A}$ is row-equivalent to a row-reduced echeleon matrix.
+}{
+   proof follows from theorem 3.7, i will formulate it properly soon.
+}
+
+\thmp{}{
+   If $\mathcal{A}$ is an $m \times n$ matrix and $m < n$, then the homogeneous system of linear equations $\mathcal{A}X=0$ has a non-trivial solution.
+}{
+   Let $\mathcal{R}$ be a row-reduced echeleon matrix which is row-equaivalent to $\mathcal{A}$. Then the systems $\mathcal{A}X=0$ and $\mathcal{R}X=0$ have the same solutions by theorem 3.4. If $r$ is the number of non-zero rows in $\mathcal{R}$, then certainly $r \leq m$, and since $m < n$, we have $r < n$. For since $r < n$, we can choose some $x_j$ which is not among the r unknowns $x_{k_1}, \dots, x_{k_n}$ and we can then construct a solution to show that a solution $(x_1, \dots, x_n)$ in which not every $x_j$ is 0. It follows that $\mathcal{A}X = 0$ has a non-trivial solution. 
+}
+
+\thmp{}{
+   If $\mathcal{A}$ is an $n \times n$ (square) matrix, then $\mathcal{A}$ is row-equaivalent to the $n \times n$ identity matrix if and only if the system of equations $\mathcal{A}X$=0 has only the trivial solution.
+}{
+   If $\mathcal{A}$ is row-equivalent to $\mathcal{I}$, then $\mathcal{A}X=0$ and $\mathcal{I}X=0$ have the same solutions. Conversely, suppose $\mathcal{A}X=0$ has only the trivial solution $X=0$. Let $\mathcal{R}$ be an $n \times n$ row-reduced echeleon matrix which is row-equivalent to $\mathcal{A}$, and let $r$ be the number of non-zero rows of $\mathcal{R}$. Then $\mathcal{R}X=0$ has no non-trivial solution. Thus $r \geq n$. But since $\mathcal{R}$ has $n$ rows, certainly $r \leq n$, and we have r = n. Since this means that $\mathcal{R}$ actually has a leading non-zero entry of 1 in each of its $n$ rows, and since these 1's occur each in a different one of the n-columns, $\mathcal{R}$ must be the $n \times n$ identity matrix.
+}
+
+\defn{Augmented Matrix}{
+   The Augmented Matrix $\mathcal{A}'$ of a system $\mathcal{A}X=Y$ is the $m \times (n+1)$ matrix whose first n columns are the columns of $\mathcal{A}$ and last column is Y. More precisely,
+   \begin{itemize}
+      \item $\mathcal{A}'_{ij} = \mathcal{A}_{ij}$, if $l \leq n$
+      \item $\mathcal{A}'_{i(n+1)} = y_i$
+   \end{itemize}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}

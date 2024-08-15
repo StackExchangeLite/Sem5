@@ -12,7 +12,7 @@ int getUserInput(){
    return userInput;
 }
 
-// Factorial Calculator (refer assign-1.3.cpp)
+// Factorial Calculator (refer assign-1.2.cpp)
 double factorial(double k){
    // Variable to hold the factorial result is initialised with 1
    // to prevent all factorials collapsing to zero, since 0 x (any number) = 0.
