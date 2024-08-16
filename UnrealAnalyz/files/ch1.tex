@@ -429,16 +429,50 @@ $$\geq \bigg(\frac{S_n}{n}\bigg)^n\bigg(a_{n+1}\bigg) \geq a_1a_2\cdots a_n a_{n
 \newpage
 
 \subsection{Some Inequalities}
+
+\thmp{Generalised AM-GM}{If $x,y \in \RR^{+}$ and $t\in(0,1)$, then $$(1-t)x+ty \geq x^{1-t}y^{t} $$}{We use the fact that a differentiable function $f$ is convex if and only if its first derivative $f'$ is monotone increasing. Under this criteria, $e^x$ is certainly convex. That means $\forall x,y \in \II,$ $t \in (0,1)$, $$e(x)+t(e(y)-e(x)) \geq e(x+t(y-x))$$ or in other words:
+$$e((1-t)x+ty)  \geq (1-t)e(x)+te(y) $$
+which implies (since $e$ is a monotone increasing function)$$(1-t)x+ty \geq x^{1-t}y^{t}$$
+}
 \thmp{Concavity of $ log_{e}: \RR^+ \to \RR$ (assumed knowledge of $e$, and existence of log.)}{The function $f:=log_{b}:\RR^+ \to \RR$ proven to be unique for a given $b>1$ and any real number $x$, follows the following: For every $x,y \in \RR^+$, and $t \in (0,1)$
 $$f((1-t)x+ty) \geq (1-t)f(x)+tf(y)$$
-}{}
-\thmp{Generalised AM-GM}{If $x,y \in \RR^{+}$ and $t\in(0,1)$, then $$(1-t)x+ty \geq x^{1-t}y^{t} $$}{}
+}{We want to prove $$ log((1-t)x+ty)\geq (1-t)log(x)+tlog(y)$$ which amounts to showing that $$log((1-t)x+ty)\geq log(x^{1-t}y^t) $$ Since log is an increasing function, from general AM-GM, we have $(1-t)x+t(y)\geq x^{1-t}y^{t}$ which gives (taking log on both sides)
+$$log((1-t)x+ty)\geq log(x^{1-t}y^{t}) $$ which gives us the desired result.}
+
 \thmp{Young's Inequality}{If $a,b$ are non negative reals, with $p>1, q>1$ such that $\frac{1}{p}+\frac{1}{q}=1$, then $$ab \leq \frac{a^p}{p} +\frac{b^q}{q} $$
-With equality holding if and only if $a^p=b^q$}{}
-\thmp{Hoelder's Inequality}{Given $\{x_i\}_{i=1}^k, \{y_i\}_{i=1}^k$ in $\RR$, we have (given positive integers $p,p$)
-$$\sum_{i=1}^k |x_i y_i| \leq (\sum_{i=1}^k |x_i|)^{1/p} (\sum_{i=1}^k |y_i|^q)^{1/q}$$
-}{}
-\thmp{Minkowski's Inequality}{}{}
+With equality holding if and only if $a^p=b^q$}{Let $\frac{1}{p}=t<1$ and $\frac{1}{q}=1-t<1$. From generalised AM-GM, in place of $(1-t)x+ty \geq x^{1-t}y^t$, make the following transformations: $$x \mapsto x^{\frac{1}{(1-t)}}$$
+
+$$y \mapsto y^{\frac{1}{t}}$$ to arrive at the modified am-gm which is $$(1-t)x^{\frac{1}{(1-t)}}+ty^{\frac{1}{t}}\geq xy$$ Plugging the values for $1-t$ and $t$ respectively we get $$\frac{1}{q} x^{q}+ \frac{1}{p} y^{p} \geq xy$$}
+
+
+\thmp{Hoelder's Inequality}{Given $\{x_i\}_{i=1}^k, \{y_i\}_{i=1}^k$ in $\RR$, we have (given positive integers $p,q$ so that $\frac{1}{p}+\frac{1}{q}=1$, $p,q>1$)
+$$\sum_{i=1}^k |x_i y_i| \leq (\sum_{i=1}^k |x_i|^p)^{1/p} (\sum_{i=1}^k |y_i|^q)^{1/q}$$
+}{ Consider the case when $\sum_{i=1}^k |x_i|^p=1$ and $\sum_{i=1}^k |y_i|^q=1$. Using Young's Inequality which is $ab \leq \frac{a^p}{p}+\frac{b^q}{q}$, we have $$|x_iy_i|\leq \frac{|x_i|^p}{p}+\frac{|y_i|^q}{q}$$ Taking the sum on both sides gives $$\sum_{i=1}^k|x_iy_i|\leq \frac{1}{p}+\frac{1}{q}=1$$
+Now suppose $z_i=\frac{|x_i|}{\sum_{i=1}^k |x_i|^p}$ and $w_i=\frac{|y_i|}{\sum_{i=1}^k |y_i|^q}$. It is easy to see that $\sum_{i=1}^k |z_i|^p=\sum_{i=1}^k|w_i|^p=1$. This means, from Young's inequality, $$\sum_{i=1}^k |z_i w_i|\leq 1 $$ which implies $$\sum_{i=1}^k |x_iy_i|\leq (\sum_{i=1}^k |x_i|^p)^{1/p} (\sum_{i=1}^k |y_i|^q)^{1/q} $$
+
+}
+\thmp{Minkowski's Inequality}{Given $\{x_i\}_{i=1}^k$ and $\{y_i\}_{i=1}^k$ in $\RR$, and an integer $p \geq 1$, we have:
+$$(\sum_{i=1^k}(|x_i+y_i|^p))^{1/p}\leq (\sum_{i=1}^k|x_i|^p)^{1/p}+(\sum_{i=1}^k |y_i|^p)^{1/p} $$
+}{Consider $(\sum_{i=1}^k|x_i+y_i|^p) \leq (\sum_{i=1}^k(|x_i|+|y_i|)^p) \leq (\sum_{i=1}^k(|x_i|+|y_i|)(|x_i|+|y_i|)^{p-1}) $
+This is $$(\sum_{i=1}^k(|x_i|)(|x_i|+|y_i|)^{p-1}+\sum_{i=1}^k (|y_i|)(|x_i|+|y_i|)^{p-1})  $$
+Apply Holder inequality to each summand to get:
+$$(\sum_{i=1}^k |x_i|^p)^{1/p}(\sum_{i=1}^k(||x_i|+|y_i||^{p-1})^{\frac{p}{p-1}})^{\frac{p-1}{p}} $$
+$$+$$
+$$(\sum_{i=1}^k |y_i|^p)^{1/p}(\sum_{i=1}^k(||x_i|+|y_i||^{p-1})^{\frac{p}{p-1}})^{\frac{p-1}{p}}  $$
+Which simplifies down to:
+$$(\sum_{i=1}^k |x_i|^p)^{1/p}(\sum_{i=1}^k(|x_i|+|y_i|)^{{p}})^{\frac{p-1}{p}} + (\sum_{i=1}^k |y_i|^p)^{1/p}(\sum_{i=1}^k(|x_i|+|y_i|)^{{p}})^{\frac{p-1}{p}} $$ which again simplifies to 
+$$\{(\sum_{i=1}^k |x_i|^p)^{1/p}+(\sum_{i=1}^k |y_i|^p)^{1/p}\}(\sum_{i=1}^k(|x_i|+|y_i|)^{{p}})^{\frac{p-1}{p}} $$
+This gives us the equation:
+
+$$\sum_{i=1}^k (|x_i|+|y_i|)^p \leq \{(\sum_{i=1}^k |x_i|^p)^{1/p}+(\sum_{i=1}^k |y_i|^p)^{1/p}\}(\sum_{i=1}^k(|x_i|+|y_i|)^{{p}})^{\frac{p-1}{p}} $$
+Which immediately gives us (after multiplying both sides)
+
+$$(\sum_{i=1}^k (|x_i|+|y_i|)^p)^{1/p} \leq \{(\sum_{i=1}^k |x_i|^p)^{1/p}+(\sum_{i=1}^k |y_i|^p)^{1/p}\} $$
+Which is the desired result
+
+}
+
+
 \newpage
 \subsection{Intervals on the Real Line}
 \defn{Intervals}{\begin{enumerate}
@@ -492,5 +526,5 @@ see that $\gamma=\alpha+\beta$
 
 }
 
-\thmp{Real numbers in $[0,1]$ are equivalent to the set of all $0,1-$sequences (i.e, sequences containing only $1$ or $2$) (\textbf{p-adic proof})}{We see that for }{Consider a point $x$ in $[0,1]$. By virtue of the above decmial expansion results, we can find a sequence $a_n$ consisting of just $0$ and $1$ so that $\sum_{i=1}^{\infty} \frac{a_n}{2^n}$ converges to $x$. For every $0,1$ sequence, we can map a unique number in $[0,1]$ so that that sequence becomes the $2-$adic or binary representation of that number. This is a well defined surjection from the set of all $0,1$ sequences to $[0,1]$. }
+\thmp{}{The set of all $0,1-$sequences (i.e, sequences containing only $1$ or $2$) are atleast as large as $\RR$ (\textbf{p-adic proof})}{Consider a point $x$ in $[0,1]$. By virtue of the above decmial expansion results, we can find a sequence $a_n$ consisting of just $0$ and $1$ so that $\sum_{i=1}^{\infty} \frac{a_n}{2^n}$ converges to $x$. For every $0,1$ sequence, we can map a unique number in $[0,1]$ so that that sequence becomes the $2-$adic or binary representation of that number. This is a well defined surjection from the set of all $0,1$ sequences to $[0,1]$. }
 \end{document}

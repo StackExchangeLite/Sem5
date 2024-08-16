@@ -313,7 +313,10 @@ $$\phi(n)=\text{ number of positive integers } z \text{ less than or equal to } 
 For primes $p$, every number smaller than $p$ is coprime to $p$, hence $\phi(p)=p-1$
 More generally we have for primes $p$ and natural $q$, 
 $\phi(p^q)=p^q-p^{q-1}$. 
-\\\\ \emph{\textbf{Just accept the following fact}}
+\\\\ \pf{Consider $\phi(p^k)=||\text{all such numbers }x \text{ such that } x\leq p^k \text{ and }gcd(x,p^k)=1||$. Note that apart from the multiples of $p,p^2,p^3 \cdots$, all else are coprimes with $p^k$. The numbers that are not coprimes with $p^k$ can be counted as: 
+$1p,2p,\cdots p(p), \cdots (p^2)p \cdots p^{k-1}p$. Hence, the number of multiples of $p$ in this list are $p^{k-1}$. Total number of "numbers" smaller or equal to $p^k$ are obviously, $p^k$. From here, the answer is obvious. 
+}
+ \emph{\textbf{Just accept the following fact}}
 \fact{If $(m,n)=1$, then $\phi(mn)=\phi(m)\phi(n)$}
 \subsection{Modular Arithmetic:}
 Given $n \in \NN$ and the set of all integers $\ZZ$, we define the following equivalence

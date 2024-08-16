@@ -18,6 +18,48 @@
 
 }
 \defn{Sequences in Metric Spaces}{A sequence $\{x_n: x_n \in X\}$ is a mapping from the naturals to $X$, where order is implicit. We say a sequence in a metric space $X$ is convergent to $x \in X$ if: $$(\forall \varepsilon>0)(\exists n_0 \in \NN)(\forall n \in \NN, n \geq n_0)(d(x_n,x)<\varepsilon)$$}
+\defn{Cauchy Sequence in $X$}{A sequence $\{x_n\}$ in $X$ is said to be cauchy if $$(\forall \varepsilon>0)(\exists n_0 \in \NN)(\forall n,m \in \NN)(n,m \geq n_0 \implies d(x_n,x_m)<\varepsilon) $$}
+\thmp{}{Convergence $\implies$ cauchy}{Say $x_n$ converges to $x$ in the metric space. $$(\forall \varepsilon>0)(\exists n_0)(\forall n,m \geq n_0)(d(x_n,x)<\varepsilon, d(x_m,x)<\varepsilon)$$ which implies (from triangle inequality)
+$$(\forall \varepsilon>0)(\exists n_0)(\forall n,m \geq n_0)(d(x_n,x)<\varepsilon, d(x_m,x_n)\leq d(x_m,x)<\varepsilon)$$
+Which is the cauchy condition.}
+\newpage
+\subsection{Inner products, Normz and some common metrics}
+\defn{Inner Product}{Let $\FF$ be either $\CC$ or $\RR$, and $V$ a vector space over $\FF$. An \textbf{inner product} on $V$ is a function that assigns to each ordered pair of vectors $v,u \in V$ a scalar $\langle v|u\rangle \in \FF$ so that 
+the following holds:
+
+\begin{enumerate}
+    \item $\langle v+cw|u \rangle=\langle v|u \rangle+c\langle w|u\rangle$
+    \item $\langle u|v \rangle=\overline{\langle v|u \rangle}$ where $\overline{\cdot}$ is just complex conjugation
+    \item $\langle u|u \rangle>0$ if $u \neq 0$
+\end{enumerate}
+A space $V(\FF), \langle \cdot \rangle $ is called an \emph{inner product space}. 
+}
+\defn{Norm}{Given an inner product space $V(\FF), \langle \cdot \rangle$, we define the \emph{norm} or \emph{length} of a vector $x$, given by $|| x||$ as $\sqrt{\langle x|x \rangle}$ }
+\exm{$p$-norm is a metric}{The $p$-norm is defined on $\RR^n$ as: $$||\vec x ||_p:=(|x_1|^p+|x_2|^p \cdots |x_n|^p)^{1/p}=(\sum_{i=1}^n |x_i|^p)^{1/p} $$
+We say $d_p(\vec x,\vec y)$, the distance between $\vec x$ and $\vec y$ to be $||x-y||_p=(\sum_{i=1}^n |x_i-y_i|^p)^{1/p}$. From this definition, unique $0$ distance property and reflexivity property are obvious. Consider $d_p(x,z)$ and $d_p(z,y)$. $d_p(x,y)=(\sum_{i=1}^k|(x_i-z_i)+(z_i-y_i)|^p)^{1/p}$ whence from Minkowski we see that $$(\sum_{i=1}^k|(x_i-z_i)+(z_i-y_i)|^p)^{1/p}
+\leq (\sum_{i=1}^n |x_i-z_i|^p)^{1/p}+(\sum_{i=1}^n |z_i-y_i|^p)^{1/p}=d_p(x,z)+d_p(y,z)$$
+Therefore, $p$-norm is a metric 
+}
+
+\exm{The Max Norm}{Suppose $x \in \RR^n$, the max norm $||x||_{\infty}$ is defined as: $$||\vec x||_{\infty}:= \max_{1 \leq i \leq n}(|x_i|)$$
+Clearly, $d_{\infty}(x,y)=0$ if and only if $x=y$. Moreover, from the properties of $|\cdot|$, it is reflexive. Consider $d_{\infty}(x,y)=\max\{|x_1-y_1|,|x_2-y_2|\cdots,|x_n-y_n| \}, d_{\infty}(x,z)=\max\{|x_1-z_1|,|x_2-z_2|\cdots,|x_n-z_n| \}$ and $d_{\infty}(y,z)=\max\{|y_1-z_1|,|y_2-z_2|,\cdots |y_n-z_n| \}$. 
+$$d_{\infty}(x,y)=\max_{1\leq 1\leq n}\{|(x_i-z_i)+(z_i-y_i|)\} \leq \max_{1\leq 1\leq n}\{|(x_i-z_i)\}+\max_{1\leq 1\leq n}\{|(y_i-z_i)\}=d_{\infty}(x,z)+d_{\infty}(z,y)$$
+Hence the max norm is a metric.
+}
+
+\exm{Norm on function spaces}{Let $X$ be a non empty set. Define $\mathfrak{B}(X)$ as the space of all bounded, real functions. Then $||f||_{\infty}:=\sup_{x\in X}|f(x)|$ defines a norm on $\mathfrak{B}(X)$ since $|f(x)-g(x)| \leq |f(x)|+|g(x)|\leq \sup_{x \in X}|f(x)|+\sup_{x \in X}|g(x)|=||f||_{\infty}+||g||_{\infty}$ which gives us $||f+g||_{\infty}\leq ||f||_{\infty}+||g||_{\infty}$}
+
+\exm{the $\frac{d}{1+d}$ metric}{Say $X,d$ is a metric space, then $g(x,y)=\frac{d(x,y)}{1+d(x,y)}$ is a metric.
+\\\\ pf{exercise to the reader}
+}
+
+\subsubsection{$l_p$ Space}
+
+\defn{$l_p$-Space}{Define $l_p$ as the space of all sequences $(a_n)_{n=1}^{\infty}$ such that $\sum_{i=1}^{\infty} |a_i|^p$ exists.}
+
+It is easily seen thet $l_p$ is a vector space over $\RR$. We defne the metric on $l_p$ as $d_p(\{x\},\{y\})=(\sum_{i=1}^{\infty}|x_i-y_i|^p)^{1/p}$
+
+\newpage
 \defn{Limit Point of a set $E$}{We say $p$ is a limit point of a set $E$ if $$(\forall \varepsilon>0)(\exists q_{\varepsilon} \in E; q_{\varepsilon} \neq p)(d(q_{\varepsilon},p)<\varepsilon)$$ In other words, in every $\varepsilon$-ball around $p$, there would exist a point $q_{\varepsilon}$ in $E$, which is different from $p$.  }
 \thmp{}{Every ball / neighbourhood of $p$ which is a limit point of $E$, would contain infinitely many points $q$ such that $q \in B_{\varepsilon}(p) \cap E\setminus \{p\} $}{Suppose for some neighbourhood, there only exists finite points $q_1,q_2,\cdots q_k$ such that $q_j \in B_{\varepsilon_0} \cup E\setminus\{p\}$. Let $\delta<min\{d(p,q_j): j \in [1,2,...k]\}$. We then have that, there exists no point $q \in E$ such that its distancce from $p$ is less than $\delta$, making $p$ a non-limit point. Absurd.}
 \cor{A finite set has no limit points}
@@ -186,7 +228,7 @@ The following is the construction of an uncountable, perfect set that contains n
 \\\\Note that, no interval of the kind $[a,b]$ exists in the Cantor Set. The size of each interval in $I_j$ is $\frac{1}{3^j}$. We can find $j$ so that $\frac{1}{3^j}<b-a \implies \frac{1}{b-a}<3^j \implies \log_{3}(\frac{1}{b-a})<j$. For such $I_j$, we notice that $[a,b]$ has "inbetween" points that doesn't exist in any of $I_j$'s intervals. Hence, taking the intersection, these "inbetween" terms don't survive. Hence, no intervals exist.
 \thmp{}{The Cantor set $P$ is perfect.}{We already know that the Cantor set is closed. We need to show that every point in the cantor set is a limit point. First, observe that, for any $I_k$, if $z$ is the end point of any of the sub interval of $I_k$, it survives the $\infty$-intersection. This is because, after $I_k$-s trisection, the end points still stay endpoints. Let $\xi$ be any point in the cantor set, which means it is a point in every $I_k$. Let $\delta>0$ be given. Consider the interval $(\xi-\delta,\xi+\delta)$. This interval is sized $2\delta$. $\xi$ exists in one of the sub intervals of $I_k$ for all $K \geq k_0$ for some $k_0$. Choose $j$ so that $\frac{1}{3^j}<\delta$. Then, the interval in $I_j$ containing $\xi$ would fall completely inside $(\xi-\delta,\xi+\delta)$. Choose $q$ as one of the end points of this sub interval of $I_j$. Therefore, $\forall \xi \in P$, $\forall \delta>0$, $\exists q \in P, q \neq \xi$ so that $q\in (\xi-\delta,\xi+\delta)$. Therefore, every $\xi \in P$ is a limit point of $P$. Hence, $P$ is perfect.}
 
-\subsection{Connected Sets}
+\section{Connected Sets}
 \defn{Separated Sets}{$A \subset X$ and $B \subset X$ are said to be \emph{separated} if $\bar{A} \cap B=
 \bar{B}\cap A=\phi$, i.e, they are disjoint and no point of one, is the limit point of the other.}
 \defn{Connected Set}{A set $E\subset X$ is said to be \emph{connected} if it is \emph{not} the union of two non-empty separated sets.
@@ -369,5 +411,6 @@ Look at the union of the two split intervals $(-\sqrt{3},-\sqrt{2})$ and $(\sqrt
 \end{proof}
 
 }
+\thmp{Existence of a non-empty, perfect set in $\RR$ that contains no rational points}{Title}{  }
 
 \end{document}
