@@ -16,4 +16,4 @@
 *.toc
 *.pdf
 *.obsidian
-*.vscode
+.vscode/

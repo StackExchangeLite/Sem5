@@ -1,34 +1,44 @@
-// // Created by SoloMazer
-// // Integer to Binary converter
-// #include <iostream>
-// #include <vector>
+// Created by stellarterror
+// Question:
+  // Write cpp code to convert given integer number to Binary representation.
+// Algorithm:
+  // This C++ code converts an integer to its binary representation by using a 
+  // std::bitset to create a 32-bit binary string, then removing leading zeros 
+  // for a clean output. It handles edge cases like zero by ensuring it outputs
+  // "0" if necessary.
 
-// int main() {
-//    // Take decimal user input
-//    int x{};
-//    std::cout << "Enter your integer: ";
-//    std::cin >> x;
+#include <bitset>
+#include <iostream>
+#include <string>
 
-//    if (x == 0) {
-//       std::cout << "Binary: 0" << std::endl;
-//       return 0;
-//    }
+std::string intToBinary(int number) {
 
-//    std::vector<int> binary; // Vector to store binary digits
+  // Use bitset to convert the integer to binary representation
+  std::bitset<32> binary(number);
+  
+  // Convert the bitset to string and remove leading zeros
+  std::string binaryString = binary.to_string();
+  
+  // Remove leading zeros for cleaner output
+  size_t firstOne = binaryString.find('1');
+  
+  if (firstOne != std::string::npos) {
+    binaryString = binaryString.substr(firstOne);
+  } else {
+    binaryString = "0";  // In case of zero
+  }
+  
+  return binaryString;
+}
 
-//    // Convert decimal to binary
-//    while (x > 0) {
-//       binary.push_back(x % 2); // Store the remainder (0 or 1)
-//       x /= 2; // Divide x by 2
-//    }
+int main() {
 
-//    // Output the binary representation (reverse the vector)
-//    std::cout << "Binary: ";
-//    for (auto it = binary.rbegin(); it != binary.rend(); ++it) {
-//       std::cout << *it; // Print from last to first to get correct order
-//    }
-//    std::cout << std::endl;
+  int number;
+  std::cout << "Enter an integer: ";
+  std::cin >> number;
 
-//    return 0;
-// }
+  std::string binaryRepresentation = intToBinary(number);
+  std::cout << "Binary representation: " << binaryRepresentation << std::endl;
 
+  return 0;
+}

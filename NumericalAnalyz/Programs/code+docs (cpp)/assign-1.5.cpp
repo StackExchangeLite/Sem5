@@ -1,13 +1,21 @@
 // Created by SoloMazer
-// Question: Compute the taylor series of exp(x) upto 10 terms (x_0 = 0) at x = 1, and compare the result with the exact value of exp(1).
-// Algorithm: The taylor series expansion of exp(x) at x = 1, is equal to 1 + 1/1! + 1/2! + 1/3! + ... + 1/n! We use this fact to compute the factorials using a factorial function and store their inverses as terms of the taylor series. Keep iterating the process until number of terms = max limit of terms given by the user. Add all these terms and print the result.
+// Question: 
+  // Compute the taylor series of exp(x) upto 10 terms (x_0 = 0) 
+  // at x = 1, and compare the result with the exact value of exp(1).
+// Algorithm: 
+  // The taylor series expansion of exp(x) at x = 1, is equal to 
+  // 1 + 1/1! + 1/2! + 1/3! + ... + 1/n! We use this fact to compute the
+  // factorials using a factorial function and store their inverses as 
+  // terms of the taylor series. Keep iterating the process until number 
+  // of terms = max limit of terms given by the user. Add all these terms 
+  // and print the result.
 
 #include <iostream>
 
 // Fetching required terms in taylor expansion
 int getUserInput(){
    int userInput{};
-   std::cout << "Enter max number of terms: ";
+   std::cout << "Enter number of terms in the taylor expansion:\n ";
    std::cin >> userInput;
    return userInput;
 }
@@ -31,7 +39,7 @@ int main(){
 
    // Check for non-negative input
    if (numOfTerms < 0) {
-     std::cout << "Numbers of terms in a taylor series can't be negative. \n Please input a non-negative number." << std::endl;
+     std::cout << "Numbers of terms in a taylor series can't be negative. \nPlease input a non-negative number." << std::endl;
    }
 
    else {
