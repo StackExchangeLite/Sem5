@@ -12,8 +12,8 @@
 #include <iostream>
 
 int main() {
-  const int rows{10};
-  const int cols{10};
+  const int rows{ 10 };
+  const int cols{ 10 };
 
   // Create and fill the matrix
   for (int i = 1; i <= rows; ++i) {
@@ -24,7 +24,7 @@ int main() {
 
       // Print the fraction in the format 1/x with high precision
       std::cout << std::setw(12) << std::fixed << std::setprecision(8)
-                << static_cast<double>(numerator) / denominator;
+        << static_cast<double>(numerator) / denominator;
     }
     std::cout << std::endl;
   }
