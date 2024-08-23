@@ -431,7 +431,8 @@ $$\geq \bigg(\frac{S_n}{n}\bigg)^n\bigg(a_{n+1}\bigg) \geq a_1a_2\cdots a_n a_{n
 \subsection{Some Inequalities}
 
 \thmp{Generalised AM-GM}{If $x,y \in \RR^{+}$ and $t\in(0,1)$, then $$(1-t)x+ty \geq x^{1-t}y^{t} $$}{We use the fact that a differentiable function $f$ is convex if and only if its first derivative $f'$ is monotone increasing. Under this criteria, $e^x$ is certainly convex. That means $\forall x,y \in \II,$ $t \in (0,1)$, $$e(x)+t(e(y)-e(x)) \geq e(x+t(y-x))$$ or in other words:
-$$e((1-t)x+ty)  \geq (1-t)e(x)+te(y) $$
+$$e((1-t)x+ty)  \leq (1-t)e(x)+te(y) $$
+Making the substitution $x \mapsto ln(x)$ gives us $$e((1-t)ln(x)+tln(y))\leq (1-t)e(ln(x))+tln(y)$$
 which implies (since $e$ is a monotone increasing function)$$(1-t)x+ty \geq x^{1-t}y^{t}$$
 }
 \thmp{Concavity of $ log_{e}: \RR^+ \to \RR$ (assumed knowledge of $e$, and existence of log.)}{The function $f:=log_{b}:\RR^+ \to \RR$ proven to be unique for a given $b>1$ and any real number $x$, follows the following: For every $x,y \in \RR^+$, and $t \in (0,1)$
@@ -448,7 +449,7 @@ $$y \mapsto y^{\frac{1}{t}}$$ to arrive at the modified am-gm which is $$(1-t)x^
 \thmp{Hoelder's Inequality}{Given $\{x_i\}_{i=1}^k, \{y_i\}_{i=1}^k$ in $\RR$, we have (given positive integers $p,q$ so that $\frac{1}{p}+\frac{1}{q}=1$, $p,q>1$)
 $$\sum_{i=1}^k |x_i y_i| \leq (\sum_{i=1}^k |x_i|^p)^{1/p} (\sum_{i=1}^k |y_i|^q)^{1/q}$$
 }{ Consider the case when $\sum_{i=1}^k |x_i|^p=1$ and $\sum_{i=1}^k |y_i|^q=1$. Using Young's Inequality which is $ab \leq \frac{a^p}{p}+\frac{b^q}{q}$, we have $$|x_iy_i|\leq \frac{|x_i|^p}{p}+\frac{|y_i|^q}{q}$$ Taking the sum on both sides gives $$\sum_{i=1}^k|x_iy_i|\leq \frac{1}{p}+\frac{1}{q}=1$$
-Now suppose $z_i=\frac{|x_i|}{\sum_{i=1}^k |x_i|^p}$ and $w_i=\frac{|y_i|}{\sum_{i=1}^k |y_i|^q}$. It is easy to see that $\sum_{i=1}^k |z_i|^p=\sum_{i=1}^k|w_i|^p=1$. This means, from Young's inequality, $$\sum_{i=1}^k |z_i w_i|\leq 1 $$ which implies $$\sum_{i=1}^k |x_iy_i|\leq (\sum_{i=1}^k |x_i|^p)^{1/p} (\sum_{i=1}^k |y_i|^q)^{1/q} $$
+Now suppose $z_i=\frac{|x_i|}{(\sum_{i=1}^k |x_i|^p)^{1/p}}$ and $w_i=\frac{|y_i|}{(\sum_{i=1}^k |y_i|^q)^{1/q}}$. It is easy to see that $\sum_{i=1}^k |z_i|^p=\sum_{i=1}^k|w_i|^p=1$. This means, from Young's inequality, $$\sum_{i=1}^k |z_i w_i|\leq 1 $$ which implies $$\sum_{i=1}^k |x_iy_i|\leq (\sum_{i=1}^k |x_i|^p)^{1/p} (\sum_{i=1}^k |y_i|^q)^{1/q} $$
 
 }
 \thmp{Minkowski's Inequality}{Given $\{x_i\}_{i=1}^k$ and $\{y_i\}_{i=1}^k$ in $\RR$, and an integer $p \geq 1$, we have:
@@ -471,7 +472,13 @@ $$(\sum_{i=1}^k (|x_i|+|y_i|)^p)^{1/p} \leq \{(\sum_{i=1}^k |x_i|^p)^{1/p}+(\sum
 Which is the desired result
 
 }
-
+\thmp{Minkowski for Infinite Sums}{Given sequences $\{x_n\}$ and $\{y_n\}$ we have (where it is assumed/ given that each of the right side term is finite) $$(\sum_{i=1}^{\infty}(|x_i+y_i|^p))^{1/p} \leq (\sum_{i=1}^{\infty} |x_i|^p)^{1/p}+(\sum_{i=1}^{\infty} |y_i|^p)^{1/p} $$o}{Given $\{x_i\}_{i=1}^k$ and $\{y_i\}_{i=1}^k$, the good old Minkowski inequality reads:
+$$(\sum_{i=1}^k(|x_i+y_i|^p))^{1/p} \leq (\sum_{i=1}^k |x_i|^p)^{1/p}+(\sum_{i=1}^k |y_i|^p)^{1/p}$$
+For any $k \in \NN$. Since the right side is monotone increasing (and assuming it is bounded above, i.e, convergent) we can take the limit to arrive at 
+$$(\sum_{i=1}^k(|x_i+y_i|^p))^{1/p} \leq (\sum_{i=1}^{\infty} |x_i|^p)^{1/p}+(\sum_{i=1}^{\infty} |y_i|^p)^{1/p} $$
+Whence we see the inequality holding again for all $k \in \NN$. Simply take the limit again th arrive at:
+$$(\sum_{i=1}^{\infty}(|x_i+y_i|^p))^{1/p} \leq (\sum_{i=1}^{\infty} |x_i|^p)^{1/p}+(\sum_{i=1}^{\infty} |y_i|^p)^{1/p} $$
+}
 
 \newpage
 \subsection{Intervals on the Real Line}
@@ -497,7 +504,7 @@ $$z_k=n_0+\frac{n_1}{10^1}+\frac{n_2}{10^2} + \dots + \frac{n_k}{10^k} + \frac{n
 }
 \fact{The above definition is special in that, it ensures that decimal expansions are unique, since supremum's are unique. But the caveat is that, not all series' correspond to any real number as a decimal expansion. For example, in this definition: $0.999999\dots \neq 1$ since the unique decimal expansion for $1=1.00000$. So $0.9999\dots$ doesn't really correspond to any real number but we know obviously that it is $1$.  }
 \thmp{}{$x \in \RR$ is rational $\iff$ x has either terminating, or repeating decimal expansion}{$\impliedby$)Obvious\\
-$\implies$) Suppose $x=\frac{p}{q}$ for $p,q$ integers. Then $xq=p$. Let $k_0$ be the smallest integer such that $10^{k_0}p > q$. From Euclid's algorithm, we have $$10^{k_0}p=z_0q +r_0 \implies \frac{p}{q}=\frac{z_0}{10^{k_0}}+\frac{\frac{r_0}{q}}{10^{k_0}} $$ with $|r_0|<q$. Choose the smallest $k_1 \in \NN$ such that $10^{k_1}r_0>q $
+$\implies$) Suppose $x=\frac{p}{q}$ for $p,q$ integers. Then $xq=p$. Let $k_0$ be the smallest integer such that $10^{k_0}p \geq q$. From Euclid's algorithm, we have $$10^{k_0}p=z_0q +r_0 \implies \frac{p}{q}=\frac{z_0}{10^{k_0}}+\frac{\frac{r_0}{q}}{10^{k_0}} $$ with $|r_0|<q$. Also note that $z_0<10$ for if not, $10^{k_0}p=z_0q+r_0 \geq qz_0 \implies 10^{k_0-1}p \geq qz_0/10 \geq q $ which is contradictory. Next, choose the smallest $k_1 \in \NN$ such that $10^{k_1}r_0>q $
 Now consider $10^{k_1}r_0$, again we have $10^{k_1}r_0=z_1q+r_1$ with $|r_1| <q$. Thus $\frac{r_0}{q}=\frac{z_1}{10^{k_1}}+\frac{r_1}{10^{k_1}q}$. This implies $$\frac{p}{q}=\frac{z_0}{10^{k_0}} + \frac{z_1}{10^{k_0+k_1}}+\frac{r_1}{q 10^{k_0+k_1}}$$. We can keep going on as such, finding $k_n$, and applying Euclid's algorithm so that $$\frac{p}{q}=\frac{z_0}{10^{k_0}} + \frac{z_1}{10^{k_0+k_1}}+\frac{z_2}{10^{k_1+k_2+k_3}} \cdots + \frac{z_n}{10^{k_1+k_2 \dots +k_n}}+ \frac{r_n }{q10^{k_1+k_2...+k_n}}$$
 Since for every $n \in \NN, |r_n| < q$, and $q \in \NN$, only finite amount of remainders are possible when dividing by $q$. Hence, at some point $p \in \NN$, $r_n=r_p$ for a previous $n \in \NN$. This means that, $10^{k_{p+1}}p=z_{p+1}q +r_{p+1} \implies \frac{r_p}{q}=\frac{z_{p+1}}{10^{k^{p+1}}} +\frac{r_{p+1}}{10^{k_{p+1}}q}$ $$\implies \frac{r_n}{q}=\frac{r_p}{q} \implies z_{n+1}=z_{p+1}$$ Hence, we can see that it is recurring.  
 }

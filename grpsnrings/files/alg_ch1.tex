@@ -427,5 +427,10 @@ Symbolically:
 $$\{\overline{b} \in \ZZ/ n\ZZ: gcd(b,n)=1 \}=\{\overline{b} \in \ZZ/n\ZZ: \exists \overline{c} \in \ZZ/n\ZZ: \overline{b}\cdot \overline{c}=\overline{1} \}=(\ZZ/n\ZZ)* $$
 }
 
+\thmp{Generalised Bezout's Identity}{Suppose $j_1, j_2 \cdots j_n$ are given integers such that $gcd(j_1,j_2 \cdots j_n)=d$, then there exists integers $x_1,x_2 \cdots x_n$ so that $x_1j_1+x_2j_2 \cdots x_nj_n=d$}{We prime decompose each of $j_1,j_2 \cdots j_n$. For $j_k$, we have $$j_k=p_1^{q^k_1}p_2^{q^k_2}\cdots p_{n_k}^{q^k_{n_k}} $$
+We note that the gcd of all these numbers are the minimum of each index for each prime multiplied throughout. An important bit of information will be cricual here: $$ min\{w_1,w_2 \cdots w_k,w_{k+1} \cdots w_n \}=min\{ min\{w_1,w_2 \cdots w_k \}, min\{w_{k+1},w_{k+2} \cdots w_n \} \}$$
+So we split $gcd(j_1,j_2, \cdots j_n)$ into $gcd(gcd(j_1,j_2),gcd(j_3 \cdots ,j_n))=$ some linear combination of $j_1,j_2$ and $gcd(j_3, \cdots j_n)$. Do the same split to $gcc(j_3, \cdots j_n)$, to keep getting linear combinations, until finally you find $gcd(j_1,j_2 \cdots j_n)=x_1j_1+x_2j_2 \cdots x_nj_n$
+}
+
 
 \end{document}
