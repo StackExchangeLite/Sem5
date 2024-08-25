@@ -227,7 +227,43 @@ The symmetries of $D_{2n}$ are the functions listed above. Note the following:
 \end{enumerate}
 
 \thmp{}{The set $\{1,r,r^2 \cdots r^{n-1}; s; rs,r^2s, \cdots r^{n-1}s\}$ Constitutes a group, of order $2n$. }{We note that $1,r,r^2, \cdots r^{n-1}$ all obey ASCII. So does $s$, since it is self inverse(The identity here is the identity function). Consider the permutations of the kind $r^js$. These have inverses as well, for if we compose this with $r^{n-j}$, we would have $r^{n-j} \circ (r^j s)=s$. If we compose this still, with $s$, we get $1$. The total composition on $r^j s$ would have been $sr^{n-j}$. Infact, these elements too are self inverses. Easier way to see this is $(r^i s)(r^i s)=r^i(sr^i)s=r^i(r^{-i}s)s=1$. These also, then follow ASCII. }
+\subsection{More basix, Homomorphisms, isomorphisms, centers}
+\defn{Homomorphism}{Let $\langle G, \cdot \rangle$ and $\langle H, *\rangle$ be two groups. We say a function $\phi: G \to H$ is a \textbf{homomorphism} if $\forall x,y \in G$, $\phi(x \cdot y)=\phi(x)*\phi(y)$. 
+\\\\ Some notable features of a homomorphism are:
+\begin{enumerate}
+    \item $\phi(e_G)=e_H$
+    \item $\phi(a^{-1})=\phi(a)^{-1}$
+\end{enumerate}
 
+}
+\defn{Group Isomorphism}{A homomorphism from $\langle G, \cdot \rangle$ to $\langle H,* \rangle$ is a group isomorphism if it is bijective.}
+\thmp{}{Let $\langle G, \cdot \rangle$ be a group. Consider $*:G \times G \to G$ a binary operation defined as $$a*b=b \cdot a$$. Then this is a group isomorphism from $G \cdot$ to $G, *$.}{Consider $\phi:G \to G$ given by $\phi(a)=a^{-1}$. This is a bijection since every $a$ maps to a unique $a^{-1}$, and vice versa. Consider $\phi(a\cdot b)=b^{-1} \cdot a^{-1}=\phi(b) \cdot \phi(a) = \phi(a)*\phi(b)$, which makes $\phi$ a homomorphism, hence, an isomorphism.}
+
+\defn{Centralizer of $a \in G$}{\textbf{Centralizer} of an element $a$ in group $G$ is defined as $$H_a:=\{x \in G: xa=ax \}$$ or, the set of all elements in $G$ that commute with $a$. }
+\lemp{}{Centralizer of $a \in G$ is a subgroup of $G$}{$e$ is obviously in $H_a$. Suppose some $b \in H_a$, i.e, $ab=ba$. Consider $abb^{-1}=a=bab^{-1} \implies b^{-1}a=ab^{-1}$ which means that if $b \in H_a$, $b^{-1}$ is also in $H_a$. That it is closed and associative is also obvious (since $ba=ab$ and $ca=cb$ would mean $bca=abc$).}
+\defn{Centralizer of a subset $S \subset G$}{\textbf{Centralizer of a set} $S$ in $G$ is defined as $$H_S:=\{x \in G: xz=zx \forall z \in S \}$$}
+\lemp{}{Centralizer of a set $S \subset G$ is a subgroup of $G$}{Again, obviously $e$ is in $H_S$. Let $b \in H_S$, i.e, $bx=xb, \forall x \in S$. $b^{-1}bx=x=b^{-1}xb \implies xb^{-1}=b^{-1}xbb^{-1}$ which gives $xb^{-1}=b^{-1}x, \forall x \in S$. Hence, $b^{-1} \in H_S$. Suppose $a,b \in H_S$, i.e, $ax=xa, \forall x \in S$ and $bx=xb, \forall x \in S$. $a(bx)=a(xb)=(ax)b=x(ab)$ which makes $ab \in H_S$.}
+\defn{Center of a group $G$}{\textbf{The center of a group} $G$ is defined as the centralizer of $G$, i.e $$H_G:=\{x\in G: xz=zx, \forall z \in G\} $$
+by the previous lemma, this is also a group. }
+\lemp{}{Center of a group $G$ is an abelian subgroup.}{$H_G:=\{x \in G: xz=zx, \forall z \in G\}$ is easily seen to be a group. Consider $k_1, l_2 \in H_G$, and consider $k_1 \cdot k_2 \in H_G$ (which exists in $H_G$ due to closure). Treating $k_1$ as an element in $H_G$ and $k_2$ as an element in $G$, we note that by definition, $k_1(k_2)=k_2k_1$. Hence, the group is abelian.}
+
+\subsubsection{Something on Cosets and Lagrange's Theorem}
+Let $G$ be a group and $H$ be a subgroup of $G$. Define the equivalence relation $\equiv$ on $G$ as follows: $a \equiv b$ if and only if $ab^{-1} \in H$. This is clearly an equivalence relation since $a\equiv a$, and $a\equiv b$ gives us $ab^{-1}=h \in H$ which gives us $h^{-1}=ba^{-1}\in H$ which means $b\equiv a$. Similarly easy to see that if $a\equiv b$, $b\equiv c$, then $a\equiv c$. 
+\\\\ The equivalence classes of this equivalence relation are denoted $[b]$ which constitutes the set of all $x \in G$ so that $x\equiv b$ or $xb^{-1}\in H$ (or $bx^{-1} \in H$). 
+\\\\ \textbf{Definition:(Left Coset)} We digress to define what is called a \textbf{left coset} of $H\leq G$ given an element $b \in G$ (denoted $bH$). $$bH:=\{z\in G: \exists h \in H: z=bh\}$$ or equivalently $$bH:=\{bh:h\in H\}$$
+\\\\ \textbf{Definition:(Right Coset)} Similarly, a \textbf{Right Coset} of $H \leq G$ given an element $a \in G$ (denoted $Ha$) is defined as $$Ha:=\{z \in G: \exists h \in H: z=ha\} $$ or equivalently $$Ha:=\{ha: h \in H\} $$
+\\\\From this definition, it is clear that the set of all equivalence classes are precisely the left cosets of $H$. i.e, $[b]$ is the set of all $x \in G$ so that $x \equiv b$ which means $xb^{-1}=h\in H$ or equivalently $x=bh, h\in H$ which means $x \in bH$. Every element in $[b]$ is an element in $bH$, and conversely, consider an element $z \in bH$ which means $z=bh, h \in H$ which means immediately that $z \equiv b$ or $z \in [b]$. Consider two elements in the set of all distinct equivalence classes, $[a]$ and $[b]$. Note that $[a]=aH$ and $[b]=bH$. Note here that there exists a bijective map from $[a]$ to $[b]$, given by $\psi:aH \to bH$ defined by $ah \mapsto bh$. $\psi(ah_1)=\psi(ah_2) \implies bh_1=bh_2$ or $h_1=h_2 \implies ah_1=ah_2$, whence injectivity is clear. Consider $bh \in bH$. There exists $ah$ so that $\psi(ah)=bh$ which means that $\psi$ is bijective. This means that $|[a]|=|[b]|$ i.e, the cardinality of $[a]$ is the same as the cardinality of $[b]$.
+\\\\ Note that, if we look at $[e]$, i.e, the set $eH:=\{eh=h: h \in H\}=H$, we see from the previous result that for whatever $a \in G$, $|[a]|=|aH|=|H|$. The size of any equivalence class is the size of the subgroup itself. 
+\\\\ Note that the collection of distinct equivalence classes form a partion of the entire group $G$. If $G$ is finite, say, of order $n$, then the sum of the cardinalities of all the equivalce classes ought to give us $n$. Formally this means, suppose $X=\{[a]:a\in G\}$ be the collection of all (distinct) equivalence classes. Then $$\sum_{[a] \in X}|[a]|=|G|$$ But since $|[a]|=|aH|=|H|$, we can rewrite the above as:
+$$\sum_{i=1}^{|\{[a]: a \in G\}|}|H|=|G| $$
+which implies $$|\{[a]:a \in G \}|\cdot|H|=|G| $$
+This is Lagrange's theorem:
+\thmp{Lagrange's Theorem}{Suppose $G$ is a given finite group, and $H$ a subgroup of $G$. Then, $|H| \ | \ |G|$}{We saw from the previous analysis that for some integer $k$, $k|H|=|G|$. This means that for any subgroup $H$ of finite group $G$, $|H|$ divides $|G|$.}
+\corp{(\textbf{Euler's Theorem}) Let $gcd(a,n)=1$, then $a^{\phi(n)}\equiv 1 mod(n)$ where $\phi(n)$ is the totient function. }{Consider $(\ZZ / n \ZZ)^{*}$, the multiplicative group. This has, as we know, $\phi(n)$ elements (i.e, all numbers $q$ smaller than $n$ such that $gcd(q,n)=1$). Cosnider a given $a$ so that $(a,n)=1$, which means $a \in \ZZ/ n\ZZ^{*}$. Cosnider $\langle a \rangle \leq (\ZZ/ n\ZZ)^*$. Since the main group is of finite order, this cyclic subgroup also has to have finite order $k$. i.e, $a^k=1$. Moreover, from Lagrange's theorem, we note that any subgroup's cardinality divides the main group's cardinality, which means $k | \phi(n)$. This means $k\gamma=\phi(n)$ which gives us $(a^k)^{\gamma}=a^{\phi(n)}=1$, which proves the reuslt.
+\\\\ \textbf{Alt proof:}\emph{work in progress....} }{}
+\corp{\textbf{Fermat's Little Theorem} Let $a,p \in \ZZ$, $p$ being a prime, with $gcd(a,p)=1$, then $a^{p-1}\equiv 1 mod(p)$}{Simply plug $n=p$ and $\phi(n)=\phi(p)=p-1$ into Euler's Theorem. We are done.
+\\\\ \textbf{Alt proof:}\emph{work in progress....}}{}
+\subsection{Even more basix, Gnerators etc.}
 \defn{Generator}{Let $G$ be a group and $S$ a subset of $G$. We say $G$ is \emph{\textbf{generated by}} $S$, denoted by $G=\langle S \rangle$ if every element of $G$ can be written as a finite sequence of products of elements in $S$. More specifically, for every $x \in G$, there exists $q_1, q_2, \cdots q_{n_x}$ (needn't all be distinct)and indices $p_1,p_2 \cdots p_{n_x}$ so that $x=q_1^{p_1} q_2^{p_2} \cdots q_{n_x}^{p_{n_x}}$. $$\langle S \rangle:=\{ a_1^{e_1}a_2^{e_2} \cdots a_n^{e_n}: \text{for any } a_1,a_2 \cdots a_n\text{ in }S, \text{ and any } e_1,e_2 \cdots e_n \in \ZZ \} $$ }
 
 \thmp{}{Let $G$ be a cyclic group $\langle a \rangle$ of order $n$. Suppose $m|n$, then there exists a cyclic subgroup of order $m$ in $G$. Moreover, this group is the unique subgroup of order $m$. }{Consider $\langle a^{n/m} \rangle$. $O(a^{m/n})=n/(gcd(n/m, n))=n/(n/m)=m$. So existence is clear. Now onto uniqueness:
