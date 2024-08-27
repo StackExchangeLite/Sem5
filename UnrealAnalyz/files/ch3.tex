@@ -52,6 +52,11 @@ Hence the max norm is a metric.
 \exm{the $\frac{d}{1+d}$ metric}{Say $X,d$ is a metric space, then $g(x,y)=\frac{d(x,y)}{1+d(x,y)}$ is a metric.
 \\\\ pf{exercise to the reader}
 }
+\exm{The discrete metric}{Let $X$ be any set whatsoever. Define the metric $$d(x,y):=\begin{cases} 1 \ \text{if } x\neq y \\ 0 \text{ if } x=y \end{cases}$$ This is a metric due to positive definiteness and symmetry. The triangle inequality is, also, not hard to see.}
+\exm{Space of all bounded sequences }{Let $X$ be the set of all bounded sequences of reals, i.e, the set of all $x$ such that $x=(x_1,x_2,\cdots)=\{x_n\}_{n=1}^{\infty}$ with $\sup_{i=1}^{n}(\{x_i\})<\infty$. If $\{x_i\}$ and $\{y_i\}$ are sequences (i,e, elements in $X$) let the distance between two sequences be defined by $$d(x,y):=\sup_{i=1}^{\infty}|x_i-y_i|$$
+Clearly, it is positive definite and symmetric. Consider three sequences $\{x_n\}$, $\{y_n \}$ and $\{z_n\}$ in $X$. $d(x,y)=\sup\{|x_i-y_i|:i \in \NN\}$, $d(x,z)=\sup\{|x_i-z_i|:i \in \NN\}$ and $d(y,z)=\sup\{|y_i-z_i|:i \in \NN\}$. Cosnider $d(x,z)=\sup\{|x_i-z_i|=|x_i-y_i+y_i-z_i|:i \in \NN\} \leq \sup\{|x_i-y_i|+|y_i-z_i|:i \in \NN\}$ $\implies \leq \sup\{|x_i-y_i|:i \in \NN\}+\sup\{|y_i-z_i|:i \in \NN\}$ which proves the triangle. }
+
+
 \subsubsection{Continuity (Read definition of sequence in metric space, and limit points)}
 \defn{Continuous functions}{A function $f:X \to Y$ that maps a metric space $X,d_x$ to a metric space $Y,d_y$ is said to be continuous at $a \in X$ (which is a limit point of $X$) if $$(\forall \varepsilon>0)(\exists \delta>0)(\forall p \in X)(d_x(p,a)<\delta \implies d_y(f(p),f(a))<\varepsilon)$$}
 \thmp{Sequential Criteria for continuity}{Let $X,d_x$ and $Y,d_y$ be metric spaces and $f:X \to Y$. Let $a$ be a limit point of $X$. Then $f$ is continuous at $a$ if and only if for every sequence $(q_n) \in X$, $q_n \neq a$ with $\lim(q_n)=a$, we have $lim(f(q_n))=f(a)$}{$\implies$) We have that for every $\varepsilon>0$, there exists a $\delta>0$ so that for all $z \in X$ such that $z \in B_{\delta}(a)$, we have $f(z) \in B_{\varepsilon}(f(a))$. Consider an arbitrary sequence in $X$ that is so that $(q_n) \in X$, $q_n \neq a$ and $\lim(q_n)=a$. Which reads $\forall \delta>0, \exists n_0 \in \NN$ so that $\forall n \geq n_0$, we have $q_n \in B_{\delta}(a)$. Let $\varepsilon>0$ be arbitrary. From the definition of continuity, there exists a corresponding $\delta>0$ so that $\forall z \in X$, $z \in B_{\delta}(a)$ would imply $f(z) \in B_{\varepsilon}(f(a))$. For this $\delta_{\varepsilon}$, there exists an $n_0(\delta)(\varepsilon) \in \NN$ so that $\forall n \geq n_0$, $q_n \in B_{\delta}(a)$ which would imply $f(q_n) \in B_{\varepsilon}(f(a))$. This means that $\forall \varepsilon>0$, there exists $n_0 \in \NN$ so that $\forall n \geq n_0$, we have $f(q_n) \in B_{\varepsilon}(f(a))$ which means that $\lim(f(q_n))=f(a)$.
@@ -118,10 +123,10 @@ $$||\phi||_A:=\sup\{|\phi(x)|:x \in A\} $$
 
 \subsubsection{$l_p$ Space}
 
-\defn{$l_p$-Space}{Define $l_p$ as the space of all sequences $(a_n)_{n=1}^{\infty}$ such that $\sum_{i=1}^{\infty} |a_i|^p$ exists.}
+\defn{$l_p$-Space}{Define $l_p$ as the space of all sequences $(a_n)_{n=1}^{\infty}$ such that $\sum_{i=1}^{\infty} |a_i|^p$ exists. \textbf{The set of all sequences in Real line that are \emph{p summable}}}
 
-It is easily seen thet $l_p$ is a vector space over $\RR$. We defne the metric on $l_p$ as $d_p(\{x\},\{y\})=(\sum_{i=1}^{\infty}|x_i-y_i|^p)^{1/p}$
-
+It is easily seen thet $l_p$ is a vector space over $\RR$. We defne the metric on $l_p$ as $d_p(\{x\},\{y\})=(\sum_{i=1}^{\infty}|x_i-y_i|^p)^{1/p}$. Positive definiteness is clear since the sum would not be $0$ if even one index is different. Symmetry is obvious, and triangle: $$ d(x,z)=(\sum_{i=1}^{\infty} |x_i-z_i|^p)^{1/p} \leq (\sum_{i=1}^{\infty} |x_i-y_i+y_i-z_i|^p)^{1/p} $$ which gives $$\leq (\sum_{i=1}^{\infty} |x_i-y_i|^p)^{1/p}+(\sum_{i=1}^{\infty} |y_i-z_i|^p)^{1/p} =d(x,y)+d(y,z)$$
+(This must be obvious from the infinite case of minkowski inequality).
 \newpage
 \defn{Limit Point of a set $E$}{We say $p$ is a limit point of a set $E$ if $$(\forall \varepsilon>0)(\exists q_{\varepsilon} \in E; q_{\varepsilon} \neq p)(d(q_{\varepsilon},p)<\varepsilon)$$ In other words, in every $\varepsilon$-ball around $p$, there would exist a point $q_{\varepsilon}$ in $E$, which is different from $p$.  }
 \thmp{}{Every ball / neighbourhood of $p$ which is a limit point of $E$, would contain infinitely many points $q$ such that $q \in B_{\varepsilon}(p) \cap E\setminus \{p\} $}{Suppose for some neighbourhood, there only exists finite points $q_1,q_2,\cdots q_k$ such that $q_j \in B_{\varepsilon_0} \cup E\setminus\{p\}$. Let $\delta<min\{d(p,q_j): j \in [1,2,...k]\}$. We then have that, there exists no point $q \in E$ such that its distancce from $p$ is less than $\delta$, making $p$ a non-limit point. Absurd.}
