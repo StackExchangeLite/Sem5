@@ -1,7 +1,61 @@
 \documentclass[../Main.tex]{subfiles}
 
 \begin{document}
-\chapter{Assignment 1}
+\chapter{Assignment}
+
+\begin{center}
+\textbf{ASSIGNMENT-1}
+\end{center}
+\textbf{Some useful Definitions and theorems}
+
+\defn{(LimSup and LimInf)}{Given a sequence that is bounded (hence forth, all theorems involving limsup and liminf assumes a bounded sequence as given): \begin{enumerate}
+    \item $Limsup(x_n):= inf (V:=\{v \in \RR: \exists n_v \in \NN$ such that $ \forall n \geq n_v, x_n \leq v \})$
+    \item $Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$
+    
+\end{enumerate}}
+
+
+\thmp{}{The following are equivalent: \begin{enumerate}
+    \item $x$ is the LimSup($x_n$)
+    \item if $\varepsilon>0$, then $\exists$ utmost finite $n \in \NN$ such that $x+\varepsilon<x_n$ but infinite $n\in \NN$ such that $x-\varepsilon<x_n$. This implies $x+\varepsilon \in V$ but $x-\varepsilon \not\in V$ 
+    \item If $S_m:\{x_m,x_{m+1},\cdots \}$ and $U_m=sup(S_m)$, ,then $lim(U_m)=inf(U_m)=x$
+    \item If $S$ is the set of all subsequential limits of $x_n$, then $sup(S)=x$
+\end{enumerate}}{$(1) \implies (2)$) Since $x$ is the infimum of $V$, $\forall \varepsilon>0$, $\exists z \in V$ such that $z \leq x+\varepsilon$. We see that, $\exists n_z$ such that $\forall n\geq n_z, x_n < z \leq x+\varepsilon$. Hence, $x+\varepsilon \in V$, or rather, there exists utmost finite $n$ such that $x_n> x+\varepsilon$. $x-\varepsilon$ cannot belong in $V$ since $x$ is the infimum, therefore, $\forall k \in \NN, \exists n_k \geq k$ such that $x_{n_k}>x-\varepsilon$, or rather, there would exist infinite $n$ such that $x-\varepsilon<x_n$. \\\\
+$(2) \implies (3))$ We know that $U_m \geq U_{m+1}$, is a monotone decreasing sequence that is bounded below. Hence, from monotone convergence theorem, we have $lim(U_m)=inf(\{U_m\})$. From (2), we know that $\forall \varepsilon>0$, $\exists n_\varepsilon$ such that $\forall n \geq n_z$ we have $x_n \leq x+\varepsilon$. Therefore, $U_{n_{\varepsilon}} \leq x+\varepsilon$. Hence, $\forall \varepsilon>0, inf(U_n)=lim(U_n) \leq x+\varepsilon$. There exists infinite $x_n$ such that $x-\varepsilon<x_n$ which means that $x-\varepsilon<U_n \forall n \in \NN$. This implies $x-\varepsilon \leq inf(U_n)$. Therefore means $\forall \varepsilon>-, |inf(U_n)-x| \leq \varepsilon$. From the lemma, $inf(U_n)=x$.\\\\
+$(3) \implies (4))$ Since $inf(U_n)=x$, $\forall \varepsilon, \exists n_0(\varepsilon) \in \NN$ such that $U_{n_0(\varepsilon)} \leq x+\varepsilon \implies $ $\forall n \geq n_0(\varepsilon), x_n \leq x+\varepsilon$ so for every convergent subsequence, $x_{n_k}$, $lim(x_{n_k}) \leq x+ \varepsilon$. Since the set of all subsequential limits is bounded (and non empty from Bolzano Weierstrass Theorem), $sup(S=$ set of all subsequential limits) $\leq x+\varepsilon$. $\forall \varepsilon>0, x-\varepsilon<inf(U_n) \implies \forall \varepsilon \forall n \in \NN, x-\varepsilon< U_n$.\\
+Choose $\varepsilon=1$ and the set $S_1$, for which $\exists x_{n_1} \in S_1$ such that $U_1-1\leq x_{n_1}<U_1$. Choose $\varepsilon=\frac{1}{2}$ and the set $S_{n_1}$ for which $\exists x_{n_2} \in S_{n_1}$ such that $U_{n_1}-\frac{1}{2}\leq x_{n_2}<U_{n_1}$. From construction, $n_2>n_1$. Having chosen $\varepsilon=\frac{1}{j}$ and the set $S_{n_{j-1}}$ and obtaining $n_j$ such that $\exists x_{n_j} \in S_{n_{j-1}}$ so that $U_{n_{j-1}}-\frac{1}{j} \leq x_{n_j}<U_{n_{j-1}}$ such that $n_j>n_{j-1}$, we choose $\varepsilon=\frac{1}{j+1}$ and the set $S_{n_j}$. The construction continues and we create a sequence $x_{n_j}$ which from squeeze play, converges to $x$.To see this, we have that $\forall j \in \NN$ $$U_{n_{j-1}}-\frac{1}{j} \leq x_{n_j}<U_{n_{j-1}}$$
+Taking limit on both LHS and RHS we see that $x_{n_j}$ converges to $x$. Therefore $x$ itself is a subsequential limit, which means $x \leq sup(S)$. We already had $\forall \varepsilon>0, sup(S) \leq x+\varepsilon$, which gives, $\forall \varepsilon>0, x\leq sup(S) \leq x+ \varepsilon$, which means $sup(S)=x$.\\\\
+$(4) \implies (1))$ Consider the set $V:=\{v \in \RR: \exists n_v \in \NN$ such that $ \forall n \geq n_v, x_n \leq v \}$. if $z \in V$, it means that every subsequential limit of $x_n$ goes below $z$. Therefore, $sup(S)=x \leq z \forall z\in V$. This means $x \leq limsup(x_n)$. Suppose $sup(S)=x<limsup(x_n)$. This means $Sup(S)+\delta=limsup(x_n)$ or $x=limsup(x_n)-\delta$. $limsup(x_n)$ is an upper bound to the set of all subsequential limits $S$. Consider an arbitrary subsequential limit $y$. $\forall \varepsilon>0, \exists n_{\varepsilon} \in \NN$ such that $\forall n \in \NN, n \geq n_{\varepsilon}$ we have $y-\varepsilon<x_n<y+\varepsilon<limsup(x_n)-\delta+\varepsilon$. Choose an $\varepsilon$ slightly larger than $\delta$, which would make $limsup(x_n)-(\delta-\varepsilon)$ slightly smaller than $limsup(x_n)$. This gives: for the chosen $\varepsilon \exists n_{\varepsilon} \in \NN$ such that $\forall n \in \NN, n \geq n_{\varepsilon}$ we have $x_n<limsup(x_n)-\delta+\varepsilon<limsup(x_n)$. This means that a number slightly smaller than $inf(V)$ exists in $V$. This is absurd. Hence, $limsup(x_n)=sup(S=\text{ set of all subsequential limits })$.
+}
+
+\thmp{}{The following are equivalent: \begin{enumerate}
+    \item $y$ is the Liminf($x_n$)
+    \item if $\varepsilon>0$, then $\exists$ utmost finite $n \in \NN$ such that $x_n<y-\varepsilon$ but infinite $n\in \NN$ such that $x_n<y+\varepsilon$. This implies $y+\varepsilon \not\in U$ but $y-\varepsilon \in U$ 
+    \item If $S_m:\{x_m,x_{m+1},\cdots \}$ and $L_m=inf(S_m)$, ,then $lim(L_m)=sup(L_m)=y$
+    \item If $S$ is the set of all subsequential limits of $x_n$, then $inf(S)=y$
+\end{enumerate}}{$(1)\implies(2))$ Given $y=Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$.
+If $\varepsilon>0$ we have a $z\in U$ such that $ y-\varepsilon \leq z$. There exists only finite $n$ such that $x_n<z$ which means there exists only finite $n$ such that $x_n<y-\varepsilon$. Therefore, $y-\varepsilon \in U$. Consider $y+\varepsilon$. Since $y+\varepsilon \not\in U$, we have that $\forall k \in \NN$ $\exists n_k \geq k$ such that $x_n <y+\varepsilon $ or infinite $n_k$ such that $x_{n_k}$ such that $x_{n_k}<y+\varepsilon$.\\\\
+$(2) \implies (3))$ We can see that, if $S_m:=\{x_n: n\geq m\}$, and $L_m:=inf(S_m)$, then $L_m \leq L_{m-1}$, which is a monotone increasing sequence, which is bounded, hence is convergent to $sup(\{L_m\})=lim(L_m)$. Since from (2), $\exists $ infinite $n_k$ such that $x_n<y+\varepsilon$, we see that $\forall m, inf(S_m)=L_m \leq y+\varepsilon \implies$ $lim(L_m) \leq y+\varepsilon \forall \varepsilon>0$. Since there exists only finite $n$ such that $x_n<y-\varepsilon \implies \forall n\geq n_y(\varepsilon), x_n \geq y-\varepsilon$. This means that $y-\varepsilon \leq L_{n_y} \implies y-\varepsilon \leq lim(L_m)=sup(L_m)$. Hence $\forall \varepsilon>0$, $y-\varepsilon \leq lim(L_m) \leq y+ \varepsilon$, hence $y=lim(L_m)$.\\\\
+$(3) \implies (4))$ Sunce $y=sup(L_m)=lim(L_m)$. For an $\varepsilon>0$, we have an $L_{n_1}$ such that $y-\varepsilon \leq L_{n_l}$. Since $L_{n_1}$ is the infimum of $S_{n_1}$, we have $y-\varepsilon< x_n, \forall n \geq n_l$. This would mean that every subsequence converges to a point larger than $y-\varepsilon$. Therefore $y-\varepsilon<t$ $\forall t \in S$ where $S$ is the set of all subsequential limits (This set is non empty from Bolzano Weierstrass, and is bounded, hence has a supremum and infinmum). Hence $\forall \varepsilon>0$, $y-\varepsilon\leq inf(S)$. $y+\varepsilon$ is an upper bound for $\{L_m: m\in \NN\}$. Choose $\varepsilon=1$ and the set $S_1$. $L_1+1\geq L_1$. Since $L_1$ is infimum of $S_1$, then $\exists x_{n_1} \in S_1$ such that $L_1 \leq x_{n_1} \leq L_1+1$. Choose $\varepsilon=\frac{1}{2}$, and the set $S_{n_1}$. $\exists x_{n_2} \in S_{n_1}$ such that $L_{n_1} \leq x_{n_2} \leq L_{n_1}+\frac{1}{2}$. Having chosen $\varepsilon=\frac{1}{j}$ and the set $S_{n_{j-1}}$, we have an $x_{n_j} \in S_{n_{j-1}}$ such that $$L_{n_{j-1}} \leq x_{n_j} \leq L_{n_{j-1}}+\frac{1}{j}$$ Notice that, by construction of our sets, $n_j>n_{j-1}$. Hence, we have a subsequence of $x_n$ which is $x_{n_j}$ which, from squeeze play theorem, converges to $y$. Therefore, $y \in S$, which means $inf(S) \leq y$. We therefore have $\forall \varepsilon>0$, $y-\varepsilon \leq inf(S) \leq y$. This means $inf(S)=y$.\\\\
+$(4)\implies (1))$ Given $y$ is the infimum of the set of all subsequential limits. Say $\alpha=Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$. If $z \in U$, it means that after some $n_z$, every $x_n \geq z$ which means every subsequence converges above $z$. Therefore, $z$ is a lowerbound for the set of all subsequential limits $S$. $z \leq inf(S)=y, \forall z \in U$. We can see that $sup(U)=\alpha \leq y$ from this. Suppose $Sup(U)=\alpha < y \implies \alpha=y-\delta$ for some $\delta$. Consider an arbitrary subsequential limit $q$. $\forall \varepsilon, \exists n_q(\varepsilon) \in \NN$ such that $\forall n \in \NN, n \geq n_q(\varepsilon)$ we have $y-\varepsilon+\delta-\delta \leq q-\varepsilon<x_n<q+\varepsilon$. 
+$(y-\delta)-(\varepsilon-\delta)=\alpha+(\delta-\varepsilon) \leq q-\varepsilon<x_n<q+\varepsilon$. 
+This means that $\exists n_0$ such that $\forall n \geq n_0$, $\alpha+(\delta-\varepsilon)<x_n$. This means that, if we choose $\varepsilon$ smaller than $\delta$, we would have a number larger than $sup(U)=\alpha$ being inside $U$. Absurd. Hence $\alpha=y$.
+}
+\thmp{}{A bounded sequence is convergent if and only if $limsup(x_n)=liminf(x_n)$}{$\implies$) If a bounded sequence is convergent, all its subsequences converge to the same limit $x$. Therefore $x$ is both the supremum and the infimum of the set of all subsequential limits, which is also the limsup and liminf.\\\\
+$\impliedby$) If limsup=liminf, then the set of all subsequential limits has infimum and the supremum equal. This means that the set of all subsequential limits is singleton, with $x\in S$. If $x_n$ is bounded and all its convergent subsequences converge to $x$, then $x_n$ converges to $x$.}
+
+\thmp{(A perhaps useful theorem for LimSup LimInf)}{If $A+B:=\{a+b: a \in A, b \in B \}$, then $\gamma = sup(A+B)=sup(A)+sup(B)=\alpha+\beta$.}{
+$\alpha \geq a, \forall a \in A$ and 
+$\beta \geq b, \forall b \in B$. 
+We hence see that $\alpha+\beta \geq a+b \forall a\in A, b\in B$.
+Therefore, $\alpha+\beta \geq \gamma$.
+
+Now consider $a+b \leq \gamma$ $\forall a \in A, b\in B$.
+This means that $\alpha+b \leq \gamma$ $\forall b \in B$.
+From here we see that $\alpha+\beta \leq \gamma$ whence we
+see that $\gamma=\alpha+\beta$
+}
+
 \lemp{}{If $\alpha$ is the supremum of a set $S$, then $-\alpha$ is the infimum
 of the set $-S$ defined as $$-S:=\{-x: x \in S\} $$}{If $\alpha$ is the supremum,
 then $\alpha\geq x, \forall x \in S$ and $\alpha \leq M, \forall M$ such that $M\geq x, \forall x \in S$. 
@@ -17,44 +71,20 @@ Recall the definitions:
 $$LimSup(x_n):=inf(U_n: U_n:=sup(\{x_n,x_{n+1} \cdots \})) $$
 
 $$LimInf(x_n):=sup(L_n: L_n:=inf(\{x_n,x_{n+1} \cdots \})) $$
-
-\section{Problem 2}
-Let $x$ be $limsup(-x_n)$. $$x=inf(U_n: U_n=sup\{-x_n,-x_{n+1} \cdots \})$$
+\\\\ \textbf{Problem 2}
+\\\\ Let $x$ be $limsup(-x_n)$. $$x=inf(U_n: U_n=sup\{-x_n,-x_{n+1} \cdots \})$$
 $$\implies x=inf(U_n:U_n=-inf\{x_n,x_{n+1},\cdots\})$$
 $$\implies x=inf(-inf\{x_n,x_{n+1}\cdots \}, -inf\{x_{n+1},x_{n+2}\cdots \},\cdots)$$ 
 $$\implies x=-sup(inf\{x_n,x_{n+1}\cdots \},inf\{x_{n+1},x_{n+2}\cdots \},\cdots) $$
 Whence, we are done.
-\section{Problem 3}
-
-$$Liminf(x_n)\leq (\text{every subsequential limit of} x_n) \leq Limsup(x_n) $$
-Where $Liminf(x_n)$ is the infimum, and $Limsup(x_n)$ the 
-supremum of the set of all subsequential limits of $x_n$
-$$Liminf(y_n)\leq (\text{every subsequential limit of} y_n) \leq Limsup(y_n) $$
-Where $Liminf(y_n)$ is the infimum, and $Limsup(y_n)$ the 
-supremum of the set of all subsequential limits of $y_n$
-
-Adding these two inequalities we get:
-
-$Liminf(x_n)+Liminf(y_n)\leq$ $(\text{every subsequential limit of } x_n+ \text{every subsequential limit of } y_n)$ $\leq Limsup(x_n)+Limsup(y_n) $
-\\\\ Since the set of all subsequential limits of $x_n+y_n$ falls as a subset of the sum of the set of all subsequential limits of $x_n$ and $y_n$ respectively, we have: 
-
-$Liminf(x_n)+Liminf(y_n)\leq$ $(\text{every subsequential limit of } x_n+y_n)$ $\leq Limsup(x_n)+Limsup(y_n) $
-We see now that $Liminf(x_n)+Liminf(y_n)$ is a lowerbound
-for the set of all subsequential limits of $x_n+y_n$ 
-which gives us $$Liminf(x_n)+Liminf(y_n)\leq liminf(x_n+y_n) $$
-Similarly we see that $Limsup(x_n)+Limsup(y_n)$ is an upperbound
-for the set of all subsequential limits of $x_n+y_n$
-which gives us $$Limsup(x_n+y_n) \leq Limsup(x_n)+Limsup(y_n) $$
-
-Equality of (I) holds when the smallest subsequential limit of $x_n+y_n$ is the sum
-of the smallest possible subsequential limits of $x_n$ and $y_n$ respectively. 
-
-Similarly, (II) equailty holds when the largest subsequential
-limit of $x_n+y_n$ is equal to the sum of the smallest
-subsequential limits of $x_n$ and $y_n$ respectively.
-
-\section{Problem 4}
-Suppose $\forall n \geq N$, we have $x_n \leq y_n$. 
+\\\\ \textbf{Problem 3}
+\\\\ $x_n$ and $y_n$ are given bounded sequences in $\RR$. 
+Consider $$V_z:=\{v \in \RR: \exists n_v \text{ such that } \ \forall n \geq n_v, z_n=x_n+y_n \leq v\}$$
+Then $\limsup(x_n+y_n)=\inf(V_z)$. Consider $V_x$ and $V_y$, defined as $V_x:=\{v \in \RR: \exists n_v \text{ such that } \ \forall n \geq n_v, x_n \leq v\}$ and $V_y:=\{v \in \RR: \exists n_v \text{ such that } \ \forall n \geq n_v, y_n \leq v\}$. Look at $V_x+V_y:=\{u+w: u \in V_x, v \in V_y \}$. This is basically $V_x+V_y=\{u+w: \exists n_u, n_w \in \NN \text{ such that } \forall x_n \leq u \text{ and } y_l \leq w, \forall n \geq n_u, l \geq n_w \}$. Notice that $V_x+V_y$ is a subset of the set $\{u+w: \exists n_{u,w} \in \NN \text{ such that }x_n+y_n \leq u+w, \forall n \geq n_{u,w}\}$ which is itself a subset of $V_z$. This means that $\inf(V_z) \leq \inf(V_x+V_y)=\inf(V_x)+\inf(V_y) \implies \limsup(x_n+y_n) \leq \limsup(x_n)+\limsup(y_n)$. 
+\\\\ Consider $U_z:=\{u \in \RR: \exists n_u \in \NN \text{ such that } \forall n \geq n_u, u \leq z_n=x_n+y_n\}$,
+$U_x:=\{u \in \RR: \exists n_u \in \NN \text{ such that } \forall n \geq n_u, u \leq x_n+\}$ and $U_y:=\{u \in \RR: \exists n_u \in \NN \text{ such that } \forall n \geq n_u, u \leq y_n+\}$. Look at $U_x+U_y:=\{u+w: u \in U_x, w \in U_y\}$ which is basically $\{u+w: \exists n_u, n_w \in \NN \text{ such that } \forall n \geq n_u, u \leq x_n, \forall q \geq n_w, w \leq y_q\}$. If $u+W$ is an element in $U_x+U_y$, then there exists $n_u$ and $n_w$ so that $\forall n \geq n_u$, we have $u<x_n$ and for every $q \geq n_w$, $w<y_q$, which means, after a particular integer $n_{u,w}$, $u+w<x_n+y_n$ for all $n \geq n_{u,w}$. Hence, $U_x+U_y \subseteq U_0$ where $U_0:=\{u+w: \exists n_{u,w} \in \NN \text{ so that } u+w<x_n+y_n=z_n, \forall n \geq n_{u,w}\}$ which is itself a subset of $U_Z$. This means that $\sup(U_x+U_y)=\sup(U_x)+\sup(U_y) \leq \sup(U_z)$ which means $\liminf(x_n)+\liminf(y_n) \leq \liminf(x_n+y_n)$.
+\\\\\textbf{Problem 4}
+\\\\ Suppose $\forall n \geq N$, we have $x_n \leq y_n$. 
 It is clear to see that for every $n \geq N$, $U_n^x=sup(x_n,x_{n+1},\cdots)\leq 
 U_n^y=sup(y_n,y_{n+1},\cdots)$. We have, in other words:
 $U_n^x \leq U_n^y$ for all $n \geq N$. Hence, $Limsup(x_n)\leq limsup(y_n)$.
@@ -68,33 +98,155 @@ $$L_n^x \leq L_{n+1}^x \leq y_{n+1} $$
 $$\vdots $$
 Therefore, we see that $L_n^x \leq inf\{y_n,y_{n+1}\cdots\}=L_y^x$.
 From here we can conclude that $Liminf(x_n) \leq Limsup(y_n)$
+\\\\ \textbf{Problem 5}
+\\\\ Consider $(x_n)^{\frac{1}{n}}$ and $\frac{x_{n+1}}{x_n}$. Where $x_n$ is a positive, bounded sequence.
 
-\section{Problem 5}
-Consider $(x_n)^{\frac{1}{n}}$ and $\frac{x_{n+1}}{x_n}$. Where $x_n$ is a positive, bounded sequence.
-Let $V=\{v \in \RR: \exists \ n_v \in \NN : \ \forall n \geq n_v, \ x_n \leq v^n \}$
-and $V*=\{v \in \RR: \exists \ n_v \in \NN : \ \forall n \geq n_v, \ \frac{x_{n+1}}{x_n} \leq v \}$
+Suppose that $\limsup(x_{n+1}/x_n)=L$. That means that $\inf_{k \in \NN}(\sup_{n \geq k}(x_{n+1}/x_n)=u_k)=L$ which means that for any $\varepsilon>0$, we have a $k_0$ so that $u_0<L+\varepsilon$ which means that for every $n \geq k_0$, $x_{n+1}/x_n < L+\varepsilon$. $\implies$
+$$x_{k_0+1}/x_{k_0}<L+\varepsilon $$
+$$x_{k_0+2}/x_{k_0+1}<L+\varepsilon $$
+$$x_{k_0+3}/x_{k_0+2}<L+\varepsilon $$
+$$\vdots$$
+$$x_{k_0+(n-k_0)}/x_{k_0+(n-k_0-1)}<L+\varepsilon $$
+Multiplying throughout we get:
+$$x_{n}<x_{k_0}(L+\varepsilon)^{n-k_0} \implies (x_{n})^{1/n}<{\frac{x_{k_0}}{(L+\varepsilon)^{k_0}}}^{1/n}(L+\varepsilon)=\mathfrak{L(\varepsilon,n)} $$
+We note that $\mathfrak{L(\varepsilon,n)}$ converges to $L+\varepsilon$ which means that for every $\varepsilon'>0$, $\exists n_0$ so that $\forall n \geq n_0$, $L+\varepsilon-\varepsilon'<\mathfrak{L(\varepsilon,n)}<L+\varepsilon+\varepsilon'$. This means that for every $\varepsilon>0$ and $\varepsilon'>0$, there exists $n_0$ so that $\forall n \geq n_0$, $(x_n)^{1/n}<L+\varepsilon+\varepsilon'$. Replacing $\varepsilon+\varepsilon'$ with a singular choice of $\varepsilon$ we have that for every $\varepsilon>0$, there exists $n_0$ so that $\sup_{n \geq n_0}(x_n^{1/n}) \leq L+\varepsilon$ which finally means that for every $\varepsilon$, $\limsup(x_{n}^{1/n})\leq L+\varepsilon$. This would mean that $\limsup(x_n^{1/n}) \leq L=\limsup(x_{n+1}/x_n)$.
+\\\\ Consider A similar argument for the $\liminf$. Suppose $M=\liminf(x_{n+1/x_n})$ 
+$=\sup_{k \in \NN}(Q_k=\inf_{n \geq k}(x_{n+1}/x_n))$
+For every $\varepsilon>0$, $\exists Q_{k_0}$ so that $L-\varepsilon<Q_{k_0} \implies$ for every $n \geq k_0$, $L-\varepsilon< x_{n+1}/x_{n}$
+$$L-\varepsilon < x_{k_0+1}/x_{k_0}$$
+$$L-\varepsilon<x_{k_0+2}/x_{k_0+1} $$
+$$\vdots $$
+$$L-\varepsilon<x_{k_0+(n-k_0)}/x_{k_0+(n-k_0-1)}$$
+Multiplying throughout gives us 
+$$\mathfrak{J(\varepsilon,n)}=(L-\varepsilon)(\frac{x_{k_0}}{(L-\varepsilon)^{k_0}})^{1/n}<(x_{n})^{1/n} $$
+Note that $\mathfrak{J(\varepsilon,n)}$ converges to $L-\varepsilon$. We can then conclude (like above) that for every $\varepsilon>0$, there exists an $n_0$ so that $L-\varepsilon<(x_n)^{1/n}$ for every $n \geq n_0$. This means that for every $\varepsilon>0$, there exists an $n_0$ so that $L-\varepsilon<\inf_{n \geq n_0}(x_{n}^{1/n})$ which directly gives us that for every $\varepsilon>0$, $L-\varepsilon < \liminf(x_n^{1/n}) \implies \liminf(x_{n+1}/x_n)\leq \liminf(x_n^{1/n})$. 
+\\\\ Since $\liminf(x_{n+1}/x_n) \leq \liminf(x_n^{1.n}) \leq \limsup(x_n^{1/n}) \leq \limsup(x_{n+1}/x_n)$, if $x_{n+1}/x_n$ converges, its $\limsup$ and $\liminf$ are both the same, which forces $x_n^{1/n}$ sequence's limsup and liminf to be the same, which makes it convergent (and to the same limit).
 
-Consider arbitrary $v \in V$. We have an $n_v$ so that $\forall n \geq n_v$
-we have $x_n \leq v^n \implies x_{n+1} \leq v^{n+1} \implies \frac{x_{n+1}}{x_n}\leq v$.
-Hence, we see that this $v \in V*$ aswell, which gives $V \subseteq V*$.
+\begin{center}
+    \textbf{ASSIGNMENT-2}
+\end{center}
 
-Consider arbitrary $v \in V*$. We have $n_v$ so that
-$\forall n \geq n_v$, we have $\frac{x_{n+1}}{x_n} \leq v$
+\textbf{Problem 2}
+\\\\ c) Let $$\limsup(A_n):=\cap_{n=1}^{\infty}(\cup_{k=n}^{\infty}A_k) $$ which means $\cap_{n=1}^{\infty}(C_n=\{x \in X: \exists n' \geq n \text{ such that }x \in A_{n'}\})$. $\limsup(A_n)=\{x \in X: x \in C_j,  \forall j \in \NN\}$ which means $\{x \in X: \exists n_1 \geq 1 \text{ so that } x \in A_{n_1}; \exists n_2 \geq 2  \text{ so that } x \in A_{n_2}; \exists n_3 \geq 3 \text{ so that } x \in A_{n_3} \cdots \}$
+which is equivalent to saying there exists infinitely many $n$ so that $x \in A_n$ (since we do have $n_1,n_2 \cdots$, an infinite collection of natural numbers so that $x \in A_{n_j}$).
+\\\\ d) Let $$\liminf(A_n):=\cup_{n=1}^{\infty}(\cap_{k=n}^{\infty}A_k)$$ which gives us $\cup_{n=1}^{\infty}(D_n=\{x \in X: x \in A_k, \forall k \geq n\})$ which gives us $\liminf(A_n)=\{x \in X: \exists j \in \NN \text{ so that } x \in D_j\}$ which means $\{x \in X: \exists j \in \NN \text{such that } \forall n \geq j, x \in A_n\}$ which is equivalent to saying that there are only at most finite possible integers $n$ so that $x \not \in A_n$ 
+\\\\ a) Note that, from (c) and (d), we have a characterisation of $\limsup(A_n)$ as the set of all $x \in X$ so that there are infinitely many $n$ so that $x \in A_n$, and a characterisation of $\liminf(A_n)$ as the set of all $x \in X$ so that there are utmost finite $n$ so that $x \not \in A_n$ which means that for $x \in \liminf(A_n)$, after some $n_0$, every $n \geq n_0$ is so that $x \in A_n$, which makes $\liminf(A_n)$ a subset of $\limsup(A_n)$.
+ Hence $\liminf(A_n)$
+ \\\\ b) $\liminf((A_n)^C)$ is the set of all $x \in X$ so that there are at most finite $n$ so that $x \not \in A_n^C$ which means there are at most finite $n$ so that $x \in A_n$.
+ \\ Consider $(\limsup(A_n))^C$ which is the complement of the set of all $x \in X$ so that there are infinitely many $n$ so that $x \in A_n$, or more precisely, $\forall k \in \NN$, $\exists n_k \geq k$ so that $x \in A_{n_k}$. The complement would be the negation of the previous statement which amounts to: $x \in X$ so that $\exists k \in \NN$ so that $\forall n\geq k$, $x \not \in A_{n_k}$ which again is equivalent to saying there are at most finite $n$ so that $x \in A_n$. Hence $\liminf(A_n^C)=(\limsup(A_n))^C$
+ \\\\ \textbf{Problem 3}
+ \\\\ $d(x,y)=\sqrt(|x-y|)=0$ if and only if $x=y$. Moreover, $d(x,y) \geq 0, \forall x,y \in \RR$.
+ \\ $d(x,y)=\sqrt{|x-y|}\leq \sqrt{|x-z+z-y|}\leq \sqrt{|x-z|+|z-y|}\leq \sqrt{|x-z|}+\sqrt{|z-y|}=d(x,z)+d(z,y)$ which proves the triangle criteria.
+ \\\\ \textbf{Problem 4}
+ \\\\ i) In the extended real line, $\overline{R}$, we append the points $\infty, -\infty$ to $\RR$. $d(x,y):=|\arctan(x)-\arctan(y)|$. Obviously, $d(x,y)\geq 0$ (from the absolute value there). $d(x,y)=0 \implies |\arctan(x)-\arctan(y)|=0 \implies \arctan(x)=\arctan(y)$ which means $x=y$ (since $\arctan$ is left invertible), hence $d(x,y)=0 \iff x=y$.
+ \\ Next we check the triangle inequlity: consider $d(x,y)=|\arctan(x)-\arctan(y)| \leq |\arctan(x)-\arctan(z)|+|\arctan(z)-\arctan(z)|=d(x,z)+d(y,z)$.
+\\\\ ii) Consider $d(x,y)=|f(x)-f(y)|$ given by $$f(x)=\begin{cases}
+    |x|/1+|x| \ \text{ if } x \text{ is finite} \\
+    1 \ \text{ if } x=\infty \\
+    -1 \ \text{ if }x=-\infty 
+\end{cases} $$
 
-$$\frac{x_{n_v+1}}{x_{n_v}}\leq v$$
-$$\frac{x_{n_v+2}}{x_{n_v+1}}\leq v$$
-$$ \vdots$$
-$$\frac{x_{v_v+(n-n_v)}}{x_{n-1}} \leq v$$
-Multiply all these equations. We then get:
-$$\frac{x_n}{x_{n_v}}\leq v^{n-n_v} $$
-which gives, $\forall n \geq n_v$, $$x_n \leq x_{n_v}v^n v^{-n_v} \implies (x_n)^{1/n} \leq x_{n_v}^{1/n}v (v^{-n_v})^{1/n} $$
-We see that, for large enough $n$, the RHS can be made to go below $v$. Whence, we 
-see that beyond a certain $n$,  $(x_n)^{1/n}\leq v$. Hence,
-$v$ that was initially assumed to be in $V*$, is shown to 
-exist in $V$. Therefore, $V=V*$. Hence, $inf(V)=inf(V*)$ which
-means $limsup((x_n)^{1/n})=limsup(\frac{x_{n+1}}{x_n})$.
+Consider $d(x,y)=0$ which means that $|f(x)-f(y)|=0$ which gives $f(x)=f(y)$. Since $f$ is injective, $d(x,y)=0 \iff x=y$. Consider the case where $x$ and $y$ are finite ( and $f(z)$), $d(x,y)=|f(x)-f(z)+f(z)-f(y)|\leq d(x,z)+d(y,z)$. If $x,y$ are finite but $z$ is infinite, then $d(x,y) < \infty $ will certainly hold. If any $x=\infty$ and $y=\infty$, then positivity will take care of triangle inequality. If $x=\infty$ but $y=-\infty$, then $d(x,y)=\infty$ but $d(x,z)=\infty $ and $d(y,z)=\infty$ (from the absolute value condition). Hence in all cases triangle inequality is satisfied.
+\\\\ \textbf{Problem 5}
+\\\\ i) Let $f:X \to X$ be an injective map. $D_1(x,y):=d(f(x),f(y))$. If $x=y$, then $f(x)=f(y)$ obviously, which means $d(f(x),f(y))=D_1(x,y)=0$. If $D_1(x,y)=0$, that means $d(f(x),f(y))=0$ which happens only if $f(x)=f(y)$ or $x=y$.
+Let $D_1(x,y)=d(f(x),f(y)) \leq d(f(x),f(z))+d(f(z),f(y))=D_1(x,z)+D_1(y,z)$ which proves triangle inequality. Hence $(X, D_1)$ is a metric space.
+\\ ii) Suppose $A,B$ is a partition of $X$. $$D_2(x,y):=\begin{cases}
+    d(x,y)+1 \ \text{ if exactly one of x or y is in A} \\
+    d(x,y) \ \text{ else}
 
-The very same argument can be re-run, by interchanging the $\leq$-s with $\geq$-s to conclude that
-$liminf((x_n)^{1/n})=liminf(\frac{x_{n+1}}{x_n})$. Therefore, if $\frac{x_{n+1}}{x_n}$
-converges, then we see $(x_n)^{1/n}$ also does. (See Notes for more info)
+\end{cases}$$
+
+Consider $D_2(x,y)=0$. If $x,y$ are both in the same partition, then they must be the same. If they are not in the same partition, then they cannot have $0$ distance. Hence $D_2(x,y)=0 \iff x=y$. If $x$ and $y$ are in the same space, and $z$ is a point in the same space, then $D_2(x,y)\leq D_2(x,z)+D_2(y,z)$ trivially. If $z$ is not the same space (as x and y), then $D_2(x,z)=d(x,z)+1$ and $D_2(y,z)=d(y,z)+1$ which gives $D_2(x,y)=d(x,y)\leq d(x,z)+d(y,z)+2$ which is also clear from the original metric. If say $x$ and $y$ are from different partitions so that $D_2(x,y)=d(x,y)+1$. Obviously another element $z$ must be such that either $D_2(x,z)=d(x,z)$ (in which case $D_2(y,z)=1+d(y,z)$)or $D_2(y,z)=d(y,z)$ (whence $D_2(x,z)=d(x,z)+1$). Then $D_2(x,y)=d(x,y)+1 \leq d(x,z)+d(y,z)+1$. Depending on where $z$ is, the bracketing can be done such that $D_2(x,y) \leq D_2(x,z)+D_2(y,z)$, which proves triangle.
+\\\\ iii) Define the map $$f(x)\begin{cases}
+    x+1 \ \text{ if } x \in \RR^+ \\
+    x \ \text{ else}
+\end{cases}$$
+Obviously, this map is injective since $f(x)=f(y)$ for $x,y$ in the same side would mean $x=y$. If $x$ and $y$ are on different sides, i.e, say $x$ is positive but $y$ negative, then $f(x)=x+1>0$ while $f(y)=y\leq 0$. 
+
+Consider $D_1(x,y)=|f(x)-f(y)|$ for points $x$ and $y$ on the same side. This is simply just $|x-y|$ which in this case is the same as $D_2(x,y)$. Suppose $x>0$ and $y\leq 0$. This means that $d(x,y)=|f(x)-f(y)|=|x+1-y|=|x-y|+1$ (since it is positive) which is the same as $D_2(x,y)$ in such a case. Due to symmetry of $||$, we needn't check the $y>0$ case. Hence, for this injective function, $D_1$ is the same as $D_2$.
+\\\\ \textbf{Problem 6}
+\\\\ Let $X:=\{x,y\}$. Non-negotiable's are $d(x,x)=d(y,y)=0$. The only choice we have is $d(x,y)=s$. $s$ can be any positive (incl $0$) real number. The metrics, though, are all \emph{equivalent}.
+\\\\ \textbf{Problem 7}
+\\\\ Let $X$ be the set of all $3-tuples$ consisting of $0$s and $1$s. $$d(x,y):=\text{ number of places where x and y are different}$$. Consider $d(x,y)=0$. That means no place is different $\implies x=y$. Also obvious that $d(x,y)=d(y,x)$. (Positivity is also obvious from definition). If $x=(x_1,x_2,x_3)$ and $y=(y_1,y_2,y_3)$ with $x_i,y_j\in\{0,1\}$, then we can write a formula for the hamming distance: $d(x,y):= \sum_{i=1}^{3}|x_i-y_i|$. This exactly captures the definition of the hamming distance. From here it is easy to see that Hamming metric is a special case of the Manhattan metric. $d(x,y)=\sum_{i=1}^3|x_i-z_i+z_i-y_i|\leq \sum_{i=1}^3|x_i-z_i| \sum_{i=1}^3 |z_i-y_i|=d(x,z)+d(y,z)$ which proves triangle.
+\\\\ \textbf{Problem 8}
+\\\\ $d$ does not define a metric on $\RR^2$ since consider $(x_1,0)$ and $(y_1,0)$, whose distance is $0$. This is, though, a psuedometric, since it obeys all the other properties (inherited from $||$).
+
+\begin{center}
+    \textbf{Assignment 3}
+\end{center}
+
+\textbf{Problem 2}:
+\\\\ Say $X$ is a metric space. $R(x,\varepsilon):=\{y\in X: d(y,x)>\varepsilon\}$. Consider an arbitrary point $z \in R(x,\varepsilon)$ whose distance from $x$ is $d(x,z)=t_{xz}>\varepsilon$. Which means $t_{xz}-\varepsilon>0$. From density theorem, choose a real number $r$ so that $t_{xz}-\varepsilon>r>0$. Consider the ball $B(r,z)$ around $z$ and a point $q$ in this ball so that $d(q,z)<r$. Is $q \in R(x,\varepsilon)?$. $d(x,z)\leq d(q,x)+d(q,z) \implies t_{xz}\leq d(q,x)+d(q,z)<d(q,z)+r$ which gives $\varepsilon<t_{xz}-r<d(q,z)$. Hence, $q \in R(x,\varepsilon)$. Hence, there is an $r-$ball, for every point in $R(\varepsilon,x)$ so that this ball is fully contained.
+\\\\ \textbf{Problem 3}
+\\\\ Say $x_n \to x$ and $x_n \to y$ which means $(\forall \varepsilon>0)(\exists n_0 \in \NN)(\forall n \in \NN)((n \geq n_0) \implies d(x_n,x)<\varepsilon/2)$
+
+and 
+$(\forall \varepsilon>0)(\exists n_0' \in \NN)(\forall n \in \NN)((n \geq n_0') \implies d(x_n,y)<\varepsilon/2)$
+
+This means that $\forall \varepsilon, \exists q=\max\{n_0,n_0'\}$ so that $\forall n \geq q$ $d(x,y) \leq d(x_n,y)+d(x_n,x)<\varepsilon$. This means that $x=y$. 
+\\\\ \textbf{Problem 4}
+\\\\ Let $\{X_1,d_1\},\{X_2,d_2\} \cdots \{X_n,d_n\}$ be $n$ metric spaces. $x=(x_1,x_2 \cdots ,x_n)$ and $y=(y_1,y_2 \cdots, y_n)$ are points in $X=\Pi_{i=1}^n X_i$. 
+\\\\ i) $d_1(x,y):=\max\{d_i(x_i,y_i): i \leq n\}$. Say $x=y$, that means $d_i(x_i,y_i)=0$ for every $i$ which makes $d_1(x,y)=0$. Consider $d_1(x,y)=0$. That means $\max\{d_i(x_i,y_i): i \leq n\}=0$ which means that every $d_i(x_i,y_i)=0$ but this happens if and only if $x_i=y_i$, hence we have that $d_1(x,y)=0 \iff x=y$. Symmetry is clear from the positivity of $d_i$ for every $i$.
+Consider $d_i(x_i,y_i)\leq d_i(x_i,z_i)+d_i(y_i,z_i)$ for every $i \leq n$. This means that $d_i(x_i,y_i) \leq \max\{d_i(x_i,z_i)+d_i(z_i,y_i): i \leq n\} \leq \max\{d_i(x_i,z_i)\}+\max\{d_i(z_i,y_i)\}$. This immediately gives us $\max\{d_i(x_i,y_i)\}\leq \max\{d_i(z_i,x_i)\}+\max\{d_i(z_i,y_i)\} \implies d_1(x,y)\leq d_1(x,z)+d_1(y,z)$. Hence, $X,d_1$ forms a metric space.
+\\\\ ii) $d_2(x,y)=\sum_{i=1}^n d_i(x_i,y_i)$. Say $d_2(x,y)=0$. That means that indivudually $d_i(x_i,y_i)=0 \iff x_i=y_i$ which makes $x=y$. It is clear that if $x=y$, $d_2(x,y)=0$. Positivity is also obvious since it is the sum of positive numbers. Consider $d_2(x,y)=\sum_{i=1}^n d_i(x_i,y_i) \leq \sum_{i=1}^n d_i(x_i,z_i)+ \sum_{i=1}^n d_i(z_i,y_i) \implies d_2(x,y) \leq d_2(x,z)+d_2(y,z)$. Hence, $X,d_2$ is a metric space.
+\\\\ iii) $d_3(x,y):= (\sum_{i=1}^n d_i(x_i,y_i)^2)^{1/2}$. Again, positivity and $d_3(x,y)=0 \iff x=y$ is obvious. $d_3(x,y):=[\sum_{i=1}^n (d_i(x_i,y_i)^2)]^{1/2}$. Note that $d_i(x_i,y_i)\leq d_i(x_i,z_i)+d_i(y_i,z_i)$ gives us $d_i(x_i,y_i)^2 \leq (d_i(x_i,z_i)+d_i(z_i,y_i))^2$ which implies $[\sum_{i=1}^n(d_i(x_i,y_i))^2]^{1/2}\leq [\sum_{i=1}^n (d_i(x_i,z_i)+d_i(y_i,z_i))^2]^{1/2}$. From minkowski inequality, we can split the inner sum further to get 
+
+
+$[\sum_{i=1}^n(d_i(x_i,y_i))^2]^{1/2}\leq [\sum_{i=1}^n (d_i(x_i,z_i))^2]^{1/2}+[\sum_{i=1}^n (d_i(y_i,z_i))^2]^{1/2}$ which gives us $d_3(x,y)\leq d_3(x,z)+d_3(y,z)$. 
+\\\\ \textbf{Problem 5}
+\\\\ $$d_1(x,y):=\max\{d_i(x_i,y_i):i\leq n\} $$
+$$d_2(x,y):=\sum_{i=1}^n d_i(x_i,y_i) $$
+$$d_3(x,y):=(\sum_{i=1}^n (d_i(x_i,y_i))^2)^{\frac{1}{2}} $$
+Obviously, $d_1(x,y)=\max\{d_i(x_i,y_i)\}\leq d_2(x,y)$ and $d_3(x,y)$. 
+\\\\ \textbf{lemma:} $\sqrt{|x_1|^2+|x_2|^2 \cdots +|x_n|^2} \leq |x_1|+|x_2| \cdots |x_n|$ for any real numbers $x_1,x_2 \cdots x_n$.
+\begin{proof}
+    for $n=1$, quite obvious. Assume for $n$ the above fact. Consider $$\sqrt{(\sqrt{|x_1|^2+|x_2|^2 \cdots |x_n|^2})^2 +|x_{n+1}|^2}$$ $$\leq \sqrt{|x_1|^2+|x_2|^2 \cdots |x_n|^2}+|x_{n+1}| \leq |x_1|+|x_2| \cdots |x_n|+|x_{n+1}|$$
+
+\end{proof} 
+
+From this lemma, we have that $$(\sum_{i=1}^n d_i(x_i,y_i)^2 )^{1/2} \leq \sum_{i=1}^n d_i(x_i,y_i) $$
+which means for every $x,y$, $d_3(x,y) \leq d_2(x,y)$. We now have the hierarchy: $d_1 \leq d_3 \leq d_2$. 
+\\\\ Consider $d_i(x_i,y_i)$ for arbitrary $x,y$. $d_i(x_i,y_i) \leq \max\{d_i(x_i,y_i):i \leq n\}$ which means $\sum_{i=1}^n d_i(x_i,y_i) \leq \sum_{i=1}^n \max\{d_i(x_i,y_i):i \leq n\}=nd_1(x,y)$ which completes the proof.
+\\\\ \textbf{Problem 6}:
+\\\\ i)Let $x \in X$, $x=(x_1,x_2 \cdots x_n)$. Consider the $d_1$ metric $d_1(x,y)=\max\{d_i(x_i,y_i): i \leq n\}$. $B_{r}(x):=\{z \in X: d_1(x,z)<r\}$ or $B_r(x):=\{z \in X: \max\{d_i(x_i,z_i):i \leq n\}<r\}$ which means that for every $i \leq n$, $d_i(x_i,z_i)<r$ which means that $z_i \in B_r(x_i)$ for every $n$. This means that $B_r(x) \subseteq \Pi_{i=1}^n B_r(x_i)$. Consider a point $q$ in $\Pi_{i-1}^n B_r(x_i)$ which means $q=(q_1,q_2 \cdots q_n)$ where $q_j \in B_r(x_j)$ which means $d_j(q_j,x_j)<r$ for every $j \leq n$ which gives us $\max\{d_j(q_j,x_j):j \leq n\}<r$ which means $d_1(q,x)<r$. This means $B_r(x) =\Pi_{i=1}^n B_r(x_i)$
+\\\\ ii) Let $A_i \subseteq X_i$ for all $i \leq n$. Consider $A=\Pi_{i=1}^n A_i \subseteq X$. $A^o:=\{z \in X: \exists \varepsilon_z \text{ such that }B_{\varepsilon_z}(z) \subseteq A\}$ which translates to: $z$ is a point of $A^o$ if there exists $\varepsilon_z$ so that $\Pi_{i=1}^nB_{\varepsilon_z}(z_i) \subseteq \Pi_{i=1}^n A_i$. We want that, for any arbitrary point $q=(q_1,q_2 \cdots q_n)$ such that $q_j \in B_{\varepsilon_z}(z_j)$, $q$ must be in $A$ which is equivalent to saying $q_j$ must be in $A_j$ for all $j \leq n$. This means that there exists an $\varepsilon_z$ so that $B_{\varepsilon_z}(z_j) \subseteq A_j$. This would make $z_j$ a part of $A_j^0$. Therefore, if $z$ is any point in the interior of $A$, then each coordinate is a point of the interior of $A_j$ which translates to $A^0 \subseteq \Pi_{i=1}^n A_i^0$. Consider $s=(s_1,s_2\cdots s_n)$ a point in $\Pi_{i=1}^n A_i^0$. 
+\\ This means that $s_j$ is a point in $A_j^0$ for every $j \leq n$. This means that there exists a $\varepsilon_j$ ball around $s_j$ that is fully contained in $A_j$, for every $j \leq n$. Find the minima $\varepsilon=\min\{\varepsilon_j: j \leq n\}$ (**). This means that for every $s_j$, there exists an $\varepsilon$-ball around $s_j$ that is fully contained in $A_j$. $B_{\varepsilon}(s_j) \subseteq A_j$ which means that $B_{\varepsilon}(s) \subseteq A$. Therefore, $s$, which was initially thought of as a point of $\Pi_{i=1}^nA_i^0$, is such that there exists an $\varepsilon$ so that $B_{\varepsilon}(s)\subseteq A$, which means $s$ is also in $A^0$. Hence, $A^0=(\Pi_{i=1}^n A_i)^0=\Pi_{i=1}^n A_i^0$.
+\rmkb{Note that (**) tells us that this theorem may fail if the set product is infinite, i.e, we have sequences of the kind $q=(q_1,q_2 \cdots )$ where $q_j \in X_j: j \in \NN$. This is because (**) asserts that we are able to find a minima given a finite set of points. But if we are given an infinite set of points, we may not be able to find a minima that is strictly positive. (thinkingg of an example where this fails)}
+\\\\ iii) Let $G_i$ be open in $X_i$ which means that for every point $z_i \in G_i$, there exists $\varepsilon_{z_i}$ so that $B_{\varepsilon_{z_i}}(z_i) \subseteq G_i$.
+Consider $q \in \Pi_{i=1}^n G_i$ which means that $q_j \in G_j$ for every $j \leq n$. This means that there exists $\varepsilon_{q_j}$ so that $B_{\varepsilon_{q_j}}(q_j) \subseteq G_j$. Collect the minimum of these $\varepsilon_{q_j}$, i.e, $\varepsilon_q:=\min\{\varepsilon_{q_j}:j \leq n\}$. For all $j \leq n$, we have that $B_{\varepsilon_q}(q_j) \subseteq G_j$. This would mean that $\Pi_{i=1}^n B_{\varepsilon_q}(q_j)=B_{\varepsilon_q}(q) \subseteq \Pi_{i=1}^n G_i$, which means that if $q$ is in $\Pi_{i=1}^n G_i$, then there exists a $\varepsilon_q$ so that $B_{\varepsilon_q}(q) \subseteq \Pi_{i=1}^n G_i$. Hence, $\Pi_{i=1}^nG_i$ is open in $X$. 
+\begin{center}
+    \textbf{ASSIGNMENT-4}
+\end{center}
+
+\textbf{Problem 2}:
+\\\\ $\implies$) Let $x_n$ be a sequence in $X$ convergent to $x$ (known to be unique). This means that $\forall \varepsilon>0$, $\exists n_0 \in \NN$ so that $\forall n \in \NN$, if $n \geq n_0$, then $d(x_n,x)<\varepsilon$. More specifically, if $x_{n_k}$ is a subsequence of $x_n$, then we have that $k \leq n_k$ and $n_1<n_2 \cdots$ which means that for a given $\varepsilon>0$, $\exists n_0$ so that $\forall n_k \geq n_0$, $d(x_{n_k},x)<\varepsilon$ which means that every subsequence converges to $x$. (To see this more clearly, note if $x_n$ converges to $x$, the set $\{x_n: n \in \NN\}$ has only one limit point, that is $x$ itself. So every subsequence of $x_n$ converges to $x$). This implies, in turn, that every subsequence of a subsequence (which is yet again a subsequence) converges to $x$.
+\\\\ $\impliedby$) Suppose every subsequence of $x_n$ has a subsequence that converges to $x$, but $x_n \not \to x$. This means that there exists an $\varepsilon>0$ so that for every $k \in \NN$, there exists an $n_k \geq k$ so that $d(x_{n_k},x)\geq \varepsilon$. We can take these $n_1,n_2 \cdots $ to generate a subsequence $x_{n_1},x_{n_2} \cdots$ such that $d(x_{n_k},x)\geq \varepsilon$ for every $k \in \NN$(*). This subsequce has a further subsequence that converges to $x$. This means that for a small neighbourhood around $x$, there exists infinite points of $x_{n_k}$, but this contradicts (*).
+\\\\ \textbf{Problem 3:}
+\\\\ \textbf{Definition:} $\operatorname{diam}(A):=\sup\{d(x,y): x \in A, y \in A\}$, if it is finite. 
+\\\\ We are told $A \cap B \neq \phi$. $diam(A \cup B):=\sup\{d(x,y): x \in A\cup B, y \in A \cup B\}$. 
+\\\\ Suppose contrary to hypothesis, $diam(A \cup B):=\sup\{d(x,y):x,y \in A \cup B\} > diam(A)+diam(B)=\sup\{d(p,q):p,q \in A\}+\sup\{d(a,b):a,b \in B\}$. This means that there exists $x_0,y_0 \in A$ or $B$ so that $d(x_0,y_0)>\sup\{d(p,q):p,q \in A\}+\sup\{d(a,b):a,b \in B\}$. If $x_0$ and $y_0$ belong, both, to either $A$ or $B$, then it clearly is absurd. So one is in $A$ and the other in $B$. without loss of generality assume $x_0 \in A$ and $y_0 \in B$. Choose $z \in A \cap B$, and apply triangle inequality to get $d(x_0,z)+d(z,y_0)\geq d(x_0,y_0)>\sup\{d(p,q):p,q \in A\}+\sup\{d(a,b):a,b \in B\}$ (**). In (**), clearly $d(x_0,z)$ is a distance between points in $A$ alone, and $d(z,y_0)$ is a distance between points in $B$ alone. From here it is clear that this is absurd.
+Hence:
+$$diam(A \cup B) \leq diam(A)+diam(B)$$
+\\\\ Strict inequality is possible if we simply consider closed balls in $\RR$. Consider $[-1,1/2]$ and $[-1/2,1]$. $Diam(A \cup B)=2$ but $diam(A)+diam(B)=3$.
+\\\\ \textbf{Problem 4:}
+\\\\ \textbf{Lemma:} $${(A^o)}^C=\overline{(A^c)} $$
+\begin{proof}
+    $A^o$ is the largest open set that is contained in $A$. $A^0 \subset A \implies A^C \subseteq (A^0)^C$ where $(A^0)^C$ is a closed set. Closure of $A^C$, which is $\overline{A^c}$ is the smallest closed set that contains $A^c$. Hence, $\overline{A^c} \subseteq (A^0)^C$ (1). We know $A^c \subseteq \overline{A^c}$ which means $(\overline{A^c})^c \subseteq A$ where $(\overline{A^c})^c$ is an open set. Therefore, $(\overline{A^c})^C \subseteq A^0 \implies (A^0)^C \subseteq \overline{A^c}$ (2). From (1) and (2) we get:
+    $${(A^o)}^C=\overline{(A^c)} $$
+\end{proof} 
+
+a) $\overline{A}=\overline{(A^c)^C}=((A^c)^0)^c$. Since $(A^0)^c=\overline{(A^c)}$, taking complements on both sides give $A^0=(\overline{A^c})^C$
+\\\\ b) $\partial (A):= \overline{A}\setminus{A^0}$ and
+$\partial(A^c):=\overline{A^c}\setminus{(A^c)^0}=(A^0)^C \setminus{\overline{A}^C}=$ set of all elements \emph{not in } $A^0$ and in $\overline{A}$. Hence, $\partial{A}=\partial{A^c}$
+\\\\ c) $\partial{A}:= \overline{A} \setminus{A^0}$ which is the set of all elements in the closure, but not in the interior. Therefore, $\partial(A) \cup A^0= \overline{A} \setminus{A^0} \cup A^0=\overline{A}$
+\\\\ d) We showed that $\partial(A)\cup(A^0)=\overline{A}$. We have $(A^c)^0 \cup \overline{A}=(\overline{A})^c \cup \overline{A}$ (from the results of (a)) which is nothing but $X$. 
+\\\\  e) If $A$ is closed, $\overline{A}=A$. From part (c)
+ we showed that $A=\overline{A}=\partial{A} \cup A^0$. Hence, $\partial(A) \subseteq A$. 
+ Suppose conversely, that $\partial(A) \subseteq A$. This means $\partial(A)\cup(A^0)\subset A$ which means $\overline{A} \subset A$. Hence, $A=\overline{A}$, or equivalently, $A$ is closed.
+ \\\\ \textbf{Problem 5}:
+ \\\\ \textbf{Lemma:} Every open set in $\RR$ is a an atmost countable union of disjoint open intervals.
+ \begin{proof}
+    We note that $R$ is separable because $\QQ$ is a dense set in $\RR$ that is countable. Consider any open set $G$ in $\RR$. For every point $x$ in $G$, there exists an $\varepsilon_x$ so that $(x-\varepsilon_x,x+\varepsilon_x)\subseteq G$. Collect all the rational points in $G$ (which is non empty) as an enumeration $\{r_1,r_2 \cdots\}$. Note that if there are no rational points in an open set, that means that the open set is empty. To see this, consider a point in the open set, which has an epsilon neighbourhood within the open set that contains no rational points. from density, this is absurd. Hence every non empty open set has rational points. For every $x$ in $G$, there exists possibly many intervals $I$ that is contained in $G$. Take the union of all these intervals to arrive at the maximal interval $I_x$ that is contained in $G$. Do the same for another point $y$ to arrive at the maximal interval $I_y$. Note that, if $y \in I_x$, then $I_y=I_x$. Can $I_y$ and $I_x$ have an intersection that is neither $\phi$ nor the set themselves? The answer is no, since if so, $I_x \cup I_y$ would be a \emph{bigger} interval that contains $x$, contrary to the assertion that $I_x$ is the largest such interval. Hence, the family $\{I_x: x \in G\}$ is a collection of disjoint open intervals that "cover" $G$. If an open set is non empty, then it contains a rational number, which means that there is a rational number in each $I_x$. That means that there are utmost countable elements in $\{I_x: x \in G\}$. Therefore, at most a countable union of disjoint intervals cover any open set $G$ in $\RR$
+ \end{proof} 
+ We can use the above lemma to see that any open set is an utmost countable union of disjoint open intervals: $\cup_{i=1}^{\infty}I_i=G$. Therefore, $\cup_{i=1}^{\infty}\overline{I_i}\subseteq \overline{G}$ (with the possibility of strict inclusion). Note that $I_i \subset \overline{I_i}$, which is strict. $I_i$ is not contained, and has no intersection with, any of $\overline{I_j}$ where $j \neq i$. 
 \end{document}

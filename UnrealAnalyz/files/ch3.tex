@@ -130,6 +130,22 @@ It is easily seen thet $l_p$ is a vector space over $\RR$. We defne the metric o
 
 \exm{Continuous functions on a closed bounded interval}{$C[a,b]$ is a metric space under the metric $d(f,g):=\sup\{|f(x)-g(x)|:x \in [a,b] \}$. Positive definiteness comes from $|\cdot |$. Symmetry is aswell obvious. Look at $d(f,g)=\sup\{|f(x)-g(x)|:x\in [a,b] \}=\sup\{|f(x)-h(x)+h(x)-g(x)|x \in [a,b]\}$ which gives $\leq \sup\{|f(x)-h(x)|+|h(x)-g(x)|: x \in[a,b] \} \leq \sup\{|f(x)-h(x)|:x \in [a,b]\}+\sup\{|h(x)-g(x)|: x \in[a,b]\}$ which gives us our desired $d(f,g)\leq d(f,h)+d(h,g)$}
 \exm{Space of all sequences in $\RR$}{We consider the space of all sequences in $\RR$ with the metric $d(\{x\},\{y\}):=\sum_{i=1}^{\infty}\frac{|x_i-y_i|}{(1+|x_i-y_i|)2^i}$. This is quite well defined since the series is bounded by $\sum 1/2^i$. Positive definiteness is clear since the sum is of positive numbers. Symmetry is aswell clear since $d(x,y)/1+d(x,y)$ is a well defined metric as seen before. Consider $d(x,y):=\sum_{i=1}^{\infty} \frac{1}{2^i}(\frac{|x_i-y_i|}{1+|x_i-y_i|})\leq \sum_{i=1}^{\infty} \frac{1}{2^i}(\frac{|x_i-z_i|}{1+|x_i-z_i|})+\sum_{i=1}^{\infty} \frac{1}{2^i}(\frac{|z_i-y_i|}{1+|z_i-y_i|})=d(x,z)+d(z,y)$ (the inequality comes from the metric structure of $d/1+d$ metric). }
+\defn{Norm}{Given a Linear space $V(\RR)$, a norm, $||.||$, is a function mapping every vector to a real number satisfying the following for every $x,y \in V$ and every $\alpha \in \RR$:
+\begin{enumerate}
+    \item $||x|| \geq 0$ and equality of and only if $x=0$.
+    \item $||\alpha x||=|\alpha|||x||$
+    \item $||x+y|| \leq ||x||+||y||$ (Triangle)
+\end{enumerate}
+}
+\defn{Psuedo Metrics}{Let $X$ be a non-empty set. A psuedometric is a function $d:X \times X \to \RR$ that follows:
+\begin{enumerate}
+    \item $d(x,y)\geq 0$
+    \item $d(x,y)=0$
+    \item $d(x,y)=d(y,z)$
+    \item $d(x,y) \leq d(x,z)+d(y,z)$
+\end{enumerate} 
+The part that is different is that, for metric spaces, we require that if the distance is $0$, the points are the same. But for psuedometric spaces, the points can be different yet of the same distance.}
+
 
 \subsection{More basics- }
 \newpage
@@ -158,6 +174,14 @@ $\impliedby$) Suppose $E$ is closed but $E^c$ is not open. This means that there
 \rmkb{
 In the above theorem and corollary, we require that the collection be finite. The reason is that, we were able to get a minimal $\varepsilon_j$ in the proof due to the finiteness of the set. It may not be possible to find a number $\delta$ that is both larger than $0$ but smaller than a given infinite collection of $\varepsilon$-s. For example, consider the sequence of open sets $(-\frac{1}{n},\frac{1}{n})$. The infinite intersection of these yields $\{0\}$ which is a closed set by virtue of being finite.
 }
+\defn{Topology}{Let $X$ be a set and $\tau $ be a family of sets in $X$. $X$,$\tau$ is called a topology (with elements of $\tau$ being called open sets) if:
+\begin{enumerate}
+\item Both $\phi$ and $X$ are in $\tau$
+\item $\tau$ is closed under arbitrary unions
+\item $\tau$ is closed under finite intersections
+\end{enumerate}
+The complement of an element in $\tau$ with respect to $X$ is called a closed set.
+}
 \defn{Closure of a set}{Let $E'$ be the set of all limit points of $E$. Then, the closure of $E$ is : $$\bar{E}:=E \cup E' $$}
 \thmp{}{Closure of a set is closed}{Let $p$ be a limit point of $E \cup E'$. That means that $\forall \varepsilon>0$ $\exists q_{\varepsilon} \in (E\cup E'), q_{\varepsilon} \neq p$ such that $q_{\varepsilon} \in B_{\varepsilon}(p)$. If $p$ is in $E \cup E'$, we are done (especially if $p$ is in $E$). Suppose $p$ is not in $E$. $\forall \varepsilon>0$ $\exists q_{\varepsilon} \in (E\cup E'), q_{\varepsilon} \neq p$ such that $q_{\varepsilon} \in B_{\varepsilon}(p)$. If the $q_{\varepsilon}$ we recieve falls in $E$ we are ok. Suppose $q_{\varepsilon}$ falls in $E'$. That means: $\forall \delta>0$, $\exists r_{\delta} \in E$, $r \neq q_{\varepsilon}$ such that $d(r_{\delta},q_{\varepsilon})<\delta$ $\implies$ $d(r_{\delta},p) \leq d(r_{\delta},q_{\varepsilon})+d(q_{\varepsilon},p)<\delta+d(q_{\varepsilon},p)<\delta+\varepsilon $ If we choose $\delta_0<{\varepsilon-d(q_{\varepsilon},p)}$ we get:
 $d(r_{\delta},p) \leq d(r_{\delta},q_{\varepsilon})+d(q_{\varepsilon},p)<\delta+d(q_{\varepsilon},p)<\varepsilon$
@@ -166,7 +190,7 @@ $d(r_{\delta},p) \leq d(r_{\delta},q_{\varepsilon})+d(q_{\varepsilon},p)<\delta+
 $\impliedby$) if $E$ is closed, $E' \subseteq E \implies E' \cup E = E=\bar{E}$}
 
 \thmp{$\bar{E}$ is the smallest closed set that contains $E$}{If $F_{\alpha}$ is the collection of all closed sets such that $E \subseteq F_{\alpha}$, then $\bar{E} \subseteq F_{\alpha}$ for all $\alpha$.}{Consider an arbitrary closed set $F_{\alpha}$ that contains $E$. It would obviously contain all the limit points of $E$ among other things. Therefore, we can easily see that it contains $E\cup E'=\bar{E}$.}
-
+\fact{\emph{Topological Definition for Closure}: The closure of $A \subseteq X$, denoted by $\overline{A}$ is defined as the smallest closed set that contains $A$}
 \lemp{An equivalent definition for Closure.}{An equivalent definition for closure is: $$\bar{A}:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x) \cap A \neq \phi\}$$}{We see that obviously, if $x \in \bar{A}$, then either it is a point of $A$, or if not, it happens to be a limit point of $A$. And the back implification: If $q$ is a point of $A$ or if it is a limit point o $A$, it obviously falls into $\bar{A}$.}
 
 \exm{If $E \subseteq \RR$ is bounded (and non empty), with $s=sup(E)$, then $s \in \bar{E}$}{If $s \in E$ we are done. If not, then $\forall \varepsilon>0$, $\exists \varepsilon>\delta(\varepsilon)>0,$ and a point $x_{\varepsilon} \in E$ such that $s-\varepsilon<s-\delta(\varepsilon) \leq x_{\varepsilon}<s+\delta<s+\varepsilon$ where $x_{\varepsilon}\neq s$. Hence, $s$ is a limit point of $E$ and hence, is a point in the closure.}
@@ -176,6 +200,7 @@ $$(\forall x \in E)(\exists \varepsilon_x>0)( (y \in Y \cap B_{\varepsilon}(x))\
 \rmkb{A set which is open relative to $Y$ need not be open relative to $X$. For example, consider $\RR$ as a subset of $\RR^n$. An interval in $\RR$ is open relative to $\RR$, but it is not open relative to $\RR^n$.}
 \thmp{}{A set $E\subseteq Y \subseteq X$ is open relative to $Y$ $\iff$ $\exists G \subset X$ that is open relative to $X$, such that $E=G \cap Y$ }{$\implies$) Say $E$ is open relative to $Y$. This means that $\forall x \in E$, $\exists \varepsilon_x>0$ such that if $y \in B_{\varepsilon_x}(x)$ and $y \in Y$, then $y \in E$. Call $G=\cup_{x\in E}B_{\varepsilon_x}(x)$ which is an open set. If $z \in E$, then $z \in G$ obviously, and hence $z \in G \cap Y$. Hence, $E \subseteq G \cap Y$. Consider a point $z \in G \cap Y$ which means $z$ falls in one of the $\varepsilon$-balls around a point of $E$, and $z$ is in $Y$. From definition of open relativeness, we see that $z \in E$. Hence, $E=G \cap Y$
 \\\\ $\impliedby$) Say $E=G \cap Y$ where $G$ is an open set relative to $X$. Then, for every point in $G$, there would exist an $\varepsilon$-ball around that point that is completely contained in $G$. Let $x\in E$ be arbitrary. $\exists \varepsilon_x>0$ such that $B_{\varepsilon}(x) \subset G$. Suppose $y \in Y$ and $y \in B_{\varepsilon}(x)$. This would mean that $y \in G\cap Y=E$. Hence, $\forall x\in E$ $\exists \varepsilon>0$ such that if $y\in B_{\varepsilon}(x)$ and $y\in Y$, then $y\in E$, which is the definition of open relativeness.}
+\fact{\emph{Topological definition of "open-relative"}: Let $A \subseteq Y \subseteq X$. $A$ is said to be open relative to $Y$ if there exists an open set $G$, open in $X$ so that $A=G \cap Y$.}
 \newpage
 \section{Compactness}
 \defn{Open Conver}{A collection of open sets $G_{\alpha} \subset X$ is an open cover of a set $E$ if $E \subset \cup_{\alpha}G_{\alpha}$}
@@ -185,6 +210,8 @@ $$(\forall x \in E)(\exists \varepsilon_x>0)( (y \in Y \cap B_{\varepsilon}(x))\
 \\\\ $\impliedby$) Suppose $E$ is open relative to $X$. Consider an open cover of $E$ open relative to $Y$, which is $\{F_{\alpha}\}$. This means that $F_{\alpha}=G_{\alpha} \cap Y$ for $G_{\alpha}$ open relative to $X$. $E\subseteq \cup_{\alpha} F_{\alpha}=(\cup_{\alpha} G_{\alpha})\cap Y$. Since $E$ is a subset of $Y$, we have $E \subseteq (\cup_{\alpha} G_{\alpha})$. Therefore, there would be a finite subcollection of $\{ G_{\alpha} \}$, $\{G_{\alpha_1},G_{\alpha_2}\cdots G_{\alpha_k} \}$ such that $E \subseteq \cup_{i=1}^k G_{\alpha_i}$. This means, $E\subseteq \cup_{i=1}^k G_{\alpha_i} \cap Y=\cup_{i=1}^k F_{\alpha_i}$. Hence, for every open cover open relative to $Y$, there exists a finite subcover.
 
 }
+\newpage
+\rmkb{Note that the above theorem "compact-relativeness is conserved" did not use any property of metric spaces, like distances or balls, so this theorem holds in any general Topological space.}
 
 \fact{Every finite set in $X$ is compact}\pf{Consider an open cover $G_{\alpha}$ for finite set $E$. This means that, for every point $x_1,x_2,\cdots,x_k$ in $E$, there would exist some $\{\alpha_1,\alpha_2, \cdots \}$ collection of "$\alpha$-s" that is utmost finite, such that $x_j \in G_{\alpha_j}$. Simply take the union of $G_{\alpha_j}$ to get a finite subcover.
 }
