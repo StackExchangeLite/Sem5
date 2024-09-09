@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{n}{Enter}\PYG{+w}{ }\PYG{n}{initial}\PYG{+w}{ }\PYG{n}{point}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{newton}\PYG{o}{\PYGZhy{}}\PYG{n}{raphson}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.6}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.6}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{\PYGZhy{}0.504}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.67545}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.0277538}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.67171}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{7.02432e\PYGZhy{}05}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.6717}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{4.53865e\PYGZhy{}10}
+\PYG{n}{Solution}\PYG{+w}{ }\PYG{n}{found}\PYG{+w}{ }\PYG{n}{at}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mf}{1.6717}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\end{Verbatim}

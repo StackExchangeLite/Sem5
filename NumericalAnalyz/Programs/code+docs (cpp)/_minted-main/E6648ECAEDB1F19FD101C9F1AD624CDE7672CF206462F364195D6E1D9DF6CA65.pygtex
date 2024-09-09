@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Enter}\PYG{+w}{ }\PYG{n}{initial}\PYG{+w}{ }\PYG{n}{point}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{newton}\PYG{o}{\PYGZhy{}}\PYG{n}{raphson}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.841471}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.668752}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.0672358}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.637068}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.000696838}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.636733}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{7.90141e\PYGZhy{}08}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.636733}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{8.88178e\PYGZhy{}16}
+\PYG{o}{|}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.636733}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mi}{0}
+\PYG{n}{Solution}\PYG{+w}{ }\PYG{n}{found}\PYG{+w}{ }\PYG{n}{at}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mf}{0.636733}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}
+\end{Verbatim}
