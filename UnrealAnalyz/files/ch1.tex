@@ -6,199 +6,198 @@
 \section{Prelimnaries}
 
 \defn{Prelimnary definitions}{
-\begin{enumerate}
-    \item (Cartesian Product): if $A$ and $B$ are non empty sets, the \emph{Cartesian Product} $A \times B$ is defined as the set of ordered pairs $a,b$ wherein $a \in A, b \in B$. i.e, $ A \times B := \{ (a,b): a \in A, b \in B  \}$ 
-    \item (Function): A function from $A$ to $B$ is a set $f \subseteq A \times B$ such that, $a,b \in f \text{ and } a,c \in f \implies b=c$. A is called the \textbf{Domain of $f$}. $Range(f):=f(A)$ (see next definition)
-    \item (Direct Image): Direct image $f(A):=\{y \in B: \exists x\in A \text{ such that } f(x)=y \}$
-    \item (Inverse Image):$f^{-1}(S\subseteq B):=\{x \in A: f(x) \in S\}$
-    \item (Relation): Any subset $R\subseteq A \times B$ is a relation from $A$ to $B$.\\We say $x \in X$ is "related to" $y \in Y$ under the relation $R$, or simply $xRy$ or $R(x)=y$ if $(x,y) \in R \subseteq X \times Y$. 
-    \item (Injection): $f: A \to B$ is injective if $\forall x_1,x_2 \in A, (x_1,b) \in f \text{ and } (x_2,b) \in f \iff x_1=x_2$
-    \item (Surjection): $f:A \to B$ is surjective if $\forall b \in B, \exists a \in A \text{ such that } f(a)=b$
-    \item (Bijection): $f:A\to B$ is bijective if its both surjective and injective.
-    \item {(Identity function on a set)}: $I_A: A \to A$ defined by $\forall x \in A, I_A(x)=x$
-    \item  (Permutation): Simply a bijection from $A$ to itself is called a permutation.
-\end{enumerate}
+	\begin{enumerate}
+		\item (Cartesian Product): if $A$ and $B$ are non empty sets, the \emph{Cartesian Product} $A \times B$ is defined as the set of ordered pairs $a,b$ wherein $a \in A, b \in B$. i.e, $ A \times B := \{ (a,b): a \in A, b \in B  \}$
+		\item (Function): A function from $A$ to $B$ is a set $f \subseteq A \times B$ such that, $a,b \in f \text{ and } a,c \in f \implies b=c$. A is called the \textbf{Domain of $f$}. $Range(f):=f(A)$ (see next definition)
+		\item (Direct Image): Direct image $f(A):=\{y \in B: \exists x\in A \text{ such that } f(x)=y \}$
+		\item (Inverse Image):$f^{-1}(S\subseteq B):=\{x \in A: f(x) \in S\}$
+		\item (Relation): Any subset $R\subseteq A \times B$ is a relation from $A$ to $B$.\\We say $x \in X$ is "related to" $y \in Y$ under the relation $R$, or simply $xRy$ or $R(x)=y$ if $(x,y) \in R \subseteq X \times Y$.
+		\item (Injection): $f: A \to B$ is injective if $\forall x_1,x_2 \in A, (x_1,b) \in f \text{ and } (x_2,b) \in f \iff x_1=x_2$
+		\item (Surjection): $f:A \to B$ is surjective if $\forall b \in B, \exists a \in A \text{ such that } f(a)=b$
+		\item (Bijection): $f:A\to B$ is bijective if its both surjective and injective.
+		\item {(Identity function on a set)}: $I_A: A \to A$ defined by $\forall x \in A, I_A(x)=x$
+		\item  (Permutation): Simply a bijection from $A$ to itself is called a permutation.
+	\end{enumerate}
 }
 
 \defn{(Left Inverse)}{ We say $f:A \to B$ has a left inverse if there is a function $g: B \to A$ such that $g \circ f=I_A$}
 \thmp{}{$f:A \to B$ has a left inverse if and only if it is injective.}{
-$\implies$) If $f$ has a left inverse $g$, Consider $x,y \in A$ such that $f(x)=f(y)=p$. 
+	$\implies$) If $f$ has a left inverse $g$, Consider $x,y \in A$ such that $f(x)=f(y)=p$.
 
-We have $g \circ f(x)=g(p)=x=g \circ f(y)=y$. Hence, $x=y$, Injective.\\
-$\impliedby$) Given that $f:A \to B$ is injective, define $g:B \to A$ as: 
-$$
-g(z \in B)=
-\begin{cases}
-a, \text{ where } f(a)=z, \ \text{if } z\in f(A) \\
-\text{whatever}, \ \text{if } z \not\in f(A)\end{cases}
-$$
-consider $g \circ f (x \in A) = g \circ (f(x))$.
+	We have $g \circ f(x)=g(p)=x=g \circ f(y)=y$. Hence, $x=y$, Injective.\\
+	$\impliedby$) Given that $f:A \to B$ is injective, define $g:B \to A$ as:
+	$$
+		g(z \in B)=
+		\begin{cases}
+			a, \text{ where } f(a)=z, \ \text{if } z\in f(A) \\
+			\text{whatever}, \ \text{if } z \not\in f(A)\end{cases}
+	$$
+	consider $g \circ f (x \in A) = g \circ (f(x))$.
 
-Obviously, $f(x) \in f(A)$, therefore, $g(f(x))=$ that $a$ such that $f(a)=f(x)$. 
+	Obviously, $f(x) \in f(A)$, therefore, $g(f(x))=$ that $a$ such that $f(a)=f(x)$.
 
-That $a$ is $x$. 
-Hence, $g(f(x))=x$
+	That $a$ is $x$.
+	Hence, $g(f(x))=x$
 }
 \defn{(Right Inverse)}{$f:A \to B$ is said to have a right inverse if there is a function $g:B \to A$ such that $f \circ g=I_B$}
 
 \thmp{}{$f:A \to B$ has a right inverse if and only if $f$ is Surjective.}
 {$\implies$) If $f$ has a right inverse $g$, such that $f \circ g=I_B:B \to B$, then it is evident that the range of $f$ is B, for if not, range of $f \circ g$ wouldn't be $B$ either.\\
-$\impliedby$) If $f$ is surjective, then for all $b \in B$, there exists atleast one $a \in A$ such that $f(a)=b$ define $g$ as:
-$$g(x \in B)= \text{one of those a} \in A \text{ such that} f(a)=b$$
-Consider $f \circ g (x \in B) = f ( \text{ one of the } a \text{ such that } f(a)=b)=b, \forall b \in B$
+	$\impliedby$) If $f$ is surjective, then for all $b \in B$, there exists atleast one $a \in A$ such that $f(a)=b$ define $g$ as:
+	$$g(x \in B)= \text{one of those a} \in A \text{ such that} f(a)=b$$
+	Consider $f \circ g (x \in B) = f ( \text{ one of the } a \text{ such that } f(a)=b)=b, \forall b \in B$
 
-Hence, $f \circ g=I_B$
+	Hence, $f \circ g=I_B$
 }
 
 \thmp{}{If $f$ has left inverse $g_1$ and right inverse $g_2$, then $g_1=g_2$.
-\rmk{(True for anything that is Associative, and function composition is associative.)}}{$g_1 \circ f=I_A$ and $f \circ g_2 =I_B$
+	\rmk{(True for anything that is Associative, and function composition is associative.)}}{$g_1 \circ f=I_A$ and $f \circ g_2 =I_B$
 
-$g_1 \circ (f \circ g_2)=g_1 \circ I_B= g_1$
+	$g_1 \circ (f \circ g_2)=g_1 \circ I_B= g_1$
 
-$= (g_1\circ f) \circ g_2=I_A \circ g_2=g_2$
+	$= (g_1\circ f) \circ g_2=I_A \circ g_2=g_2$
 
-Hence $g_1=g_2$}
+	Hence $g_1=g_2$}
 \corp{ $f$ is invertible (i.e, both left and right inverse exist) if and only if it is bijective.}{Obvious}
 
 
 \subsection{Operations on Relations}
 If $R$ and $S$ are binary relations over $X \times Y$:
 \begin{enumerate}
-  \item $R \bigcup U := \{(x,y) | xRy \text{ or } xSy \}$
-  \item $R \bigcap S := \{(x,y) | xRy \text{ and } xSy \}$
-  \item Given $S:Y \to Z$ and $R:X \to Y$, $S \circ R:=\{(x,z) | \exists y \text{ such that } ySz \ \& \ xRy \}$
-  \item If $R$ is binary over $X \times Y$, $\bar{R} := \{(x,y) | \neg (xRy)\}$
+	\item $R \bigcup U := \{(x,y) | xRy \text{ or } xSy \}$
+	\item $R \bigcap S := \{(x,y) | xRy \text{ and } xSy \}$
+	\item Given $S:Y \to Z$ and $R:X \to Y$, $S \circ R:=\{(x,z) | \exists y \text{ such that } ySz \ \& \ xRy \}$
+	\item If $R$ is binary over $X \times Y$, $\bar{R} := \{(x,y) | \neg (xRy)\}$
 \end{enumerate}
 
 \subsection{Homogeneous Relations}
 If $R$ is a binary relation over $X \times X$, it is Homogeneous.
 \defn{Definitions Regarding Relations}{
-\begin{enumerate}
-  \item (Reflexive): $\forall x \in X, xRx$
-  \item (Symmetric): $\forall x,y \in X, xRy \implies yRx$
-  \item (Transitive): $\forall x,y,z \in X, \text{ if } xRy \ \& \ yRz \implies xRz$
-  \item (Dense): $\forall x,y \in X, \ \text{if} \ xRy, \text{ then there is some } z \in X \text{ such that } xRz \ \& \ zRy$
-  \item (\textbf{Equivalence Relation}): $R$ is an equivalence relation if it is Reflexive, Symmetric and Transitive.
-  \item (Equivalence class of $a\in A$(where there is an equivalence relation defined)): Set of all $b \in A$ such that $bRa$. 
-  \item (Partition of $A$): Any collection of sets $\{A_i :i\in I \}$ (where $I$ is some indexing set) such that: $$A= \bigcup_{i\in I} A_i$$ $$A_i \cap A_j = \phi \text{ if } \forall i,j \in I, i \neq j$$
-\end{enumerate}
-  }
+	\begin{enumerate}
+		\item (Reflexive): $\forall x \in X, xRx$
+		\item (Symmetric): $\forall x,y \in X, xRy \implies yRx$
+		\item (Transitive): $\forall x,y,z \in X, \text{ if } xRy \ \& \ yRz \implies xRz$
+		\item (Dense): $\forall x,y \in X, \ \text{if} \ xRy, \text{ then there is some } z \in X \text{ such that } xRz \ \& \ zRy$
+		\item (\textbf{Equivalence Relation}): $R$ is an equivalence relation if it is Reflexive, Symmetric and Transitive.
+		\item (Equivalence class of $a\in A$(where there is an equivalence relation defined)): Set of all $b \in A$ such that $bRa$.
+		\item (Partition of $A$): Any collection of sets $\{A_i :i\in I \}$ (where $I$ is some indexing set) such that: $$A= \bigcup_{i\in I} A_i$$ $$A_i \cap A_j = \phi \text{ if } \forall i,j \in I, i \neq j$$
+	\end{enumerate}
+}
 
 \thmp{}{Let $A$ be a non-empty set. If $R$ defines an equivalence Relation on $A$, then the set of all equivalence classes of $R$ form a partition of A}{Define our collection $\{ A_{\alpha}\}$ as the set of all equivalence classes of $A$. Clearly, $\bigcup_{\alpha \in I} A_{\alpha}=A$. If $A$ only has one element, obviously, that singleton set makes up the partition. Let $A_{\alpha}$ and $A_{\alpha'}$ be equivalence classes of two elements $a$ and $a'$ in $A$. If $a R a'$, then $A_{\alpha}=A_{\alpha'}$ since every element in the equivalence class of $a$ will, from the transitive property, be in the equivalence class of $a'$ . Suppose $\neg (a R a')$. If, then, $\exists x \in A_{\alpha}$ such that $x\in A_{\alpha'}$, this means that $xR\alpha$ and $xR\alpha'$, but from transitive property, this means $\alpha R\alpha'$, which is a contradiction. Therefore, the pairwise intersection is disjoint.}
 
 \thmp{}{If $\{A_i: i \in I \}$ is a partition of A, then there exists an equivalence relation $R$ on $A$ whose equivalence classes are $\{A_i:i \in I\}$.}{ Define $R(x,y)$ if and only if $\exists$ unique $m \in I$ such that $x \in A_m$ and $y \in A_m$.
-    
 
-$R(x,x)$ is obvious if non empty, hence $R$ is reflexive.\\\\   
-Suppose $R(x,y)$ and $R(y,z)$. Then, there exists a unique $m \in I$ such that $x,y$ are in $A_m$. Similarly, there exists a unique $n \in I$ such that $y,z$ are in $A_n$ . Obviously, if $n \neq m$, intersection of $A_n$ and $A_m$ would be non empty, hence, $n=m$. Hence, $R$ is transitive.\\\\
-Consider $R(x,y)$, which means $\exists$ unique $n\in I$ such that $x,y \in A_n \implies R(y,x)$. 
-Hence, $R$ is an equivalence relation.}
+
+	$R(x,x)$ is obvious if non empty, hence $R$ is reflexive.\\\\
+	Suppose $R(x,y)$ and $R(y,z)$. Then, there exists a unique $m \in I$ such that $x,y$ are in $A_m$. Similarly, there exists a unique $n \in I$ such that $y,z$ are in $A_n$ . Obviously, if $n \neq m$, intersection of $A_n$ and $A_m$ would be non empty, hence, $n=m$. Hence, $R$ is transitive.\\\\
+	Consider $R(x,y)$, which means $\exists$ unique $n\in I$ such that $x,y \in A_n \implies R(y,x)$.
+	Hence, $R$ is an equivalence relation.}
 
 \section{Induction, Naturals, Rationals and the Axiom of Choice }
 \asum{Peano Axioms, characterisation of $\mathbb{N}$}{\begin{enumerate}
-  \item $1\in \mathbb{N}$
-  \item every $n \in \mathbb{N}$ has a predecessor $n-1 \in \mathbb{N}$ except $1$
-  \item $\text{if } n \in \mathbb{N} \implies n+1 \in \mathbb{N}$
-\end{enumerate} }
+		\item $1\in \mathbb{N}$
+		\item every $n \in \mathbb{N}$ has a predecessor $n-1 \in \mathbb{N}$ except $1$
+		\item $\text{if } n \in \mathbb{N} \implies n+1 \in \mathbb{N}$
+	\end{enumerate} }
 \defn{(Sequence of something)}{A sequence of some object is simply a collection of objects $\{O_l: l\in \mathbb{N}\}$ which can be counted.}
 
 \asum{Well Ordering Property of $\mathbb{N}$}{Every non empty subset of $\mathbb{N}$ has a least element.}
 
 \asum{Weak Induction}{For all subsets $S \subseteq \mathbb{N}$, (($1\in S$)\&(($\forall k \in \mathbb{N}$)($k\in S \implies k+1 \in S$))
-$\iff$ $S=\mathbb{N}$)\\\\\textbf{Weak Induction's Negation}:(One direction)
+	$\iff$ $S=\mathbb{N}$)\\\\\textbf{Weak Induction's Negation}:(One direction)
 
-There exists subset $S_0 \subseteq \mathbb{N}$, (($1\in S_0$)\&(($\forall k \in \mathbb{N}$)($k\in S_0 \implies k+1 \in S_0$))
-but $S_0 \neq \mathbb{N}$)}
+	There exists subset $S_0 \subseteq \mathbb{N}$, (($1\in S_0$)\&(($\forall k \in \mathbb{N}$)($k\in S_0 \implies k+1 \in S_0$))
+	but $S_0 \neq \mathbb{N}$)}
 
 \asum{Strong Induction}{For all subsets $S \subseteq \mathbb{N}$, (($1\in S$)\&(($\forall k \in \mathbb{N}$)(${1,2,...k}\in S' \implies k+1 \in S'$))
-$\iff$ $S=\mathbb{N}$)\\\\ \textbf{Strong Induction's Negation}:(One direction)
+	$\iff$ $S=\mathbb{N}$)\\\\ \textbf{Strong Induction's Negation}:(One direction)
 
-There exists subset $S' \subseteq \mathbb{N}$, (($1\in S'$)\&(($\forall k \in \mathbb{N}$)(${1,2,...k}\in S' \implies k+1 \in S'$))
-but $S' \neq \mathbb{N}$)}
+	There exists subset $S' \subseteq \mathbb{N}$, (($1\in S'$)\&(($\forall k \in \mathbb{N}$)(${1,2,...k}\in S' \implies k+1 \in S'$))
+	but $S' \neq \mathbb{N}$)}
 
 \thmp{}{Weak Induction $\iff$ Strong Induction.}{$\implies$) Suppose Weak induction is true, but not strong induction. Take our set to be that $S'$ in the negation of the Strong Induction Statement. $S' \neq \mathbb{N}$ implies that, either $1 \not\in S'$ or $\exists k \in \mathbb{N}$ such that $k\in S'$ but $k+1 \not\in S'$. We know that $1 \in S'$, so it must be that $\exists k \in \mathbb{N}$ such that $k \in S'$ but $k+1 \not\in S'$. $\{1\} \in S' \implies \{1,2\} \in S'$. Assume that for $n$, $\{1,2,..n\} \in S'$. This means that $\{1,2,...n+1\} \in S'$. This means that for every $n \in \mathbb{N}$, $\{1,2,...n \}\in S' \implies n \in S'$. Contradiction.\\
-$\impliedby$)Suppose Strong Induction is true, but not weak induction. Take the set $S_0$ from the negation of Weak Induction. $S_0 \neq \mathbb{N}$. This means, from strong induction, either $1\not\in S_0$ or $\exists k \in \mathbb{N}$ such that $1,2, \dots , k \in S_0$ but $k+1 \not\in S_0$. $1 \in S_0$, hence, $2 \in S_0$ and $\{1,2\}\in S_0$. assume that $\{1,2,....n\} \in S_0$. This means, $n\in S_0 \implies n+1 \in S_0$, which means that $\forall k \in \mathbb{N}, \{1,2,..k\} \in S_0 \implies k+1 \in S_0$. Therefore, $S_0$ is $\mathbb{N}$.}
+	$\impliedby$)Suppose Strong Induction is true, but not weak induction. Take the set $S_0$ from the negation of Weak Induction. $S_0 \neq \mathbb{N}$. This means, from strong induction, either $1\not\in S_0$ or $\exists k \in \mathbb{N}$ such that $1,2, \dots , k \in S_0$ but $k+1 \not\in S_0$. $1 \in S_0$, hence, $2 \in S_0$ and $\{1,2\}\in S_0$. assume that $\{1,2,....n\} \in S_0$. This means, $n\in S_0 \implies n+1 \in S_0$, which means that $\forall k \in \mathbb{N}, \{1,2,..k\} \in S_0 \implies k+1 \in S_0$. Therefore, $S_0$ is $\mathbb{N}$.}
 
 \thmp{}{Weak Induction $\iff$ Strong Induction $\iff$ Well ordering.}{$\implies$) Suppose that, on the contrary, $S_0$ is a non empty subset of $\mathbb{N}$ , with no least element. Does $1$ exist in $S_0$? No, for that will be the least element. Likewise, then, $2$ does not belong in $S_0$. Assume that $\{1,2,...n\} \not\in S_0$. Does $n+1$ exist in $S_0$? No, for that will become the least element then. From Strong Induction, $\mathbb{N}-S_0=\mathbb{N}\implies S_0=\phi$. Contradiction.\\
-$\impliedby$)Suppose $\exists S_0 \subseteq \mathbb{N}$ such that $1 \in S_0$ and $\forall k \in \mathbb{N}$, $k\in S_0 \implies k+1 \in S_0$. Suppose on the contrary, $S_0$ is not $\mathbb{N}$. $\mathbb{N}-S_0$ is then, non-empty. From Well Ordering, there is a least element $q \in \mathbb{N}-S_0$. $\implies, q-1 \in S_0$. But this would imply $q-1+1 \in S_0$. Contradiction. $\mathbb{N}-S_0$ is empty.}
+	$\impliedby$)Suppose $\exists S_0 \subseteq \mathbb{N}$ such that $1 \in S_0$ and $\forall k \in \mathbb{N}$, $k\in S_0 \implies k+1 \in S_0$. Suppose on the contrary, $S_0$ is not $\mathbb{N}$. $\mathbb{N}-S_0$ is then, non-empty. From Well Ordering, there is a least element $q \in \mathbb{N}-S_0$. $\implies, q-1 \in S_0$. But this would imply $q-1+1 \in S_0$. Contradiction. $\mathbb{N}-S_0$ is empty.}
 
 \defn{(Finite Sets)}{A set $X$ is said to be finite, with $n$ elements in it, if $\exists n \in \mathbb{N}$ such that there exists a bijection $f: \{1,2..,n\} \to X$. Set $X$ is \emph{infinite} if it is non-finite.}
 
 
 \thmp{}{If $A$ and $B$ are finite sets with $m$ and $n$ elements respectively, and $A \cap B=\phi$, then $A \cup B$ is finite, with $m+n$ elements.}{$f:\mathbb{N}_m \to A$ and $g:\mathbb{N}_n \to B$.
 
-Define $h:\mathbb{N}_{m+n} \to A \cup B$ given by:
-$$h(i)=\begin{cases}f(i) \text{ if } i=1,2...m\\
-g(i-1) \text{ if } i=m+1,m+2,...m+n
+	Define $h:\mathbb{N}_{m+n} \to A \cup B$ given by:
+	$$h(i)=\begin{cases}f(i) \text{ if } i=1,2...m \\
+			g(i-1) \text{ if } i=m+1,m+2,...m+n
+		\end{cases}$$
 
-\end{cases}$$
+	If $i=1,2,...m$,$h(i)$ covers all the elements in $A$ through $f$. If $i=m+1,...m+n$, $h(i)$ covers all the elements in $B$ through $g$.
 
-If $i=1,2,...m$,$h(i)$ covers all the elements in $A$ through $f$. If $i=m+1,...m+n$, $h(i)$ covers all the elements in $B$ through $g$.
-
-Moreover, $h(i) \neq h(j); i \in [1,m], j\in[m+1,m+n] $ since $A\cap B= \phi$}
+	Moreover, $h(i) \neq h(j); i \in [1,m], j\in[m+1,m+n] $ since $A\cap B= \phi$}
 
 \thmp{}{If $C$ is infinite, and $B$ is finite, then $C-B$ is infinite.}{Suppose $C-B$ is finite. We have $B \cap (C-B)=\phi$ and $B \cup (C-B)=C \cup B$
 
-$n(C \cup B)=n(B \cup (C-B))=n(B)+n(C-B)$
-This implies $C \cup B$ is finite. Contradiction.
+	$n(C \cup B)=n(B \cup (C-B))=n(B)+n(C-B)$
+	This implies $C \cup B$ is finite. Contradiction.
 }
 
 \thmp{}{\textbf{Theorem}: Suppose $T$ and $S$ are sets such that $T \subseteq S$. Then:\\
 
-a) If $S$ is finite, $T$ is finite.\\
+	a) If $S$ is finite, $T$ is finite.\\
 
-b)If $T$ is infinite, $S$ is infinite.}{Given that $S$ is finite, there is a function $f:\mathbb{N}_{m} \to S$. Suppose that $S$ has $1$ element. Then either $T$ is empty, or $S$ itself, which means $T$ is finite. Suppose that, upto $n$, it is true that, if $S$ is finite with $n$ elements, all its subsets are finite. Consider $S$ with $n+1$ elements. 
+	b)If $T$ is infinite, $S$ is infinite.}{Given that $S$ is finite, there is a function $f:\mathbb{N}_{m} \to S$. Suppose that $S$ has $1$ element. Then either $T$ is empty, or $S$ itself, which means $T$ is finite. Suppose that, upto $n$, it is true that, if $S$ is finite with $n$ elements, all its subsets are finite. Consider $S$ with $n+1$ elements.
 
-$f:\mathbb{N}_{n+1} \to S$.\\
-If $f(n+1) \in T$, consider $T_1:=T-\{f(n+1)\}$
-We have $T_1 \subseteq S-\{f(n+1)\}$, and since $S-\{f(n+1)\}$ is a finite set with $n-1$ elements, from induction hypothesis, $T_1$ is finite. Moreover, since $T=T \cup \{f(n+1) \}$, $T$ is also finite with one more element than $T_1$.\\
-If $f(n+1) \not\in T$, then $T \subseteq S-\{f(n+1)\}$, we are done.\\\\
-(b) is simply the contrapositive of (a).}
+	$f:\mathbb{N}_{n+1} \to S$.\\
+	If $f(n+1) \in T$, consider $T_1:=T-\{f(n+1)\}$
+	We have $T_1 \subseteq S-\{f(n+1)\}$, and since $S-\{f(n+1)\}$ is a finite set with $n-1$ elements, from induction hypothesis, $T_1$ is finite. Moreover, since $T=T \cup \{f(n+1) \}$, $T$ is also finite with one more element than $T_1$.\\
+	If $f(n+1) \not\in T$, then $T \subseteq S-\{f(n+1)\}$, we are done.\\\\
+	(b) is simply the contrapositive of (a).}
 
 \defn{(Countable Sets)}{A set $S$ is said to be \emph{countable},or \emph{denumerable} if, either $S$ is finite, or $\exists f:\mathbb{N} \to S$ which is a bijection. If $S$ is \emph{not countable}, $S$ is said to be \emph{uncountable}}
 
 \thmp{}{The set $\mathbb{N} \times \mathbb{N}$ is countable.}{The number of points on diagonals $1,2,...l$ are: $\psi(k)=1+2+...k=\frac{k(k+1)}{2}$
 
-The point $(m,n)$ occurs on the $(m+n-1$ th diagonal, on which the number $m+n$ is an invariant. The $(m,n)$ point occurs $m$ points down the diagonal. So, to characterise a point, it is enough to specify the diagonal it falls in, and its ordinate (the "rank" of that point on that diagonal). Count the elements till the $m+n-2$nd diagonal, then add $m$, and this would be the position of the point $(m,n)$.\\
-Define $r:\mathbb{N}\times \mathbb{N} \to  \mathbb{N} $ given by $r(m,n)= \psi(m+n-2)+m$
-That this is a bijection is pretty clear because we are counting the position of the point $(m,n)$. For a given point $(m,m)$, there can only be one unique diagnonal on which it exists, and on the diagonal, its rank is unique. Moreover, for every $q \in N$, there corresponds an $(m,n)$ such that $r(m,n)=q$, for, we simply count along each diagonal in the "zig-zag" manner until we reach that $(m,n)$ for which the position is given by $q$. Therefore, $r$ is a bijection. (There are other explicit bijections too)}
+	The point $(m,n)$ occurs on the $(m+n-1$ th diagonal, on which the number $m+n$ is an invariant. The $(m,n)$ point occurs $m$ points down the diagonal. So, to characterise a point, it is enough to specify the diagonal it falls in, and its ordinate (the "rank" of that point on that diagonal). Count the elements till the $m+n-2$nd diagonal, then add $m$, and this would be the position of the point $(m,n)$.\\
+	Define $r:\mathbb{N}\times \mathbb{N} \to  \mathbb{N} $ given by $r(m,n)= \psi(m+n-2)+m$
+	That this is a bijection is pretty clear because we are counting the position of the point $(m,n)$. For a given point $(m,m)$, there can only be one unique diagnonal on which it exists, and on the diagonal, its rank is unique. Moreover, for every $q \in N$, there corresponds an $(m,n)$ such that $r(m,n)=q$, for, we simply count along each diagonal in the "zig-zag" manner until we reach that $(m,n)$ for which the position is given by $q$. Therefore, $r$ is a bijection. (There are other explicit bijections too)}
 
 \thmp{}{The following are equivalent:
-\begin{enumerate}
-  \item $S$ is countable
-  \item $\exists$ a surjective function from $\mathbb{N} \to S$
-  \item $\exists$ an injective function from $S \to \mathbb{N}$
-\end{enumerate}}{($1\implies2)$ is obvious\\
-($2\implies3)$ $f:\mathbb{N}\to S$, every element of of $S$ has atleast one preimage in $\mathbb{N}$. Define a function from $S \to \mathbb{N}$ by taking for each $s \in S$ the least such $n \in \mathbb{N}$ such that $f(n)=s$. This defines an injection.\\
-($3\implies1$) If there is an injection from $S \to \mathbb{N}$, then there is a bijection from $S \to $ a subset of $\mathbb{N}$, which implies $S$ is countable.}
+	\begin{enumerate}
+		\item $S$ is countable
+		\item $\exists$ a surjective function from $\mathbb{N} \to S$
+		\item $\exists$ an injective function from $S \to \mathbb{N}$
+	\end{enumerate}}{($1\implies2)$ is obvious\\
+	($2\implies3)$ $f:\mathbb{N}\to S$, every element of of $S$ has atleast one preimage in $\mathbb{N}$. Define a function from $S \to \mathbb{N}$ by taking for each $s \in S$ the least such $n \in \mathbb{N}$ such that $f(n)=s$. This defines an injection.\\
+	($3\implies1$) If there is an injection from $S \to \mathbb{N}$, then there is a bijection from $S \to $ a subset of $\mathbb{N}$, which implies $S$ is countable.}
 
 \corp{The set of Rational Numbers $\mathbb{Q}$ is countable.}{We know that a surjection from $\mathbb{N} \times \mathbb{N}$ to $\mathbb{Q}$ exists (where $f(0,0)=0$, and $f(m,n)=\frac{m}{n}$).
-We know that $\mathbb{N}\times \mathbb{N}$ is bijective to $\mathbb{N}$. This means $\mathbb{N}$ is surjective to $\mathbb{Q}$. We are Done.}
+	We know that $\mathbb{N}\times \mathbb{N}$ is bijective to $\mathbb{N}$. This means $\mathbb{N}$ is surjective to $\mathbb{Q}$. We are Done.}
 
-\thmp{}{Every infinite subset of a countable set is countable.}{Consider $N_s \subseteq \mathbb{N}$ which is infinite. 
+\thmp{}{Every infinite subset of a countable set is countable.}{Consider $N_s \subseteq \mathbb{N}$ which is infinite.
 
-Define $g(1)=$ least number in $N_s$\\
+	Define $g(1)=$ least number in $N_s$\\
 
-Having defined $g(n)$, define $g(n+1)$= least number in $N_s$ which is larger than $g(n)$.\\
+	Having defined $g(n)$, define $g(n+1)$= least number in $N_s$ which is larger than $g(n)$.\\
 
-That it is an injection is obvious, for $g(m)>g(n)$ if $m>n$.\\
+	That it is an injection is obvious, for $g(m)>g(n)$ if $m>n$.\\
 
-Suppose it is not a surjection, i.e, $g(\mathbb{N}) \neq N_s \implies g(\mathbb{N})\subset N_s\implies N_s-g(\mathbb{N}) \neq \phi$\\
-Therefore, $N_s-g(\mathbb{N})$ has a least element, $k$. This means that $k-1$ is in $g(\mathbb{N})$. Therefore, there exists $q$ in $\mathbb{N}$ such that $g(q)=k-1$. But then, $g(q+1)$= least number in $N_s$ such that it is bigger than $g(q)$. This would, ofcourse be, $k$, which means $k=g(q+1)$, which puts $k$ in $g(\mathbb{N})$. Contradicton. Hence, $g(\mathbb{N})=N_s$, therefore, $g$ is a bijection from $\mathbb{N} \to N_s$. Since every countable set is bijective to $\mathbb{N}$, and every infinite subset of a countable set is bijective to an infinite subset of $\mathbb{N}$, the theorem holds generally for countable sets.}
+	Suppose it is not a surjection, i.e, $g(\mathbb{N}) \neq N_s \implies g(\mathbb{N})\subset N_s\implies N_s-g(\mathbb{N}) \neq \phi$\\
+	Therefore, $N_s-g(\mathbb{N})$ has a least element, $k$. This means that $k-1$ is in $g(\mathbb{N})$. Therefore, there exists $q$ in $\mathbb{N}$ such that $g(q)=k-1$. But then, $g(q+1)$= least number in $N_s$ such that it is bigger than $g(q)$. This would, ofcourse be, $k$, which means $k=g(q+1)$, which puts $k$ in $g(\mathbb{N})$. Contradicton. Hence, $g(\mathbb{N})=N_s$, therefore, $g$ is a bijection from $\mathbb{N} \to N_s$. Since every countable set is bijective to $\mathbb{N}$, and every infinite subset of a countable set is bijective to an infinite subset of $\mathbb{N}$, the theorem holds generally for countable sets.}
 
 \thmp{}{$\mathbb{N} \times \mathbb{N} \cdots \mathbb{N}$ is bijective to $\mathbb{N}$}{$\mathbb{N} \times \mathbb{N}$ is bijective to $\mathbb{N}$ obviously. Assuume that $f:\mathbb{N} \to \mathbb{N} \cdots \mathbb{N} (\text{ n times })$ is bijective.\\
 
-Consider $g:\mathbb{N}\times \mathbb{N}\to \mathbb{N} \cdots \mathbb{N} (n+1\text{ times })$
-given by $g(m,n)=(f(m),n)$. Clearly, this is bijective. }
+	Consider $g:\mathbb{N}\times \mathbb{N}\to \mathbb{N} \cdots \mathbb{N} (n+1\text{ times })$
+	given by $g(m,n)=(f(m),n)$. Clearly, this is bijective. }
 
 
 
 \subsection{Axiom of Choice}
 \asum{Axiom of Choice (AC)}{For any collection of non empty sets $C=\{ A_l: l \in L\}$, there exists a function $f$ called the "counting function" which maps each set $A_l$ to an element in $A_l$.\\
-Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
+	Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
 \thmp{}{Countable union of Countable sets is countable
-\rmk{(This theorem is an example of a theorem that requires \emph{Axiom of Choice})}}{Suppose we are given a sequence of countable sets $\{S_n : n\in \mathbb{N}\}$. Since each $S_j$ is countable, we have for each $j$, at least one bijective map $f_j:\mathbb{N} \to S_j$. Define $k:\mathbb{N} \times \mathbb{N} \to \bigcup_j S_j$ given by: $k(m,n)=f_m(n)$. Suppose $x \in \bigcup_j S_j$, i.e, $x \in S_j$ for some $j$. This means that, $f(n)=x$ for some $n$. Therefore, $k(j,n)=x$. Hence, $k$ is surjective. From theorem 2.14, we are done.\\\\
-(\textbf{Remark:}{ Keep in mind, for each $S_j$, there are a myriad of functions $(f_j)_k:\mathbb{N}\to S_j$. For each $S_j$, which is countably infinite, we have to choose one of the many functions that biject $\mathbb{N}$ to $S_j$. So we have a countable collection of sets $C=\{E_j: j\in \mathbb{N}\}$, where $E_j$ denotes the set of all functions that biject $\mathbb{N}$ into $S_j$. So for every element in $C$, we need to choose one element in each element of $C$. This is where the Axiom of Choice comes into play.)}}
+	\rmk{(This theorem is an example of a theorem that requires \emph{Axiom of Choice})}}{Suppose we are given a sequence of countable sets $\{S_n : n\in \mathbb{N}\}$. Since each $S_j$ is countable, we have for each $j$, at least one bijective map $f_j:\mathbb{N} \to S_j$. Define $k:\mathbb{N} \times \mathbb{N} \to \bigcup_j S_j$ given by: $k(m,n)=f_m(n)$. Suppose $x \in \bigcup_j S_j$, i.e, $x \in S_j$ for some $j$. This means that, $f(n)=x$ for some $n$. Therefore, $k(j,n)=x$. Hence, $k$ is surjective. From theorem 2.14, we are done.\\\\
+	(\textbf{Remark:}{ Keep in mind, for each $S_j$, there are a myriad of functions $(f_j)_k:\mathbb{N}\to S_j$. For each $S_j$, which is countably infinite, we have to choose one of the many functions that biject $\mathbb{N}$ to $S_j$. So we have a countable collection of sets $C=\{E_j: j\in \mathbb{N}\}$, where $E_j$ denotes the set of all functions that biject $\mathbb{N}$ into $S_j$. So for every element in $C$, we need to choose one element in each element of $C$. This is where the Axiom of Choice comes into play.)}}
 
 \thmp{}{If $f:A \to B$ is a surjection, then $B$ is bijective to a subset of $A$}{We are told that $f(A)=B$, i.e, for every $b\in B$, $\exists x_b$(many such $x_b$-s are possible) such that $f(x_b)=b$. Define a functino $g:B \to A$ as: $g(b)=\text{one of those } x_b \text{ such that } f(x_b)=b$. $g$ is bijective to the set of all the chosen $x_b$ for every $b$ }
 \rmkb{We make use of the Axiom of Choice in the previous theorem when we choose an $x_b$ from a set of all possible $x_b$-s for $b$. Let $A_b$ be the set of all possible $x_b$-s. Then the collection $\{A_b:b\in B\}$ is a collection of non-empty sets. And we are to select "one" element from each $A_b$. This requires AC.}
@@ -209,67 +208,67 @@ Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
 
 \section{The Real and Complex Fields}
 \defn{ (Field ($F,+,\cdot)$)}{set $F$, along with two functions $+:F \times F \to F$ and $\cdot:F \times F \to F$ is called a field if:
-\begin{enumerate}
-    \item $\forall x,y \in F$, $x+y \in F$ (closed under addition)
-    \item $\forall x,y \in F$, $x+y=y+x$ (commutative under addition)
-    \item $\forall x,y,z \in F$, $x+(y+Z)=(x+y)+z$ (assiciative under addition)
-    \item $\exists 0 (\text{ additive identity}) $ such that $\forall x \in F, x+0=0+x=x$ (Additive identity)
-    \item $\forall x\in F, \exists (-x) (\text{ additive inverse})$ such that $x+(-x)=(-x)+x=0$ (Additive inverse)
-    \item $\forall x,y \in F, x\cdot y \in F$ (Multiplication is closed)
-    \item $\forall x,y \in F, x\cdot y=y\cdot x$ (Multiplication is commutative)
-    \item $\forall x,y,z \in F, x\cdot (y\cdot z)=(x \cdot y) \cdot z$ (Multiplication is associative)
-    \item $\forall x \in F, x \neq 0, \exists (x^{-1})$ such that $x \cdot x^{-1}=x^{-1} \cdot x=1$ (Multiplicative inverse)
-    \item $\forall x \in F, 1\cdot x= x\cdot 1=x$ (Multiplicative identity)
-    \item $\forall a,b,c \in F, a\cdot (b+c)=a\cdot b + a\cdot c$ (Left Distributivity)
-    \item $\forall a,b,c \in F, (a+b) \cdot c=a\cdot c + b\cdot c$ (Right Distributivity)
-\end{enumerate} }
+	\begin{enumerate}
+		\item $\forall x,y \in F$, $x+y \in F$ (closed under addition)
+		\item $\forall x,y \in F$, $x+y=y+x$ (commutative under addition)
+		\item $\forall x,y,z \in F$, $x+(y+Z)=(x+y)+z$ (assiciative under addition)
+		\item $\exists 0 (\text{ additive identity}) $ such that $\forall x \in F, x+0=0+x=x$ (Additive identity)
+		\item $\forall x\in F, \exists (-x) (\text{ additive inverse})$ such that $x+(-x)=(-x)+x=0$ (Additive inverse)
+		\item $\forall x,y \in F, x\cdot y \in F$ (Multiplication is closed)
+		\item $\forall x,y \in F, x\cdot y=y\cdot x$ (Multiplication is commutative)
+		\item $\forall x,y,z \in F, x\cdot (y\cdot z)=(x \cdot y) \cdot z$ (Multiplication is associative)
+		\item $\forall x \in F, x \neq 0, \exists (x^{-1})$ such that $x \cdot x^{-1}=x^{-1} \cdot x=1$ (Multiplicative inverse)
+		\item $\forall x \in F, 1\cdot x= x\cdot 1=x$ (Multiplicative identity)
+		\item $\forall a,b,c \in F, a\cdot (b+c)=a\cdot b + a\cdot c$ (Left Distributivity)
+		\item $\forall a,b,c \in F, (a+b) \cdot c=a\cdot c + b\cdot c$ (Right Distributivity)
+	\end{enumerate} }
 \subsection{The Reals $\mathbb{R}$}
 The real numbers are characterised by the following axioms:
 \defn{(The Real Field)}{
-\begin{enumerate}
-    \item $F$, field axioms listed above.
-    \item Order Axioms:There exists a subset $P\subset \mathbb{R}$ called "positive numbers" such that:
-        \begin{enumerate}
-            \item $\forall a \in \mathbb{R},$ only one of $a\in P$, $-a \in P$ or $a=0$ are true. (Trichotomy Law)
-            \item $\forall a,b \in P, a+b \in P$ (Positive numbers are closed under addition)
-            \item $\forall x,y \in P, x \cdot y \in P$ (Positive numbers are closed under multiplication)
+	\begin{enumerate}
+		\item $F$, field axioms listed above.
+		\item Order Axioms:There exists a subset $P\subset \mathbb{R}$ called "positive numbers" such that:
+		      \begin{enumerate}
+			      \item $\forall a \in \mathbb{R},$ only one of $a\in P$, $-a \in P$ or $a=0$ are true. (Trichotomy Law)
+			      \item $\forall a,b \in P, a+b \in P$ (Positive numbers are closed under addition)
+			      \item $\forall x,y \in P, x \cdot y \in P$ (Positive numbers are closed under multiplication)
 
-        \end{enumerate}
-    \item Completeness axiom*
-\end{enumerate}}
+		      \end{enumerate}
+		\item Completeness axiom*
+	\end{enumerate}}
 \defn{}{
-\begin{enumerate}
-    \item (Max of a set) $M \in S \subseteq \mathbb{R}$ is said to be the maximum of $S$ if $M \geq x \forall x \in S$
-    \item (Min of a set) $m\in S\subseteq \mathbb{R}$ is said to be the minimum of a set if $m \leq x \forall x \in S$
-    \item (Upper bound of a set) $L\in \mathbb{R}$ is said to be an upper bound of $S$ if $L \geq x \forall x\in S$
-    \item (Lower bound of a set) $l\in \mathbb{R}$ is said to be a lower bound of $S$ if $l \leq x \forall x \in S$
-    \item (Sup(S)) $\alpha\in\mathbb{R}$ is said to be the supremum of $S$ if it is the minimum of the set of all Upper bounds of $S$.
-    \item (Inf(S)) $\beta \in \mathbb{R}$ is said to be the infimum of $S$ if it is the maximum of the set of all lower bounds of $S$.
-\end{enumerate}
+	\begin{enumerate}
+		\item (Max of a set) $M \in S \subseteq \mathbb{R}$ is said to be the maximum of $S$ if $M \geq x \forall x \in S$
+		\item (Min of a set) $m\in S\subseteq \mathbb{R}$ is said to be the minimum of a set if $m \leq x \forall x \in S$
+		\item (Upper bound of a set) $L\in \mathbb{R}$ is said to be an upper bound of $S$ if $L \geq x \forall x\in S$
+		\item (Lower bound of a set) $l\in \mathbb{R}$ is said to be a lower bound of $S$ if $l \leq x \forall x \in S$
+		\item (Sup(S)) $\alpha\in\mathbb{R}$ is said to be the supremum of $S$ if it is the minimum of the set of all Upper bounds of $S$.
+		\item (Inf(S)) $\beta \in \mathbb{R}$ is said to be the infimum of $S$ if it is the maximum of the set of all lower bounds of $S$.
+	\end{enumerate}
 
 }
 
 \asum{Completeness Axiom for the Real Number Field}{Every non empty subset of $\mathbb{R}$ that is bounded above has a supremum.}
 \corp{Every non empty subset of $\mathbb{R}$ that is bounded below has an infimum.}{
 
-$S \subseteq \mathbb{R}$ has a lower bound $\implies$
-$\exists L \in \mathbb{R}$ such that $L \leq x \forall x \in S \implies$
-$-L \geq -x \forall x \in S$
-Define $S':=\{-x: x\in S\}$. Then, $-L$ is an upper bound of $S'$.\\
-$\implies \exists q \in \mathbb{R}$ such that 
-$q \geq y \forall y\in S'$ and $q \leq z \forall z$ such that $z \geq y \forall y \in S'$.
+	$S \subseteq \mathbb{R}$ has a lower bound $\implies$
+	$\exists L \in \mathbb{R}$ such that $L \leq x \forall x \in S \implies$
+	$-L \geq -x \forall x \in S$
+	Define $S':=\{-x: x\in S\}$. Then, $-L$ is an upper bound of $S'$.\\
+	$\implies \exists q \in \mathbb{R}$ such that
+	$q \geq y \forall y\in S'$ and $q \leq z \forall z$ such that $z \geq y \forall y \in S'$.
 
-$\implies \exists q'=-q \in \mathbb{R}$ such that $q' \leq x \forall x \in S$ and $q' \geq z'=-z \forall z$ such that $z' \leq x \forall x \in S$\\
-Cleaning up a bit: $\implies \exists q'\in \mathbb{R}$ such that $q' \leq x \forall x \in S$ and $q' \geq z' \forall z'$ such that $z' \leq x \forall x \in S$\\
-Therefore $q'$ is the greatest lower bound, i.e the infimum.
-} 
+	$\implies \exists q'=-q \in \mathbb{R}$ such that $q' \leq x \forall x \in S$ and $q' \geq z'=-z \forall z$ such that $z' \leq x \forall x \in S$\\
+	Cleaning up a bit: $\implies \exists q'\in \mathbb{R}$ such that $q' \leq x \forall x \in S$ and $q' \geq z' \forall z'$ such that $z' \leq x \forall x \in S$\\
+	Therefore $q'$ is the greatest lower bound, i.e the infimum.
+}
 
 \lemp{The Lemma}{Suppose $a\in \mathbb{R}^+$ and $0\leq a< \varepsilon$ $\forall \varepsilon \in \mathbb{R}^+ $ then $a=0$ }{Suppose not, i.e, $a>0$. Choose $\varepsilon=\frac{a}{2}$. Contradiction.}
 \propp{Supremum of a set is unique.}{Supremum is the "least" of the set of the upper bounds, it itself being part of the set of all the upper bounds. Since minima is unique, Supremum is unique. }
 \lemp{}{$U \in \mathbb{R}$ is the supremum of $S \subseteq \mathbb{R} \iff$ \begin{enumerate}
-    \item $s\leq U \forall s \in S$
-    \item if $v<U, \exists s_v \in S$ such that $v<s_v$
-\end{enumerate}}{$\implies)$ Given that $U$ is the supremum, (1) is pretty obvious since it is an upper bound. Suppose $v < U$, but for every $s \in S$, $s \leq v$. This would mean $v$ is the supremum, and not $U$. Absurd. }
+		\item $s\leq U \forall s \in S$
+		\item if $v<U, \exists s_v \in S$ such that $v<s_v$
+	\end{enumerate}}{$\implies)$ Given that $U$ is the supremum, (1) is pretty obvious since it is an upper bound. Suppose $v < U$, but for every $s \in S$, $s \leq v$. This would mean $v$ is the supremum, and not $U$. Absurd. }
 
 \fact{Given that $U$ is an upper bound of $S$, $U$ is the supremum of $S \iff \forall \varepsilon >0, \exists s_{\epsilon} \in S$ such that $U-\varepsilon<s_{\epsilon}$}
 
@@ -277,27 +276,27 @@ Therefore $q'$ is the greatest lower bound, i.e the infimum.
 \cor{Alternate formulation of the previous statement: $\forall x \in \mathbb{R}, \exists n_0 \in \mathbb{N}$ such that $x<n_0$}
 
 \lemp{Useful Lemma}{$\forall \varepsilon>0, x< \varepsilon \iff \forall n\in \mathbb{N}, x<\frac{1}{n}$}{$\implies$)Contrapositive to prove would be: $\exists n_0 \in \mathbb{N}, x \geq \frac{1}{n_0} \implies \exists \varepsilon_0>0, x \geq \varepsilon_0$. Simply choose $\varepsilon_0=\frac{1}{n_0}$\\
-$\impliedby$)Contrapositive to prove would be: $\exists \varepsilon_0>0$ such that $x \geq \varepsilon \implies \exists n_0$ such that $x \geq \frac{1}{n_0}$. From Archimedean, $\exists n_0$ such that $n_0 \geq \frac{1}{\varepsilon_0} \implies \varepsilon_0 \geq \frac{1}{n_0} \implies x \geq \varepsilon_0 \geq \frac{1}{n_0}$}
+	$\impliedby$)Contrapositive to prove would be: $\exists \varepsilon_0>0$ such that $x \geq \varepsilon \implies \exists n_0$ such that $x \geq \frac{1}{n_0}$. From Archimedean, $\exists n_0$ such that $n_0 \geq \frac{1}{\varepsilon_0} \implies \varepsilon_0 \geq \frac{1}{n_0} \implies x \geq \varepsilon_0 \geq \frac{1}{n_0}$}
 
 \thmp{Archimedean Properties of $\mathbb{R}$}{\begin{enumerate}
-    \item $inf(\{\frac{1}{n}: n \in \mathbb{N} \})=0$
-    \item If $t>0, \exists n_0 \in \mathbb{N}$ such that, $0 < \frac{1}{t}<n$
-    \item If $y>0$, $\exists n_y \in \mathbb{N}$ such that $n_y-1 \leq y < n_y$
-\end{enumerate}}{1)Obvious\\2)Application of Archimedean\\3) We know from archimedean that such an $n_y$ exists such that $y<n_y.$ Consider the set of all $n$ such that $y<n$. Obviously, this is a non empty set. Therefore, from Well Ordering, this has a least element $n_0 \implies n_0 \leq y<n_0$}
+		\item $inf(\{\frac{1}{n}: n \in \mathbb{N} \})=0$
+		\item If $t>0, \exists n_0 \in \mathbb{N}$ such that, $0 < \frac{1}{t}<n$
+		\item If $y>0$, $\exists n_y \in \mathbb{N}$ such that $n_y-1 \leq y < n_y$
+	\end{enumerate}}{1)Obvious\\2)Application of Archimedean\\3) We know from archimedean that such an $n_y$ exists such that $y<n_y.$ Consider the set of all $n$ such that $y<n$. Obviously, this is a non empty set. Therefore, from Well Ordering, this has a least element $n_0 \implies n_0 \leq y<n_0$}
 
 \thmp{Density of $\QQ$ in $\RR$}{$\forall x,y \in \RR, x<y \implies \exists q \in \QQ$ such that $x<q<y$}{$y-x>0 \implies$ from archimedean $\exists n_0$ such that $n_0(y-x)>1\implies n_0y>1+n_0x$. Form Archimedean Propery, $\exists m \in \NN$ such that $ m-1< n_0y \leq m$.Since $m\geq n_0y>1+n_0x \implies m-1>n_0x \implies n_0y > m-1 \leq n_0x \implies y >\frac{(m-1)}{n_0}>x$}
 \cor{Given $x,y \in \RR, y>x$, $\exists q \in \RR-\QQ$ such that $y>q>x$ (Assumed that $\sqrt2$ is irrational.)}
 
 \thmp{Existence of $n$th Roots in $\RR^+$}{let $y \in \RR^+$ and $n \in \NN$, then $\exists$ a unique $x \in \RR^+$ such that $x^n=y$}{Consider $E:=\{ t\in \RR: t^n<y\}$. Is $E$ bounded above? obviously, $1+y$ is an upper bound. Is it non empty? Of course, consider $t=\frac{y}{1+y}<y$. Hence, $E$ has a supremum $u$. Claim: $u^n=y$. Suppose not. Let $u^n<y$. We want to find an $h\in \RR^+$ such that $(u+h)^n<y$ so that a contradiction can be raised ($u+h$ cannot be in the set). In effect we want to show that $(u+h)^n-u^n<y-u^n$. Recall the identity: $p^n-q^n=(p-q)(p^{n-1}+qp^{n-2} \dots + q^{n-1})$. If $p>q$, we have $p^n-q^n<n(p-q)(p^{n-1})$. Therefore: $(u+h)^n-u^n\leq n(h)(u+h)^{n-1}$. We want $h$ so that $n(h)(u+h)^{n-1}<y-u^n \implies h< \frac{y-u^n}{n(u+h)^{n-1}}.$ Choose $h<1$, which would mean $\frac{y-u^n}{n(u+1)^{n-1}}<\frac{y-u^n}{n(u+h)^{n-1}}$. Now simply choose such an $h$ such that $h<\frac{y-u^n}{n(u+1)^{n-1}}<\frac{y-u^n}{n(u+h)^{n-1}}$ which is possible from density.\\
-Suppose now that $u^n>y$, we need an $h$ so that $(u-h)^n>y$ or $-(u-h)^n<-y$, which would mean that $u-h$ is the actual supremum, contradicting the assumption. 
+Suppose now that $u^n>y$, we need an $h$ so that $(u-h)^n>y$ or $-(u-h)^n<-y$, which would mean that $u-h$ is the actual supremum, contradicting the assumption.
 Therefore, we have to show that $u^n-(u-h)^n<u^n-y$. From the identity, we have that $u^n-(u-h)^n \leq n(h)(u)^n$. It would suffice if we find an $h$ so that $nhu^{n-1}<u^n-y$ or $h<\frac{u^n-y}{nu^{n-1}}$. Again, from Density theorem this is possible.\\
 Uniqueness, once existence is established, is trivial since, if $q_1>q_2, (q_1)^n>(q_2)^n$.
 
 }
 \fact{\begin{enumerate}
-    \item $n>0, q>0$ and $r=\frac{m}{n}=\frac{p}{q}$, then $({b^m})^{\frac{1}{n}}=({b^p})^{\frac{1}{q}}$
-    \item $x^{({p+q})}=x^px^q$ for $p,q \in \QQ$
-\end{enumerate}}
+		\item $n>0, q>0$ and $r=\frac{m}{n}=\frac{p}{q}$, then $({b^m})^{\frac{1}{n}}=({b^p})^{\frac{1}{q}}$
+		\item $x^{({p+q})}=x^px^q$ for $p,q \in \QQ$
+	\end{enumerate}}
 \thmp{Results regarding powers}{Suppose $b>1$. If $x \in \mathbb{R}$, define $B(x):=\{b^t: t \in \QQ: t \leq x\}$. Then $sup(B(r))=b^r$ if $r$ is a rational number.}{Of course, the set is bounded and non-empty, hence, has a supremum. It is clear that $b^r$ cannot be $<sup(B(r))$ because if so, there would exist $t \in \QQ, t \leq r$ such that $b^r < b^t$. Absurd. So $b^r \geq sup(B(r))$. It also can't be strictly greater, since $b^r$ is in the set itself, so it can't exceed its supremum. Hence,$Sup(B(r))=b^r$.}
 
 With the previous result in mind as motivation, we define the following:
@@ -331,71 +330,69 @@ Consider the case where $b^s>y$. From density, $\exists \delta \in \RR^+$ such t
 \newpage
 \subsection{The Complex field $\CC$}
 \defn{}{We define $\CC $ as the set of all ordered pairs in $\mathbb{R}^2$ with the following additional properties: \begin{enumerate}
-    \item $x=(a_1,b_1), y=(a_2,b_2)$ with $a_1,b_1,a_2,b_2 \in \RR$, then $x+y$ is defined as $(a_1+a_2,b_1+b_2)$
-    \item $x=(a_1,b_1), y=(a_2,b_2)$ with $a_1,b_1,a_2,b_2 \in \RR$, we define multiplication $xy$ as $(a_1a_2-b_1b_2-a_1b_2+a_2b_1)$
-\end{enumerate}}
+		\item $x=(a_1,b_1), y=(a_2,b_2)$ with $a_1,b_1,a_2,b_2 \in \RR$, then $x+y$ is defined as $(a_1+a_2,b_1+b_2)$
+		\item $x=(a_1,b_1), y=(a_2,b_2)$ with $a_1,b_1,a_2,b_2 \in \RR$, we define multiplication $xy$ as $(a_1a_2-b_1b_2-a_1b_2+a_2b_1)$
+	\end{enumerate}}
 This set $\CC$ with $+$ and juxtaposition obey field axioms with $(0,0)$ the additive identity, and $(1,0)$ the multiplicative one. \\
 For consistency, we define $\frac{1}{x}:=(\frac{a}{a^2+b^2},\frac{-b}{a^2+b^2}),$ where $x=(a,b)$.
 \defn{}{\begin{enumerate}
-    \item (Conjugate) If $z=(a,b)$, the conjugate $\bar z=$ is defined as $\bar z=(a,-b).$
-    \item (Mod) If $z=(a,b)$, the mod of $z$, $|z|$ is defined as $(z \bar z)^{\frac{1}{2}}$
+		\item (Conjugate) If $z=(a,b)$, the conjugate $\bar z=$ is defined as $\bar z=(a,-b).$
+		\item (Mod) If $z=(a,b)$, the mod of $z$, $|z|$ is defined as $(z \bar z)^{\frac{1}{2}}$
 
-    
-\end{enumerate}}
+
+	\end{enumerate}}
 \fact{Some facts: \begin{enumerate}
-    \item $\bar(x+y)=\bar x +\bar y$
-    \item $\bar(zw)=\bar z \bar w$
-    \item $z \bar z \geq 0$ and $=(a^2+b^2,0)$
-    \item We can identify $\RR$ as a subset of $\CC$ by setting $a \in \RR$ to be $(a,0)$ in $\CC$.
-    \item $|zw|=|z||w|$
-    \item $|z+w|\leq|z|+|w| $
-    \item $|Re(z)| \leq |z|$
-\end{enumerate}}
-\newpage 
+		\item $\bar(x+y)=\bar x +\bar y$
+		\item $\bar(zw)=\bar z \bar w$
+		\item $z \bar z \geq 0$ and $=(a^2+b^2,0)$
+		\item We can identify $\RR$ as a subset of $\CC$ by setting $a \in \RR$ to be $(a,0)$ in $\CC$.
+		\item $|zw|=|z||w|$
+		\item $|z+w|\leq|z|+|w| $
+		\item $|Re(z)| \leq |z|$
+	\end{enumerate}}
+\newpage
 \thmp{Cauchy-Schwartz Inequality}{If $a_1, a_2, \cdots a_n$ and $b_1,b_2 ,\cdots, b_n$ are numbers in $\RR^+$, then $$\big(\sum_{i=1}^n a_i b_i\big)^2 \leq \sum_{i=1}^n(a_i)^2\sum_{j=1}^n(b_j)^2$$
-Extending this theorem for $a_j$ and $b_j$ in the complex domain, we have
-$$|\big(\sum_{i=1}^n a_i \bar b_i\big)|^2 \leq \sum_{i=1}^n|(a_i)|^2\sum_{j=1}^n|(b_j)|^2$$
+	Extending this theorem for $a_j$ and $b_j$ in the complex domain, we have
+	$$|\big(\sum_{i=1}^n a_i \bar b_i\big)|^2 \leq \sum_{i=1}^n|(a_i)|^2\sum_{j=1}^n|(b_j)|^2$$
 }{Consider $\alpha=(a_1b_1+a_2b_2 \dots a_nb_n)^2=(a_1b_1+a_2b_2 \dots a_nb_n)(a_1b_1+a_2b_2 \dots a_nb_n)$ which is $((a_1b_1)^2+(a_2b_2)^2 \dots (a_nb_n)^2)+K$
-where $K$ is given by 
-$$\begin{matrix}
-    0 & +a_1b_1a_2b_2 &+a_1b_1a_3b_3 & \cdots & +a_1b_1a_nb_n \\
-    a_2b_2a_1b_1 & +0 & +a_2b_2a_3b_3 & \cdots &+a_2b_2a_nb_n \\
-    \vdots\\
-    a_nb_na_1b_1 &+a_nb_na_2n_2 &+ a_nb_na_3b_3 & \cdots & +0
-    
-\end{matrix}$$
-Consider $\beta=(a_1^2+a_2^2+\dots)(b_1^2+b_2^2 \dots)$
-This would be$(a_1b_1)^2+(a_2b_2)^2 \cdots (a_nb_n)^2 + L$ where $L$ is given by:
-$$\begin{matrix}
-    0 & +a_1^2b_2^2 &+a_1^2b_3^2 & \cdots & +a_1^2b_n^2 \\
-    a_2^2b_1^2 & +0 & +a_2^2b_3^2 & \cdots &+a_2^2b_n^2 \\
-    \vdots\\
-    a_n^2b_1^2 &+a_n^2b_2^2 &+ a_n^2b_3^2 & \cdots & +0
-    
-\end{matrix}$$
+	where $K$ is given by
+	$$\begin{matrix}
+			0            & +a_1b_1a_2b_2 & +a_1b_1a_3b_3  & \cdots & +a_1b_1a_nb_n \\
+			a_2b_2a_1b_1 & +0            & +a_2b_2a_3b_3  & \cdots & +a_2b_2a_nb_n \\
+			\vdots                                                                 \\
+			a_nb_na_1b_1 & +a_nb_na_2n_2 & + a_nb_na_3b_3 & \cdots & +0
+		\end{matrix}$$
+	Consider $\beta=(a_1^2+a_2^2+\dots)(b_1^2+b_2^2 \dots)$
+	This would be$(a_1b_1)^2+(a_2b_2)^2 \cdots (a_nb_n)^2 + L$ where $L$ is given by:
+	$$\begin{matrix}
+			0          & +a_1^2b_2^2 & +a_1^2b_3^2  & \cdots & +a_1^2b_n^2 \\
+			a_2^2b_1^2 & +0          & +a_2^2b_3^2  & \cdots & +a_2^2b_n^2 \\
+			\vdots                                                         \\
+			a_n^2b_1^2 & +a_n^2b_2^2 & + a_n^2b_3^2 & \cdots & +0
+		\end{matrix}$$
 
-$$\beta-\alpha=\sum_{i=1}^n \sum_{j=i+1}^n (a_ib_j)^2+(a_jb_i)^2-\sum_{i=1}^n \sum_{j=i+1}2a_ia_jb_ib_j=\sum_{i=1}^n \sum_{j=i+1}(a_ib_j-b_ia_j)^2$$. Hence, $\beta=\alpha+$ some square term. Therefore $$\beta-\alpha \geq 0$$.
+	$$\beta-\alpha=\sum_{i=1}^n \sum_{j=i+1}^n (a_ib_j)^2+(a_jb_i)^2-\sum_{i=1}^n \sum_{j=i+1}2a_ia_jb_ib_j=\sum_{i=1}^n \sum_{j=i+1}(a_ib_j-b_ia_j)^2$$. Hence, $\beta=\alpha+$ some square term. Therefore $$\beta-\alpha \geq 0$$.
 }
 
 \thmp{Bernoulli's Inequality}{Given $x>-1$, $(1+x)^n \geq 1+nx$}{For $n=1$, it's trivially true. Assume it's correct for $n=n$. Consider $(1+x)^n(1+x)\geq(1+nx)(1+x)=1+x+nx+nx^2=1+x(n+1)+nx^2 \implies (1+x)^{n+1} \geq 1+(n+1)x$}
-\thmp{AM-GM Inequality}{Given $a_1,a_2,\dots,a_n \in \mathbb{R}^+$, $$\bigg(\frac{S_n}{n}\bigg)^n=(\frac{a_1+a_2+\cdots +a_n}{n})^n \geq (a_1a_2\cdots a_n) $$}{For $a_1$, it is trivially true. Assume for $n=n$, and consider 
-$$\bigg(\frac{S_{n+1}}{n+1}\bigg)^{n+1}=\bigg(\frac{S_n+a_{n+1}}{n+1}\bigg)^{n+1}\rightarrow $$
-$$\bigg(\frac{\frac{nS_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} \rightarrow$$
-$$\bigg(\frac{\frac{(n+1-1)S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} =\bigg(\frac{\frac{(n+1)S_n-S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} =$$
-$$\bigg(\frac{\frac{(n+1)S_n}{n}-\frac{S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} =\bigg(\frac{S_n}{n}+\frac{-\frac{S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} = $$
-$$\bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(1+\frac{-1+\frac{na_{n+1}}{S_n}}{n+1}\bigg)^{n+1} $$ From Bernoulli inequality,
-$$\bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(1+\frac{-1+\frac{na_{n+1}}{S_n}}{n+1}\bigg)^{n+1} \geq \bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(1+(n+1)\frac{-1+\frac{na_{n+1}}{S_n}}{n+1}\bigg)=\bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(\frac{na_{n+1}}{S_n}\bigg)  $$
-$$\geq \bigg(\frac{S_n}{n}\bigg)^n\bigg(a_{n+1}\bigg) \geq a_1a_2\cdots a_n a_{n+1} $$
+\thmp{AM-GM Inequality}{Given $a_1,a_2,\dots,a_n \in \mathbb{R}^+$, $$\bigg(\frac{S_n}{n}\bigg)^n=(\frac{a_1+a_2+\cdots +a_n}{n})^n \geq (a_1a_2\cdots a_n) $$}{For $a_1$, it is trivially true. Assume for $n=n$, and consider
+	$$\bigg(\frac{S_{n+1}}{n+1}\bigg)^{n+1}=\bigg(\frac{S_n+a_{n+1}}{n+1}\bigg)^{n+1}\rightarrow $$
+	$$\bigg(\frac{\frac{nS_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} \rightarrow$$
+	$$\bigg(\frac{\frac{(n+1-1)S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} =\bigg(\frac{\frac{(n+1)S_n-S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} =$$
+	$$\bigg(\frac{\frac{(n+1)S_n}{n}-\frac{S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} =\bigg(\frac{S_n}{n}+\frac{-\frac{S_n}{n}+a_{n+1}}{n+1}\bigg)^{n+1} = $$
+	$$\bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(1+\frac{-1+\frac{na_{n+1}}{S_n}}{n+1}\bigg)^{n+1} $$ From Bernoulli inequality,
+	$$\bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(1+\frac{-1+\frac{na_{n+1}}{S_n}}{n+1}\bigg)^{n+1} \geq \bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(1+(n+1)\frac{-1+\frac{na_{n+1}}{S_n}}{n+1}\bigg)=\bigg(\frac{S_n}{n}\bigg)^{n+1}\bigg(\frac{na_{n+1}}{S_n}\bigg)  $$
+	$$\geq \bigg(\frac{S_n}{n}\bigg)^n\bigg(a_{n+1}\bigg) \geq a_1a_2\cdots a_n a_{n+1} $$
 }
 \newpage
 \subsection{Intervals on the Real Line}
 \defn{Intervals}{\begin{enumerate}
-    \item (Open Interval): $(a,b) \subset \RR := \{x \in \RR: a<x<b \}$
-    \item (Closed Interval): $[a,b] \subset \RR:=\{x \in \RR: a \leq x \geq b \}$
-\end{enumerate}}
+		\item (Open Interval): $(a,b) \subset \RR := \{x \in \RR: a<x<b \}$
+		\item (Closed Interval): $[a,b] \subset \RR:=\{x \in \RR: a \leq x \geq b \}$
+	\end{enumerate}}
 
 \defn{Nested Intervals}{If $I_n:=[a_n,b_n]: n \in \NN$ is a sequence of intervals such that $I_n \subseteq I_{n-1} \cdots \subseteq I_1$, then $\{I_n \}$ is said to be a sequence of nested intervals. }
-\thmp{Nested Interval Theorem}{Given a sequence of closed and bounded, and non empty nested intervals $\{I_n: n \in \NN \}, \ \exists \xi \in I_n \ \forall n \in \NN$ or equivalently, 
+\thmp{Nested Interval Theorem}{Given a sequence of closed and bounded, and non empty nested intervals $\{I_n: n \in \NN \}, \ \exists \xi \in I_n \ \forall n \in \NN$ or equivalently,
 $\xi \in \big.\cap_{n=1}^{\infty} I_n$.}{Let $I_n=[a_n,b_n]$. From the definition, it is clear that $\{a_n\}$ is an increasing sequence of reals, while $\{b_n\}$ is a decreasing sequence. Moreover, from the non empty property of each interval, we have that $a_m < b_n, \forall n \in \NN, \forall m \in \NN$. This implies that the set of $\{a_n\}$ has a supremum $S_a$, while the set $\{b_n \}$ has an infimum $L_b$. $a_n \leq L_b \forall n \in \NN$ while $S_a \leq b_n \forall n \in \NN$. $a_n \leq $. Moreover, $a_n \leq S_a \forall n \in \NN$ while $L_b \leq b_n \forall n \in \NN$. since $a_n$ is a lower bound of $\{b_n\}$, $a_n \leq L_b$, and since $L_b$ is an upper bound of $\{a_n\}$, $a_n \leq S_a \leq L_b \leq b_n: \forall n \in \NN$. From Density, $\exists \xi \in [S_a,L_b]$ such that $\xi \in \cap_{i=1}^{\infty} I_i$
 }
 
@@ -403,8 +400,8 @@ $\xi \in \big.\cap_{n=1}^{\infty} I_n$.}{Let $I_n=[a_n,b_n]$. From the definitio
 \newpage
 \subsection{Decimal Expansions, and related results}
 Every $x\in \RR$ can be written as an expansion in the following way:
-\defn{Decimals}{Let $z \in \RR^+$ be given. Let $n_0$ be the "largest" integer such that $n_0 \leq z$. Let $n_1$ be the largest integer such that $n_0 +\frac{n_1}{10} \leq z$. As such, say $n_k$ is defined for some $k$. Let $n_{k+1}$ be the largest integer such that $n_0+\frac{n_1}{10^1}+\frac{n_2}{10^2} + \dots + \frac{n_k}{10^k} + \frac{n_{k+1}}{10^{k+1}} \leq z$. Consider the set of all such "finite sums", i.e, the set of all 
-$$z_k=n_0+\frac{n_1}{10^1}+\frac{n_2}{10^2} + \dots + \frac{n_k}{10^k} + \frac{n_{k+1}}{10^{k+1}} \leq z$$. This set has a supremum and that is $z$ itself. We symbolically write $z=n_0.n_1n_2 \dots$
+\defn{Decimals}{Let $z \in \RR^+$ be given. Let $n_0$ be the "largest" integer such that $n_0 \leq z$. Let $n_1$ be the largest integer such that $n_0 +\frac{n_1}{10} \leq z$. As such, say $n_k$ is defined for some $k$. Let $n_{k+1}$ be the largest integer such that $n_0+\frac{n_1}{10^1}+\frac{n_2}{10^2} + \dots + \frac{n_k}{10^k} + \frac{n_{k+1}}{10^{k+1}} \leq z$. Consider the set of all such "finite sums", i.e, the set of all
+	$$z_k=n_0+\frac{n_1}{10^1}+\frac{n_2}{10^2} + \dots + \frac{n_k}{10^k} + \frac{n_{k+1}}{10^{k+1}} \leq z$$. This set has a supremum and that is $z$ itself. We symbolically write $z=n_0.n_1n_2 \dots$
 }
 \thmp{}{The set $K=\{z_n: n\in \NN\}$ above, is bounded and non-empty, and Sup($K$)=$z$}{That it is non-empty and bounded is obvious. Suppose that $x=sup(K)$. Since $z$ is an upper bound, let us assume $x<z \implies \exists \xi \in \RR$ such that $\xi=z-x$. From Archimedean, choose a $k \in \NN$ such that $\frac{1}{10^k} < \xi \implies -\frac{1}{10^k} > -\xi$. This means that $z-\frac{1}{10^k}>z-\xi=x$. Consider one such $z_k \in K$, we can see that  $n_0+\frac{n_1}{10^1}+ \dots + \frac{n_k}{10^k} <x<z-\frac{1}{10^k} \implies n_0+\frac{n_1}{10^1}+ \dots + \frac{n_k+1}{10^k}<z$. But this would mean that for some $q \leq k \in \NN$, $n_k$ isn't the largest integer such that $z_k \leq z$.
 
@@ -413,6 +410,6 @@ $$z_k=n_0+\frac{n_1}{10^1}+\frac{n_2}{10^2} + \dots + \frac{n_k}{10^k} + \frac{n
 \thmp{}{$x \in \RR$ is rational $\iff$ x has either terminating, or repeating decimal expansion}{$\impliedby$)Obvious\\
 $\implies$) Suppose $x=\frac{p}{q}$ for $p,q$ integers. Then $xq=p$. Let $k_0$ be the smallest integer such that $10^{k_0}p > q$. From Euclid's algorithm, we have $$10^{k_0}p=z_0q +r_0 \implies \frac{p}{q}=\frac{z_0}{10^{k_0}}+\frac{\frac{r_0}{q}}{10^{k_0}} $$ with $|r_0|<q$. Choose the smallest $k_1 \in \NN$ such that $10^{k_1}r_0>q $
 Now consider $10^{k_1}r_0$, again we have $10^{k_1}r_0=z_1q+r_1$ with $|r_1| <q$. Thus $\frac{r_0}{q}=\frac{z_1}{10^{k_1}}+\frac{r_1}{10^{k_1}q}$. This implies $$\frac{p}{q}=\frac{z_0}{10^{k_0}} + \frac{z_1}{10^{k_0+k_1}}+\frac{r_1}{q 10^{k_0+k_1}}$$. We can keep going on as such, finding $k_n$, and applying Euclid's algorithm so that $$\frac{p}{q}=\frac{z_0}{10^{k_0}} + \frac{z_1}{10^{k_0+k_1}}+\frac{z_2}{10^{k_1+k_2+k_3}} \cdots + \frac{z_n}{10^{k_1+k_2 \dots +k_n}}+ \frac{r_n }{q10^{k_1+k_2...+k_n}}$$
-Since for every $n \in \NN, |r_n| < q$, and $q \in \NN$, only finite amount of remainders are possible when dividing by $q$. Hence, at some point $p \in \NN$, $r_n=r_p$ for a previous $n \in \NN$. This means that, $10^{k_{p+1}}p=z_{p+1}q +r_{p+1} \implies \frac{r_p}{q}=\frac{z_{p+1}}{10^{k^{p+1}}} +\frac{r_{p+1}}{10^{k_{p+1}}q}$ $$\implies \frac{r_n}{q}=\frac{r_p}{q} \implies z_{n+1}=z_{p+1}$$ Hence, we can see that it is recurring.  
+Since for every $n \in \NN, |r_n| < q$, and $q \in \NN$, only finite amount of remainders are possible when dividing by $q$. Hence, at some point $p \in \NN$, $r_n=r_p$ for a previous $n \in \NN$. This means that, $10^{k_{p+1}}p=z_{p+1}q +r_{p+1} \implies \frac{r_p}{q}=\frac{z_{p+1}}{10^{k^{p+1}}} +\frac{r_{p+1}}{10^{k_{p+1}}q}$ $$\implies \frac{r_n}{q}=\frac{r_p}{q} \implies z_{n+1}=z_{p+1}$$ Hence, we can see that it is recurring.
 }
 \end{document}

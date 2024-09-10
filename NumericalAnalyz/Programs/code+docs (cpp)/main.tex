@@ -1,0 +1,382 @@
+%
+% These examples are based on the package documentation:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/minted
+%
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{student}
+
+% Metadata
+\date{\today}
+\setmodule{MAT314: Numerical Analysis}
+\setterm{Semester 5, 2024}
+
+%-------------------------------%
+% Other details
+% TODO: Fill these
+%-------------------------------%
+\title{MathLab Assingment - 2}
+\setmembername{Mangesh M. Joshi}  % Fill group member names
+\setmemberuid{IMS22161}  % Fill group member uids (same order)
+
+%-------------------------------%
+% Add / Delete commands and packages
+% TODO: Add / Delete here as you need
+%-------------------------------%
+\usepackage{amsmath,amssymb,bm}
+
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\T}{\top}
+
+\newcommand{\expdist}[2]{%
+        \normalfont{\textsc{Exp}}(#1, #2)%
+    }
+\newcommand{\expparam}{\bm \lambda}
+\newcommand{\Expparam}{\bm \Lambda}
+\newcommand{\natparam}{\bm \eta}
+\newcommand{\Natparam}{\bm H}
+\newcommand{\sufstat}{\bm u}
+
+\begin{document}
+
+\header{}
+\footnote{Solvers in this document are licenced under GPL-3 here:
+	\href{https://github.com/SoloMazer/solvers}{https://github.com/SoloMazer/solvers}}
+\textbf{Q1.} Write a MATLAB code to solve a nonlinear equation f(x)= 0 using the following methods:
+\begin{enumerate}
+	\item Bisection Method
+	\item Newton-Raphson Method
+	\item Secant Methods
+	\item Regula-Falsi Method
+	\item Fixed-point Iteration Method
+\end{enumerate}
+and test it for $f(x) = sin(x) + x^2 - 1$, take the interval [0,1].
+
+\begin{answer}[Question 1.1 - Bisection Method]{}
+	\inputminted[linenos]{cpp}{/home/solomazer/devel/solvers/bisection.cpp}
+\end{answer}
+\textbf{The code output is as follows:}
+\begin{minted}{c}
+Enter lower bound of [a,b]: 0
+Enter upper bound of [a,b]: 1
+| i: 1 | mid: 0.5 | f(mid): -0.270574
+| i: 2 | mid: 0.75 | f(mid): 0.244139
+| i: 3 | mid: 0.625 | f(mid): -0.0242777
+| i: 4 | mid: 0.6875 | f(mid): 0.107263
+| i: 5 | mid: 0.65625 | f(mid): 0.0408141
+| i: 6 | mid: 0.640625 | f(mid): 0.00809703
+| i: 7 | mid: 0.632812 | f(mid): -0.00813334
+| i: 8 | mid: 0.636719 | f(mid): -2.88789e-05
+| i: 9 | mid: 0.638672 | f(mid): 0.0040314
+| i: 10 | mid: 0.637695 | f(mid): 0.00200059
+| i: 11 | mid: 0.637207 | f(mid): 0.000985687
+| i: 12 | mid: 0.636963 | f(mid): 0.000478362
+| i: 13 | mid: 0.636841 | f(mid): 0.000224731
+| i: 14 | mid: 0.63678 | f(mid): 9.79236e-05
+| i: 15 | mid: 0.636749 | f(mid): 3.45217e-05
+| i: 16 | mid: 0.636734 | f(mid): 2.82122e-06
+| i: 17 | mid: 0.636726 | f(mid): -1.30289e-05
+| i: 18 | mid: 0.63673 | f(mid): -5.10384e-06
+| i: 19 | mid: 0.636732 | f(mid): -1.14131e-06
+| i: 20 | mid: 0.636733 | f(mid): 8.39956e-07
+| i: 21 | mid: 0.636733 | f(mid): -1.50677e-07
+| i: 22 | mid: 0.636733 | f(mid): 3.4464e-07
+| i: 23 | mid: 0.636733 | f(mid): 9.69814e-08
+| i: 24 | mid: 0.636733 | f(mid): -2.68477e-08
+| i: 25 | mid: 0.636733 | f(mid): 3.50668e-08
+| i: 26 | mid: 0.636733 | f(mid): 4.10954e-09
+| i: 27 | mid: 0.636733 | f(mid): -1.13691e-08
+| i: 28 | mid: 0.636733 | f(mid): -3.62978e-09
+| i: 29 | mid: 0.636733 | f(mid): 2.39883e-10
+| i: 30 | mid: 0.636733 | f(mid): -1.69495e-09
+| i: 31 | mid: 0.636733 | f(mid): -7.27532e-10
+| i: 32 | mid: 0.636733 | f(mid): -2.43825e-10
+| i: 33 | mid: 0.636733 | f(mid): -1.97065e-12
+| i: 34 | mid: 0.636733 | f(mid): 1.18956e-10
+| i: 35 | mid: 0.636733 | f(mid): 5.84925e-11
+| i: 36 | mid: 0.636733 | f(mid): 2.82609e-11
+| i: 37 | mid: 0.636733 | f(mid): 1.3145e-11
+| i: 38 | mid: 0.636733 | f(mid): 5.58709e-12
+| i: 39 | mid: 0.636733 | f(mid): 1.80833e-12
+| i: 40 | mid: 0.636733 | f(mid): -8.12683e-14
+| i: 41 | mid: 0.636733 | f(mid): 8.63531e-13
+| i: 42 | mid: 0.636733 | f(mid): 3.91021e-13
+| i: 43 | mid: 0.636733 | f(mid): 1.54987e-13
+| i: 44 | mid: 0.636733 | f(mid): 3.68594e-14
+| i: 45 | mid: 0.636733 | f(mid): -2.22045e-14
+| i: 46 | mid: 0.636733 | f(mid): 7.32747e-15
+| i: 47 | mid: 0.636733 | f(mid): -7.43849e-15
+| i: 48 | mid: 0.636733 | f(mid): -1.11022e-16
+| i: 49 | mid: 0.636733 | f(mid): 3.55271e-15
+| i: 50 | mid: 0.636733 | f(mid): 1.77636e-15
+| i: 51 | mid: 0.636733 | f(mid): 8.88178e-16
+| i: 52 | mid: 0.636733 | f(mid): 4.44089e-16
+Solution found at (0.636733, 0).
+\end{minted}
+
+\begin{answer}[Question 1.2 - Newton-Raphson Method]{}
+	\inputminted[linenos]{cpp}{/home/solomazer/devel/solvers/newton.cpp}
+\end{answer}
+
+\textbf{The code output is as follows:}
+\begin{minted}{cpp}
+Enter initial point for newton-raphson: 1
+| i: 1 | x: 1 | f(x): 0.841471
+| i: 2 | x: 0.668752 | f(x): 0.0672358
+| i: 3 | x: 0.637068 | f(x): 0.000696838
+| i: 4 | x: 0.636733 | f(x): 7.90141e-08
+| i: 5 | x: 0.636733 | f(x): 8.88178e-16
+| i: 6 | x: 0.636733 | f(x): 0
+Solution found at ( 0.636733, 0)
+\end{minted}
+
+\begin{answer}[Question 1.3 - Secant Method]{}
+	\inputminted[linenos]{cpp}{/home/solomazer/devel/solvers/secant.cpp}
+\end{answer}
+\textbf{The code output is as follows:}
+\begin{minted}{cpp}
+Enter initial x_0: 0 
+Enter initial x_1: 1
+| i: 1 | x: 0.543044 | f(x): -0.188359
+| i: 2 | x: 0.645331 | f(x): 0.0179152
+| i: 3 | x: 0.635602 | f(x): -0.00234732
+| i: 4 | x: 0.636877 | f(x): 0.000299992
+| i: 5 | x: 0.636714 | f(x): -3.8467e-05
+| i: 6 | x: 0.636735 | f(x): 4.93041e-06
+| i: 7 | x: 0.636732 | f(x): -6.31976e-07
+| i: 8 | x: 0.636733 | f(x): 8.10057e-08
+| i: 9 | x: 0.636733 | f(x): -1.03832e-08
+| i: 10 | x: 0.636733 | f(x): 1.3309e-09
+| i: 11 | x: 0.636733 | f(x): -1.70593e-10
+| i: 12 | x: 0.636733 | f(x): 2.18665e-11
+| i: 13 | x: 0.636733 | f(x): -2.80287e-12
+| i: 14 | x: 0.636733 | f(x): 3.59268e-13
+| i: 15 | x: 0.636733 | f(x): -4.59632e-14
+| i: 16 | x: 0.636733 | f(x): 5.77316e-15
+| i: 17 | x: 0.636733 | f(x): -4.44089e-16
+| i: 18 | x: 0.636733 | f(x): -1.11022e-16
+Solution found at ( 0.636733, -1.11022e-16)
+\end{minted}
+
+\begin{answer}[Question 1.4 - Regula-Falsi Method]{}
+	\inputminted[linenos]{cpp}{/home/solomazer/devel/solvers/regula-falsi.cpp}
+\end{answer}
+\textbf{The code output is as follows:}
+\begin{minted}{cpp}
+Enter the lower bound of [a, b]: 0
+Enter the upper bound of [a, b]: 1
+| i: 1 | x: 0.543044 | f(x): -0.188359
+| i: 2 | x: 0.626623 | f(x): -0.0209319
+| i: 3 | x: 0.635685 | f(x): -0.00217574
+| i: 4 | x: 0.636625 | f(x): -0.000224564
+| i: 5 | x: 0.636722 | f(x): -2.31611e-05
+| i: 6 | x: 0.636732 | f(x): -2.3886e-06
+| i: 7 | x: 0.636733 | f(x): -2.46335e-07
+| i: 8 | x: 0.636733 | f(x): -2.54043e-08
+| i: 9 | x: 0.636733 | f(x): -2.61992e-09
+| i: 10 | x: 0.636733 | f(x): -2.7019e-10
+| i: 11 | x: 0.636733 | f(x): -2.78645e-11
+| i: 12 | x: 0.636733 | f(x): -2.87359e-12
+| i: 13 | x: 0.636733 | f(x): -2.96208e-13
+| i: 14 | x: 0.636733 | f(x): -3.05311e-14
+| i: 15 | x: 0.636733 | f(x): -3.10862e-15
+| i: 16 | x: 0.636733 | f(x): -4.44089e-16
+Solution found at ( 0.636733, 0)
+\end{minted}
+
+
+\begin{answer}[Question 1.5 - Fixed-Point Iteration]{}
+	\inputminted[linenos]{cpp}{/home/solomazer/devel/solvers/fixed-point-iteration.cpp}
+\end{answer}
+\textbf{The code output is as follows:}
+\begin{minted}{cpp}
+  Enter Initial guess: 0.5
+  | i: 1 | fixed-point: 0.582651
+  | i: 2 | fixed-point: 0.670642
+  | i: 3 | fixed-point: 0.615232
+  | i: 4 | fixed-point: 0.65027
+  | i: 5 | fixed-point: 0.628171
+  | i: 6 | fixed-point: 0.642133
+  | i: 7 | fixed-point: 0.633321
+  | i: 8 | fixed-point: 0.638886
+  | i: 9 | fixed-point: 0.635373
+  | i: 10 | fixed-point: 0.637591
+  | i: 11 | fixed-point: 0.636191
+  | i: 12 | fixed-point: 0.637075
+  | i: 13 | fixed-point: 0.636517
+  | i: 14 | fixed-point: 0.636869
+  | i: 15 | fixed-point: 0.636647
+  | i: 16 | fixed-point: 0.636787
+  | i: 17 | fixed-point: 0.636698
+  | i: 18 | fixed-point: 0.636754
+  | i: 19 | fixed-point: 0.636719
+  | i: 20 | fixed-point: 0.636741
+  | i: 21 | fixed-point: 0.636727
+  | i: 22 | fixed-point: 0.636736
+  | i: 23 | fixed-point: 0.63673
+  | i: 24 | fixed-point: 0.636734
+  | i: 25 | fixed-point: 0.636732
+  | i: 26 | fixed-point: 0.636733
+  | i: 27 | fixed-point: 0.636732
+  | i: 28 | fixed-point: 0.636733
+  | i: 29 | fixed-point: 0.636733
+  | i: 30 | fixed-point: 0.636733
+  | i: 31 | fixed-point: 0.636733
+  | i: 32 | fixed-point: 0.636733
+  | i: 33 | fixed-point: 0.636733
+  | i: 34 | fixed-point: 0.636733
+  | i: 35 | fixed-point: 0.636733
+  | i: 36 | fixed-point: 0.636733
+  | i: 37 | fixed-point: 0.636733
+  | i: 38 | fixed-point: 0.636733
+  | i: 39 | fixed-point: 0.636733
+  | i: 40 | fixed-point: 0.636733
+  | i: 41 | fixed-point: 0.636733
+  Solution found at ( 0.636733, 0)
+\end{minted}
+
+\textbf{Q2.}
+Apply the Newton-Raphson method to approximate the root of the equation $f(x) = x^3 - x - 3$
+with an initial guess $x_0 = 0$. Show that the sequence diverges. Further, perform the
+Newton-Raphson method with an initial guess sufficiently close to the root $r = 1.6717$ and
+discuss the convergence in this case.\\
+
+Refer Newton-Raphson Method and change the line 11 with: \\
+\mintinline{cpp}{ double f(double x) { return x*x*x - x - 3; }} \\
+Similarly, change line 13 with its derivative: \\
+\mintinline{cpp}{ double f_prime(double x) { return 3*x*x - 1; } }\\
+
+\begin{answer}[Question 2.1 - At a = 0]{}
+	If you select $a=0$ as your initial point for Newton-Raphson then it diverges. To investigate the reason for this
+	let us run the code for first 10 iterations:
+	\begin{minted}{cpp}
+| i: 0 | x: 0 | f(x): -3
+| i: 1 | x: -3 | f(x): -27
+| i: 2 | x: -1.96154 | f(x): -8.58574
+| i: 3 | x: -1.14718 | f(x): -3.36252
+| i: 4 | x: -0.00657937 | f(x): -2.99342
+| i: 5 | x: -3.00039 | f(x): -27.0101
+| i: 6 | x: -1.96182 | f(x): -8.58869
+| i: 7 | x: -1.14743 | f(x): -3.36327
+| i: 8 | x: -0.00725625 | f(x): -2.99274
+| i: 9 | x: -3.00047 | f(x): -27.0123
+| i: 10 | x: -1.96188 | f(x): -8.58933
+\end{minted}
+	The Newton-Raphson method diverges for \( f(x) = x^3 - x - 3 \) with the initial guess \( x_0 = 0 \) due to the
+	following reasons:
+	\begin{itemize}
+		\item Poor Initial Guess: \( x_0 = 0 \) is far from the actual root, leading to poor convergence.
+		\item Derivative Behavior: At \( x_0 = 0 \), \( f'(0) = -1 \) results in a large correction step:
+		      \[
+			      x_1 = 0 - \frac{-3}{-1} = -3
+		      \]
+		      This large step moves the sequence away from the root.
+		\item Cubic Function Nature: The cubic function \( f(x) \) with its inflection points causes further instability.
+		\item Diverging Sequence: The sequence diverges as shown by:
+		      \[
+			      x_2 = -3 - \frac{-21}{26} \approx -2.19
+		      \]
+		      Here, \( f(-3) = -21 \) and \( f'(-3) = 26 \), so the correction does not bring \( x_2 \) closer to the root.
+	\end{itemize}
+	Due to these factors, the method fails to converge, causing the sequence to diverge.
+\end{answer}
+
+\begin{answer}[Question 2.1 - At a = 1.6717]{}
+	If you set the value of initial guess sufficiently close to the root, the method converges as expected.
+	This indicates that all the necessary convergence conditions are met for Newton-Raphson method. Following are a
+	few iterations of the method, and is indeed the output.
+	\begin{minted}{cpp}
+  Enter initial point for newton-raphson: 1.6
+| i: 1 | x: 1.6 | f(x): -0.504
+| i: 2 | x: 1.67545 | f(x): 0.0277538
+| i: 3 | x: 1.67171 | f(x): 7.02432e-05
+| i: 4 | x: 1.6717 | f(x): 4.53865e-10
+Solution found at ( 1.6717, 0)
+\end{minted}
+\end{answer}
+
+\textbf{Q3.}
+Consider the equation $x^2 - 6x + 5 = 0$
+\begin{enumerate}
+	\item Taking $x_0 = 0$ and $x_1 = 4.5$, generate first 7 terms of the iterative sequence of the secant
+	      method.
+	\item Take the initial interval as $[a_0, b_0] = [0, 4.5]$, generate the first 7 terms of the iterative
+	      sequence of the regula-falsi method.
+\end{enumerate}
+Observe to which roots of the given equation does the above two sequences converge?
+
+\begin{answer}[Question 3.1 - part 1]
+	Refer Secant Method and change the line 11 with: \\
+	\mintinline{cpp}{ double f(double x) { return x*x - 6*x + 5; }} \\
+
+	Following are the first 7 iterations of secant method in [0,4.5]
+	\begin{minted}{cpp}
+  Enter initial x_0: 0
+  Enter initial x_1: 4.5
+  | i: 1 | x: 3.33333 | f(x): -3.88889
+  | i: 2 | x: 5.45455 | f(x): 2.02479
+  | i: 3 | x: 4.72826 | f(x): -1.01311
+  | i: 4 | x: 4.97047 | f(x): -0.117248
+  | i: 5 | x: 5.00217 | f(x): 0.00868274
+  | i: 6 | x: 4.99998 | f(x): -6.45063e-05
+  | i: 7 | x: 5 | f(x): -3.4968e-08
+  | i: 8 | x: 5 | f(x): 1.42109e-13
+  | i: 9 | x: 5 | f(x): 0
+  Solution found at ( 5, 0)
+\end{minted}
+	The Secant method relies on the slope of the secant line connecting the points $( (x_{n-1}, f(x_{n-1})) )$ and
+	$( (x_n, f(x_n)) )$. Given the initial points $( x_0 = 0 )$ and $( x_1 = 4.5 )$, the method initially starts
+	to converge towards the root near $( x = 1 )$ because of the geometry of the function near this region. As the
+	iterations proceed, the approximation shifts more towards $( x = 1 )$, which is closer to the origin, given the
+	steep slope near this point.
+\end{answer}
+
+\begin{answer}[Question 3.2 - part 2]
+	Refer Regula-Falsi Method and change the line 11 with: \\
+	\mintinline{cpp}{ double f(double x) { return x*x - 6*x + 5; }} \\
+
+	Following are the first 7 iterations of secant method in [0,4.5]
+	\begin{minted}{cpp}
+  Enter the lower bound of [a, b]: 0
+  Enter the upper bound of [a, b]: 4.5
+  | i: 1 | x: 3.33333 | f(x): -3.88889
+  | i: 2 | x: 1.875 | f(x): -2.73438
+  | i: 3 | x: 1.21212 | f(x): -0.803489
+  | i: 4 | x: 1.0443 | f(x): -0.175252
+  | i: 5 | x: 1.00894 | f(x): -0.03568
+  | i: 6 | x: 1.00179 | f(x): -0.00716158
+  | i: 7 | x: 1.00036 | f(x): -0.00143334
+  | i: 8 | x: 1.00007 | f(x): -0.00028671
+  | i: 9 | x: 1.00001 | f(x): -5.73436e-05
+  | i: 10 | x: 1 | f(x): -1.14688e-05
+  | i: 11 | x: 1 | f(x): -2.29376e-06
+  | i: 12 | x: 1 | f(x): -4.58752e-07
+  | i: 13 | x: 1 | f(x): -9.17504e-08
+  | i: 14 | x: 1 | f(x): -1.83501e-08
+  | i: 15 | x: 1 | f(x): -3.67002e-09
+  | i: 16 | x: 1 | f(x): -7.34003e-10
+  | i: 17 | x: 1 | f(x): -1.468e-10
+  | i: 18 | x: 1 | f(x): -2.93614e-11
+  | i: 19 | x: 1 | f(x): -5.87086e-12
+  | i: 20 | x: 1 | f(x): -1.17417e-12
+  | i: 21 | x: 1 | f(x): -2.36255e-13
+  | i: 22 | x: 1 | f(x): -4.79616e-14
+  | i: 23 | x: 1 | f(x): -8.88178e-15
+  | i: 24 | x: 1 | f(x): -1.77636e-15
+  Solution found at ( 1, 0)
+\end{minted}
+	The Regula-Falsi method, also known as the false position method, always retains one endpoint of the interval,
+	meaning the root estimate always lies within the initial interval $([a_0, b_0])$. Because $( f(x) )$ changes sign
+	between $( x = 4.5 )$ and $( x = 5 )$, and the initial interval is $([0, 4.5])$, the method will converge towards
+	$( x = 5 )$, where $( f(x) )$ is zero. It ensures that one side of the interval $( [a_n, b_n] )$ is always
+	maintained, leading to convergence to the root at $( x = 5 )$.
+\end{answer}
+
+\end{document}
