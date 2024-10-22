@@ -332,6 +332,10 @@ For every $t \in(0,1)$, $\vec \gamma(t)$ belongs in $B$. To see this, consider $
 Hence, every point on the rim is a limit point. Moreover, no point $w$ so that $d(w,x_0)>\delta$ is a limit point of $B$, since there would exist an $\varepsilon$-ball around $w$ so that no point of $B$ falls into it (from openness). Hence, closure of $B$ is the corresponding closed ball, in $\RR^n$.
 
 }
+\defn{Dense sets}{A set $A \subseteq X$ is said to be dense in $X$ if every point of $x$ is a limit point of $A$.}
+\thmp{}{$A$ is dense in $X$ if and only if $\overline{A}=X$ if and only if for every open set $U$ of $X$, $A \cap U \neq \emptyset$}{$\implies$) Let $A$ be dense in $X$. Let $U$ be an open set such that $A \cap U=\emptyset$ which means $A$ is completely contained in $U^C$ which is a closed proper subset of $X$, which is a contradiction since $\overline{A} \subseteq U^C$ since it is the smallest closed set that contains $A$. Contradiction.
+\\\\$\impliedby$)Suppose $A $ is not dense in $X$, this means $\overline{A}\subset X$ which means $(\overline{A})^C$ is a non empty open set in $X$ that necessarily does not intersect with $A$. Contradiction.}
+
 \section{Perfect Sets}
 \defn{Perfect Set}{A set $E \subset X$ is perfect if every point of $E$ is a limit point of $E$, and $E$ is closed}
 \thmp{}{Perfect subsets in $\RR^n$ are uncountable.}{Suppose $E$ is a perfect set in $\RR^n$ but is countable. i.e, it can be enumerated as $E=\{x_1,x_2,\cdots \}$.
@@ -424,7 +428,9 @@ for every point $q$ in $A_1 \cup A_2 \cdots A_n$, $q \neq x $(which is needless 
 makes $x$ a non-limit point of $B_n$, which is absurd. Hence we see that if $x$ is point of $B_n$ or a limit point of $B_n$, then it is a point or the limit point of some $A_j$.
 \\\\ For a good counterexample, we look to $\QQ:=\{q: \text{ q is rational} \}$. This set is 
 countable. Let $\{q_1, q_2, \cdots \}$ be the enumeration of $\QQ$. Consider $\QQ:=\cup_{j=1}^n \{q_j\}$. The closure
-of $\QQ$ is $\RR$ but since these singleton sets are by definition closed, the union of them only gives you $\QQ$.}
+of $\QQ$ is $\RR$ but since these singleton sets are by definition closed, the union of them only gives you $\QQ$.
+\\\\ \textbf{Proof for topological space}:
+\\ if $B_n:=\cup_{i=1}^{n}A_i$, is it true in topological spaces (and not just metric spaces) that $\overline{B_n}=\cup_{i=1}^n \overline{A_i}$? the direction $\overline{\cup_{i=1}^n A_i}\subseteq \cup_{i=1}^n \overline{A_i}$ can be shown from definition as the smallest closed set that contains $B_n$.  But $\overline{A_i} \subseteq \overline{\cup_{i=1}^n A_i}$ for every $i$, so if we union them we must get $\cup_{i=1}^n \overline{A_i}\subseteq \overline{\cup_{i=1}^n A_i }$}
 
 \defn{Interior of a Set}{Given $S \in X$, the interior $\underbar{S}$ is defined as:
 $$\underbar{S}:=\{x\in X: \exists \varepsilon_x>0 \text{ such that } B_{\varepsilon_x}(x) \subset S \} $$}
