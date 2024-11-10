@@ -314,4 +314,68 @@ Hence, there exists a metric on $[0,1)$ that makes it complete.
 \\\\b) Let $X \overset{f}\rightarrow Y $ be a homeomorphism. Consider $A$ a subset of $X$. We want to prove $f(\overline{A})=\overline{f(A)}$. $f(\overline{A})$ is a closed set since the inverse map of $f$ is aswell a continuous function. Also note that $f(A) \subseteq f(\overline{A})$. Since the smallest closed set that contains a set is precisely the closure, we have that $\overline{f(A)}\subseteq f(\overline{A})$.
 \\\\ Also, $\overline{f(A)}$ is the smallest closed set that contains $f(A)$. $f^{-1}(\overline{f(A)})$ is a closed set that contains $A$. i.e $A \subseteq f^{-1}(\overline{f(A)})$. Again from the closure definition we have $\overline{A} \subseteq f^{-1}(\overline{f(A)})$ which yields $f(\overline{A})\subseteq \overline{f(A)}$ which finally yields $f(\overline{A})=\overline{f(A)}$
 (TRUE IN ANY TOPOLOGY)
+\\\\ \textbf{Problem 6:}
+\\\\Work in progress
+\\\\ \textbf{Problem 7:}
+Let $f: [0,1]\to \RR $ be a continuous map whose image is a subset of $\QQ$. Note that all subsets of $\QQ$ are separated. To see this, let $x$ and $y$ be two rational numbers. From density theorem, we can find a new irrational $z$ between these two. Therefore, look at $((-\infty,z) \cup (z,\infty))\cap \QQ$. This is precisely $\QQ$. But note that $[0,1]$ is a connected set. Hence, $f([0,1])$ must be a connected set since continuous functions map connected sets to connected sets. Hence, $f([0,1])$ must be a connected set, which is a singleton. Since $f(1/2)$ is $1/2$, we have range to be $1/2$.
+\\\\ \textbf{problem 8:}
+\\\\ Let $a$ and $b$ be in $X$. Let $\xi\leq d(a,b)$. 
+Note that, $P=B_{\xi}(a)$ and $Q=(B_{[\xi]}(a))^C$ are non empty, separated sets.
+If $X$ is not the union of $P$ and $Q$, then there is a point $z_{\xi}$ in $X$ so that it is neither in $P$
+not in $Q$. That means that it is exactly $\xi$ distance away from $p$. For every $\xi<d(a,b)$,
+there exists a point $z_{\xi}$ so that its distance from $p$ is exactly $\xi$. Therefore, every $z_{\xi}$ 
+is unique (from positivity property of metric spaces) which means there are uncountable $z_{\xi}$-s (since an interval is uncountable)
+\\\\ \textbf{Problem 9}
+\\\\ $f:(a,b) \to \RR$ is said to be a non decreasing function. Let $c \in (a,b)$. We say $f(c+)$ exists if there exists an $L$ so that $\forall \varepsilon$, $\exists \delta>0$ so that $\forall 0<x-c<\delta \implies |f(x)-L|<\varepsilon$. In sequential terms, for every sequence $x_n$ such that $x_n \neq c$, $x_n \to c$ and $x_n>c$, we have that $f(x_n)\to L $. Such $L$ is called $f(c+)$. Similarly we say $f(c-)$ exists if there exists $U$ so that $\forall \varepsilon$ we have a $\delta>0$ so that $0<c-x<\delta \implies |f(x)-L|<\varepsilon$. In sequential terms this means that for every sequence $x_n \to c$, $x_n<c$, we have $f(x_n) \to U$. Such a $U$ is called $f(c-)$.
+\\\\ If $f$ is non decreasing, $a<b \implies f(a)\leq f(b)$. Define $L=\inf\{f(x):c<x<b\}$. This exists obviously since $f$ is a non decreasing sequence. Let $\varepsilon>0$, we want a $\delta$ so that for all points $x$ so that $c<x<c+\delta$, we have $L-\varepsilon<f(x)<L+\varepsilon$. Consider $f(x_0)<L+\varepsilon$ (such obviously exists, from the definition of infimum). Now note that $f(x)\leq f(x_0)<L+\varepsilon$ if $x<x_0$. Hence, our delta for the particular epsilon challenge is easily verified to be $x_0-c$. This also shows us that $L=f(c+)$
+
+Similarly Define $U=\sup\{f(x):a<x<c\}$. Such also exists. Look at $U-\varepsilon<f(x)$. Atleast one point $x_0$ satisfies this. But note that $U-\varepsilon<f(x_0) \leq f(x)$ for $x>x_0$. Hence $\delta=c-x_0$. Since $f(c)$ is a finite number and $f$ is monotone, we have that for all $x<c$, $f(x)\leq f(c)$ which means $U=f(c-)\leq f(c)$. Similarly we have $f(c)\leq f(c+)$. That these values are finite is obvious. 
+\\\\ Let $a<p<q<b$. $f(p+)=\inf\{f(x):p<x<b\}$ and $f(q-)=\sup\{f(x):a<x<q\}$. $f(p+)$ is smaller than all values $f(x)$ attains on $p<x<q$ as well as $q\leq x<b$. Hence, $f(p+)\leq f(q-)$
+\begin{center} \textbf{Assignment 6:} \end{center}
+\textbf{Problem 2:}
+\\\\ Let $x$ be a point of the cantor set. Let $\varepsilon$ be arbitrary. Choose $n$ so that $1/3^n<\varepsilon$. $x$ belongs in one such interval of size $1/3^n$. The end point of this interval survives all the intersections, therefore they exist in the cantor set. Choose one of those end points. We have shown that for every $\varepsilon$ there exists a point of $P$ that is in the $\varepsilon$-ball of $x$. Hence every point is a limit point. Since cantor set is the intersection of closed sets, its also closed. Hence, cantor set is perfect. 
+\\\\ \textbf{Problem 3:}
+
+\thmp{}{Perfect subsets in $\RR^n$ are uncountable.}{Suppose $E$ is a perfect set in $\RR^n$ but is countable. i.e, it can be enumerated as $E=\{x_1,x_2,\cdots \}$.
+\\\\ Choose $x_1$, and $\varepsilon_0=1$. Let $V_0$ denote the $\varepsilon_0$-ball around $x_1$. This ball is non empty, moreover, $\bar{V_0} \cap E$(which is the corresponding closed ball of $V_0$) is non empty, and is compact by virtue of being closed and bounded. Inside, $V_0 \cap E$, there exists infinite points of $E$, since $x_1$ is a limit point of $E$.
+\\\\ Choose an arbitrary point $z_1$ in $V_0$ that is not $x_1$. Now let $\varepsilon_1<d(x_1,z_1)$. Let $V_1$ be the $\varepsilon_1$-ball around $z_1$. Notice the following: $z_1$ is a limit point of $E$, hence, there are infinite points of $E$ in $V_1$. $x_1$ is not in $\bar{V_1}$. $\bar{V_1}\cap E$ is closed, bounded and non empty, hence Compact. 
+\\\\ Choose a point $z_2$ in $V_1$ that is not $x_2$, and let $\varepsilon_2<min\{\varepsilon_1, d(x_2,z_2)\}$. Let $V_2$ be the $\varepsilon_2$-ball around $z_2$. Note that, $x_2$ is not in $\bar{V_2}$. Also note yet again that there are infinitely many points of $E$ in $V_2$. It is crucial to note now that $\bar{V_2}\cap E \subset \bar{V_1}\cap E\subset \bar{V_0} \cap E$.
+\\\\Suppose you have already constructed $V_k$ by finding $z_k$ in $V_{k-1}$ that is not $x_k$ and an $\varepsilon_k<min{d(z_k,x_k),\varepsilon_{k-1}}$ such that $x_k \not\in \bar{V_k}$, $\bar{V_k}\cap E$ is compact, non empty and $\bar{V_k}\cap E \subset \bar{V_{k-1}}\cap E \cdots$.
+\\\\Now, choose $z_{k+1} \neq x_{k+1}$, inside $V_k$. Choose $\varepsilon_{k+1}<min\{d(z_{k+1},x_{k+1}),\varepsilon_k\}$. Let $V_{k+1}$ be the $\varepsilon_{k+1}$-ball around $z_{k+1}$. Yet again, we see that $\bar{V_{k+1}} \cap E$ is non empty, $x_{k+1}$ is not in $\bar{V_{k+1}}$, and $\bar{V_{k+1}}\cap E \subset \bar{V_{k}}\cap E$. Hence, we have a sequence of non empty, nested compact sets. This implies that $\exists \xi \in E \subset \RR^n$ such that $\xi \in \cap_{i=1}^{\infty} (\bar{V_i}\cap E)$. Is $\xi$ any one of $x_j$ enumerated? No, because if it was, from the construction, $x_j$ would not belong in $V_j$. Hence, $\xi$ is not in the enumeration of $E$. Contradiction.}
+
+\newpage
+\textbf{Problem 4:}
+\\\\ Let $S$ be a non singleton subset of $\QQ$. It has two points. That means there exists $x<z<y$, with $x,y \in S$ and $z \in $ irrational (density theorem). Therefore, If we take $(-\infty,z) \cap S=A$ and $(z,\infty) \cap S=B$, then $S$ can be written as the disjoint union of $A$ and $B$, which are separated by definition $\overline{A} \cap B= \overline{B} \cap A= \emptyset$. Hence, $\QQ$ is totally disconnected.
+\\\\ b)$\implies$) Let $f$ be a strictly increasing differentiable function on $\RR$. $f(x)>f(y)$ if $x>y$. $f(y)-f(x)/(y-x) > 0$ for all $y$. Hence, if we take the limit, we have $f'(x) \geq 0$. Suppose $f'(x)=0$ for all points $x \in \RR$. But that would mean that $f$ is a constant function, Contradiction to the hypothesis that $f$ is strictly increasing. Hence, for some $c$, $f'(x)\neq 0$. But this point alone is enough, since, if we let $S=\{x: f'(x)=0\}$, we note that $(-\infty,c)$ and $(c,\infty)$ covers this space. These two sets are separated. Likewise, all subsets can be covered by these two sets. Hence, $S$ is totally disconnected.
+\\\\ $\impliedby$) Suppose $f'(x) \geq 0$ and the set $S=\{x: f(x)=0\}$ is a totally disconnected set. Since $f'(x) \geq 0$ we can immediately see that $f$ must be monotone increasing (from MVT). Since $S$ is said to be totally disconnected, it means that every subset that is non singleton is the union of two separated sets. Consider $y>x$. We want to show that $f(y)>f(x)$ strictly. Consider the interval $[x,y] \cap S$ in $\RR$. This is disconnected, i.e, union of two disjoint open sets in $\RR$. We digress to prove a short lemma:
+\lemp{Lemma for problem 4}{$E \subset \RR$ is connected $\iff$ $\forall x,y \in E$, $x<z<y \implies z\in E$.}{$\implies$)
+Suppose $\exists x_0,y_0 \in E$ so that $\exists z, x_0<z<y_0$, but $z \not\in E$. Consider $A:=(-\infty,z)$ and $B:=(z,\infty)$.
+$A$ and $B$ are seen to be separated, and $E$ is a subset of $A \cup B$, which makes it disconnected.
+\\\\ $\impliedby)$ Suppose that we have $E$ disconnected, which means it is the union of two 
+separated sets $A$ and $B$ that are non-empty. $x_0 \in A$ and $y_0 \in B$. Consider $z(t)=x_0+t(y_0-x_0)$ for $t\in [0,1]$.
+Note that $z(0)=x_0$ and $z(1)=y_0$.
+\\\\ Conjecture: There exists a $t_B \in (0,1)$ so that for every $t<t_B$, $z(t)$ does not belong in $B$. If it is not true,
+then for every $t \in (0,1)$, there exists a point $t_B<t$ so that $z(t_B)$ is in B. Choose $t=1$ to get $z(t_1)$ in $B$.
+Chooe $t=\frac{t_1}{2}$ to get $z(t_2)$ in $B$ with $t_2<t_1$ and $t_2<\frac{1}{2}$. Keep going with $t=\frac{t_{n-1}}{2^{n-1}}$ to get $z(t_n)$ in $B$ with $t_n<t_{n-1}$ and $t_n<\frac{1}{2^{n-1}}$. 
+This gives us a sequence $z(t_k)$ which we can see is monotone decreasing assuming $x_0<y_0$. This sequence converges to $z(0)$ which is in $A$ which means that there exists a sequence in $B$, $z(t_n)$ that converges to $A$. Absurd.
+\\\\ In a similar vein, we can show that there exists $t_A \in (0,1)$ so that for every $t>t_A$, $z(t)$ is not in $A$. 
+Consider $$S_A:=\{ t \in [0,1]: z(t)\in A\cap [x_0,y_0]\}$$ and $$S_B:=\{t\in[0,1]: z(t)\in B\cap [x_0,y_0]\}$$
+\\\\ It is easy to see that $S_A$ and $S_B$ are disjoint. If a sequence in one converges in another, say
+$t_n \in S_B$ converges to $t_0 \in S_A$. Then $z(t_n)\in B$ by definition, for every $n$.
+But then by definition, $z(t_n)=x_0+t_n(y_0-x_0) \in B$ such that
+$lim(z(t_n))=x_0+t_0(y_0-x_0) \in A$, which means a sequence in $B$ converges in A. Absurd. So $S_A$ and $S_B$ are separated.
+\\\\Note that, for $t>t_A$, no $z(t)$ is in $A$. Hence, we see that for every $t$ so that $z(t)$ falls in $A$, there is an upperbound. Likewise, for every $t$ such that $z(t)$ falls in $B$, there is a lowerbound.
+Hence, $S_A$ has a supremum $sup(S_A)$ and $S_B$ has an infimum $inf(S_B)$.
+\\\\ At this point, we may as well assume that for every $t<inf(S_B)$, $t \in S_A$ for if not, what we wanted to prove would get proved. 
+Suppose then, for argument sake, that for every $t>Sup(S_A)$, $t\in S_B$, and
+likewise, for every $t<Inf(S_B)$. $t \in S_A$. Now then, does $Sup(S_A)$ belong
+in $S_A$? we see that for every $t>sup(S_A)$, $t \in S_B$ which means we can construct a sequence in $S_B$ using those $t$s, which converge to $Sup(S_A)$ in $S_A$. So that is ruled out.
+So is $Sup(S_A)$ in $S_B$? That is not possible either, since $S_A$ is a bounded, infinite set (mainly because supremum isn't in the set), we know that there is a monotone subsequence in $S_A$ converging to $Sup(S_A)$ which is in $S_B$. We therefore conclude that, there exists a point $t \in (0,1)$ so that $t$ is neither in $S_A$, nor in $S_B$. This translates to there being a point $z=z(t)$, between $x_0$ and $y_0$ so that $z(t)\not\in A \cup B \implies \not\in E$. We are, therefore, done. 
+\\\\ \textbf{Slicker Argument:} Suppose $E=A \cup B$ with $\bar{A}\cap B=\bar{B} \cap A=\phi$. Consider $x_0 \in A$ and $y_0 \in B$ and WLOG assume $x_0<y_0$. Define $z=sup(A\cap[x_0,y_0])$.
+There would be a sequence in $A$ that converges to $z$, by virtue of being the supremum. $z \in \bar{A} \implies z \not\in B$. This means $x_0 \leq z<y_0$. If $z \not\in A$, we would be done.
+If $z \in A$, then $z \not\in \bar{B}$. Therefore, $z$ is in an open set $\bar{B}^C$. There would exist
+an $\varepsilon_z$-ball around $z$ so that it is fully contained outside $\bar{B}$. Choose $z+\frac{\varepsilon_z}{2}$ as your $z'$.
+Note that $z'$ is greater than the supremum of $A$. We see that $z'$ is not in $B$, and not in $A$ either. Hence, we are done.
+}
+Since our set in consideration $[x,y]\cap S$ is disconnected, from the previous lemma, we can see that there exists $z$ between $x$ and $y$ that is not in $S$. Hence, $f'(z)>0$. We have that $\forall \varepsilon>0$, $\exists \delta>0$ so that (we are considering only $y>z$) for all $y$ so that $0<y-z<\delta$ we have $|f(y)-f(z)/(y-z)-f'(z)|<\varepsilon$ which gives $$f'(z)-\varepsilon(y-z)<f(y)-f(z)<f'(z)+\varepsilon(y-z) $$ Since $f'(z)>0$, we can make $\varepsilon$, and $\delta$ small enough so that the left most part of the inequality is greater than $0$. In that case, we would have $0<f(y)-f(z)$ or $f(z)<f(y)$. Since $f(x)$ is monotone, we have $f(x)<f(y)$. We are done.
 \end{document}
