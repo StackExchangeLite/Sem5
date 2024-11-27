@@ -50,14 +50,15 @@ Hence the max norm is a metric.
 \exm{Norm on function spaces}{Let $X$ be a non empty set. Define $\mathfrak{B}(X)$ as the space of all bounded, real functions. Then $||f||_{\infty}:=\sup_{x\in X}|f(x)|$ defines a norm on $\mathfrak{B}(X)$ since $|f(x)-g(x)| \leq |f(x)|+|g(x)|\leq \sup_{x \in X}|f(x)|+\sup_{x \in X}|g(x)|=||f||_{\infty}+||g||_{\infty}$ which gives us $||f+g||_{\infty}\leq ||f||_{\infty}+||g||_{\infty}$}
 
 \exm{the $\frac{d}{1+d}$ metric}{Say $X,d$ is a metric space, then $g(x,y)=\frac{d(x,y)}{1+d(x,y)}$ is a metric.
-\\\\ pf{exercise to the reader}
+\\\\ \pf{exercise to the reader}
 }
+\exm{Constructing a metric from an injective function}{Let $Z$ be a set and $(X,d)$ a metric space. Let $f:Z \to X$ be an injective function. Define $\delta(x,y)=d(f(x),f(y))$. This defines a metric on $Z$ and makes $(Z,\delta)$ a metric space since $\delta(x,x)=d(f(x),f(x))=0$, $\delta(x,y)=0\implies d(f(x),f(y))=0$ which gives $x=y$, and $\delta(x,y)=d(f(x),f(y))\leq d(f(x),f(z))+d(f(z),f(y))=\delta(x,z)+\delta(y,z)$ which gives triangle. } 
 \exm{The discrete metric}{Let $X$ be any set whatsoever. Define the metric $$d(x,y):=\begin{cases} 1 \ \text{if } x\neq y \\ 0 \text{ if } x=y \end{cases}$$ This is a metric due to positive definiteness and symmetry. The triangle inequality is, also, not hard to see.}
 \exm{Space of all bounded sequences }{Let $X$ be the set of all bounded sequences of reals, i.e, the set of all $x$ such that $x=(x_1,x_2,\cdots)=\{x_n\}_{n=1}^{\infty}$ with $\sup_{i=1}^{n}(\{x_i\})<\infty$. If $\{x_i\}$ and $\{y_i\}$ are sequences (i,e, elements in $X$) let the distance between two sequences be defined by $$d(x,y):=\sup_{i=1}^{\infty}|x_i-y_i|$$
 Clearly, it is positive definite and symmetric. Consider three sequences $\{x_n\}$, $\{y_n \}$ and $\{z_n\}$ in $X$. $d(x,y)=\sup\{|x_i-y_i|:i \in \NN\}$, $d(x,z)=\sup\{|x_i-z_i|:i \in \NN\}$ and $d(y,z)=\sup\{|y_i-z_i|:i \in \NN\}$. Cosnider $d(x,z)=\sup\{|x_i-z_i|=|x_i-y_i+y_i-z_i|:i \in \NN\} \leq \sup\{|x_i-y_i|+|y_i-z_i|:i \in \NN\}$ $\implies \leq \sup\{|x_i-y_i|:i \in \NN\}+\sup\{|y_i-z_i|:i \in \NN\}$ which proves the triangle. }
 
 
-\subsubsection{Continuity (Read definition of sequence in metric space, and limit points)}
+\subsubsection{Basics on Continuity (Read definition of sequence in metric space, and limit points)}
 \defn{Continuous functions}{A function $f:X \to Y$ that maps a metric space $X,d_x$ to a metric space $Y,d_y$ is said to be continuous at $a \in X$ (which is a limit point of $X$) if $$(\forall \varepsilon>0)(\exists \delta>0)(\forall p \in X)(d_x(p,a)<\delta \implies d_y(f(p),f(a))<\varepsilon)$$}
 \thmp{Sequential Criteria for continuity}{Let $X,d_x$ and $Y,d_y$ be metric spaces and $f:X \to Y$. Let $a$ be a limit point of $X$. Then $f$ is continuous at $a$ if and only if for every sequence $(q_n) \in X$, $q_n \neq a$ with $\lim(q_n)=a$, we have $lim(f(q_n))=f(a)$}{$\implies$) We have that for every $\varepsilon>0$, there exists a $\delta>0$ so that for all $z \in X$ such that $z \in B_{\delta}(a)$, we have $f(z) \in B_{\varepsilon}(f(a))$. Consider an arbitrary sequence in $X$ that is so that $(q_n) \in X$, $q_n \neq a$ and $\lim(q_n)=a$. Which reads $\forall \delta>0, \exists n_0 \in \NN$ so that $\forall n \geq n_0$, we have $q_n \in B_{\delta}(a)$. Let $\varepsilon>0$ be arbitrary. From the definition of continuity, there exists a corresponding $\delta>0$ so that $\forall z \in X$, $z \in B_{\delta}(a)$ would imply $f(z) \in B_{\varepsilon}(f(a))$. For this $\delta_{\varepsilon}$, there exists an $n_0(\delta)(\varepsilon) \in \NN$ so that $\forall n \geq n_0$, $q_n \in B_{\delta}(a)$ which would imply $f(q_n) \in B_{\varepsilon}(f(a))$. This means that $\forall \varepsilon>0$, there exists $n_0 \in \NN$ so that $\forall n \geq n_0$, we have $f(q_n) \in B_{\varepsilon}(f(a))$ which means that $\lim(f(q_n))=f(a)$.
 \\\\ $\impliedby$) Suppose that every sequence $q_n \in X$ so that $q_n \neq a$ with $\lim(q_n)=a$, we have that $\lim(f(q_n))=f(a)$ but that the function $f$ is \emph{not} continuous. i.e, $\exists \varepsilon>0$ so that $\forall \delta>0$, $\exists q_{\delta} \in X$ so that $d_x(q_{\delta},a)<\delta$ but $d_y(f(q_{\delta}),a)\geq \varepsilon$. Choose $\delta=1$ and get the corresponding $x_1 \in B_{1}(a)$ for which we have $d_y(f(x_1),f(a))\geq \varepsilon$. Choose $\delta=1/2$ and get $x_2 \in X$ so that $d_x(x_2,a)<1/2$ but $d_y(f(x_2),f(a))\geq \varepsilon$. As such, keep going with $\delta=1/n$ to generate a sequence $x_n \in X$ so that $d(x_n,a)<1/n$ but $d(f(x_n),f(a))\geq \varepsilon$. Note that $x_n$ converges by definition, to $a$, but there exists an $\varepsilon>0$ so that no matter what $n_0$ we take, there exists some $n \geq n_0$ so that $d_y(f(x_n),f(a))\geq \varepsilon$ which means that the sequence $f(x_n)$ does not converge to $f(a)$, which contradicts hypothesis. }
@@ -166,7 +167,7 @@ $$|x_i^{a}-x_i^{b}|\leq (\sum_{i=1}^{n} |x^{(a)}_i-x^{(b)}_i|^p)^{1/p} < \vareps
 \\\\ Let $\varepsilon>0$ be arbitrary. For every function $f_n$, there exists $\delta(n)(\varepsilon)>0$ so that $\forall a,b \in [0,1]$, $0<|a-b|<\delta \implies |f_n(a)-f_n(b)|<\varepsilon/4$. We also note that, there exists an $n_0$ so that for all $m,n>n_0$, we have for every $x \in [0,1]$, $|f_n(x)-f_m(x)|<\varepsilon/4$ for all $m,n \geq n_0$. Moreover, we also have that there exists $n' \in \NN$ so that $|f_n(x)-f(x)|<\varepsilon/4$ for all $x$, $\forall n \geq n'$.
 \\\\ $|f(a)-f(b)|=|f(a)-f_n(a)+f_n(a)-f_m(a)+f_m(a)-f_m(b)+f_m(b)-f(b)|$ $\leq |f_n(a)-f(a)|+|f_m(a)-f_m(b)|+|f_n(a)-f_m(a)|+|f_m(b)-f(b)| $ There exists $\delta$, minimum of the two $\delta_n,\delta_m$ that ensures that the first two modulii go lower than $\varepsilon/4$. There exists large enough $m,n$ to ensure the remaining terms go lower than $\varepsilon/4$ as well. All together, we have that $\exists \delta>0$ so that if $a,b \in [0,1]$ such that $0<|a-b|<\delta$, we have $|f(a)-f(b)|<4(\varepsilon/4)=\varepsilon$. Hence, $f$ is continuous. Therefore, $C[0,1]$ (and more generally, $C[\II]$) is complete. }
 \newpage
-\subsection{More basics- }
+\subsection{More basics- Closures, Relativeness, Interiors and Boundaries}
 \defn{Limit Point of a set $E$}{We say $p$ is a limit point of a set $E$ if $$(\forall \varepsilon>0)(\exists q_{\varepsilon} \in E; q_{\varepsilon} \neq p)(d(q_{\varepsilon},p)<\varepsilon)$$ In other words, in every $\varepsilon$-ball around $p$, there would exist a point $q_{\varepsilon}$ in $E$, which is different from $p$.  }
 \thmp{}{Every ball / neighbourhood of $p$ which is a limit point of $E$, would contain infinitely many points $q$ such that $q \in B_{\varepsilon}(p) \cap E\setminus \{p\} $}{Suppose for some neighbourhood, there only exists finite points $q_1,q_2,\cdots q_k$ such that $q_j \in B_{\varepsilon_0} \cup E\setminus\{p\}$. Let $\delta<min\{d(p,q_j): j \in [1,2,...k]\}$. We then have that, there exists no point $q \in E$ such that its distancce from $p$ is less than $\delta$, making $p$ a non-limit point. Absurd.}
 \cor{A finite set has no limit points}
@@ -226,7 +227,118 @@ $$(\forall x \in E)(\exists \varepsilon_x>0)( (y \in Y \cap B_{\varepsilon}(x))\
 \thmp{}{A set $S$ is open relative to $Y \subseteq X$ if and only if $Y\setminus{S}$ is closed relative to $Y$}{Once we notice that replacing $B_{\varepsilon}(x) \cap Y$ with $B^Y_{\varepsilon}(x)$, i.e, the corresponding $\varepsilon$ ball of $x$ with respect to $Y$, the proof falls in much the same way as the earlier version, done for $X$. }
 \thmp{}{$S$ is closed relative to $Y \subseteq X$ if and only if $S=H \cap Y$ for a closed set $H$ closed in $X$}{Say $S$ is closed, that means $Y \setminus S=K$ is open relative to $Y$. That means there exists $G$ open relative to $X$ so that $G \cap Y=K$. $Y\setminus(K)=Y \cap K^C=Y \cap (G \cap Y)^C=Y \cap (G^C \cup Y^C)=(Y\cap G^C)\cap (Y \cup Y^C)=Y\cap G^c$. We have that $Y\setminus K=Y \setminus(Y\setminus S)=S=Y \cap G^C$. 
 \\\\ Let $S=H \cap Y$ where $H$ is closed in $X$. $Y\setminus S=Y \setminus(H \cap Y)=Y \cap(H^C \cup Y^C)=Y\cap H^C$, we done.}
+\thmp{}{Suppose $A_1, A_2 \cdots, A_n \cdots \in X $. Then,
+\begin{enumerate}
+\item If $B_n= \cup_{i=1}^n A_i$, then $\bar{B_n}=\cup_{i=1}^{n} \bar{A_i}$ 
+\item $B=\cup_{i=1}^{\infty} A_i$, $\bar{B} \supseteq \cup_{i=1}^{\infty}\bar{A_i}$ with possibility of strict inequality.
+\end{enumerate} and as a result we have for open sets $G_i$:
+\begin{enumerate}\item ${(\cap_{i=1}^n G_i)}^{\circ}=\cap_{i=1}^n(G_i)^{\circ}$  \end{enumerate} }{Suppose $x \in \cup_{i=1}^{n}\bar{A_i}$. Which means
+$x \in \bar{A_i}$ for some $i$. It is clear that $x$ is either a 
+point of $A_i$ or a limit point of $A_i$. We have that, whatever maybe the case
+either $x$ is a point in $B_n$ or a limit point of $B_n$. Therfore
+$\bar{B_n}\supset \cup_{i=1}^{n} \bar{A_i}$. 
+\\\\ Suppose $x$ is a point in $\bar{B_n}$. If it is a point of $B_n$,
+we are done. Suppose it is the limit point of $B_n$, but not a point. Also
+suppose that $x$ is not a limit point of any $A_i: i=1 \to n$. This means that,
+$$\exists \varepsilon_1 \text{ such that } \forall q\in A_1, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_1$$
+$$\exists \varepsilon_2 \text{ such that } \forall q\in A_2, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_2$$
+$$\vdots$$
+$$\exists \varepsilon_n \text{ such that } \forall q\in A_n, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_n$$
+If we choose $0<\varepsilon_0<min\{\varepsilon_i: i=1 \to n \}$, we would have that,
+for every point $q$ in $A_1 \cup A_2 \cdots A_n$, $q \neq x $(which is needless to say), we have $d(q,x) \geq \varepsilon_0$ which 
+makes $x$ a non-limit point of $B_n$, which is absurd. Hence we see that if $x$ is point of $B_n$ or a limit point of $B_n$, then it is a point or the limit point of some $A_j$.
+\\\\ For a good counterexample, we look to $\QQ:=\{q: \text{ q is rational} \}$. This set is 
+countable. Let $\{q_1, q_2, \cdots \}$ be the enumeration of $\QQ$. Consider $\QQ:=\cup_{j=1}^n \{q_j\}$. The closure
+of $\QQ$ is $\RR$ but since these singleton sets are by definition closed, the union of them only gives you $\QQ$.
+\\\\ \textbf{Proof for topological space}:
+\\ if $B_n:=\cup_{i=1}^{n}A_i$, is it true in topological spaces (and not just metric spaces) that $\overline{B_n}=\cup_{i=1}^n \overline{A_i}$? the direction $\overline{\cup_{i=1}^n A_i}\subseteq \cup_{i=1}^n \overline{A_i}$ can be shown from definition as the smallest closed set that contains $B_n$.  But $\overline{A_i} \subseteq \overline{\cup_{i=1}^n A_i}$ for every $i$, so if we union them we must get $\cup_{i=1}^n \overline{A_i}\subseteq \overline{\cup_{i=1}^n A_i }$}
 
+\defn{Interior of a Set}{Given $S \in X$, the interior $\underbar{S}$ is defined as:
+$$\underbar{S}:=\{x\in X: \exists \varepsilon_x>0 \text{ such that } B_{\varepsilon_x}(x) \subset S \} $$}
+\thmp{}{The Interior is an open set}{Consider $(\underbar{S})^C:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x) \cap S^C \neq \phi \}$.
+It is possible that $x$ is a point of $S^C$, if it is in $\underbar{S}^C$. Suppose
+it is a point of $\underbar{S}^C$ but not a point of $^C$. From the definition, we see
+that $\forall \varepsilon>0, \exists q \in S^C, q\neq x$ such that $d(q,x)<\varepsilon$.
+This makes $x$ a limit point of $S^C$, which means, for every $x$ in $\underbar{S}^C$,
+$x$ is either a point of $S^C$ or a limit point of $S^C$. Hence,
+$$\underbar{S}^C \subseteq \bar{S^C} $$
+Suppose $x$ is a point of $\bar{S^C}$. Say it is a point of $S^C$, then obviously,
+it is a point of $(\underbar{S})^C$. Suppose $x$ is not a point of $S^C$, but a limit
+point of $S^C$. This means $\forall \varepsilon>0, \exists q \in S^C, q \neq x$ so that
+$d(q,x)<\varepsilon$. This is precisely the condition for which $x$ is a point of $(\underbar{S})^C$.
+Hence we see $(\underbar{S})^C \supseteq \bar{(S^C)} $. Therefore, $(\underbar{S})^C=\bar{(S^C)}$. From here we 
+see that $\underbar{S}$ is an open set.
+\\\\ \textbf{Alternate Argument (similar):} Consider $(\underline{S})^C:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x)\cap S^C \neq \phi \}$
+Consider a limit point $p$ of $(\underbar{S})^C$. $\forall \varepsilon>0, \exists q_{\varepsilon} \in \underbar{S}^C$ such that $d(q_{\varepsilon},p)<\frac{\varepsilon}{2} $. 
+Since $q_{\varepsilon}$ is in $(\underline{S})^C$, we have that: $\forall \delta>0, \exists r_{\delta} \in S^C, r_{\delta}\neq q_{\varepsilon}$ such that $d(r_{\delta},q_{\varepsilon})<\delta$
+
+Combining these we have:
+$$(\forall \varepsilon>0)(\exists q_{\varepsilon} \in \underbar{S}^C)(\exists \delta>0)(\exists q_{\delta} \in S^C)$$
+$$(d(q_{\delta},p)\leq d(q_{\delta},q_{\varepsilon})+d(q_{\varepsilon},p)<\frac{\varepsilon}{2}+\delta<\varepsilon) $$
+This means $p$ is a limit point of $S^C$. Hence, $\underbar{S}^C$ is closed.}
+\thmp{}{$\underbar{S}=S$ $\iff$ $S$ is open}{$\implies $) if $\underbar{S}=S$, obviously 
+$S$ is open.
+\\\\ $\impliedby)$ If $S$ is open, then by definition $\underbar{S}=$ set of all
+points in $S$ so that there's an $\varepsilon$-ball of $x$ in $S$. But that is every point
+of $S$. }
+\thmp{}{$\underbar{S}$ is the largest open set contained in $S$}{Consider an open
+subset of $S$. These are subsets of $S$ whose each point has an $\varepsilon$-ball
+around it so that the ball is contained in the subset, which is contained in $S$. So by 
+definition, these points in these subsets are contained in $\underbar{S}$.}
+\thmp{}{$$(\underbar{S})^C=\overline{(S^C)}$$ \centering{"The compliment of the interior is the closure of the compliment"}}{Refer to the proof of "Interiors of sets are Open", to see this construction.
+\\\\ \textbf{Alternate method(slicker):}
+\\\\ $\underbar{S} \subseteq S\implies S^C \subset (\underbar{S})^C$ where $(\underbar{S})^C$
+is a closed set containing $S^C$. Since $\overline{S^C}$ is the smallest closed set that contains $S^C$, we
+have $\overline{S^C} \subseteq (\underbar{S})^C $.
+\\\\ Note that $S^C \subseteq \overline{S^C} \implies (\overline{S^C})^C \subseteq S$ where $(\overline{S^C})^C$
+is an open set inside $S$. Since $\underline{S}$ is the largest open set containing $S$,
+we have that $ (\overline{S^C})^C \subseteq \underline{S} \implies \underline{S}^C \subseteq \overline{S^C}$. Combining these
+two set inequalities, we are done.
+}
+
+\newpage
+\defn{Isometry}{$(X,d_X)$ is said to be isometric to $(Y,d_Y)$ if there exists a function $\phi:X \to Y$ reffered to as the isomoetry, such that $d_Y(\phi(x),\phi(y))=d_X(x,y)$ for all $x,y \in X$}
+\thmp{}{Let $X,d_X$ and $Y,d_Y$ be isometric under the map $\varphi:X \to Y$. Then the map $\varphi$ is injective, and its inverse $\varphi^{-1}:\phi(X)\to X$ is also also an isometry. }{Suppose $\varphi(x)=\varphi(y)$. Then $d_Y(\varphi(x),\varphi(y))=d_X(x,y)=0 \implies x=y$. 
+
+$d_X(\varphi^{-1}(\varphi(a)),\varphi^{-1}(\varphi(a)))=d_X(a,b)=d_Y(\varphi(a),\varphi(b))$ which makes $\varphi^{-1}$ an isometry from $\varphi(X) \to X$.}
+\thmp{}{Let $Z$ be a set and $f:Z \to (X,d)$ be any injective map from $Z$ to $X$. Then $\delta(x,y):=d(f(x),f(y))$ would form a metric on $Z$ and make it a metric space, and this would in turn make $f$ an isometry from $(Z,\delta)$ to $(X,d)$}{$\delta(x,y)=d(f(x),f(y))$ would obey all the properties of a metric space, and moreover, $\delta(x,y)=d(f(x),f(y))$ making it by definition an isometry. }
+\defn{Diam}{$Diam(A \subseteq X):= \sup\{d(x,y):x \in X, y \in X\}$}
+\defn{Distance between a point and a set}{$d(x,A):=\inf\{d(x,a):a \in A\}$}
+\thmp{}{$x \in \overline{A} \iff d(x,A)=0$}{Obviously, if $d(x,A)=0$, either $x \in A$ or $\forall \varepsilon>0$, $\exists a_{\varepsilon} \in A, a_\varepsilon \neq x$ such that $d(x,a_{\varepsilon})<\varepsilon$, making $x$ a limit point of $A$. The other direction is just as trivial. }
+\defn{Isolated point}{$x \in X $ is said to be an isolated point of $S \subseteq X$ if $x \in S $ and $d(x,S\setminus{\{x\}})\neq 0$ or rather, there is a ball around $x$ such that $B_{\varepsilon}(x) \setminus\{x\}$ is completely disjoint from $S$.}
+\rmkb{In some sense, being an isolated point of a set is the opposite of being a limit point. $x$ is a limit point of $S$ if for every $\varepsilon>0$, there exists a point $s_{\varepsilon} \in S \setminus\{x\}$ so that $s_{\varepsilon} \in B_{\varepsilon} \setminus\{x\}$ or rather for every $\varepsilon>0$, $B_{\varepsilon}(x) \setminus\{x\} \cap S \neq \emptyset$. The negation of this statement is that there exists an $\varepsilon>0$ so that $B_{\varepsilon}(x) \setminus\{x\} \cap S = \emptyset$ }
+\defn{Nearest Point}{Let $S \subseteq X$ and $z \in X$. If there exists $s \in S $ so that $dist(z,S)=d(z,s)$ then $s$ is said to be the \emph{nearest point} of $S$ to $z$.}
+\defn{Boundary Point}{A point $x$ in $X$ is said to be a boundary point of $S \subseteq X$ if $dist(x,S)=dist(x,S^c)=0$. Right from the definition, a point $x$ is a boundary point of $S$ if and only if its a boundary point of $S^C$. The \textbf{\emph{Boundary}} of a set is defined as the set of all boundary points of $S$ denoted $\partial(S)$.}
+\thmp{}{$\partial(S)=\overline{S}\setminus{S^{\circ}}$}{$\partial{S}$ was defined as the set of all points $x$ so that $dist(S,x)=dist(x,S^C)=0$. By virtue of that, $x \in \partial{S}$ implies $x \in \overline{A}$. Can $x \in S^{\circ}$? That would mean that there is an epsilon ball around $x \in S^{\circ}$ which means that the distance between $x$ and $S^c$ would be non zero. Hence, $\partial{S} \subseteq \overline{S} \setminus\{S^{\circ}\}$ 
+\\\\ Now let $x \in \overline{S} \setminus S^{\circ}$. Clear that $dist(x,S)=0$ Obviously. $\overline{S} \cap (S^{\circ})^C=\overline{S} \cap \overline{(S^C)}$. This tells us that $x$ is in $\overline{S^C}$ as well, hence $dist(x,S^C)=0$, making $x \in \partial(S)$. This concludes the proof that $\partial(S)=\overline{S}\setminus {S^{\circ}}$}
+\fact{Boundary of a set is closed ($\partial(S)=\overline{S} \cap \overline{S^C}$).}
+\subsection{Relative closures, interiors and boundary}
+\defn{Relative closure ($cls_Z(S)$)}{The closure of $S \subset Z \subset X$ relative to $Z$, denoted as $cls_Z(S)$ is defined either as the set $S$ along with the set of all limit points of $S$ in $Z$, or equivalently as the smallest closed set, closed relative to $Z$, that contains $S$.}
+\defn{Relative Interior ($int_Z(S)$)}{The interior of $S \subset Z \subset X$ relative to $Z$, denoted as $int_Z(S)$ is defined either as the set of all points $z \in Z$ so that there exists an $\varepsilon>0$ ball so that $B_{\varepsilon}(x) \cap Z$ is fully contained in $S$, or as the largest open set, open relative to $Z$, that is inside $S$.}
+\thmp{}{Let $S \subseteq Z \subseteq X$. Then, $$cls_Z(S)=cls_X(S) \cap Z $$}{Note that $cls_X(S) \cap Z$ is a closed set, closed relative to $Z$ that contains $S$. Hence, $cls_Z(S) \subseteq cls_X(S) \cap Z$. $cls_Z(S)$ is the smallest closed set relative to $Z$ that contains $S$, which means $cls_Z(S)=H \cap Z$ for some closed set $H$. Note that this closed set must too contain $S$. Hence, we have $cls_X(S) \subseteq H$ which gives $cls_X(S) \cap Z \subseteq H \cap Z= cls_Z(S)$. Hence we have $cls_Z(S)=cls_X(S) \cap Z$.}
+\thmp{}{Let $S \subseteq Y \subseteq X$. Then $int_Y(S)=int_X(S \cup (X \setminus Y)) \cap Y$}{$int_Y(S)=\cup_{\substack{G \text{ open} \\ G\cap Y \subset S}} (G \cap Y)=(\cup_{\substack{G \text{ open} \\ G\cap Y \subset S}} G)\cap Y$ which gives $int_Y(S)=(\cup_{\substack{G \text{ open} \\ G \subset S \cup Y^C}} G)\cap Y=int_X(S \cup Y^C) \cap Y$ }
+
+\subsection{Denseness, topologies and more on open / closed sets}
+\defn{Dense sets}{A set $A \subseteq X$ is said to be dense in $X$ if $\overline{A}=X$}
+\thmp{}{A set $A$ is dense in $X$ if and only if for every open set $G \in X$, $A \cap G \neq \emptyset$}{$\implies$) Suppose $G_0 \cap A =\emptyset$. That means $A \subseteq G_0^C \neq X$ which means, since $G_0^C$ is open, we have $\overline{A}\subseteq G_0^C \neq X$.
+\\\\ $\impliedby$) if $\overline{A} \subset X$ properly, then $(\overline{A})^C$ is an open set disjoint from $A$. }
+
+
+\textbf{Question:} Suppose metric $\gamma: X \times X \to \RR^+ $ induces a topology $\mathcal{U}$. Can the topology tell us the metric? i.e, can we get back $\gamma: X \times X \to \RR^+$ from the topology $\mathcal{U}$? 
+\thmp{}{If $\mathcal{U}$ is a topology arising from $\delta(x,y)$, then the same topology can also be achieved by the metric $d(x,y)=\delta(x,y)/(1+\delta(x,y))$, as well as $e(x,y)=\delta(x,y)/2$}{Let $S$ be an open $r$ ball in the $\delta$ metric. $S_r:=\{x \in X: \delta(x,y)<r\}$. Let $T_s$ be the open $s$ ball in the $d$ metric. $T:=\{x \in X: \delta(x,y)/(1+\delta(x,y))<s\}$. Now let $E$ be the $a$ ball in the $e$ metric. $E_a:=\{x \in X: \delta(x,y)/2<a\}$. Easy to see that $E_{r/2}=S_r$ and $E_r=S_{2r}$. Moreover, $T_{r/1+r}=S_r$ and $T_{r}=S_{r/1-r}$}
+The previous theorem tells us that the answer to the prior question is: no. Different metrics can give rise to the same topologies. 
+\subsubsection{Topologies on Subspaces and Superspaces}
+Given a topology of $X$, we would like to classify, or have the structure of the topology generated in a subspace $Y \subset X$. 
+\thmp{}{If $\mathcal{U}$ is the topology of $X$, then $\mathcal{U} \cap Y$, that is $\{U \cap Y: U \in \mathcal{U}\}$ is the topology of $Y.$}{We know by definition (and in metric spaces, by virtue of a theorem) that $S \subseteq Y \subseteq X$ is open relative to $Y$ if and only if $S=G \cap Y$ for some open set $G$ relative to $X$. Let $U$ be an open set in $X$. That means that $U \cap Y$ is open relative to $Y$, making it part of the topology. Let $K$ be an open set relative to $Y$. That means $K= G \cap Y$ for some $G$ open relative to $X$. Hence, the topology of $Y$ is such that every element in it is of the form $G \cap Y$ for open $G$ in $X$, and for every open $G \subseteq X$, $G \cap Y$ is part of the topology of $Y$. Hence, $T=\{U \cap Y: U \in \mathcal{U}\}$ }
+\thmp{}{Suppose $Z$ is a metric space and $Z \subseteq X$. Topology of $X$ includes that of $Z$ if and only if $Z$ is open in $X$.
+\\\\ This essentially means that every set open relative to $Z$ is open relative to $X$ if and only if $Z$ itself is open in $X$. }{$\impliedby)$ Suppose $Z$ is open in $X$. That means $Z$ is part of the topology of $X$. Moreover, If $S \subseteq Z \subseteq X$ is open relative to $Z$ (i.e, is part of the topology of $Z$) then it can be written as $ G \cap Z$ which is also again an open set in $X$. Hence, topology of $Z$ is contained in the topology of $X$.
+\\\\ $\implies)$ Suppose the topology of $Z$ is contained in $X$, that means that every open set relative to $Z$ is actually an open set relative to $X$. That makes $Z$ an open set relative to $X$. We are done.}
+\textbf{Question:} Are there non empty metric spaces such that they are open relative to every superspace? 
+\\\\ \textbf{Answer:} No. Consider $X$ to be a non empty metric space with distance $d$. Consider $X \times \{0\}=Y$. It is obvious that $Y$ is bijective to $X$. Consider $f:X \to Y$ given by $f(x)=(x,0)$. Under the obvious metric $k[(x,0),(y,0)]=k[f(x),f(y)]=d(x,y)$, we can clearly see that $Y,k$ forms a metric space isometric to $X,d$. We can therefore identify $X,d$ with $Y,k$. Now look at $Z=X \times [0,1]$ with the metric $\delta[(x,r_x),(y,r_y)]:=d(x,y)+|r_x-r_y|$. Consider $dist_Z[(x_0,0),Z \setminus Y]$. This is $dist_Z[(x_0,0),X \times (0,1]]$ which is $0$. Hence, $Y$ is not open wrt $Z$. Its over.
+\defn{Complete Metric Space}{A metric space is said to be complete if $X$ is closed in every metric superspace}
+\lemp{Cantor's Intersection Lemma}{$X$ is a cauchy complete metric space if and only if for every sequence of nested, non empty closed sets $F_n \subseteq F_{n-1} \subseteq F_{n-2}\cdots$ such that $diam(F_n) \to 0$, $\cap_{n \in \NN} F_n$ is a singleton. }{$\implies$) Let $X$ be cauchy complete. Consider $x_1 \in F_1$, $x_2 \in F_2 \cdots x_n \in F_n$ and so on. We are told $diam(F_n) \to 0$, i.e $\forall \varepsilon>0, \exists n_0$ such that $\forall n \geq n_0$, $diam(F_n)<\varepsilon$. This means that $\forall n,m \geq n_0$, we have $d(x_m,x_n)<\varepsilon$. Hence, $(x_n)$ is a cauchy sequence. It converges to $x$. Note that for any $F_k$, only finite points of $(x_n)$ lie outside of $F_k$. Suppose $x$ is not in some $F_k$. That means it is in $F_k^C$, an open set. There is a ball around $x$ that is completely inside $F_k^C$. Around this ball, though, only finite points of $x_n$ exists. This contradicts the fact that $x $ is a limit of $(x_n)$. Hence, $x \in F_k$ for all $k \in \NN$. Hence $x \in \cap_{n\in \NN}F_n$. Since $diam(F_n) \to 0$, its obvious that two points cannot exist in the final intersection.
+\\\\ $\impliedby)$ Let $(x_n)$ be a cauchy sequence. Note that, if $\{x_n: n \in \NN\}$ has a limit point, say $x$, then choose $\varepsilon_1=1$ and pick $x_{k_1}$ in this 1-ball. Then, look at the set $\{x_n: n \geq k_1\}$. This set still has $x$ as its limit point, wherein you choose $\varepsilon_2=1/2$ and get the corresponding $x_{k_2}$ in the $1/2-$ball of $x$. As such keep going to get a subsequence $x_{k_j}$ that converges to $x$. We know that $\forall \varepsilon>0, \exists n_0$ so that $\forall n,m \geq n_0, d(x_n,x_m)\leq \varepsilon/2$, more specifically, $\forall n,k_j \geq n_0, d(x_n,x_{k_j})<\varepsilon/2$. Moreover, $\forall \varepsilon>0, \exists n'$ so that $\forall k_j \geq n'$ we have $d(x_{k_j},x)<\varepsilon/2$. Adding these two gives us that $x_n \to x$. Therefore, we assume that $\{x_n:n \in \NN\}$ has no limit point. Let $F_m:=\{x_n:n \geq m\}$. Each of these sets, by virtue of having no limit points, are closed. They are, as well, nested and obviously non empty. Moreover, $diam(F_l):=\sup\{d(x_n,x_m): m,n \geq l\}$. If $\varepsilon>0$ is given, there exists a $l_0$ so that $\forall n,m \geq l_0$, we have $d(x_m,x_n)<\varepsilon$ which means $\sup\{d(x_m,x_n):n,m \geq l_0\}\leq \varepsilon$. Hence, $diam(F_n) \to 0$. Hence, from hypothesis, $\cap_{n \in \NN} F_n =\{x\}$. $d(x_n,x)\leq diam(F_n)$, which means that $x_n \to x$. Hence, cauchy complete.  }
+\thmp{}{Cauchy completeness $\iff$ completeness}{Let $ $}
 \newpage
 \section{Compactness}
 \defn{Open Conver}{A collection of open sets $G_{\alpha} \subset X$ is an open cover of a set $E$ if $E \subset \cup_{\alpha}G_{\alpha}$}
@@ -406,74 +518,6 @@ Note that $z'$ is greater than the supremum of $A$. We see that $z'$ is not in $
 \end{figure}
 
 \section{Misc Knowledge}
-
-\thmp{}{Suppose $A_1, A_2 \cdots, A_n \cdots \in X $. Then,
-\begin{enumerate}
-\item If $B_n= \cup_{i=1}^n A_i$, then $\bar{B_n}=\cup_{i=1}^{n} \bar{A_i}$ 
-\item $B=\cup_{i=1}^{\infty} A_i$, $\bar{B} \supseteq \cup_{i=1}^{\infty}\bar{A_i}$ with possibility of strict inequality.
-\end{enumerate} }{Suppose $x \in \cup_{i=1}^{n}\bar{A_i}$. Which means
-$x \in \bar{A_i}$ for some $i$. It is clear that $x$ is either a 
-point of $A_i$ or a limit point of $A_i$. We have that, whatever maybe the case
-either $x$ is a point in $B_n$ or a limit point of $B_n$. Therfore
-$\bar{B_n}\supset \cup_{i=1}^{n} \bar{A_i}$. 
-\\\\ Suppose $x$ is a point in $\bar{B_n}$. If it is a point of $B_n$,
-we are done. Suppose it is the limit point of $B_n$, but not a point. Also
-suppose that $x$ is not a limit point of any $A_i: i=1 \to n$. This means that,
-$$\exists \varepsilon_1 \text{ such that } \forall q\in A_1, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_1$$
-$$\exists \varepsilon_2 \text{ such that } \forall q\in A_2, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_2$$
-$$\vdots$$
-$$\exists \varepsilon_n \text{ such that } \forall q\in A_n, q\neq x, \text{ we have } d(q,x)\geq \varepsilon_n$$
-If we choose $0<\varepsilon_0<min\{\varepsilon_i: i=1 \to n \}$, we would have that,
-for every point $q$ in $A_1 \cup A_2 \cdots A_n$, $q \neq x $(which is needless to say), we have $d(q,x) \geq \varepsilon_0$ which 
-makes $x$ a non-limit point of $B_n$, which is absurd. Hence we see that if $x$ is point of $B_n$ or a limit point of $B_n$, then it is a point or the limit point of some $A_j$.
-\\\\ For a good counterexample, we look to $\QQ:=\{q: \text{ q is rational} \}$. This set is 
-countable. Let $\{q_1, q_2, \cdots \}$ be the enumeration of $\QQ$. Consider $\QQ:=\cup_{j=1}^n \{q_j\}$. The closure
-of $\QQ$ is $\RR$ but since these singleton sets are by definition closed, the union of them only gives you $\QQ$.
-\\\\ \textbf{Proof for topological space}:
-\\ if $B_n:=\cup_{i=1}^{n}A_i$, is it true in topological spaces (and not just metric spaces) that $\overline{B_n}=\cup_{i=1}^n \overline{A_i}$? the direction $\overline{\cup_{i=1}^n A_i}\subseteq \cup_{i=1}^n \overline{A_i}$ can be shown from definition as the smallest closed set that contains $B_n$.  But $\overline{A_i} \subseteq \overline{\cup_{i=1}^n A_i}$ for every $i$, so if we union them we must get $\cup_{i=1}^n \overline{A_i}\subseteq \overline{\cup_{i=1}^n A_i }$}
-
-\defn{Interior of a Set}{Given $S \in X$, the interior $\underbar{S}$ is defined as:
-$$\underbar{S}:=\{x\in X: \exists \varepsilon_x>0 \text{ such that } B_{\varepsilon_x}(x) \subset S \} $$}
-\thmp{}{The Interior is an open set}{Consider $(\underbar{S})^C:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x) \cap S^C \neq \phi \}$.
-It is possible that $x$ is a point of $S^C$, if it is in $\underbar{S}^C$. Suppose
-it is a point of $\underbar{S}^C$ but not a point of $^C$. From the definition, we see
-that $\forall \varepsilon>0, \exists q \in S^C, q\neq x$ such that $d(q,x)<\varepsilon$.
-This makes $x$ a limit point of $S^C$, which means, for every $x$ in $\underbar{S}^C$,
-$x$ is either a point of $S^C$ or a limit point of $S^C$. Hence,
-$$\underbar{S}^C \subseteq \bar{S^C} $$
-Suppose $x$ is a point of $\bar{S^C}$. Say it is a point of $S^C$, then obviously,
-it is a point of $(\underbar{S})^C$. Suppose $x$ is not a point of $S^C$, but a limit
-point of $S^C$. This means $\forall \varepsilon>0, \exists q \in S^C, q \neq x$ so that
-$d(q,x)<\varepsilon$. This is precisely the condition for which $x$ is a point of $(\underbar{S})^C$.
-Hence we see $(\underbar{S})^C \supseteq \bar{(S^C)} $. Therefore, $(\underbar{S})^C=\bar{(S^C)}$. From here we 
-see that $\underbar{S}$ is an open set.
-\\\\ \textbf{Alternate Argument (similar):} Consider $(\underline{S})^C:=\{x \in X: \forall \varepsilon>0, B_{\varepsilon}(x)\cap S^C \neq \phi \}$
-Consider a limit point $p$ of $(\underbar{S})^C$. $\forall \varepsilon>0, \exists q_{\varepsilon} \in \underbar{S}^C$ such that $d(q_{\varepsilon},p)<\frac{\varepsilon}{2} $. 
-Since $q_{\varepsilon}$ is in $(\underline{S})^C$, we have that: $\forall \delta>0, \exists r_{\delta} \in S^C, r_{\delta}\neq q_{\varepsilon}$ such that $d(r_{\delta},q_{\varepsilon})<\delta$
-
-Combining these we have:
-$$(\forall \varepsilon>0)(\exists q_{\varepsilon} \in \underbar{S}^C)(\exists \delta>0)(\exists q_{\delta} \in S^C)$$
-$$(d(q_{\delta},p)\leq d(q_{\delta},q_{\varepsilon})+d(q_{\varepsilon},p)<\frac{\varepsilon}{2}+\delta<\varepsilon) $$
-This means $p$ is a limit point of $S^C$. Hence, $\underbar{S}^C$ is closed.}
-\thmp{}{$\underbar{S}=S$ $\iff$ $S$ is open}{$\implies $) if $\underbar{S}=S$, obviously 
-$S$ is open.
-\\\\ $\impliedby)$ If $S$ is open, then by definition $\underbar{S}=$ set of all
-points in $S$ so that there's an $\varepsilon$-ball of $x$ in $S$. But that is every point
-of $S$. }
-\thmp{}{$\underbar{S}$ is the largest open set contained in $S$}{Consider an open
-subset of $S$. These are subsets of $S$ whose each point has an $\varepsilon$-ball
-around it so that the ball is contained in the subset, which is contained in $S$. So by 
-definition, these points in these subsets are contained in $\underbar{S}$.}
-\thmp{}{$$(\underbar{S})^C=\overline{(S^C)}$$ \centering{"The compliment of the interior is the closure of the compliment"}}{Refer to the proof of "Interiors of sets are Open", to see this construction.
-\\\\ \textbf{Alternate method(slicker):}
-\\\\ $\underbar{S} \subseteq S\implies S^C \subset (\underbar{S})^C$ where $(\underbar{S})^C$
-is a closed set containing $S^C$. Since $\overline{S^C}$ is the smallest closed set that contains $S^C$, we
-have $\overline{S^C} \subseteq (\underbar{S})^C $.
-\\\\ Note that $S^C \subseteq \overline{S^C} \implies (\overline{S^C})^C \subseteq S$ where $(\overline{S^C})^C$
-is an open set inside $S$. Since $\underline{S}$ is the largest open set containing $S$,
-we have that $ (\overline{S^C})^C \subseteq \underline{S} \implies \underline{S}^C \subseteq \overline{S^C}$. Combining these
-two set inequalities, we are done.
-}
 
 \thmp{}{\begin{enumerate}
 \item If $A$ and $B$ are closed, disjoint subsets of $X$, then $A$ and $B$ are separated.

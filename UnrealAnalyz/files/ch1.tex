@@ -480,6 +480,19 @@ Whence we see the inequality holding again for all $k \in \NN$. Simply take the 
 $$(\sum_{i=1}^{\infty}(|x_i+y_i|^p))^{1/p} \leq (\sum_{i=1}^{\infty} |x_i|^p)^{1/p}+(\sum_{i=1}^{\infty} |y_i|^p)^{1/p} $$
 }
 \lemp{Useful lemma}{if $p>1$, with $a,b \geq 0$, then $$(\frac{a+b}{2})^{p}\leq (\frac{a^p}{2}+\frac{a^{p}}{2}) $$}{Consider the function $x \mapsto x^p$ for $p>1$. Note that this map is convex. That means that the line is bigger than the function. We therefore have $(1-t)f(x)+tf(y)\geq f((1-t)x+ty)$. Plugging $t=1/2$ gives us the desired result.}
+\thmp{Neat Inequalities}{If $a,b \in \RR$ and $p\geq 2$ with $1/p+1/q=1$, then \begin{enumerate}
+\item $2(|a|^p+|b|^p)\leq |a+b|^p+|a-b|^p \leq 2^{p-1}(|a|^p+|b|^p)$
+\item $|a+b|^p+|a-b|^p \leq 2^{p-1}(|a|^q+|b|^q)^{p/q}$
+\item $2(|a|^p+|b|^p)^{q/p}\leq |a+b|^q+|a-b|^q$
+\end{enumerate} with the direction of inequalities changing if $1 \leq p <2$}{Wlog assume $|a|\neq 0 , |b|\neq 0$ and $|b|\leq |a|$. The left part of the 1st inequation reads $$2(|a|^p+|b|^p)\leq |a+b|^p+|a-b|^p$$ which, when dividing through by $|a|$, yields $$2(1+|b/a|^p)\leq |1+b/a|^p+|1-b/a|^p $$ Substituting $x=b/a$ gives us $$2(1+|x|^p)\leq (1+x)^p+(1-x)^p $$ for $p \geq 2$ and $x \in [-1,1] $ From symmetry, it is enough if we solve for $x \in [0,1]$ (Why?)
+
+Look at the taylor expansions of $(1+x)^p$ and $(1-x)^p$ around $0$. $$(1+x)^p=1+px+p(p-1)x^2/2!+p(p-1)(p-2)(1+\xi_1)^{p-3}x^3/3!$$ and $$(1-x)^p=1-px+p(p-1)x^2/2!-p(p-1)(p-2)(1-\xi_2)^{p-3}x^3/3!$$ adding them we get: $$(1+x)^p+(1-x)^p=2+p(p-1)x^2+\text{some positive number trust me} $$ Since $p \geq 2$ and $p-1 \geq 1$ we have $2+p(p-1)x^2 \geq 2+2x^2 \geq 2+2x^p$ (since $x \in [0,1]$). Hence, we have shown that $2(1+x^p) \leq (1+x)^p+(1-x)^p$ for $p \geq 2$ and $x \in [0,1]$. 1st part of the inequality done.
+\\\\ Onto the next part, i.e, to show that $|a+b|^p+|a-b|^p \leq 2^{p-1}(|a|^p+|b|^p)$, we take the first, left inequality, that is: $2(|a|^p+|b|^p)\leq |a+b|^p+|a-b|^p $ and make the substituiion $a \mapsto a+b$ and $b \mapsto a-b$. This yields: $$2(|a+b|^p+|a-b|^p) \leq |2a|^p+|2b|^p\implies |a+b|^p+|a-b|^p \leq 2^{p-1}(|a|^p+|b|^p) $$
+\\\\ Before the 2nd inequality, we digress to prove a lemma: 
+\\\\ \textbf{Lemma:} If $p \geq 1$ and $a,b \in \RR^+$ then $(a+b)^p>a^p+b^p$ but if $p \leq 1$ then $(a+b)^p \leq a^p+b^p$.
+\pf{if $p \geq 1$, we have $(a+b)^p=(a+b)(a+b)^{p-1}=a(a+b)^{p-1}+b(a+b)^{p-1}\geq a^p+b^p$. The other direction is just as trivial.}
+From the right part of the 1st inequality, we have $$|a+b|^p+|a-b|^p \leq 2^{p-1}(|a|^p+|b|^p) $$ we are told $1/p+1/q=1$ which, from the fact that $p \geq 2$ gives us that $1/q \in [1/2,1]$. $$|a+b|^p+|a-b|^p \leq 2^{p-1}((|a|^q)^{p/q}+(|b|^q)^{p/q}) $$ Since $p/q=p-1 \geq 1$, we can write $(|a|^q)^{p/q}+(|b|^q)^{p/q} \leq (|a^q|+|b^q|)^{p/q}$ which gives us the 2nd inequality we need. 
+\\\\ The third inequality can be proved from the 2nd by simply making the substitution $a \mapsto a+b$ and $b \mapsto a-b$}
 \newpage
 \subsection{Intervals on the Real Line}
 \defn{Intervals}{\begin{enumerate}
