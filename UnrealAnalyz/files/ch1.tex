@@ -205,6 +205,14 @@ given by $g(m,n)=(f(m),n)$. Clearly, this is bijective. }
 \subsection{Axiom of Choice}
 \asum{Axiom of Choice (AC)}{For any collection of non empty sets $C=\{ A_l: l \in L\}$, there exists a function $f$ called the "counting function" which maps each set $A_l$ to an element in $A_l$.\\
 Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
+\defn{m-tuple}{Given a collection of sets $X_1,X_2 \cdots X_m,$ am $m$ tuple is a collection of elements $(x_1,x_2, \cdots x_m)$ where $x_i \in X_i$. Alternatively: an $m-$tuple is a function
+$$f:\{1,2 \cdots m\} \to \cup_{i=1}^m X_i $$ such that $f(i) \in X_i$}
+\textbf{Generalisation of $m-tuples$}
+\defn{W-tuple}{Let $W$ be a counting set. Let $\{X_{\omega}:\omega \in W\}$ be a colleciton of sets. A $W-$tuple is defined as a function $f:W \to \cup_{\omega} X_{\omega} $ such that $f(\omega)\in X_{\omega} $}
+\defn{Cartesian product $\Pi_{\omega \in \Omega} X_{\omega}$}{$\Pi_{\omega \in \Omega} X_{\omega}:=\{f:\Omega \to \cup_{\omega \in \Omega} X_{\omega} \text{ such that } f(\omega) \in X_{\omega} \}$ or basically the set of all $W-$tuples coming from the collection $\{X_{\omega}: \omega \in \Omega\}$}
+\thmp{}{AC $\iff$ For every collection of non empty sets, its cartesian product is non empty.}{Let $\{X_{\omega}:\omega \in \Omega\}$ be a collection of sets. $\Pi_{\omega} X_{\omega}:=\{f:\Omega \to \cup_{\omega}X_{\omega}\}$ such that $f(\omega)\in X_{\omega}$. There exists a function $f:\{X_{\omega}: \omega \in \Omega\} \to \cup_{\omega}X_{\omega}$ such that $f(X_{\omega}) \in X_{\omega}$ (Choice function). Since there is a bijective correspondence between $\Omega$ and $\{X_{\omega}: \omega \in \Omega\}$, i.e, $q:\Omega \to \{X_{\omega}:\omega \in \Omega\}$ it is easily seen that there exists a function $t:\Omega \to \cup_{\omega} X_{\omega} $ such that $t(\omega) \in X_{\omega}$ (compose the previous two functions). Hence, $\Omega$ tuple exists, hence cartesian product is non empty.
+\\\\ For the back direction, let $\{X_{\omega}: \omega \in \Omega\}$ be a collection of non empty sets. We are told that cartesian product is non empty. That means that there exists one (atleast) function $f:\Omega \to \cup_{\omega} X_{\omega} $ such that $f(\omega) \in X_{\omega}$. Consider $\{X_{\omega}:\omega \in \Omega\}$. Since there is a bijective correspondence $\pi:\{X_{\omega}:\omega \in \Omega\} \to \Omega$, we can write $g=f \circ \pi:\{X_{\omega}:\omega \in \Omega\} \to \cup_{\omega} X_{\omega} $ such that $g(X_{\omega}) \in X_{\omega}$, this yields us the choice function.   }
+
 \thmp{}{Countable union of Countable sets is countable
 \rmk{(This theorem is an example of a theorem that requires \emph{Axiom of Choice})}}{Suppose we are given a sequence of countable sets $\{S_n : n\in \mathbb{N}\}$. Since each $S_j$ is countable, we have for each $j$, at least one bijective map $f_j:\mathbb{N} \to S_j$. Define $k:\mathbb{N} \times \mathbb{N} \to \bigcup_j S_j$ given by: $k(m,n)=f_m(n)$. Suppose $x \in \bigcup_j S_j$, i.e, $x \in S_j$ for some $j$. This means that, $f(n)=x$ for some $n$. Therefore, $k(j,n)=x$. Hence, $k$ is surjective. From theorem 2.14, we are done.\\\\
 (\textbf{Remark:}{ Keep in mind, for each $S_j$, there are a myriad of functions $(f_j)_k:\mathbb{N}\to S_j$. For each $S_j$, which is countably infinite, we have to choose one of the many functions that biject $\mathbb{N}$ to $S_j$. So we have a countable collection of sets $C=\{E_j: j\in \mathbb{N}\}$, where $E_j$ denotes the set of all functions that biject $\mathbb{N}$ into $S_j$. So for every element in $C$, we need to choose one element in each element of $C$. This is where the Axiom of Choice comes into play.)}}
@@ -545,8 +553,13 @@ see that $\gamma=\alpha+\beta$
 
 
 }
-
+\lemp{}{$[0,1) \equiv [0,1) \times \{y,n\}$}{One side injection is trivial ($[0,1) \times \{y,n\}$ to $[0,1)$ is obvious). Consider the map $g:[0,1) \to [0,1)\times \{y,n\}$ given by considering only those binary expansions of $x$ that don't have trailing 1s: $$g(0.x_0x_1x_2 \cdots)= \begin{cases}
+(0.x_1x_2 \cdots,n) \text{ if } x_0=0 \\ (0.x_1x_2 \cdots,y) \text{ if } x_0=1
+\end{cases}$$ This is obviously a surjection. Hence, from AC, we can conclude that there exists an injection from $[0,1) \times 
+\{y,n\}$ into $[0,1)$. Hence, from $CSB$, we are done.}
 \thmp{}{The set of all $0,1-$sequences (i.e, sequences containing only $1$ or $2$) are atleast as large as $\RR$ (\textbf{p-adic proof})}{Consider a point $x$ in $[0,1]$. By virtue of the above decmial expansion results, we can find a sequence $a_n$ consisting of just $0$ and $1$ so that $\sum_{i=1}^{\infty} \frac{a_n}{2^n}$ converges to $x$. For every $0,1$ sequence, we can map a unique number in $[0,1]$ so that that sequence becomes the $2-$adic or binary representation of that number. This is a well defined surjection from the set of all $0,1$ sequences to $[0,1]$. }
+\thmp{A strenghtening of the previous result}{ The space $\{0,1\}^{\omega}$ of all 0,1 sequences, is equivalent to the space $[0,1)$ (\textbf{We shall assume CSB theorem})}{Consider the obvious injection from $[0,1)$ into $\{0,1\}^{\omega}$ by considering the unique binary expansions of numbers neglecting those with trailing 1s. 
+\\\\ For an injection from $\{0,1\}^{\omega}$ to $[0,1)$, we first consider an injection from $\{0,1\}^{\omega}$ to $[0,1) \times \{y,n\}$, given by $g(x_1,x_2,x_3\cdots)=(0.x_1x_2 \cdots,y \text{ or } n) $, y or n depending on whether the sequence has a trailing 1s or not. This is again an injection. We are done.}
 
 \thmp{}{If $a,b>0$ and $0<p<1$, then $(a+b)^p \leq a^p+b^p$}{Let $p=1-q$ for $q \in(0,1)$. $(a+b)^p=(a+b)(a+b)^{-q}=(a)(a+b)^{-q}+b(a+b)^{-q} \leq a^{1-q}+b^{1-q}=a^p+b^p$  }
 
@@ -561,5 +574,25 @@ $$\frac{f(b)-f(a)}{b-a} \geq \frac{f(x)-f(b)}{x-b} $$
 Together this gives: $$\frac{f(x)-f(a)}{x-a}\geq \frac{f(b)-f(x)}{b-x} $$ which (from MVT) means: 
 $$f'(p)\geq f'(q) $$ for $p<q$. We. are. done.
 }
- 
+\lemp{(Precursor lemma for CSB)}{Let $A$ be a set and $B$ a subset of $A$. If $f:A \to B$ is an injection, then there exists a bijection from $A$ to $B$.}{Define $A_1=A$ and $B_1=B$. $f(A_1)=f(A) \subseteq B$. Also, $f(B_1)=f(B)\subseteq f(A)=f(A_1)$. Defining $f(A_{n-1})=A_n$ and $f(B_{n-1})=B_n$, we have (via induction) $B_n \subseteq A_n \subseteq B_{n-1} \subseteq A_{n-1} \cdots$. Define $h:A \to B$ given by $$h(x)=\begin{cases} f(x) | \exists \ n \text{ such that } x \in A_n \setminus B_n \\ x \text{ otherwise }
+
+\end{cases} $$
+Say $x \in $ some $A_n \setminus B_n$ and $y \in $ some $A_m \setminus B_m$. If $h(x)=h(y)$ then $f(x)=f(y)$ which means $x=y$. If $x \in $ some $A_n\setminus B_n$ and $y $ is not, and $h(x)=f(x)=h(y)=y$, then, by virtue of $x$ being in $A_n \cap B_n^C$, we have $f(x)=f(y) \in A_{n+1}\setminus B_{n+1}$, which is a contradiction. Injection is shown.
+\\\\ Let z $\in$ some $A_n\setminus B_n$. That means $z \in f(A_{n-1}) \setminus f(B_{n-1})$ which means there is an element in $A_{n-1}$ (not in $B_{n-1}$) such that $f(\text{that element})=z$. Hence, there exists some $x$ so that $h(x)=z$. Suppose $z \not \in A_n \setminus B_n$ for any $n$. That means $h(z)=z$ by definition. Hence, $h$ is a surjection too. Therefore, $h$ is our desired bijection. }
+\thmp{Cantor-Schroeder-Berstein}{Let $A$ and $C$ be sets such that there is an injection $f:A \to C$ and another injection $g:C \to A$. Then, there is a bijection from $A$ to $C$. }{$g:C \to A$ being an injection means that that $g:C \to g(C)$ is a bijection. Call it $\pi:C \to g(C)$, a bijection. $\pi \circ f:A \to g(C)$ is an injection from $A$ to $g(C) \subseteq A$. This implies, there is a bijection $k:A \to g(C)$. There is a bijetion $\zeta:g(C) \to C$, which means there is a bijection $k \circ \zeta: A \to C$} 
+
+\thmp{}{Let $X^{\omega}$ be the set of all sequences of $\{0,1\}$. The set of all countable subsets of $X^{\omega}$, given by $\mathcal{B}$, is bijective to $X^{\omega}$.}{\textbf{$X^{\omega}$ is smaller than (or equal to) $B$}:
+\\\\ Define $f:X^{\omega} \to B$ as $f(x_1,x_2 \cdots )=\{(x_1,x_2,\cdots)\}$ the singleton set. That this is an injection must be obvious, even to a 5 year old. $f$ therefore, is an injection from $X^{\omega}$ to $B$.
+\\\\ \textbf{$X^{\omega}$ is larger than (or equal to) $B$}:
+\\\\ Consider the set of all sequences of sequences consisting of $0$s and $1$s, i.e, $\gamma={X^{\omega}}^{\omega}$. Let $k$ be a sequence in $\gamma$, which is enumerated as: $$\begin{pmatrix}
+(x_{11}\ x_{12}\ x_{13} \ \cdots) \\
+(x_{21}\ x_{22}\ x_{23} \ \cdots) \\
+(x_{31}\ x_{32}\ x_{33} \ \cdots) \\
+\vdots
+\end{pmatrix} $$ and simply define the function $g:\gamma \to X^{\omega}$as follows: $g(k)$ maps to $(x_{11},x_{12},x_{21},x_{13},x_{22},x_{31}, \cdots)$(Cantor diagonalisation argument) in $X^{\omega}$. It is clear that, if $(x_{11},x_{12},x_{21}, \cdots)=(x'_{11},x'_{12}, \cdots)$, then $x_{11}=x'_{11}, x_{12}=x'_{12} \cdots$. Hence, it is an injection. 
+
+Obviously, $\gamma \geq X^{\omega}$, by the obvious map $o:X^{\omega} \to \gamma $ given by $o(x_1,x_2 \cdots) \mapsto ((x_1,x_2 \cdots),(0,0,0,0 \cdots),(0,0,0,0 \cdots),(0,0,0,0 \cdots), \cdots )$ which means $|\gamma|=|{X^{\omega}}^{\omega}|=|X^{\omega}|$ (from CSB)
+\\\\ We can generate a surjection from $\gamma$ to $B$, by simply considering the sequence as a set in and of itself. Therefore $\gamma \geq B$. This means $X^{\omega} \geq B$. This concludes that $B$ injects into $X^{\omega}$.
+\\\\ From cantor-schroeder-berstein, we have a bijection between $X^{\omega}$ and $B$. 
+}
 \end{document}
