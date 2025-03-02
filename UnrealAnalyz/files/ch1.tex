@@ -235,12 +235,10 @@ $x\leq y$ or $y\leq x$ is true. Then the set $C$ is \emph{totally} ordered.}
 If $a\in \ZZ$ divides $b \in \ZZ$, then $a \leq b$. This is a partial order, certainly. It is reflexive, anti symmetric and transitive. But $3$ and $5$ are 
 unrelated in this definition. Whereas, consider the same ordering but in the space $1,p,p^2,\cdots$ where $p$ is a prime, we then see that the set is totally ordered here.
 }
-\defn{Boundedness of a subset $C$ of $P$, where a partial order is defined}{We say set $C$
-in a poset $P$ is bounded, or has an upper bound, if $\exists M \in P$ so that 
-$\forall q \in C, q \leq M$.}
+\defn{Maximal element of a poset $P$}{An element $m \in P$ is maximal if there is \emph{no element of } $P$ that greater than $m$. i.e, either an element $q$ is such that $q \leq m$ or $q$ is not comparable to $m$}
+\defn{Upper bound of subset $S$ of poset $P$}{An element $U$ of $P$ is an upper bound for $S$ if $U$ is larger than or equal to \emph{every element} of $S$. }
 \exm{}{We consider the power set of a set $P$, where inclusion is defined by $S \subseteq T$ if $\forall x \in S, x \in T$. This defines a partial ordering on the power set.}
-\asum{Zorn's Lemma}{Given a poset $P$, if for every chain $C$ of $P$, there exists an upper bound $M_c$ in $P$, then $P$ has a maximal emement with respect to $\leq$
-(i.e, there exists $M$ in $P$ so that $x\leq M, \forall \ x \in P$)}
+\asum{Zorn's Lemma}{Let $P$ be a partially ordered set such that $P$ is non empty and every totally ordered subset has an upper bound in $P$. Then, $P$ has a maximal element (atleast one)}
 
 \thmp{}{AC $\iff$ Zorn's Lemma}{hmm}
 
