@@ -1,0 +1,410 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+\chapter{Assignment}
+
+\begin{center}
+\textbf{ASSIGNMENT-1}
+\end{center}
+\textbf{Some useful Definitions and theorems}
+
+\defn{(LimSup and LimInf)}{Given a sequence that is bounded (hence forth, all theorems involving limsup and liminf assumes a bounded sequence as given): \begin{enumerate}
+    \item $Limsup(x_n):= inf (V:=\{v \in \RR: \exists n_v \in \NN$ such that $ \forall n \geq n_v, x_n \leq v \})$
+    \item $Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$
+    
+\end{enumerate}}
+
+
+\thmp{}{The following are equivalent: \begin{enumerate}
+    \item $x$ is the LimSup($x_n$)
+    \item if $\varepsilon>0$, then $\exists$ utmost finite $n \in \NN$ such that $x+\varepsilon<x_n$ but infinite $n\in \NN$ such that $x-\varepsilon<x_n$. This implies $x+\varepsilon \in V$ but $x-\varepsilon \not\in V$ 
+    \item If $S_m:\{x_m,x_{m+1},\cdots \}$ and $U_m=sup(S_m)$, ,then $lim(U_m)=inf(U_m)=x$
+    \item If $S$ is the set of all subsequential limits of $x_n$, then $sup(S)=x$
+\end{enumerate}}{$(1) \implies (2)$) Since $x$ is the infimum of $V$, $\forall \varepsilon>0$, $\exists z \in V$ such that $z \leq x+\varepsilon$. We see that, $\exists n_z$ such that $\forall n\geq n_z, x_n < z \leq x+\varepsilon$. Hence, $x+\varepsilon \in V$, or rather, there exists utmost finite $n$ such that $x_n> x+\varepsilon$. $x-\varepsilon$ cannot belong in $V$ since $x$ is the infimum, therefore, $\forall k \in \NN, \exists n_k \geq k$ such that $x_{n_k}>x-\varepsilon$, or rather, there would exist infinite $n$ such that $x-\varepsilon<x_n$. \\\\
+$(2) \implies (3))$ We know that $U_m \geq U_{m+1}$, is a monotone decreasing sequence that is bounded below. Hence, from monotone convergence theorem, we have $lim(U_m)=inf(\{U_m\})$. From (2), we know that $\forall \varepsilon>0$, $\exists n_\varepsilon$ such that $\forall n \geq n_z$ we have $x_n \leq x+\varepsilon$. Therefore, $U_{n_{\varepsilon}} \leq x+\varepsilon$. Hence, $\forall \varepsilon>0, inf(U_n)=lim(U_n) \leq x+\varepsilon$. There exists infinite $x_n$ such that $x-\varepsilon<x_n$ which means that $x-\varepsilon<U_n \forall n \in \NN$. This implies $x-\varepsilon \leq inf(U_n)$. Therefore means $\forall \varepsilon>-, |inf(U_n)-x| \leq \varepsilon$. From the lemma, $inf(U_n)=x$.\\\\
+$(3) \implies (4))$ Since $inf(U_n)=x$, $\forall \varepsilon, \exists n_0(\varepsilon) \in \NN$ such that $U_{n_0(\varepsilon)} \leq x+\varepsilon \implies $ $\forall n \geq n_0(\varepsilon), x_n \leq x+\varepsilon$ so for every convergent subsequence, $x_{n_k}$, $lim(x_{n_k}) \leq x+ \varepsilon$. Since the set of all subsequential limits is bounded (and non empty from Bolzano Weierstrass Theorem), $sup(S=$ set of all subsequential limits) $\leq x+\varepsilon$. $\forall \varepsilon>0, x-\varepsilon<inf(U_n) \implies \forall \varepsilon \forall n \in \NN, x-\varepsilon< U_n$.\\
+Choose $\varepsilon=1$ and the set $S_1$, for which $\exists x_{n_1} \in S_1$ such that $U_1-1\leq x_{n_1}<U_1$. Choose $\varepsilon=\frac{1}{2}$ and the set $S_{n_1}$ for which $\exists x_{n_2} \in S_{n_1}$ such that $U_{n_1}-\frac{1}{2}\leq x_{n_2}<U_{n_1}$. From construction, $n_2>n_1$. Having chosen $\varepsilon=\frac{1}{j}$ and the set $S_{n_{j-1}}$ and obtaining $n_j$ such that $\exists x_{n_j} \in S_{n_{j-1}}$ so that $U_{n_{j-1}}-\frac{1}{j} \leq x_{n_j}<U_{n_{j-1}}$ such that $n_j>n_{j-1}$, we choose $\varepsilon=\frac{1}{j+1}$ and the set $S_{n_j}$. The construction continues and we create a sequence $x_{n_j}$ which from squeeze play, converges to $x$.To see this, we have that $\forall j \in \NN$ $$U_{n_{j-1}}-\frac{1}{j} \leq x_{n_j}<U_{n_{j-1}}$$
+Taking limit on both LHS and RHS we see that $x_{n_j}$ converges to $x$. Therefore $x$ itself is a subsequential limit, which means $x \leq sup(S)$. We already had $\forall \varepsilon>0, sup(S) \leq x+\varepsilon$, which gives, $\forall \varepsilon>0, x\leq sup(S) \leq x+ \varepsilon$, which means $sup(S)=x$.\\\\
+$(4) \implies (1))$ Consider the set $V:=\{v \in \RR: \exists n_v \in \NN$ such that $ \forall n \geq n_v, x_n \leq v \}$. if $z \in V$, it means that every subsequential limit of $x_n$ goes below $z$. Therefore, $sup(S)=x \leq z \forall z\in V$. This means $x \leq limsup(x_n)$. Suppose $sup(S)=x<limsup(x_n)$. This means $Sup(S)+\delta=limsup(x_n)$ or $x=limsup(x_n)-\delta$. $limsup(x_n)$ is an upper bound to the set of all subsequential limits $S$. Consider an arbitrary subsequential limit $y$. $\forall \varepsilon>0, \exists n_{\varepsilon} \in \NN$ such that $\forall n \in \NN, n \geq n_{\varepsilon}$ we have $y-\varepsilon<x_n<y+\varepsilon<limsup(x_n)-\delta+\varepsilon$. Choose an $\varepsilon$ slightly larger than $\delta$, which would make $limsup(x_n)-(\delta-\varepsilon)$ slightly smaller than $limsup(x_n)$. This gives: for the chosen $\varepsilon \exists n_{\varepsilon} \in \NN$ such that $\forall n \in \NN, n \geq n_{\varepsilon}$ we have $x_n<limsup(x_n)-\delta+\varepsilon<limsup(x_n)$. This means that a number slightly smaller than $inf(V)$ exists in $V$. This is absurd. Hence, $limsup(x_n)=sup(S=\text{ set of all subsequential limits })$.
+}
+
+\thmp{}{The following are equivalent: \begin{enumerate}
+    \item $y$ is the Liminf($x_n$)
+    \item if $\varepsilon>0$, then $\exists$ utmost finite $n \in \NN$ such that $x_n<y-\varepsilon$ but infinite $n\in \NN$ such that $x_n<y+\varepsilon$. This implies $y+\varepsilon \not\in U$ but $y-\varepsilon \in U$ 
+    \item If $S_m:\{x_m,x_{m+1},\cdots \}$ and $L_m=inf(S_m)$, ,then $lim(L_m)=sup(L_m)=y$
+    \item If $S$ is the set of all subsequential limits of $x_n$, then $inf(S)=y$
+\end{enumerate}}{$(1)\implies(2))$ Given $y=Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$.
+If $\varepsilon>0$ we have a $z\in U$ such that $ y-\varepsilon \leq z$. There exists only finite $n$ such that $x_n<z$ which means there exists only finite $n$ such that $x_n<y-\varepsilon$. Therefore, $y-\varepsilon \in U$. Consider $y+\varepsilon$. Since $y+\varepsilon \not\in U$, we have that $\forall k \in \NN$ $\exists n_k \geq k$ such that $x_n <y+\varepsilon $ or infinite $n_k$ such that $x_{n_k}$ such that $x_{n_k}<y+\varepsilon$.\\\\
+$(2) \implies (3))$ We can see that, if $S_m:=\{x_n: n\geq m\}$, and $L_m:=inf(S_m)$, then $L_m \leq L_{m-1}$, which is a monotone increasing sequence, which is bounded, hence is convergent to $sup(\{L_m\})=lim(L_m)$. Since from (2), $\exists $ infinite $n_k$ such that $x_n<y+\varepsilon$, we see that $\forall m, inf(S_m)=L_m \leq y+\varepsilon \implies$ $lim(L_m) \leq y+\varepsilon \forall \varepsilon>0$. Since there exists only finite $n$ such that $x_n<y-\varepsilon \implies \forall n\geq n_y(\varepsilon), x_n \geq y-\varepsilon$. This means that $y-\varepsilon \leq L_{n_y} \implies y-\varepsilon \leq lim(L_m)=sup(L_m)$. Hence $\forall \varepsilon>0$, $y-\varepsilon \leq lim(L_m) \leq y+ \varepsilon$, hence $y=lim(L_m)$.\\\\
+$(3) \implies (4))$ Sunce $y=sup(L_m)=lim(L_m)$. For an $\varepsilon>0$, we have an $L_{n_1}$ such that $y-\varepsilon \leq L_{n_l}$. Since $L_{n_1}$ is the infimum of $S_{n_1}$, we have $y-\varepsilon< x_n, \forall n \geq n_l$. This would mean that every subsequence converges to a point larger than $y-\varepsilon$. Therefore $y-\varepsilon<t$ $\forall t \in S$ where $S$ is the set of all subsequential limits (This set is non empty from Bolzano Weierstrass, and is bounded, hence has a supremum and infinmum). Hence $\forall \varepsilon>0$, $y-\varepsilon\leq inf(S)$. $y+\varepsilon$ is an upper bound for $\{L_m: m\in \NN\}$. Choose $\varepsilon=1$ and the set $S_1$. $L_1+1\geq L_1$. Since $L_1$ is infimum of $S_1$, then $\exists x_{n_1} \in S_1$ such that $L_1 \leq x_{n_1} \leq L_1+1$. Choose $\varepsilon=\frac{1}{2}$, and the set $S_{n_1}$. $\exists x_{n_2} \in S_{n_1}$ such that $L_{n_1} \leq x_{n_2} \leq L_{n_1}+\frac{1}{2}$. Having chosen $\varepsilon=\frac{1}{j}$ and the set $S_{n_{j-1}}$, we have an $x_{n_j} \in S_{n_{j-1}}$ such that $$L_{n_{j-1}} \leq x_{n_j} \leq L_{n_{j-1}}+\frac{1}{j}$$ Notice that, by construction of our sets, $n_j>n_{j-1}$. Hence, we have a subsequence of $x_n$ which is $x_{n_j}$ which, from squeeze play theorem, converges to $y$. Therefore, $y \in S$, which means $inf(S) \leq y$. We therefore have $\forall \varepsilon>0$, $y-\varepsilon \leq inf(S) \leq y$. This means $inf(S)=y$.\\\\
+$(4)\implies (1))$ Given $y$ is the infimum of the set of all subsequential limits. Say $\alpha=Liminf(x_n):= sup (U=\{u \in \RR: \exists n_u \in \NN$ such that $ \forall n \geq n_u, x_n \geq v \})$. If $z \in U$, it means that after some $n_z$, every $x_n \geq z$ which means every subsequence converges above $z$. Therefore, $z$ is a lowerbound for the set of all subsequential limits $S$. $z \leq inf(S)=y, \forall z \in U$. We can see that $sup(U)=\alpha \leq y$ from this. Suppose $Sup(U)=\alpha < y \implies \alpha=y-\delta$ for some $\delta$. Consider an arbitrary subsequential limit $q$. $\forall \varepsilon, \exists n_q(\varepsilon) \in \NN$ such that $\forall n \in \NN, n \geq n_q(\varepsilon)$ we have $y-\varepsilon+\delta-\delta \leq q-\varepsilon<x_n<q+\varepsilon$. 
+$(y-\delta)-(\varepsilon-\delta)=\alpha+(\delta-\varepsilon) \leq q-\varepsilon<x_n<q+\varepsilon$. 
+This means that $\exists n_0$ such that $\forall n \geq n_0$, $\alpha+(\delta-\varepsilon)<x_n$. This means that, if we choose $\varepsilon$ smaller than $\delta$, we would have a number larger than $sup(U)=\alpha$ being inside $U$. Absurd. Hence $\alpha=y$.
+}
+\thmp{}{A bounded sequence is convergent if and only if $limsup(x_n)=liminf(x_n)$}{$\implies$) If a bounded sequence is convergent, all its subsequences converge to the same limit $x$. Therefore $x$ is both the supremum and the infimum of the set of all subsequential limits, which is also the limsup and liminf.\\\\
+$\impliedby$) If limsup=liminf, then the set of all subsequential limits has infimum and the supremum equal. This means that the set of all subsequential limits is singleton, with $x\in S$. If $x_n$ is bounded and all its convergent subsequences converge to $x$, then $x_n$ converges to $x$.}
+
+\thmp{(A perhaps useful theorem for LimSup LimInf)}{If $A+B:=\{a+b: a \in A, b \in B \}$, then $\gamma = sup(A+B)=sup(A)+sup(B)=\alpha+\beta$.}{
+$\alpha \geq a, \forall a \in A$ and 
+$\beta \geq b, \forall b \in B$. 
+We hence see that $\alpha+\beta \geq a+b \forall a\in A, b\in B$.
+Therefore, $\alpha+\beta \geq \gamma$.
+
+Now consider $a+b \leq \gamma$ $\forall a \in A, b\in B$.
+This means that $\alpha+b \leq \gamma$ $\forall b \in B$.
+From here we see that $\alpha+\beta \leq \gamma$ whence we
+see that $\gamma=\alpha+\beta$
+}
+
+\lemp{}{If $\alpha$ is the supremum of a set $S$, then $-\alpha$ is the infimum
+of the set $-S$ defined as $$-S:=\{-x: x \in S\} $$}{If $\alpha$ is the supremum,
+then $\alpha\geq x, \forall x \in S$ and $\alpha \leq M, \forall M$ such that $M\geq x, \forall x \in S$. 
+This means that $-\alpha \leq -x, \forall x \in S$ and $-\alpha \geq -M, \forall -M$ such that $-M \leq -x, \forall -x \in S $
+If we re-notate the whole thing we have:
+
+$-\alpha \leq z, \forall z \in -S$ and $-\alpha \geq L, \forall L$ such that
+$L \leq z \forall z \in -S$. This is precisely the definition for infimum of $-S$, whence we see, we are done.
+
+}
+Recall the definitions:
+
+$$LimSup(x_n):=inf(U_n: U_n:=sup(\{x_n,x_{n+1} \cdots \})) $$
+
+$$LimInf(x_n):=sup(L_n: L_n:=inf(\{x_n,x_{n+1} \cdots \})) $$
+\\\\ \textbf{Problem 2}
+\\\\ Let $x$ be $limsup(-x_n)$. $$x=inf(U_n: U_n=sup\{-x_n,-x_{n+1} \cdots \})$$
+$$\implies x=inf(U_n:U_n=-inf\{x_n,x_{n+1},\cdots\})$$
+$$\implies x=inf(-inf\{x_n,x_{n+1}\cdots \}, -inf\{x_{n+1},x_{n+2}\cdots \},\cdots)$$ 
+$$\implies x=-sup(inf\{x_n,x_{n+1}\cdots \},inf\{x_{n+1},x_{n+2}\cdots \},\cdots) $$
+Whence, we are done.
+\\\\ \textbf{Problem 3}
+\\\\ $x_n$ and $y_n$ are given bounded sequences in $\RR$. 
+Consider $$V_z:=\{v \in \RR: \exists n_v \text{ such that } \ \forall n \geq n_v, z_n=x_n+y_n \leq v\}$$
+Then $\limsup(x_n+y_n)=\inf(V_z)$. Consider $V_x$ and $V_y$, defined as $V_x:=\{v \in \RR: \exists n_v \text{ such that } \ \forall n \geq n_v, x_n \leq v\}$ and $V_y:=\{v \in \RR: \exists n_v \text{ such that } \ \forall n \geq n_v, y_n \leq v\}$. Look at $V_x+V_y:=\{u+w: u \in V_x, v \in V_y \}$. This is basically $V_x+V_y=\{u+w: \exists n_u, n_w \in \NN \text{ such that } \forall x_n \leq u \text{ and } y_l \leq w, \forall n \geq n_u, l \geq n_w \}$. Notice that $V_x+V_y$ is a subset of the set $\{u+w: \exists n_{u,w} \in \NN \text{ such that }x_n+y_n \leq u+w, \forall n \geq n_{u,w}\}$ which is itself a subset of $V_z$. This means that $\inf(V_z) \leq \inf(V_x+V_y)=\inf(V_x)+\inf(V_y) \implies \limsup(x_n+y_n) \leq \limsup(x_n)+\limsup(y_n)$. 
+\\\\ Consider $U_z:=\{u \in \RR: \exists n_u \in \NN \text{ such that } \forall n \geq n_u, u \leq z_n=x_n+y_n\}$,
+$U_x:=\{u \in \RR: \exists n_u \in \NN \text{ such that } \forall n \geq n_u, u \leq x_n+\}$ and $U_y:=\{u \in \RR: \exists n_u \in \NN \text{ such that } \forall n \geq n_u, u \leq y_n+\}$. Look at $U_x+U_y:=\{u+w: u \in U_x, w \in U_y\}$ which is basically $\{u+w: \exists n_u, n_w \in \NN \text{ such that } \forall n \geq n_u, u \leq x_n, \forall q \geq n_w, w \leq y_q\}$. If $u+W$ is an element in $U_x+U_y$, then there exists $n_u$ and $n_w$ so that $\forall n \geq n_u$, we have $u<x_n$ and for every $q \geq n_w$, $w<y_q$, which means, after a particular integer $n_{u,w}$, $u+w<x_n+y_n$ for all $n \geq n_{u,w}$. Hence, $U_x+U_y \subseteq U_0$ where $U_0:=\{u+w: \exists n_{u,w} \in \NN \text{ so that } u+w<x_n+y_n=z_n, \forall n \geq n_{u,w}\}$ which is itself a subset of $U_Z$. This means that $\sup(U_x+U_y)=\sup(U_x)+\sup(U_y) \leq \sup(U_z)$ which means $\liminf(x_n)+\liminf(y_n) \leq \liminf(x_n+y_n)$.
+\\\\\textbf{Problem 4}
+\\\\ Suppose $\forall n \geq N$, we have $x_n \leq y_n$. 
+It is clear to see that for every $n \geq N$, $U_n^x=sup(x_n,x_{n+1},\cdots)\leq 
+U_n^y=sup(y_n,y_{n+1},\cdots)$. We have, in other words:
+$U_n^x \leq U_n^y$ for all $n \geq N$. Hence, $Limsup(x_n)\leq limsup(y_n)$.
+\\\\ Again consider $\forall n \geq N$, $x_n \leq y_n$
+This means that $\forall n \geq N$, $L_n^x= inf(x_n,x_{n+1}\cdots) \leq y_n$
+Since for a given $n$, we have $L_n^x \leq y_n$, and owing 
+to the fact that $L_n^x$ is a monotone increasing sequence, we
+see:
+$$L_n^x\leq y_n $$
+$$L_n^x \leq L_{n+1}^x \leq y_{n+1} $$
+$$\vdots $$
+Therefore, we see that $L_n^x \leq inf\{y_n,y_{n+1}\cdots\}=L_y^x$.
+From here we can conclude that $Liminf(x_n) \leq Limsup(y_n)$
+\\\\ \textbf{Problem 5}
+\\\\ Consider $(x_n)^{\frac{1}{n}}$ and $\frac{x_{n+1}}{x_n}$. Where $x_n$ is a positive, bounded sequence.
+
+Suppose that $\limsup(x_{n+1}/x_n)=L$. That means that $\inf_{k \in \NN}(\sup_{n \geq k}(x_{n+1}/x_n)=u_k)=L$ which means that for any $\varepsilon>0$, we have a $k_0$ so that $u_0<L+\varepsilon$ which means that for every $n \geq k_0$, $x_{n+1}/x_n < L+\varepsilon$. $\implies$
+$$x_{k_0+1}/x_{k_0}<L+\varepsilon $$
+$$x_{k_0+2}/x_{k_0+1}<L+\varepsilon $$
+$$x_{k_0+3}/x_{k_0+2}<L+\varepsilon $$
+$$\vdots$$
+$$x_{k_0+(n-k_0)}/x_{k_0+(n-k_0-1)}<L+\varepsilon $$
+Multiplying throughout we get:
+$$x_{n}<x_{k_0}(L+\varepsilon)^{n-k_0} \implies (x_{n})^{1/n}<{\frac{x_{k_0}}{(L+\varepsilon)^{k_0}}}^{1/n}(L+\varepsilon)=\mathfrak{L(\varepsilon,n)} $$
+We note that $\mathfrak{L(\varepsilon,n)}$ converges to $L+\varepsilon$ which means that for every $\varepsilon'>0$, $\exists n_0$ so that $\forall n \geq n_0$, $L+\varepsilon-\varepsilon'<\mathfrak{L(\varepsilon,n)}<L+\varepsilon+\varepsilon'$. This means that for every $\varepsilon>0$ and $\varepsilon'>0$, there exists $n_0$ so that $\forall n \geq n_0$, $(x_n)^{1/n}<L+\varepsilon+\varepsilon'$. Replacing $\varepsilon+\varepsilon'$ with a singular choice of $\varepsilon$ we have that for every $\varepsilon>0$, there exists $n_0$ so that $\sup_{n \geq n_0}(x_n^{1/n}) \leq L+\varepsilon$ which finally means that for every $\varepsilon$, $\limsup(x_{n}^{1/n})\leq L+\varepsilon$. This would mean that $\limsup(x_n^{1/n}) \leq L=\limsup(x_{n+1}/x_n)$.
+\\\\ Consider A similar argument for the $\liminf$. Suppose $M=\liminf(x_{n+1/x_n})$ 
+$=\sup_{k \in \NN}(Q_k=\inf_{n \geq k}(x_{n+1}/x_n))$
+For every $\varepsilon>0$, $\exists Q_{k_0}$ so that $L-\varepsilon<Q_{k_0} \implies$ for every $n \geq k_0$, $L-\varepsilon< x_{n+1}/x_{n}$
+$$L-\varepsilon < x_{k_0+1}/x_{k_0}$$
+$$L-\varepsilon<x_{k_0+2}/x_{k_0+1} $$
+$$\vdots $$
+$$L-\varepsilon<x_{k_0+(n-k_0)}/x_{k_0+(n-k_0-1)}$$
+Multiplying throughout gives us 
+$$\mathfrak{J(\varepsilon,n)}=(L-\varepsilon)(\frac{x_{k_0}}{(L-\varepsilon)^{k_0}})^{1/n}<(x_{n})^{1/n} $$
+Note that $\mathfrak{J(\varepsilon,n)}$ converges to $L-\varepsilon$. We can then conclude (like above) that for every $\varepsilon>0$, there exists an $n_0$ so that $L-\varepsilon<(x_n)^{1/n}$ for every $n \geq n_0$. This means that for every $\varepsilon>0$, there exists an $n_0$ so that $L-\varepsilon<\inf_{n \geq n_0}(x_{n}^{1/n})$ which directly gives us that for every $\varepsilon>0$, $L-\varepsilon < \liminf(x_n^{1/n}) \implies \liminf(x_{n+1}/x_n)\leq \liminf(x_n^{1/n})$. 
+\\\\ Since $\liminf(x_{n+1}/x_n) \leq \liminf(x_n^{1.n}) \leq \limsup(x_n^{1/n}) \leq \limsup(x_{n+1}/x_n)$, if $x_{n+1}/x_n$ converges, its $\limsup$ and $\liminf$ are both the same, which forces $x_n^{1/n}$ sequence's limsup and liminf to be the same, which makes it convergent (and to the same limit).
+
+\begin{center}
+    \textbf{ASSIGNMENT-2}
+\end{center}
+
+\textbf{Problem 2}
+\\\\ c) Let $$\limsup(A_n):=\cap_{n=1}^{\infty}(\cup_{k=n}^{\infty}A_k) $$ which means $\cap_{n=1}^{\infty}(C_n=\{x \in X: \exists n' \geq n \text{ such that }x \in A_{n'}\})$. $\limsup(A_n)=\{x \in X: x \in C_j,  \forall j \in \NN\}$ which means $\{x \in X: \exists n_1 \geq 1 \text{ so that } x \in A_{n_1}; \exists n_2 \geq 2  \text{ so that } x \in A_{n_2}; \exists n_3 \geq 3 \text{ so that } x \in A_{n_3} \cdots \}$
+which is equivalent to saying there exists infinitely many $n$ so that $x \in A_n$ (since we do have $n_1,n_2 \cdots$, an infinite collection of natural numbers so that $x \in A_{n_j}$).
+\\\\ d) Let $$\liminf(A_n):=\cup_{n=1}^{\infty}(\cap_{k=n}^{\infty}A_k)$$ which gives us $\cup_{n=1}^{\infty}(D_n=\{x \in X: x \in A_k, \forall k \geq n\})$ which gives us $\liminf(A_n)=\{x \in X: \exists j \in \NN \text{ so that } x \in D_j\}$ which means $\{x \in X: \exists j \in \NN \text{such that } \forall n \geq j, x \in A_n\}$ which is equivalent to saying that there are only at most finite possible integers $n$ so that $x \not \in A_n$ 
+\\\\ a) Note that, from (c) and (d), we have a characterisation of $\limsup(A_n)$ as the set of all $x \in X$ so that there are infinitely many $n$ so that $x \in A_n$, and a characterisation of $\liminf(A_n)$ as the set of all $x \in X$ so that there are utmost finite $n$ so that $x \not \in A_n$ which means that for $x \in \liminf(A_n)$, after some $n_0$, every $n \geq n_0$ is so that $x \in A_n$, which makes $\liminf(A_n)$ a subset of $\limsup(A_n)$.
+ Hence $\liminf(A_n)$
+ \\\\ b) $\liminf((A_n)^C)$ is the set of all $x \in X$ so that there are at most finite $n$ so that $x \not \in A_n^C$ which means there are at most finite $n$ so that $x \in A_n$.
+ \\ Consider $(\limsup(A_n))^C$ which is the complement of the set of all $x \in X$ so that there are infinitely many $n$ so that $x \in A_n$, or more precisely, $\forall k \in \NN$, $\exists n_k \geq k$ so that $x \in A_{n_k}$. The complement would be the negation of the previous statement which amounts to: $x \in X$ so that $\exists k \in \NN$ so that $\forall n\geq k$, $x \not \in A_{n_k}$ which again is equivalent to saying there are at most finite $n$ so that $x \in A_n$. Hence $\liminf(A_n^C)=(\limsup(A_n))^C$
+ \\\\ \textbf{Problem 3}
+ \\\\ $d(x,y)=\sqrt(|x-y|)=0$ if and only if $x=y$. Moreover, $d(x,y) \geq 0, \forall x,y \in \RR$.
+ \\ $d(x,y)=\sqrt{|x-y|}\leq \sqrt{|x-z+z-y|}\leq \sqrt{|x-z|+|z-y|}\leq \sqrt{|x-z|}+\sqrt{|z-y|}=d(x,z)+d(z,y)$ which proves the triangle criteria.
+ \\\\ \textbf{Problem 4}
+ \\\\ i) In the extended real line, $\overline{R}$, we append the points $\infty, -\infty$ to $\RR$. $d(x,y):=|\arctan(x)-\arctan(y)|$. Obviously, $d(x,y)\geq 0$ (from the absolute value there). $d(x,y)=0 \implies |\arctan(x)-\arctan(y)|=0 \implies \arctan(x)=\arctan(y)$ which means $x=y$ (since $\arctan$ is left invertible), hence $d(x,y)=0 \iff x=y$.
+ \\ Next we check the triangle inequlity: consider $d(x,y)=|\arctan(x)-\arctan(y)| \leq |\arctan(x)-\arctan(z)|+|\arctan(z)-\arctan(z)|=d(x,z)+d(y,z)$.
+\\\\ ii) Consider $d(x,y)=|f(x)-f(y)|$ given by $$f(x)=\begin{cases}
+    |x|/1+|x| \ \text{ if } x \text{ is finite} \\
+    1 \ \text{ if } x=\infty \\
+    -1 \ \text{ if }x=-\infty 
+\end{cases} $$
+
+Consider $d(x,y)=0$ which means that $|f(x)-f(y)|=0$ which gives $f(x)=f(y)$. Since $f$ is injective, $d(x,y)=0 \iff x=y$. Consider the case where $x$ and $y$ are finite ( and $f(z)$), $d(x,y)=|f(x)-f(z)+f(z)-f(y)|\leq d(x,z)+d(y,z)$. If $x,y$ are finite but $z$ is infinite, then $d(x,y) < \infty $ will certainly hold. If any $x=\infty$ and $y=\infty$, then positivity will take care of triangle inequality. If $x=\infty$ but $y=-\infty$, then $d(x,y)=\infty$ but $d(x,z)=\infty $ and $d(y,z)=\infty$ (from the absolute value condition). Hence in all cases triangle inequality is satisfied.
+\\\\ \textbf{Problem 5}
+\\\\ i) Let $f:X \to X$ be an injective map. $D_1(x,y):=d(f(x),f(y))$. If $x=y$, then $f(x)=f(y)$ obviously, which means $d(f(x),f(y))=D_1(x,y)=0$. If $D_1(x,y)=0$, that means $d(f(x),f(y))=0$ which happens only if $f(x)=f(y)$ or $x=y$.
+Let $D_1(x,y)=d(f(x),f(y)) \leq d(f(x),f(z))+d(f(z),f(y))=D_1(x,z)+D_1(y,z)$ which proves triangle inequality. Hence $(X, D_1)$ is a metric space.
+\\ ii) Suppose $A,B$ is a partition of $X$. $$D_2(x,y):=\begin{cases}
+    d(x,y)+1 \ \text{ if exactly one of x or y is in A} \\
+    d(x,y) \ \text{ else}
+
+\end{cases}$$
+
+Consider $D_2(x,y)=0$. If $x,y$ are both in the same partition, then they must be the same. If they are not in the same partition, then they cannot have $0$ distance. Hence $D_2(x,y)=0 \iff x=y$. If $x$ and $y$ are in the same space, and $z$ is a point in the same space, then $D_2(x,y)\leq D_2(x,z)+D_2(y,z)$ trivially. If $z$ is not the same space (as x and y), then $D_2(x,z)=d(x,z)+1$ and $D_2(y,z)=d(y,z)+1$ which gives $D_2(x,y)=d(x,y)\leq d(x,z)+d(y,z)+2$ which is also clear from the original metric. If say $x$ and $y$ are from different partitions so that $D_2(x,y)=d(x,y)+1$. Obviously another element $z$ must be such that either $D_2(x,z)=d(x,z)$ (in which case $D_2(y,z)=1+d(y,z)$)or $D_2(y,z)=d(y,z)$ (whence $D_2(x,z)=d(x,z)+1$). Then $D_2(x,y)=d(x,y)+1 \leq d(x,z)+d(y,z)+1$. Depending on where $z$ is, the bracketing can be done such that $D_2(x,y) \leq D_2(x,z)+D_2(y,z)$, which proves triangle.
+\\\\ iii) Define the map $$f(x)\begin{cases}
+    x+1 \ \text{ if } x \in \RR^+ \\
+    x \ \text{ else}
+\end{cases}$$
+Obviously, this map is injective since $f(x)=f(y)$ for $x,y$ in the same side would mean $x=y$. If $x$ and $y$ are on different sides, i.e, say $x$ is positive but $y$ negative, then $f(x)=x+1>0$ while $f(y)=y\leq 0$. 
+
+Consider $D_1(x,y)=|f(x)-f(y)|$ for points $x$ and $y$ on the same side. This is simply just $|x-y|$ which in this case is the same as $D_2(x,y)$. Suppose $x>0$ and $y\leq 0$. This means that $d(x,y)=|f(x)-f(y)|=|x+1-y|=|x-y|+1$ (since it is positive) which is the same as $D_2(x,y)$ in such a case. Due to symmetry of $||$, we needn't check the $y>0$ case. Hence, for this injective function, $D_1$ is the same as $D_2$.
+\\\\ \textbf{Problem 6}
+\\\\ Let $X:=\{x,y\}$. Non-negotiable's are $d(x,x)=d(y,y)=0$. The only choice we have is $d(x,y)=s$. $s$ can be any positive (incl $0$) real number. The metrics, though, are all \emph{equivalent}.
+\\\\ \textbf{Problem 7}
+\\\\ Let $X$ be the set of all $3-tuples$ consisting of $0$s and $1$s. $$d(x,y):=\text{ number of places where x and y are different}$$. Consider $d(x,y)=0$. That means no place is different $\implies x=y$. Also obvious that $d(x,y)=d(y,x)$. (Positivity is also obvious from definition). If $x=(x_1,x_2,x_3)$ and $y=(y_1,y_2,y_3)$ with $x_i,y_j\in\{0,1\}$, then we can write a formula for the hamming distance: $d(x,y):= \sum_{i=1}^{3}|x_i-y_i|$. This exactly captures the definition of the hamming distance. From here it is easy to see that Hamming metric is a special case of the Manhattan metric. $d(x,y)=\sum_{i=1}^3|x_i-z_i+z_i-y_i|\leq \sum_{i=1}^3|x_i-z_i| \sum_{i=1}^3 |z_i-y_i|=d(x,z)+d(y,z)$ which proves triangle.
+\\\\ \textbf{Problem 8}
+\\\\ $d$ does not define a metric on $\RR^2$ since consider $(x_1,0)$ and $(y_1,0)$, whose distance is $0$. This is, though, a psuedometric, since it obeys all the other properties (inherited from $||$).
+
+\begin{center}
+    \textbf{Assignment 3}
+\end{center}
+
+\textbf{Problem 2}:
+\\\\ Say $X$ is a metric space. $R(x,\varepsilon):=\{y\in X: d(y,x)>\varepsilon\}$. Consider an arbitrary point $z \in R(x,\varepsilon)$ whose distance from $x$ is $d(x,z)=t_{xz}>\varepsilon$. Which means $t_{xz}-\varepsilon>0$. From density theorem, choose a real number $r$ so that $t_{xz}-\varepsilon>r>0$. Consider the ball $B(r,z)$ around $z$ and a point $q$ in this ball so that $d(q,z)<r$. Is $q \in R(x,\varepsilon)?$. $d(x,z)\leq d(q,x)+d(q,z) \implies t_{xz}\leq d(q,x)+d(q,z)<d(q,z)+r$ which gives $\varepsilon<t_{xz}-r<d(q,z)$. Hence, $q \in R(x,\varepsilon)$. Hence, there is an $r-$ball, for every point in $R(\varepsilon,x)$ so that this ball is fully contained.
+\\\\ \textbf{Problem 3}
+\\\\ Say $x_n \to x$ and $x_n \to y$ which means $(\forall \varepsilon>0)(\exists n_0 \in \NN)(\forall n \in \NN)((n \geq n_0) \implies d(x_n,x)<\varepsilon/2)$
+
+and 
+$(\forall \varepsilon>0)(\exists n_0' \in \NN)(\forall n \in \NN)((n \geq n_0') \implies d(x_n,y)<\varepsilon/2)$
+
+This means that $\forall \varepsilon, \exists q=\max\{n_0,n_0'\}$ so that $\forall n \geq q$ $d(x,y) \leq d(x_n,y)+d(x_n,x)<\varepsilon$. This means that $x=y$. 
+\\\\ \textbf{Problem 4}
+\\\\ Let $\{X_1,d_1\},\{X_2,d_2\} \cdots \{X_n,d_n\}$ be $n$ metric spaces. $x=(x_1,x_2 \cdots ,x_n)$ and $y=(y_1,y_2 \cdots, y_n)$ are points in $X=\Pi_{i=1}^n X_i$. 
+\\\\ i) $d_1(x,y):=\max\{d_i(x_i,y_i): i \leq n\}$. Say $x=y$, that means $d_i(x_i,y_i)=0$ for every $i$ which makes $d_1(x,y)=0$. Consider $d_1(x,y)=0$. That means $\max\{d_i(x_i,y_i): i \leq n\}=0$ which means that every $d_i(x_i,y_i)=0$ but this happens if and only if $x_i=y_i$, hence we have that $d_1(x,y)=0 \iff x=y$. Symmetry is clear from the positivity of $d_i$ for every $i$.
+Consider $d_i(x_i,y_i)\leq d_i(x_i,z_i)+d_i(y_i,z_i)$ for every $i \leq n$. This means that $d_i(x_i,y_i) \leq \max\{d_i(x_i,z_i)+d_i(z_i,y_i): i \leq n\} \leq \max\{d_i(x_i,z_i)\}+\max\{d_i(z_i,y_i)\}$. This immediately gives us $\max\{d_i(x_i,y_i)\}\leq \max\{d_i(z_i,x_i)\}+\max\{d_i(z_i,y_i)\} \implies d_1(x,y)\leq d_1(x,z)+d_1(y,z)$. Hence, $X,d_1$ forms a metric space.
+\\\\ ii) $d_2(x,y)=\sum_{i=1}^n d_i(x_i,y_i)$. Say $d_2(x,y)=0$. That means that indivudually $d_i(x_i,y_i)=0 \iff x_i=y_i$ which makes $x=y$. It is clear that if $x=y$, $d_2(x,y)=0$. Positivity is also obvious since it is the sum of positive numbers. Consider $d_2(x,y)=\sum_{i=1}^n d_i(x_i,y_i) \leq \sum_{i=1}^n d_i(x_i,z_i)+ \sum_{i=1}^n d_i(z_i,y_i) \implies d_2(x,y) \leq d_2(x,z)+d_2(y,z)$. Hence, $X,d_2$ is a metric space.
+\\\\ iii) $d_3(x,y):= (\sum_{i=1}^n d_i(x_i,y_i)^2)^{1/2}$. Again, positivity and $d_3(x,y)=0 \iff x=y$ is obvious. $d_3(x,y):=[\sum_{i=1}^n (d_i(x_i,y_i)^2)]^{1/2}$. Note that $d_i(x_i,y_i)\leq d_i(x_i,z_i)+d_i(y_i,z_i)$ gives us $d_i(x_i,y_i)^2 \leq (d_i(x_i,z_i)+d_i(z_i,y_i))^2$ which implies $[\sum_{i=1}^n(d_i(x_i,y_i))^2]^{1/2}\leq [\sum_{i=1}^n (d_i(x_i,z_i)+d_i(y_i,z_i))^2]^{1/2}$. From minkowski inequality, we can split the inner sum further to get 
+
+
+$[\sum_{i=1}^n(d_i(x_i,y_i))^2]^{1/2}\leq [\sum_{i=1}^n (d_i(x_i,z_i))^2]^{1/2}+[\sum_{i=1}^n (d_i(y_i,z_i))^2]^{1/2}$ which gives us $d_3(x,y)\leq d_3(x,z)+d_3(y,z)$. 
+\\\\ \textbf{Problem 5}
+\\\\ $$d_1(x,y):=\max\{d_i(x_i,y_i):i\leq n\} $$
+$$d_2(x,y):=\sum_{i=1}^n d_i(x_i,y_i) $$
+$$d_3(x,y):=(\sum_{i=1}^n (d_i(x_i,y_i))^2)^{\frac{1}{2}} $$
+Obviously, $d_1(x,y)=\max\{d_i(x_i,y_i)\}\leq d_2(x,y)$ and $d_3(x,y)$. 
+\\\\ \textbf{lemma:} $\sqrt{|x_1|^2+|x_2|^2 \cdots +|x_n|^2} \leq |x_1|+|x_2| \cdots |x_n|$ for any real numbers $x_1,x_2 \cdots x_n$.
+\begin{proof}
+    for $n=1$, quite obvious. Assume for $n$ the above fact. Consider $$\sqrt{(\sqrt{|x_1|^2+|x_2|^2 \cdots |x_n|^2})^2 +|x_{n+1}|^2}$$ $$\leq \sqrt{|x_1|^2+|x_2|^2 \cdots |x_n|^2}+|x_{n+1}| \leq |x_1|+|x_2| \cdots |x_n|+|x_{n+1}|$$
+
+\end{proof} 
+
+From this lemma, we have that $$(\sum_{i=1}^n d_i(x_i,y_i)^2 )^{1/2} \leq \sum_{i=1}^n d_i(x_i,y_i) $$
+which means for every $x,y$, $d_3(x,y) \leq d_2(x,y)$. We now have the hierarchy: $d_1 \leq d_3 \leq d_2$. 
+\\\\ Consider $d_i(x_i,y_i)$ for arbitrary $x,y$. $d_i(x_i,y_i) \leq \max\{d_i(x_i,y_i):i \leq n\}$ which means $\sum_{i=1}^n d_i(x_i,y_i) \leq \sum_{i=1}^n \max\{d_i(x_i,y_i):i \leq n\}=nd_1(x,y)$ which completes the proof.
+\\\\ \textbf{Problem 6}:
+\\\\ i)Let $x \in X$, $x=(x_1,x_2 \cdots x_n)$. Consider the $d_1$ metric $d_1(x,y)=\max\{d_i(x_i,y_i): i \leq n\}$. $B_{r}(x):=\{z \in X: d_1(x,z)<r\}$ or $B_r(x):=\{z \in X: \max\{d_i(x_i,z_i):i \leq n\}<r\}$ which means that for every $i \leq n$, $d_i(x_i,z_i)<r$ which means that $z_i \in B_r(x_i)$ for every $n$. This means that $B_r(x) \subseteq \Pi_{i=1}^n B_r(x_i)$. Consider a point $q$ in $\Pi_{i-1}^n B_r(x_i)$ which means $q=(q_1,q_2 \cdots q_n)$ where $q_j \in B_r(x_j)$ which means $d_j(q_j,x_j)<r$ for every $j \leq n$ which gives us $\max\{d_j(q_j,x_j):j \leq n\}<r$ which means $d_1(q,x)<r$. This means $B_r(x) =\Pi_{i=1}^n B_r(x_i)$
+\\\\ ii) Let $A_i \subseteq X_i$ for all $i \leq n$. Consider $A=\Pi_{i=1}^n A_i \subseteq X$. $A^o:=\{z \in X: \exists \varepsilon_z \text{ such that }B_{\varepsilon_z}(z) \subseteq A\}$ which translates to: $z$ is a point of $A^o$ if there exists $\varepsilon_z$ so that $\Pi_{i=1}^nB_{\varepsilon_z}(z_i) \subseteq \Pi_{i=1}^n A_i$. We want that, for any arbitrary point $q=(q_1,q_2 \cdots q_n)$ such that $q_j \in B_{\varepsilon_z}(z_j)$, $q$ must be in $A$ which is equivalent to saying $q_j$ must be in $A_j$ for all $j \leq n$. This means that there exists an $\varepsilon_z$ so that $B_{\varepsilon_z}(z_j) \subseteq A_j$. This would make $z_j$ a part of $A_j^0$. Therefore, if $z$ is any point in the interior of $A$, then each coordinate is a point of the interior of $A_j$ which translates to $A^0 \subseteq \Pi_{i=1}^n A_i^0$. Consider $s=(s_1,s_2\cdots s_n)$ a point in $\Pi_{i=1}^n A_i^0$. 
+\\ This means that $s_j$ is a point in $A_j^0$ for every $j \leq n$. This means that there exists a $\varepsilon_j$ ball around $s_j$ that is fully contained in $A_j$, for every $j \leq n$. Find the minima $\varepsilon=\min\{\varepsilon_j: j \leq n\}$ (**). This means that for every $s_j$, there exists an $\varepsilon$-ball around $s_j$ that is fully contained in $A_j$. $B_{\varepsilon}(s_j) \subseteq A_j$ which means that $B_{\varepsilon}(s) \subseteq A$. Therefore, $s$, which was initially thought of as a point of $\Pi_{i=1}^nA_i^0$, is such that there exists an $\varepsilon$ so that $B_{\varepsilon}(s)\subseteq A$, which means $s$ is also in $A^0$. Hence, $A^0=(\Pi_{i=1}^n A_i)^0=\Pi_{i=1}^n A_i^0$.
+\rmkb{Note that (**) tells us that this theorem may fail if the set product is infinite, i.e, we have sequences of the kind $q=(q_1,q_2 \cdots )$ where $q_j \in X_j: j \in \NN$. This is because (**) asserts that we are able to find a minima given a finite set of points. But if we are given an infinite set of points, we may not be able to find a minima that is strictly positive. (thinkingg of an example where this fails)}
+\\\\ iii) Let $G_i$ be open in $X_i$ which means that for every point $z_i \in G_i$, there exists $\varepsilon_{z_i}$ so that $B_{\varepsilon_{z_i}}(z_i) \subseteq G_i$.
+Consider $q \in \Pi_{i=1}^n G_i$ which means that $q_j \in G_j$ for every $j \leq n$. This means that there exists $\varepsilon_{q_j}$ so that $B_{\varepsilon_{q_j}}(q_j) \subseteq G_j$. Collect the minimum of these $\varepsilon_{q_j}$, i.e, $\varepsilon_q:=\min\{\varepsilon_{q_j}:j \leq n\}$. For all $j \leq n$, we have that $B_{\varepsilon_q}(q_j) \subseteq G_j$. This would mean that $\Pi_{i=1}^n B_{\varepsilon_q}(q_j)=B_{\varepsilon_q}(q) \subseteq \Pi_{i=1}^n G_i$, which means that if $q$ is in $\Pi_{i=1}^n G_i$, then there exists a $\varepsilon_q$ so that $B_{\varepsilon_q}(q) \subseteq \Pi_{i=1}^n G_i$. Hence, $\Pi_{i=1}^nG_i$ is open in $X$. 
+\begin{center}
+    \textbf{ASSIGNMENT-4}
+\end{center}
+
+\textbf{Problem 2}:
+\\\\ $\implies$) Let $x_n$ be a sequence in $X$ convergent to $x$ (known to be unique). This means that $\forall \varepsilon>0$, $\exists n_0 \in \NN$ so that $\forall n \in \NN$, if $n \geq n_0$, then $d(x_n,x)<\varepsilon$. More specifically, if $x_{n_k}$ is a subsequence of $x_n$, then we have that $k \leq n_k$ and $n_1<n_2 \cdots$ which means that for a given $\varepsilon>0$, $\exists n_0$ so that $\forall n_k \geq n_0$, $d(x_{n_k},x)<\varepsilon$ which means that every subsequence converges to $x$. (To see this more clearly, note if $x_n$ converges to $x$, the set $\{x_n: n \in \NN\}$ has only one limit point, that is $x$ itself. So every subsequence of $x_n$ converges to $x$). This implies, in turn, that every subsequence of a subsequence (which is yet again a subsequence) converges to $x$.
+\\\\ $\impliedby$) Suppose every subsequence of $x_n$ has a subsequence that converges to $x$, but $x_n \not \to x$. This means that there exists an $\varepsilon>0$ so that for every $k \in \NN$, there exists an $n_k \geq k$ so that $d(x_{n_k},x)\geq \varepsilon$. We can take these $n_1,n_2 \cdots $ to generate a subsequence $x_{n_1},x_{n_2} \cdots$ such that $d(x_{n_k},x)\geq \varepsilon$ for every $k \in \NN$(*). This subsequce has a further subsequence that converges to $x$. This means that for a small neighbourhood around $x$, there exists infinite points of $x_{n_k}$, but this contradicts (*).
+\\\\ \textbf{Problem 3:}
+\\\\ \textbf{Definition:} $\operatorname{diam}(A):=\sup\{d(x,y): x \in A, y \in A\}$, if it is finite. 
+\\\\ We are told $A \cap B \neq \phi$. $diam(A \cup B):=\sup\{d(x,y): x \in A\cup B, y \in A \cup B\}$. 
+\\\\ Suppose contrary to hypothesis, $diam(A \cup B):=\sup\{d(x,y):x,y \in A \cup B\} > diam(A)+diam(B)=\sup\{d(p,q):p,q \in A\}+\sup\{d(a,b):a,b \in B\}$. This means that there exists $x_0,y_0 \in A$ or $B$ so that $d(x_0,y_0)>\sup\{d(p,q):p,q \in A\}+\sup\{d(a,b):a,b \in B\}$. If $x_0$ and $y_0$ belong, both, to either $A$ or $B$, then it clearly is absurd. So one is in $A$ and the other in $B$. without loss of generality assume $x_0 \in A$ and $y_0 \in B$. Choose $z \in A \cap B$, and apply triangle inequality to get $d(x_0,z)+d(z,y_0)\geq d(x_0,y_0)>\sup\{d(p,q):p,q \in A\}+\sup\{d(a,b):a,b \in B\}$ (**). In (**), clearly $d(x_0,z)$ is a distance between points in $A$ alone, and $d(z,y_0)$ is a distance between points in $B$ alone. From here it is clear that this is absurd.
+Hence:
+$$diam(A \cup B) \leq diam(A)+diam(B)$$
+\\\\ Strict inequality is possible if we simply consider closed balls in $\RR$. Consider $[-1,1/2]$ and $[-1/2,1]$. $Diam(A \cup B)=2$ but $diam(A)+diam(B)=3$.
+\\\\ \textbf{Problem 4:}
+\\\\ \textbf{Lemma:} $${(A^o)}^C=\overline{(A^c)} $$
+\begin{proof}
+    $A^o$ is the largest open set that is contained in $A$. $A^0 \subset A \implies A^C \subseteq (A^0)^C$ where $(A^0)^C$ is a closed set. Closure of $A^C$, which is $\overline{A^c}$ is the smallest closed set that contains $A^c$. Hence, $\overline{A^c} \subseteq (A^0)^C$ (1). We know $A^c \subseteq \overline{A^c}$ which means $(\overline{A^c})^c \subseteq A$ where $(\overline{A^c})^c$ is an open set. Therefore, $(\overline{A^c})^C \subseteq A^0 \implies (A^0)^C \subseteq \overline{A^c}$ (2). From (1) and (2) we get:
+    $${(A^o)}^C=\overline{(A^c)} $$
+\end{proof} 
+
+a) $\overline{A}=\overline{(A^c)^C}=((A^c)^0)^c$. Since $(A^0)^c=\overline{(A^c)}$, taking complements on both sides give $A^0=(\overline{A^c})^C$
+\\\\ b) $\partial (A):= \overline{A}\setminus{A^0}$ and
+$\partial(A^c):=\overline{A^c}\setminus{(A^c)^0}=(A^0)^C \setminus{\overline{A}^C}=$ set of all elements \emph{not in } $A^0$ and in $\overline{A}$. Hence, $\partial{A}=\partial{A^c}$
+\\\\ c) $\partial{A}:= \overline{A} \setminus{A^0}$ which is the set of all elements in the closure, but not in the interior. Therefore, $\partial(A) \cup A^0= \overline{A} \setminus{A^0} \cup A^0=\overline{A}$
+\\\\ d) We showed that $\partial(A)\cup(A^0)=\overline{A}$. We have $(A^c)^0 \cup \overline{A}=(\overline{A})^c \cup \overline{A}$ (from the results of (a)) which is nothing but $X$. 
+\\\\  e) If $A$ is closed, $\overline{A}=A$. From part (c)
+ we showed that $A=\overline{A}=\partial{A} \cup A^0$. Hence, $\partial(A) \subseteq A$. 
+ Suppose conversely, that $\partial(A) \subseteq A$. This means $\partial(A)\cup(A^0)\subset A$ which means $\overline{A} \subset A$. Hence, $A=\overline{A}$, or equivalently, $A$ is closed.
+ \\\\ \textbf{Problem 5}:
+ \\\\ \textbf{Lemma:} Every open set in $\RR$ is a an atmost countable union of disjoint open intervals.
+ \begin{proof}
+    We note that $R$ is separable because $\QQ$ is a dense set in $\RR$ that is countable. Consider any open set $G$ in $\RR$. For every point $x$ in $G$, there exists an $\varepsilon_x$ so that $(x-\varepsilon_x,x+\varepsilon_x)\subseteq G$. Collect all the rational points in $G$ (which is non empty) as an enumeration $\{r_1,r_2 \cdots\}$. Note that if there are no rational points in an open set, that means that the open set is empty. To see this, consider a point in the open set, which has an epsilon neighbourhood within the open set that contains no rational points. from density, this is absurd. Hence every non empty open set has rational points. For every $x$ in $G$, there exists possibly many intervals $I$ that is contained in $G$. Take the union of all these intervals to arrive at the maximal interval $I_x$ that is contained in $G$. Do the same for another point $y$ to arrive at the maximal interval $I_y$. Note that, if $y \in I_x$, then $I_y=I_x$. Can $I_y$ and $I_x$ have an intersection that is neither $\phi$ nor the set themselves? The answer is no, since if so, $I_x \cup I_y$ would be a \emph{bigger} interval that contains $x$, contrary to the assertion that $I_x$ is the largest such interval. Hence, the family $\{I_x: x \in G\}$ is a collection of disjoint open intervals that "cover" $G$. If an open set is non empty, then it contains a rational number, which means that there is a rational number in each $I_x$. That means that there are utmost countable elements in $\{I_x: x \in G\}$. Therefore, at most a countable union of disjoint intervals cover any open set $G$ in $\RR$
+ \end{proof} 
+ We can use the above lemma to see that any open set is an utmost countable union of disjoint open intervals: $\cup_{i=1}^{\infty}I_i=G$. Therefore, $\cup_{i=1}^{\infty}\overline{I_i}\subseteq \overline{G}$ (with the possibility of strict inclusion). Note that $I_i \subset \overline{I_i}$, which is strict. $I_i$ is not contained, and has no intersection with, any of $\overline{I_j}$ where $j \neq i$. Therefore, $\cup_{i}I_i$ is strictly in $G=\cup_{i=1}^{\infty} \overline{I_i} \subseteq \overline{G}$.
+ This means that $G$ is strictly inside $\overline{G}$, which means $G$ can never be closed (which means $G$ can never be closed and open at the same time since we assumed that $G$ was an open set to begin with). 
+\\\\ begin comment
+\\\\ \textbf{Alt method: }
+Prove that $\RR$ is path connected? 
+\\\\ Use "connected if and only if only clopen sets are $X$ and $\emptyset$. A set is open and connected if and only if it is convex, if and only if it is an interval"
+\\ end comment
+\\\\ \textbf{Problem 6}:
+\\\\ Let $x=\{x_n\} \in F \subset \ell_{\infty}$. Then $\exists n_x$ so that $\forall n \geq n_x$, $x_n=0$. Choose any $\varepsilon>0$. Consider $z=\{z_n\} \in \ell_{\infty}$ and $d(x,z)<\varepsilon$. This means $\sup\{|z_i-x_i|: i \in \NN\}<\varepsilon$. This means that for $n< n_x$, we have $|z_n-x_n|<\varepsilon$. For $n \geq n_x$, we have $|z_n|< \varepsilon$. Choose a sequence $z_n$ in such a way that these inequalities are obeyed (its $n_x$ tail is $<\varepsilon$). This sequence is clearly not $0$ at any point. Hence, it is not in $F$ which makes $F$ a non-open set.
+\\ Consider the sequence (of sequences) $z_1=(1,0,0,0 \cdots)$, $z_2=(1,\frac{1}{2},0,0,0 \cdots)$ , $\cdots$, $z_k=(1,\frac{1}{2},\frac{1}{3},\cdots,\frac{1}{k},0,0,0, \cdots)$. This is a sequence that is in $F$. Consider $z=(1,\frac{1}{2},\frac{1}{3}, \cdots)$. $d(z_j,z)=\frac{1}{j}$. Let $\varepsilon>0$. There exists $n_0$ so that $\forall n \geq n_0$, $d(z_n,z)<\varepsilon$. Hence, $z_n$ is a sequence in $F$ converging outside $F$. Hence $F$ is a non-open set.
+\\\\ \textbf{problem 7}:
+\\\\ $$A:=\{x=(x_1,x_2 \cdots) \in \ell_2: |x_n| \leq \frac{1}{n} \ \forall n \in \NN \}$$
+
+$$B:=\{x=(x_1,x_2 \cdots) \in \ell_2: |x_n| < \frac{1}{n} \ \forall n \in \NN \}$$
+
+We immediately notice that the point $x=(1,\frac{1}{2},\frac{1}{3}\cdots)$ is such that no $\varepsilon$ ball around this $x$ is fully contained in $A$. Hence clearly, $A$ is not open. 
+\\\\ Let $\{z^n\}$ be a sequence $(z^n_1,z^n_2 \cdots)$ in $A$ such that $|z^n_i|\leq \frac{1}{i}$. Note that convergence of a sequence in $\ell_p$ implies (and is implied by) coordinate wise convergence. Note that $|x|\leq \frac{1}{i}$ for a fixed $i$ is a closed set. Any sequence in this set converges (if it does) inside this set. Therefore, $\lim(z^n_i) \to z_i$ would mean that $|z_i|\leq \frac{1}{i}$. This is true for all $i \in \NN$. This means that if $\{z^n\}$ converges to $z=(z_1,z_2 \cdots)$ that means that (iff condition) each coordinate $z^n_i$ converges to $z_i$ which obeys the property $|z_i|\leq \frac{1}{i}$. This implies that $A$ is closed.
+\\\\ Consider $B$. $\vec(0):=(0,0,0, \cdots)$. Let $\varepsilon>0$ be arbitrary. Find $\frac{1}{j_{\varepsilon}}<\varepsilon$ (from density theorem). Let $q=(0,0,0, \cdots , \frac{1}{j} [\text{ the j-th coordinate}], 0, 0 \cdots)$. Note that by definition, $(\sum_{i=1}^{\infty}|q-0|^2)^{\frac{1}{2}}=\frac{1}{j}<\varepsilon$ which means that $q$ is in the $\varepsilon$ ball of $\vec(0)$. But clearly, the $j-th $ coordinate of $q$ is equal to $1/j$ hence $q$ is not in $B$. Hence $B$ is not open.
+\\\\ Note that via coordinate wise convergence, it can be shown that $B$ is not closed. By density theorem we can construct a sequence of rational numbers such that $\{r^j_i\}=r^1_i,r^2_i \cdots $ such that $|r^j_i|<\frac{1}{j}$, but is convergent to $\frac{1}{j}$. Do this for every coordinate and simply take the sequence of sequence to be $\{r^j_1,r^j_2 \cdots\}$ such that it converges exactly to $\{1,\frac{1}{2},\frac{1}{3} \cdots \}$.
+\\\\ \textbf{Problem 8}:
+\\\\ a) If $x$ is an isolated point, it is not a limit point. This means that there exists an $\varepsilon>0$ such that for all $q \in A$, $q \neq x$, $q \not \in B_{\varepsilon}(x)$. This amounts to saying (or rather equivalent to saying) $B_{\varepsilon}\setminus\{x\} \cap A = \emptyset $. This means that $\exists \varepsilon>0$ such that $B_{\varepsilon}(x)\setminus\{x\} \cap A=\emptyset$.
+\\\\ b) $\{x\}$ is nowhere dense implies that $(\overline{ \{x\} })^0=\emptyset$. 
+Since singletons are closed, this means that $\{x\}^0=\emptyset$. This means that there are no subsets of $\{x\}$ that are open. Therefore, $\{x\}$ is not an open set (with respect to the metric space). Not open means that there exists a point (which is $x$ only) in the set such that for every $\varepsilon$, $B_{\varepsilon}(x) \setminus\{x\} \neq \emptyset$ which is the negation of the definition of an isolated point. Hence $x$ is not an isolated point.
+\\ conversely, suppoe $x$ is not an isolated point in $X$. This means that for every epsilon ball arount $x$, there exists a point in $X$ that is not $x$. Therefore, $X \setminus\{x\}$ is not closed, which means $\{x\}$ is not open. But the only subset of $\{x\}$ is $\{x\}$ which means that the interior of $\{x\}$ which is $\{x\}^0=\emptyset$. But since $\{x\}$ is singleton, $(\overline{\{x\}})^0=\emptyset$.
+\\\\ c) The closure of a finite set $G=\{x_1,x_2 \cdots x_n\}$ in $\RR$ is the finite set itself (since finite sets are closed). Note that the interior of this set is $\emptyset$ (relative to $\RR$) since about any point, about any $\varepsilon$-ball, there exists a point (many of them, in fact) in $\RR$ and the $\varepsilon-$ball, but not in $G$. Hence, $\overline{G}^0=\emptyset$.
+\\\\ d) Take $\QQ \subset \RR$ that is countable. The closure of $\QQ$ is $\RR$ itself, from density theorem. The interior of this closure, then (relative to $\RR$), is $\RR$ itself, which means that it certainly is non empty, making $\QQ$ a non-empty countable set that is not nowhere dense in $\RR$.
+\\\\ e) To give a counterexample for the 2nd case, consider $\{q_i\}$ a collection of singleton sets of rational numbers. These are by definition nowhere dense in $\RR$. The union of these sets though, gives us $\QQ$ which is dense in $\RR$. 
+\\\\ If $A_1$ is a nowhere dense set, then $\overline{A_1}^0=\emptyset$. If $A=A_1 \cup A_2$, then $\overline{A}=\overline{A_1}\cup \overline{A_2}$ (not hard to prove).
+Say $(\overline{A})^0$ is non empty, i.e, there exists an $x \in \overline{A_1} \cup \overline{A_2}$ such that there is an $\varepsilon>0$ so that $B_{\varepsilon}(x) \in \overline{A}$. If $\overline{A_1}$ and $\overline{A_2}$ are disjoint, then this obviously becomes absurd. If say they have an intersection. Let (WLOG) $x$ be in $\overline{A_1}$. Consider then $B_{\varepsilon}(x) \setminus(A_2)$ which is the same as $B_{\varepsilon}(x) \cap (A_2^C)$. The intersection of two open sets remain open (here notice $A_2^C$ is open) hence we find that $B_{\varepsilon}(x) \cap A_2^c$ is an open set within $\overline{A_1}$ which is absurd since we asserted that $A_1$ is a nowhere dense set (implying no open sets are there in the closure of $A_1$). Hence, we have that union of two nowhere dense set is nowhere dense. 
+\\\\ Simply apply induction now.
+\\\\ A counter-example would be the rationals. Individual rational numbers are nowhere dense in reals, but rationals are not.
+\\\\ f) 1)$\implies$(3)) If $A$ is closed, its closure is itself. If it is nowhere dense, it has an empty interior.
+\\ (3)$\implies$(1)) If $\overline{A}=A$ has empty interior, by definition it is nowhere dense.
+\\\\ (1)$\implies$(2) If $A$ is closed and is nowhere dense, then $A^0=\emptyset$ which means $(A^0)^C=\overline{(A^C)}=X$ which by definition means that $A^c$ is dense in $X$.
+\\ (2)$\implies(3)$. If $A^c$ is dense in $X$, that means $\overline{(A^c)}=X$ which means $(A^0)^C=X$, or $A^0=\emptyset$. Since $A$ is closed, $A$ is nowhere dense.
+\\\\ g) If $A$ is closed, then $\overline{A}=A$. $\partial(A)=A \setminus(A^0)$. The closure of $\partial(A)$ is itself. Does there exist an open set within $\partial(A)$? If yes, call it $G$. note that this is fully outside $A^0$ which makes $A^0 \cup G$ a larger open set than $A^0$. Absurd. Therefore, $\partial(A)$ is nowhere dense.
+\\\\ h) 1) $\iff$ (2) ) If $A$ is nowhere dense, its closure's interior is empty which means there are no open sets in closure of $A$. converse is also trivial.
+\\\\ 2) $\implies$ (3), Say $\overline{A}$ contains no nonempty open set. Let $G$ be any open set. If $G$ does not intersect with $\overline{A}$, then it does not intersect with $A$ and the result tirvially holds. If say, $G$ intersects $\overline{A}$ (but doesnt fully contain it), we have $G \setminus\{\overline{A}\}$ to be non empty (and the intersection of two open sets) and open, which is a subset of $G$ which has no intersection with $\overline{A}$ and as a result, $A$.
+\\ (3) $\implies$ (4) Suppose for every non empty open set $G$, there exists an open subset $K$ that is disjoint from $A$. This means that there is a point in $K$ and an epsilon ball in $K$ disjoint from $A$.
+\\\\ (4) $\implies $ (1) Suppose every open set $G$ (non empty) of $X$ contains a non empty open ball $B$ disjoint from $A$. 
+\\ Suppose that $\overline{A}^0$ is non empty, which means that there is an open set $P$ in $\overline{A}$. But this $P$ itself contains a non empty open ball disjoint from $A$, which means that this $P$ actually cannot be contained within $\overline{A}$. Absurd. 
+
+\begin{center}
+    \textbf{ASSIGNMENT-5}
+\end{center}
+
+\textbf{Problem 2}:
+\\\\ a) Consider the function $f(x)=0.45+0.4\sin(\frac{1}{x})$. We know that $\sin(n\frac{\pi}{2})$ diverges. Consider then the sequence $\{\frac{2}{n\pi}\}$ that converges to $0$, hence is cauchy in $(0,1)$. $f(x_n)=0.45+0.4\sin(\frac{n\pi}{2})$ which is not cauchy. Hence the claim is false.
+\\\\ b) Suppose $f:(0,1) \to (0,1)$ maps all cauchy sequences to cauchy sequences. Consider $x_n \to x $ a cauchy sequence. Note that if a cauchy sequence $\{z_n\}$ has a convergent subsequce converging to $z$, then the main sequence also necessarily converges to $z$. Let $y_1=x_1$, $y_2=x$, $y_3=x_2$, $y_4=x$ and so on. Basically $y_{2n}=x$ and $y_{2n-1}=x_n$. Note that $y_n$ is also cauchy, and has a convergent subsequence. Hence $y_n \to x$ also. By hypothesis $f(y_n)$ is also cauchy. $f(y_n)$, when enumerated, is $f(x_1), f(x), f(x_2), f(x) \cdots$. This has a convergent subsequce $f(x)$ which means that the main sequence, including all its subsequences, converge to $f(x)$. But note that one of the subsequences of $f(y_n)$ is $f(x_n)$ itself, which means $f(x_n)$ converges to $f(x)$. Hence for every sequence $x_n \in X$ such that $x_n \to x$, $f(x_n) \to f(x)$ which is the sequential criteria for continuity.
+\\\\ \textbf{Problem 3}:
+\\\\ Partition the set $[0,1)$ into the following intervals: $[1-{\frac{1}{n}},1-\frac{1}{n+1}]$ which are $[1,\frac{1}{2}], [1/2,2/3],[2/3,3/4]$ and so on. The union of all these invervals $\cup_{n=1}^{\infty} [1-1/n,1-1/n+1]$ gives us $[0,1)$. Define the function $f$ piecewise on each of these subintervals: If $n$ is even, define $f$, on $[1-\frac{1}{n},1-\frac{1}{n+1}]$ to be 0 on the ends, and a triangle facing positive $y$ axis, with its maximum point being at the midpoint of the interval, attaining a value $n$. If $n$ is even, do the same but facing the downward $y$ axis. This would have image $\RR$.
+\\\\ \textbf{Problem 4}:
+\defn{Homeomorphism}{$X$ is homeomorphic to $Y$ if there exists a continuous, bijective map $f:X \to Y$ whose inverse $f^{-1}:Y \to X$ is also continuous.}
+\defn{Isometry}{$f:(X,d_X) \to (Y,d_Y)$ is said to be an isometry if $d_Y(f(x),f(Y))=d_X(x,y)$}
+There exists stronger criteria, eg: Isometric isomorphism- a bijective isometry whose inverse is also isometric.
+\thmp{}{Suppose $(X,d_X)$ and $(Y,d_Y)$ are homeomorphic via the map $x \mapsto f(x)$. Then, there exists another metric $\delta$ on $X$ such that $(X,\delta)$ is isometric to $(Y,d_Y)$}{Say $f$ is that homeomorphism from $(X,d_X)$ and $(Y,d_Y)$. Consider $\delta(x,y \in X)=d_Y(f(x),f(y))$. This is immediately an isometry, via the map $f:X \to Y$ itself, since $d_Y(f(x),f(y))=\delta(x,y)$ by definition. Moreover, $f$ is a bijection and its inverse is, too, continuous. Consider $f^{-1}:Y \to X$ with $\delta(f^{-1}(x),f^{-1}(y))=d_Y(x,y)$ again by definition, which makes $f^{-1}$ an isometry too, in the same natural way. }
+Consider $([0,1),|.|)$ and $([0,\infty],|.|)$. The function $f=\tan(x\pi/2 )$ is a continuous bijection from $([0,1),|.|)$ to $([0,\infty),|.|)$ whose inverse, $2/\pi \arctan(x)$ is also continuous. This makes $f:([0,1),|.|)\to([0,\infty),|.|)$ a homeomorphism. Now we apply the previous theorem to define a new metric on $[0,1)$, $\delta(x,y)=|f(x)-f(y)|=|\tan(x\pi/2)-\tan(y\pi/2)|$. From the previous theorem, $([0,1),\delta)$ is isometric (bijectively) to $([0,\infty),|.|)$. 
+\lemp{}{Bijective isometries preserve cauchy completeness}{Let $(X,d_X)$ be a complete space, which is bijectively isometric to $Y,d_Y$. Let $\{y_n\}$ be a cauchy sequence such that $\forall \varepsilon>0$, $\exists n_0$ so that $d_Y(y_n,y_m)<\varepsilon$ if $n,m \geq n_0$. Let $f$ be the bijective isometry, i.e $d_Y(f(x),f(y))=d_X(x,y)$ and $d_X(f^{-1}(w),f^{-1}(z))=d_Y(w,z)$. Is $f^{-1}(y_n)=g(y_n)$(notation) cauchy? $d_X(g(y_n),g(y_m))=d_Y(y_n,y_m)$. Hence, it is also cauchy in $X,d_X$. Therefore, $g(y_n) \to z$ say. $z=g(\gamma)$ for some $\gamma \in Y$. $g(y_n)$ is a sequence in $X$ converging to $g(\gamma)$ in $X$ (due to completeness) which means, since $f$ is a continuous function, $f(g(y_n))$ converges to $f(g(\gamma))$ which ultimately means $y_n$ converges to $\gamma$. Hence, $Y,d_Y$ is cauchy complete. }
+From this lemma, we see that (since $([0,1),\delta)$ and $([0,\infty),|.|)$ are isometric bijectively) if one of them is cauchy complete, the other is too. We note that $[0,\infty)$ with the eucliean metric, by virtue of being a closed subset of a complete metric space, is cauchy complete. This immediately makes $[0,1),\delta$ a complete metric space. 
+Hence, there exists a metric on $[0,1)$ that makes it complete. 
+\\\\ But, is $[0,1),|.|$ homeomorphic to $[0,1), \delta$? We know that homeomorphisms form equivalence relations, i.e $X \cong Y$ and $Y \cong Z$ implies $X \cong Z$. We know from that tan function that $[0,1),|.| \cong [0,\infty),|.|$ and $[0,\infty),|| \cong [0,1),\delta$, so it is trivial to see that $[0,1),|.| \cong [0,1),\delta$.
+\\\\ \textbf{Problem 5}:
+\\\\a) Let $X \cong Y$ (homeomorphic). Say $X$ is separable, i.e, $\exists \{V_n: n \in \NN\}$ collection of open sets in $X$ so that for any $G$ open in $X$, $\exists \{V_{n_k}: k \in \NN\}$ subcollection so that $G=\cup_{k=1}^{\infty} V_{n_k}$. Let $g=f^{-1}:Y \to X$ be a continuous bijection. We basically have: $$X\overset{f, \cong} \rightarrow Y $$ and $$Y \overset{g=f^{-1},\cong}\rightarrow X $$ Consider $\{g^{-1}(V_n)\}$. Let $H$ be any open set in $Y$. $f^{-1}(H)=g(H)$ is an open set in $X$ by homeomorphism. Hence $g(H)=\cup_{n_k}V_{n_k}$. $g(H)$ being an open set in $X$, inverse maps under $g$ to an open set in $Y$, i.e $g^{-1}(g(H))=H \in Y$. Note that $g^{-1}(g(H))=H=g^{-1}(\cup_{n_k}V_{n_k})=\cup_{n_k}g^{-1}(V_{n_k})$. Hence any open set in $Y$ can be written as a union of a subcollection in $\{g^{-1}(V_{n})\}$, which makes $Y$ separable. The reverse implication follows in the same fashion (Just relabel X and Y).
+\\\\b) Let $X \overset{f}\rightarrow Y $ be a homeomorphism. Consider $A$ a subset of $X$. We want to prove $f(\overline{A})=\overline{f(A)}$. $f(\overline{A})$ is a closed set since the inverse map of $f$ is aswell a continuous function. Also note that $f(A) \subseteq f(\overline{A})$. Since the smallest closed set that contains a set is precisely the closure, we have that $\overline{f(A)}\subseteq f(\overline{A})$.
+\\\\ Also, $\overline{f(A)}$ is the smallest closed set that contains $f(A)$. $f^{-1}(\overline{f(A)})$ is a closed set that contains $A$. i.e $A \subseteq f^{-1}(\overline{f(A)})$. Again from the closure definition we have $\overline{A} \subseteq f^{-1}(\overline{f(A)})$ which yields $f(\overline{A})\subseteq \overline{f(A)}$ which finally yields $f(\overline{A})=\overline{f(A)}$
+(TRUE IN ANY TOPOLOGY)
+\\\\ \textbf{Problem 6:}
+\\\\Work in progress
+\\\\ \textbf{Problem 7:}
+Let $f: [0,1]\to \RR $ be a continuous map whose image is a subset of $\QQ$. Note that all subsets of $\QQ$ are separated. To see this, let $x$ and $y$ be two rational numbers. From density theorem, we can find a new irrational $z$ between these two. Therefore, look at $((-\infty,z) \cup (z,\infty))\cap \QQ$. This is precisely $\QQ$. But note that $[0,1]$ is a connected set. Hence, $f([0,1])$ must be a connected set since continuous functions map connected sets to connected sets. Hence, $f([0,1])$ must be a connected set, which is a singleton. Since $f(1/2)$ is $1/2$, we have range to be $1/2$.
+\\\\ \textbf{problem 8:}
+\\\\ Let $a$ and $b$ be in $X$. Let $\xi\leq d(a,b)$. 
+Note that, $P=B_{\xi}(a)$ and $Q=(B_{[\xi]}(a))^C$ are non empty, separated sets.
+If $X$ is not the union of $P$ and $Q$, then there is a point $z_{\xi}$ in $X$ so that it is neither in $P$
+not in $Q$. That means that it is exactly $\xi$ distance away from $p$. For every $\xi<d(a,b)$,
+there exists a point $z_{\xi}$ so that its distance from $p$ is exactly $\xi$. Therefore, every $z_{\xi}$ 
+is unique (from positivity property of metric spaces) which means there are uncountable $z_{\xi}$-s (since an interval is uncountable)
+\\\\ \textbf{Problem 9}
+\\\\ $f:(a,b) \to \RR$ is said to be a non decreasing function. Let $c \in (a,b)$. We say $f(c+)$ exists if there exists an $L$ so that $\forall \varepsilon$, $\exists \delta>0$ so that $\forall 0<x-c<\delta \implies |f(x)-L|<\varepsilon$. In sequential terms, for every sequence $x_n$ such that $x_n \neq c$, $x_n \to c$ and $x_n>c$, we have that $f(x_n)\to L $. Such $L$ is called $f(c+)$. Similarly we say $f(c-)$ exists if there exists $U$ so that $\forall \varepsilon$ we have a $\delta>0$ so that $0<c-x<\delta \implies |f(x)-L|<\varepsilon$. In sequential terms this means that for every sequence $x_n \to c$, $x_n<c$, we have $f(x_n) \to U$. Such a $U$ is called $f(c-)$.
+\\\\ If $f$ is non decreasing, $a<b \implies f(a)\leq f(b)$. Define $L=\inf\{f(x):c<x<b\}$. This exists obviously since $f$ is a non decreasing sequence. Let $\varepsilon>0$, we want a $\delta$ so that for all points $x$ so that $c<x<c+\delta$, we have $L-\varepsilon<f(x)<L+\varepsilon$. Consider $f(x_0)<L+\varepsilon$ (such obviously exists, from the definition of infimum). Now note that $f(x)\leq f(x_0)<L+\varepsilon$ if $x<x_0$. Hence, our delta for the particular epsilon challenge is easily verified to be $x_0-c$. This also shows us that $L=f(c+)$
+
+Similarly Define $U=\sup\{f(x):a<x<c\}$. Such also exists. Look at $U-\varepsilon<f(x)$. Atleast one point $x_0$ satisfies this. But note that $U-\varepsilon<f(x_0) \leq f(x)$ for $x>x_0$. Hence $\delta=c-x_0$. Since $f(c)$ is a finite number and $f$ is monotone, we have that for all $x<c$, $f(x)\leq f(c)$ which means $U=f(c-)\leq f(c)$. Similarly we have $f(c)\leq f(c+)$. That these values are finite is obvious. 
+\\\\ Let $a<p<q<b$. $f(p+)=\inf\{f(x):p<x<b\}$ and $f(q-)=\sup\{f(x):a<x<q\}$. $f(p+)$ is smaller than all values $f(x)$ attains on $p<x<q$ as well as $q\leq x<b$. Hence, $f(p+)\leq f(q-)$
+\begin{center} \textbf{Assignment 6:} \end{center}
+\textbf{Problem 2:}
+\\\\ Let $x$ be a point of the cantor set. Let $\varepsilon$ be arbitrary. Choose $n$ so that $1/3^n<\varepsilon$. $x$ belongs in one such interval of size $1/3^n$. The end point of this interval survives all the intersections, therefore they exist in the cantor set. Choose one of those end points. We have shown that for every $\varepsilon$ there exists a point of $P$ that is in the $\varepsilon$-ball of $x$. Hence every point is a limit point. Since cantor set is the intersection of closed sets, its also closed. Hence, cantor set is perfect. 
+\\\\ \textbf{Problem 3:}
+
+\thmp{}{Perfect subsets in $\RR^n$ are uncountable.}{Suppose $E$ is a perfect set in $\RR^n$ but is countable. i.e, it can be enumerated as $E=\{x_1,x_2,\cdots \}$.
+\\\\ Choose $x_1$, and $\varepsilon_0=1$. Let $V_0$ denote the $\varepsilon_0$-ball around $x_1$. This ball is non empty, moreover, $\bar{V_0} \cap E$(which is the corresponding closed ball of $V_0$) is non empty, and is compact by virtue of being closed and bounded. Inside, $V_0 \cap E$, there exists infinite points of $E$, since $x_1$ is a limit point of $E$.
+\\\\ Choose an arbitrary point $z_1$ in $V_0$ that is not $x_1$. Now let $\varepsilon_1<d(x_1,z_1)$. Let $V_1$ be the $\varepsilon_1$-ball around $z_1$. Notice the following: $z_1$ is a limit point of $E$, hence, there are infinite points of $E$ in $V_1$. $x_1$ is not in $\bar{V_1}$. $\bar{V_1}\cap E$ is closed, bounded and non empty, hence Compact. 
+\\\\ Choose a point $z_2$ in $V_1$ that is not $x_2$, and let $\varepsilon_2<min\{\varepsilon_1, d(x_2,z_2)\}$. Let $V_2$ be the $\varepsilon_2$-ball around $z_2$. Note that, $x_2$ is not in $\bar{V_2}$. Also note yet again that there are infinitely many points of $E$ in $V_2$. It is crucial to note now that $\bar{V_2}\cap E \subset \bar{V_1}\cap E\subset \bar{V_0} \cap E$.
+\\\\Suppose you have already constructed $V_k$ by finding $z_k$ in $V_{k-1}$ that is not $x_k$ and an $\varepsilon_k<min{d(z_k,x_k),\varepsilon_{k-1}}$ such that $x_k \not\in \bar{V_k}$, $\bar{V_k}\cap E$ is compact, non empty and $\bar{V_k}\cap E \subset \bar{V_{k-1}}\cap E \cdots$.
+\\\\Now, choose $z_{k+1} \neq x_{k+1}$, inside $V_k$. Choose $\varepsilon_{k+1}<min\{d(z_{k+1},x_{k+1}),\varepsilon_k\}$. Let $V_{k+1}$ be the $\varepsilon_{k+1}$-ball around $z_{k+1}$. Yet again, we see that $\bar{V_{k+1}} \cap E$ is non empty, $x_{k+1}$ is not in $\bar{V_{k+1}}$, and $\bar{V_{k+1}}\cap E \subset \bar{V_{k}}\cap E$. Hence, we have a sequence of non empty, nested compact sets. This implies that $\exists \xi \in E \subset \RR^n$ such that $\xi \in \cap_{i=1}^{\infty} (\bar{V_i}\cap E)$. Is $\xi$ any one of $x_j$ enumerated? No, because if it was, from the construction, $x_j$ would not belong in $V_j$. Hence, $\xi$ is not in the enumeration of $E$. Contradiction.}
+
+\newpage
+\textbf{Problem 4:}
+\\\\ Let $S$ be a non singleton subset of $\QQ$. It has two points. That means there exists $x<z<y$, with $x,y \in S$ and $z \in $ irrational (density theorem). Therefore, If we take $(-\infty,z) \cap S=A$ and $(z,\infty) \cap S=B$, then $S$ can be written as the disjoint union of $A$ and $B$, which are separated by definition $\overline{A} \cap B= \overline{B} \cap A= \emptyset$. Hence, $\QQ$ is totally disconnected.
+\\\\ b)$\implies$) Let $f$ be a strictly increasing differentiable function on $\RR$. $f(x)>f(y)$ if $x>y$. $f(y)-f(x)/(y-x) > 0$ for all $y$. Hence, if we take the limit, we have $f'(x) \geq 0$. Suppose $f'(x)=0$ for all points $x \in \RR$. But that would mean that $f$ is a constant function, Contradiction to the hypothesis that $f$ is strictly increasing. Hence, for some $c$, $f'(x)\neq 0$. But this point alone is enough, since, if we let $S=\{x: f'(x)=0\}$, we note that $(-\infty,c)$ and $(c,\infty)$ covers this space. These two sets are separated. Let $a$ and $b$ be two points in $R$. $f(b)-f(a)/(b-a)>0$. From MVT, we have some point between $a$ and $b$, say $c$ such that $f'(c)>0$. Hence, if $a$ and $b$ are elements in $S$, then we can find a separation. implies totally disconnected.
+\\\\ $\impliedby$) Suppose $f'(x) \geq 0$ and the set $S=\{x: f(x)=0\}$ is a totally disconnected set. Since $f'(x) \geq 0$ we can immediately see that $f$ must be monotone increasing (from MVT). Since $S$ is said to be totally disconnected, it means that every subset that is non singleton is the union of two separated sets. Consider $y>x$. We want to show that $f(y)>f(x)$ strictly. Consider the interval $[x,y] \cap S$ in $\RR$. This is disconnected, i.e, union of two disjoint open sets in $\RR$. We digress to prove a short lemma:
+\lemp{Lemma for problem 4}{$E \subset \RR$ is connected $\iff$ $\forall x,y \in E$, $x<z<y \implies z\in E$.}{$\implies$)
+Suppose $\exists x_0,y_0 \in E$ so that $\exists z, x_0<z<y_0$, but $z \not\in E$. Consider $A:=(-\infty,z)$ and $B:=(z,\infty)$.
+$A$ and $B$ are seen to be separated, and $E$ is a subset of $A \cup B$, which makes it disconnected.
+\\\\ $\impliedby)$ Suppose that we have $E$ disconnected, which means it is the union of two 
+separated sets $A$ and $B$ that are non-empty. $x_0 \in A$ and $y_0 \in B$. Consider $z(t)=x_0+t(y_0-x_0)$ for $t\in [0,1]$.
+Note that $z(0)=x_0$ and $z(1)=y_0$.
+\\\\ Conjecture: There exists a $t_B \in (0,1)$ so that for every $t<t_B$, $z(t)$ does not belong in $B$. If it is not true,
+then for every $t \in (0,1)$, there exists a point $t_B<t$ so that $z(t_B)$ is in B. Choose $t=1$ to get $z(t_1)$ in $B$.
+Chooe $t=\frac{t_1}{2}$ to get $z(t_2)$ in $B$ with $t_2<t_1$ and $t_2<\frac{1}{2}$. Keep going with $t=\frac{t_{n-1}}{2^{n-1}}$ to get $z(t_n)$ in $B$ with $t_n<t_{n-1}$ and $t_n<\frac{1}{2^{n-1}}$. 
+This gives us a sequence $z(t_k)$ which we can see is monotone decreasing assuming $x_0<y_0$. This sequence converges to $z(0)$ which is in $A$ which means that there exists a sequence in $B$, $z(t_n)$ that converges to $A$. Absurd.
+\\\\ In a similar vein, we can show that there exists $t_A \in (0,1)$ so that for every $t>t_A$, $z(t)$ is not in $A$. 
+Consider $$S_A:=\{ t \in [0,1]: z(t)\in A\cap [x_0,y_0]\}$$ and $$S_B:=\{t\in[0,1]: z(t)\in B\cap [x_0,y_0]\}$$
+\\\\ It is easy to see that $S_A$ and $S_B$ are disjoint. If a sequence in one converges in another, say
+$t_n \in S_B$ converges to $t_0 \in S_A$. Then $z(t_n)\in B$ by definition, for every $n$.
+But then by definition, $z(t_n)=x_0+t_n(y_0-x_0) \in B$ such that
+$lim(z(t_n))=x_0+t_0(y_0-x_0) \in A$, which means a sequence in $B$ converges in A. Absurd. So $S_A$ and $S_B$ are separated.
+\\\\Note that, for $t>t_A$, no $z(t)$ is in $A$. Hence, we see that for every $t$ so that $z(t)$ falls in $A$, there is an upperbound. Likewise, for every $t$ such that $z(t)$ falls in $B$, there is a lowerbound.
+Hence, $S_A$ has a supremum $sup(S_A)$ and $S_B$ has an infimum $inf(S_B)$.
+\\\\ At this point, we may as well assume that for every $t<inf(S_B)$, $t \in S_A$ for if not, what we wanted to prove would get proved. 
+Suppose then, for argument sake, that for every $t>Sup(S_A)$, $t\in S_B$, and
+likewise, for every $t<Inf(S_B)$. $t \in S_A$. Now then, does $Sup(S_A)$ belong
+in $S_A$? we see that for every $t>sup(S_A)$, $t \in S_B$ which means we can construct a sequence in $S_B$ using those $t$s, which converge to $Sup(S_A)$ in $S_A$. So that is ruled out.
+So is $Sup(S_A)$ in $S_B$? That is not possible either, since $S_A$ is a bounded, infinite set (mainly because supremum isn't in the set), we know that there is a monotone subsequence in $S_A$ converging to $Sup(S_A)$ which is in $S_B$. We therefore conclude that, there exists a point $t \in (0,1)$ so that $t$ is neither in $S_A$, nor in $S_B$. This translates to there being a point $z=z(t)$, between $x_0$ and $y_0$ so that $z(t)\not\in A \cup B \implies \not\in E$. We are, therefore, done. 
+\\\\ \textbf{Slicker Argument:} Suppose $E=A \cup B$ with $\bar{A}\cap B=\bar{B} \cap A=\phi$. Consider $x_0 \in A$ and $y_0 \in B$ and WLOG assume $x_0<y_0$. Define $z=sup(A\cap[x_0,y_0])$.
+There would be a sequence in $A$ that converges to $z$, by virtue of being the supremum. $z \in \bar{A} \implies z \not\in B$. This means $x_0 \leq z<y_0$. If $z \not\in A$, we would be done.
+If $z \in A$, then $z \not\in \bar{B}$. Therefore, $z$ is in an open set $\bar{B}^C$. There would exist
+an $\varepsilon_z$-ball around $z$ so that it is fully contained outside $\bar{B}$. Choose $z+\frac{\varepsilon_z}{2}$ as your $z'$.
+Note that $z'$ is greater than the supremum of $A$. We see that $z'$ is not in $B$, and not in $A$ either. Hence, we are done.
+}
+Since our set in consideration $[x,y]\cap S$ is disconnected, from the previous lemma, we can see that there exists $z$ between $x$ and $y$ that is not in $S$. Hence, $f'(z)>0$. We have that $\forall \varepsilon>0$, $\exists \delta>0$ so that (we are considering only $y>z$) for all $y$ so that $0<y-z<\delta$ we have $|f(y)-f(z)/(y-z)-f'(z)|<\varepsilon$ which gives $$f'(z)-\varepsilon(y-z)<f(y)-f(z)<f'(z)+\varepsilon(y-z) $$ Since $f'(z)>0$, we can make $\varepsilon$, and $\delta$ small enough so that the left most part of the inequality is greater than $0$. In that case, we would have $0<f(y)-f(z)$ or $f(z)<f(y)$. Since $f(x)$ is monotone, we have $f(x)<f(y)$. We are done.
+\\\\ \textbf{problem 5:}
+\\\\ Consider the Uryshon function $dist(x,F_1)/(dist(x,F_1)+dist(x,F_2))$. This is continuous and maps $X$ to $[0,1],|\cdot |$ metric space. Note the following fact: if $S$ is an open set in the codomain of a continuous function, then $\overline{(f^{-1}(S))}\subseteq f^{-1}(\overline{S})$. Let $S_1$ be $[0,1/4)$ which is an open set in $[0,1]$. $F_1$ is a subset of $G_1=f^{-1}(S_1)$ an open set. Likewise, consider $(1/2,1]=S_2$ an open set. $F_2 \subseteq f^{-1}(S_2)=G_2$ an open set. Note that, the closure of $S_1$ and $S_2$ are respectively $[0,1/4]$ and $[1/2,1]$. Note that $G_1 \subseteq \overline{G_1}\overline{f^{-1}(S_1)}\subseteq f^{-1}(\overline{S_1})$ and $G_2\subseteq \overline{G_2}\overline{f^{-1}(S_2)}\subseteq f^{-1}(\overline{S_2})$. From set theory, we can easily see $\overline{G_1}$ and $\overline{G_2}$ are disjoint. We are done.
+\\\\ \textbf{Problem 6:}
+\\\\ Consider an infinite discrete topology. Every singleton is a (cl)open set. Therefore, there is an open cover with no finite subcover--> non compact.
+Let $f$ be any function on $X$ whatsoever. Let $\varepsilon$ be arbitrary. Choose $\delta<1$. Hence, $d_X(x,y)<1 (x=y)$ implies that $d(f(x),f(y))=0 <\varepsilon$. Uniformly continuous (Also Lifshitz continuous too).
+\\\\ Other non trivial example may be $\NN$ under the usual metric. Any infinite set mimmicking the discrete metric works. 
+\\\\ \textbf{Problem 7:}
+\\\\ Let $X$ and $Y$ be metric spaces with $Y$ complete. Let $f$ be uniform-continuous on a dense set $D$ of $X$.
+\\\\ (a) Suppose two such extensions exist, i.e, $g_1$ and $g_2$ are uniform continuous on $X$, with $f(x)=g_1(x)=g_2(x)$ on the dense set $D$. Let $z$ be any point on $X$. There exists a sequence $x_n$ on $D$ that converges to $z$. $g_1(x_n)\to g_1(z)$ and $g_2(x_n)\to g_2(z)$. This means that $g_1(z)=g_2(z)$. Hence, unique.
+\\\\ (b) Let $x_n$ be cauchy in $X$. We are told that $f$ is uniform continuous on a dense subset D of $X$. $\forall \delta>0$ $\exists n_0$ so that $d(x_n,x_m)<\delta$ for $n,m \geq n_0$. But from uniform continuity, $d(f(x_n),f(x_m))<\varepsilon$ for sufficiently large $n,m$. 
+\\\\ (c) Let $x_n \to x$ ($x_n \in D$). We have that $f(x_n)$ is cauchy. Hence, $f(x_n) \to \gamma$ for some $\gamma \in Y$. Define $g(x)=\gamma$
+\\\\ (d) Consider two sequences $x_n$ and $y_n$ in $D$ convergeing to $x \in X$. If we look at $x_1,y_1,x_2,y_2 \cdots $ a a sequence $z_n$, then $f(z_n)$ is also cauchy (since x and y are cauchy) and one of the subsequences of $f(z_n)$ converges to $\gamma$, which makes $f(z_n)$ itself converge to $\gamma$, the sequence representative does not matter. It is well defined.
+\\\\ (e) We define $g(x)=f(x)$ if $x \in D$ and $g(z)=\lim_{n \to \infty} f(x_n)$ where $x_n \in D$ and $x_n \to z$. $d_Y(g(x),g(y))\leq d_Y(g(x),f(x_n))+d_Y(f(x_n),f(y_m))+d_Y(f(y_m),g(y))$ where $f(x_n) \to g(x)$ and $f(y_n) \to g(y)$ (i.e, $x_n \to x$ in $D$ and $y_n \to y$ in $D$). For a $\delta_0$ dependent on $\varepsilon$ alone, the middle term goes smaller than $\varepsilon/3$ for all m,n larger than some $n_0$. The left and right terms also have their own $n_1$ and $n_2$, so if we dominate with $n'=$ max of all 3, and let $\delta$ be $\delta_0$, we would have that for any $\varepsilon>0$, $\exists \delta_0$ so that $d_Y(g(x),g(y))<\varepsilon$ for $d(x,y)<\delta_0$. Hence $g$ is uniform.
+\\\\ \textbf{Problem 8:}
+\\\\ Some elementary facts:
+\\\\ (1) We take $\CC^n$ as a vector space over $\CC$, with the norm defined as $||\vec{x}||=||(x_1,x_2,\cdots,x_n)||=(\sum_{i=1}^n(|x_i|^2))^{1/2}$ where $x_j \in \CC$, and $|x_i|:=x_i \overline{x_i}$. If $\vec{x_n} \to \vec{x}$, we have that $\forall \delta>0$, $\exists n_0$ so that $\sum_{i=1}^n(|x^{(n)}_i-x_i|^2)^{1/2}<\delta$ for all $n \geq n_0$. Coordinate wise convergence is obvious. Suppose on the other hand $x_i^{(n)} \to x_i$ for each i. Then, too, convergence in $\CC^n$ is guarenteed (take the maximum $n_0$ that one gets, maxed over i $\in [1,n]$). 
+\\\\ (2) The closure of the open ball in $\CC^n$ is the corresponding closed ball (easy to verify, true for all normed linear spaces). More specifically, if $B_{r}(0)=\{\vec{x} \in \CC^n: ||\vec{x}||=(\sum_{i=1}^n |x_i|^2)^{1/2}<r\}$, its closure is $B_{[r]}(0)"=\{\vec{x} \in \CC^n: ||\vec{x}||=(\sum_{i=1}^n |x_i|^2)^{1/2}\leq r\}$ and as a consequence, the boundary of this ball would be $\partial(B_{r}(0))=\{\vec{x} \in \CC^n: ||\vec{x}||=(\sum_{i=1}^n |x_i|^2)^{1/2}=r\}$. We already know boundary is a closed set. 
+\\\\ (3) For finite dimensioned normed linear spaces, any open ball is totally bounded. We are hinting towards a heine borel result for $\CC^n$, i.e, closed+bounded $\implies$ complete + totally bounded which gives compactness. Compactness gives limit point compactness. 
+\\\\ (4) From the previous information, we have shown that $\partial(B_{r}(0))=\{\vec{x} \in \CC^n: ||\vec{x}||=(\sum_{i=1}^n |x_i|^2)^{1/2}=r\}$ is compact (since it is closed subset of a complete metric space, whilst being a subset of a totally bounded set)
+\\\\ (5) The Row (or column) vectors of a unitary matrix are orthonormal, i.e, if we write $U=\begin{bmatrix}
+    \vec{u_1} \\ \vec{u_2} \\ \vdots \\ \vec{u_n}
+\end{bmatrix}$ where 
+$\vec{u_j}=(x_{1j},x_{2j} \cdots x_{nj})$, we have $\langle u_i,u_i \rangle =1 $ and $\langle u_i, u_j \rangle=0$ with all $u_i $ being linearly independent. (We assume our initial matrix was written in an orthornormal basis for $\CC^n$) (Sheldon Axler Theorem 7.54, 4th edition)
+\\\\ If $\{U_j\}$ is a sequence of unitary operators, and $\vec{v_i}^{(j)}$ is the i-th row vector of $U_j$, then we have that $||\vec{v_i}^{j}||=1$ for each $i \leq n $ and $j \in \NN$. And likewise, we have that $\langle\vec{v_i}^{(j)},\vec{v_k}^{(j)}\rangle=0$ for every $i \leq n$ and $j \in \NN$. 
+\\\\ Consider $\vec{v_1}^{(j)}$. This is a sequence in $\partial(B_{1}(0))$. From Heine borel, this has a convergent subsequence call it $\vec{v_{1}}^{(j_{k_1})}$ converging to $\vec{v_1}$. Look at $\vec{v_2}^{j_{k_1}}$, again in $\partial(B_{1}(0))$. This also has a convergent subsequce $\vec{v_2}^{j_{k_2}}$ converging to $\vec{v_2}$. As such, via this nested process, we can get a subsequence $j_{k_n}$ so that every one of $\vec{v_i}^{j_{k_n}}$ converges, and does so to $\vec{v_i}$. Each $v_i$ being normalized is trivial, since the boundary of the open 1 ball is a compact set. 
+\\\\ We know $v_i^{(j_n)}\to v_i$ and $v_k^{(j_n)}\to v_k$, i.e, $\forall \varepsilon/2>0$, $\exists n_0$ and $n'_0$ so that $\forall n \geq \max\{n_0,n'_0\}$ we have $||v_i^{(j_n)}-v_i||=\sqrt{\langle v_i^{(j_n)}-v_i,v_i^{(j_n)}-v_i \rangle} <\varepsilon/2$ and $||v_k^{(j_n)}-v_k||=\sqrt{\langle v_k^{(j_n)}-v_k,v_k^{(j_n)}-v_k \rangle}<\varepsilon/2$. Look at $|\langle v_i-v_i^{(j_n)},v_k-v_k^{(j_n)} \rangle|$. Cauchy schwarz says $|\langle x,y\rangle|\leq ||x||||y||$. That gives:
+\\\\ $|\langle v_i-v_i^{(j_n)},v_k-v_k^{(j_n)} \rangle| \leq ||v_i-v_i^{(j_n)} ||\cdot ||v_k-v_k^{(j_n)} ||$. The left side can be expanded to give $|\langle v_i,v_k \rangle|$. Taking the limit on the right side gives us that $\langle v_i,v_k \rangle =0$. Hence, $v_i$ and $v_k$ are orthornormal. Therefore, the final matrix $U=\begin{bmatrix}
+    \vec{v_1} \\ \vec{v_2} \\ \vec{v_3} \\ \vdots \\ \vec{v_n}
+\end{bmatrix}$ is orthogonal (or unitary or whatever) (Equivalent condition for U to be unitary is that its rows form an orthonormal basis set)
+\end{document}

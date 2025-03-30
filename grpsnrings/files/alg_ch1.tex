@@ -214,13 +214,14 @@ Formally: $f:C \to \bigcup_l A_l$ such that $\forall l\in L, f(A_l)\in A_l$}
 \item (LCM) We call a number $l$ the "Least Common Multiple" of two integers $a$ and $b$ if $a|l$ and $b|l$ and $l$ is the smallest such integer. 
 \end{enumerate}}
 
+\defn{Prime Number}{A number $p$ in $\NN$ is \emph{prime} if it has only itself and $1$ as divisors. Non-primes are called composite. }
+
 \thmp{}{\begin{enumerate}
 \item The GCD $d$ of $a,b \in \ZZ$ is unique, and has the property that, if any other integer $q$ is a divisor of $a$ and $b$, then $q$ divides $d$.
 \item The LCM $l$ of $a,b \in \ZZ$ is unique, and has the property that, if another integer $p$ is a multiple of $a$ and $b$, then $l$ divides $p$.
 \item If LCM of $a,b$ and GCD of $a,b$ are $l$ and $d$ respectively, then $dl=ab$.
-\end{enumerate}}{(1) If $d$ is the GCD of $a,b$, obviously $d|a$ and $d|b$ $\implies dz_a=a, dz_b=b$ for some $z_a,z_b \in \ZZ$. Consider an arbitrary divisor $q$ such that $\exists r_a,r_b \in \ZZ$ such that $qr_a=a,qr_b=b$. Therefore, $dz_a=qr_a$ and $dz_b=qr_b$ $\implies \frac{dz_a}{q}=r_a$ and $\frac{dz_b}{q}=r_b$. Now either $q$ divides $d$, or $q$ divides $z_a$ and $z_b$ which means there would be $\delta_a$ and $\delta_b$ so that $q\delta_a=z_a$ and $q\delta_b=z_b$. If thats the case,
-then $dq\delta_a=a$ and $dq\delta_b=b$. Hence, $dq$ is a divisor of $a$ and $b$, which makes it larger than $d$. This can't be, since $d$ is the largest such divisor. From here, uniqueness is clear.
-\\\\(2) If $l$ is the LCM of $a$ and $b$, we have $ag_a=l$ and $bg_b=l$ for integers $g_a$ and $g_b$. Suppose that $m$ is another multiple of $a$ and $b$ but $l$ doesn't divide $m$. Meaning, there exists integers $y_a$ and $y_b$ so that $ay_a=m$ and $by_b=m$. This means $ly_a=mg_a$ and $ly_b=mg_b$. Since $l \leq m$, we have $y_a=\frac{mg_a}{l}$ and $y_b=\frac{mg_b}{l}$ and that $l$ divides $g_a$ and $g_b$. If $l$ divides $g_a$ and $g_b$, we would have $a\frac{g_a}{l}=1$ and $b\frac{g_b}{l}=1$ which is absurd. Hence, $l$ has to divide $m$. Uniqueness is clear from here. 
+\end{enumerate}}{(1) This will be proved below with the division algorithm. For now note that, if every divisor divides $d$, then $d$ is the GCD.
+\\\\(2) This is also proved using the divison algorithm. For now note that if every multiple of $a,b$ is divisible by a multiple $l$, then it is the least common multiple.
 \\\\(3) Suppose $d$ is the unique GCD of $a,b$ and $l$ is the unique LCM of $a,b$.\\\\
 Note that $d|ab$ which means $dc_0=ab$ for some $c_0$.
 $c_0=a(\frac{b}{d})$ and $c_0=b(\frac{a}{d})$. This means $c_0$
@@ -257,4 +258,180 @@ We would then have (in the last step), $$r_{n_0}=r_{n_0+1}q_{n_0+2}+0$$ and back
 $$r_{n_0-1}=r_{n_0+1}(q_{n_0+2}q_{n_0+1}+1)$$
 $$r_{n_0-2}=(r_{n_0+1}(q_{n_0+2}q_{n_0+1}+1))q_{n_0}+r_{n_0+1}q_{n_0+2} $$
 And finally we would end up with $$a=r_{n_0+1}(\text{something}_1) $$
-and $$b=r_{n_0+1}(\text{something}_2) $$ with the added fact that $r_{n_0+1}$ divides every remainder $r_n$ in the division algorithm performed with $a$ and $b$. \end{document}
+and $$b=r_{n_0+1}(\text{something}_2) $$ with the added fact that $r_{n_0+1}$ divides every remainder $r_n$ in the division algorithm performed with $a$ and $b$. 
+\\\\ \textbf{Proof that any divisor divides the GCD:} Suppose that $z$ is a divisor of $a$ and $b$. 
+From $a=bq_0+r_0$, and $$\frac{a}{z}=\frac{b}{z}q_0+\frac{r_0}{z} $$
+we see that $z$ divides $r_0$. From $b=r_0q_1+r_1$ and $$\frac{b}{z}=\frac{r_0}{z}q_1+\frac{r_1}{z} $$
+we see that $z$ divides $r_1$ too. Suppose $z$ divides all remainders till $r_{n_0}$. $r_{n_0-1}=r_{n_0}q_{n_0+1}+r_{n_0+1}$
+gives us $\frac{r_{n_0-1}}{z}=\frac{r_{n_0}}{z}q_{n_0+1} +\frac{r_{n_0+1}}{z}$ whence we see that $r_{n_0+1}$ is 
+divisible by $z$. Therefore, $r_{n_0+1}$ is the GCD.
+\\\\ \textbf{Proof that any multiple is divisible by LCM:} Suppose that $l$ and $m$ are multiples of $a,b$ and $l$ is the least such multiple.
+Then $l \leq m$ with equality case being trivial. Suppose $l<m$. From Euclid's division lemma, we have $m=lq_0+r_0$ with $0<r_0<l<m$. Both $a$ and $b$ divide $m$ and $l$, which means
+$$\frac{m}{a}=\frac{l}{a}q_0+\frac{r_0}{a}$$ and $$\frac{m}{a}=\frac{l}{a}q_0+\frac{r_0}{a}$$ Which makes $r_0$ a multiple of $a$ and $b$, which is absurd.
+\thmp{Bezout's Theorem}{If $a,b \in \ZZ\setminus \{0\}$, then there exists $x,y \in \ZZ$ so that gcd($a,b$)
+=$xa+yb$}{From the first equation we see $$ a=bq_0+r_0 \implies r_0=a-bq_0$$
+putting $r_0$ in the 2nd equation we see: $$b=(a-bq_0)q_1+r_1 \implies r_1= b-(a-bq_0)q_1$$
+Putting $r_1$ and $r_0$ into the 3rd equation, we get, likewise, $r_2$ in terms of $a$ and $b$ (a linear combination of $a$ and $b$)
+As such, we can keep doing this to express $r_{n_0+1}$ as a linear combination of $a$ and $b$, like, $xa+yb$.}
+
+\thmp{Fundamental Theorem of Arithmetic}{Given an integer $a>1$, we can decompose $a$ as a product of primes uniquely (upto ordering)}{If $a=2$, obviously we can. Suppose we can decompose every positive integer $q$ $1<q<n_0$ as a product of primes. Consider $n_0+1=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}+1$. Either $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}+1$
+is a prime or is composite. If it is prime, we are done. If it is a composite number, then $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}+1=xy$ where $x$ and $y$ are numbers smaller than $n_0+1$.
+But since $x$ and $y$ can be expressed as a product of primes, we see that $n_0+1$ can also be represented as a product of primes.
+\\\\ Suppose $a=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}$, but also $a=p_1^{\alpha'_1}p_2^{\alpha'_2}\cdots p_m^{\alpha'_m}$.
+\\ We have ($m\geq n$): $$1=p_1^{\alpha_1-\alpha'_1}p_2^{\alpha_2-\alpha'_2} \cdots p_n^{\alpha_n-\alpha'_n} p_{n+1}^{-\alpha'_{n+1}} \cdots p_m^{-\alpha'_m}$$
+$$1=p_1^{\alpha'_1-\alpha_1}p_2^{\alpha'_2-\alpha_2} \cdots p_n^{\alpha'_n-\alpha_n} p_{n+1}^{\alpha'_{n+1}} \cdots p_m^{\alpha'_m}$$
+Obviously, not all $\alpha_j-\alpha'_j$ are positive, in the same way they all aren't negative. Suppose some of these
+powers are positive, while some negative. Consider some $p_j^{\delta_j}$ for which the power is negative, which moves it to the denominator.
+We have: $$1=\frac{\text{some primes raised to negative}\cdot {\text{ some primes raised to positive} }}{p_j^{\delta_j}}$$
+If we multiply the negative powers out to both sides, we get to a stage where we see that $p_j$ divides a product of primes (raised to positive powers).
+But, $p_j$ is different from all the primes, and hence does not divide any of them individually, which means,
+from the lemma(s) below, that $p_j$ actually does not divide the whole product. A contradiction. Hence, the only case remaining is that of
+product of primes raised to $0$ powers, which makes it unique.
+
+$$\textbf{Requisite Lemmas:}$$ 
+\\\\Lemma: Suppose $m$ is such that gcd($a,m$)$=1$, and $|ab$. Then, we have that $m|b$.
+\\ To see this, we use Bezout's Theorem: there exists $x$ and $y$ integers such that $ax+my=1$.
+This means $abx+mby=b \implies \frac{ab}{m}x+by=\frac{b}{m}$ whence it becomes clear.
+\\\\Lemma: If a prime $p$ divides $z^n$ for some integer $z$ and some natural $n$, then $p$ divides $z$.
+\\ To see this, Suppose that $p$ does not divide $z$. Which means, from the lemma above, that 
+$p$ divides $z^{n-1}$, which likewise means it divides $z^{n-2}$ and finally reaching to a contradiction that
+it finally divides $z$.
+}
+If we arrange the primes $p_1,p_2,\cdots p_n$ in ascending order, we find that this representation becomes the only one (no order permutations).
+\\\\\textbf{AN ALTERNATE LOOK AT GCD AND LCM:}
+\\\\ Suppose that $a=p_1^{q_1} p_2^{q_2}\cdots p_n^{q_n}$ and $b=p_1^{r_1} p_2^{r_2} \cdots p_n^{r_n}\cdots p_m^{r_m}$. Since all numbers whatsoever are
+product of primes, we have that every divisor is of the form (for a number $z=p_1^{l_1}p_2^{l_2}\cdots p_k^{l_k}$) $p_1^{j_1}p_2^{j_2}\cdots p_k^{j_k}$
+with $j_1\leq l_1, j_2\leq l_2 \cdots j_k \leq l_k$. The number of divisors for a given $z=p_1^{l_1}p_2^{l_2}\cdots p_k^{l_k}$ would therefore be:
+${(l_1+1)\choose{1}} {(l_2+1)\choose{1}} \cdots {(l_k+1)\choose{1}}$.
+\\\\ We note that, given $a=p_1^{x_1}p_2^{x_2}\cdots p_m^{x_m}$ and $b=p_1^{y_1}p_2^{y_2}\cdots p_m^{y_m}$ with $x_j, y_j \geq 0$,
+$$gcd(a,b)=p_1^{min(x_1,y_1)}p_2^{min(x_2,y_2)} \cdots p_m^{min(x_m,y_m)} $$
+and 
+$$lcm(a,b)=p_1^{max(x_1,y_1)}p_2^{max(x_2,y_2)} \cdots p_m^{max(x_m,y_m)} $$
+\\\\ \textbf{Euler Totient Function ($\phi$):}
+\\\\ The Euler Totient function $\phi$ is defined as follows:
+$$\phi(n)=\text{ number of positive integers } z \text{ less than or equal to } n \text{ such that } gcd(n,z)=1 $$
+For primes $p$, every number smaller than $p$ is coprime to $p$, hence $\phi(p)=p-1$
+More generally we have for primes $p$ and natural $q$, 
+$\phi(p^q)=p^q-p^{q-1}$. 
+\\\\ \pf{Consider $\phi(p^k)=||\text{all such numbers }x \text{ such that } x\leq p^k \text{ and }gcd(x,p^k)=1||$. Note that apart from the multiples of $p,p^2,p^3 \cdots$, all else are coprimes with $p^k$. The numbers that are not coprimes with $p^k$ can be counted as: 
+$1p,2p,\cdots p(p), \cdots (p^2)p \cdots p^{k-1}p$. Hence, the number of multiples of $p$ in this list are $p^{k-1}$. Total number of "numbers" smaller or equal to $p^k$ are obviously, $p^k$. From here, the answer is obvious. 
+}
+ \emph{\textbf{Just accept the following fact}}
+\fact{If $(m,n)=1$, then $\phi(mn)=\phi(m)\phi(n)$}
+\pf{}
+\subsection{Modular Arithmetic:}
+Given $n \in \NN$ and the set of all integers $\ZZ$, we define the following equivalence
+class:
+$$aRb \iff n|(b-a) $$
+We have $aR$ obviously. If $aRb$, obviously
+$bRa$. If $aRb$ and $bRc$, then $n|(b-a)$
+and $n|(c-b)$ which means $n|(b-a)+(c-b) \implies n|c-a$.
+Hence, $R$ is an equivalce relation. Consider
+arbitrary $a \in \ZZ$. A number $x$ is in the 
+equivalence class of $a$ under the relation 
+defined above if and only if $n|(x-a)$
+which means $\exists z\in \ZZ$ so that
+$nz=x-a \implies x=a+nz$. A number $x$ is in  
+the equivalence class of $a$ under $R$ (also
+called as \emph{congruence class of $a\text{mod}n$})
+if and only if $x$ is $a$ plus an integral
+multiple of $n$.
+\\\\ It is also fruitful to view this from the following
+perspective: 
+\\\\ \textbf{Conjecture:} \emph{$zRa$ (i.e, $n|z-a$) if and only if $z$, when divided by $n$, gives the same remainder as $a$ when divided by $n$.}
+\pf{($\implies$) Consider $n|z-a$ which means 
+$\exists p$ so that $z=a+pn$. If $a<n$, we have
+the remainder when $a$ is divided by $n$, as $a$ itself,
+whence we see that the remainder when $z$ is 
+divided by $x$ is $a$ as well.
+If $a>n$, then $a=qn+r_0$ with $0 \leq r_0<n$.
+We then have $z=pn+a=pn+qn+r_0=z_0n+r_0$ where $r_0<n$.
+Therefore, same remainder.
+\\\\($\impliedby$) Suppose $z$ and $a$
+give the same remainder when divided by $n$. 
+This means $z=q_z n+ r$ and $a=q_an+r$
+which means $z-a=(q_z-q_a)n$ which means 
+$n|z-a$.
+}
+\textbf{Notation:} We say $zRb$ in the above context if 
+either $n|z-b$ or $z$ and $b$ share the same remainders
+when divided by $n$. The equivalence class of $a$ in this context
+is sometimes also called as \emph{congruence class of $a$mod($n$)}.
+A symbolic way to say $zRa$ in this context is 
+$$z\equiv a \text{mod}(n)$$
+We also denote the congruence class (or residue class) of an integer $a$ by $\overline{a}$.
+\thmp{}{If $z$ is a given integer, and $n$ is a given
+natural number, then the congruence class that
+$z$ falls in would be one of the congruence classes 
+formed by the $n-1$ numbers before $n$. Therefore, the 
+entire partition created by $R$ can be listed out as the 
+congruence classes of the $n-1$ numbers before $n$}{Suppose $z<n$. then 
+obviously there is an integer $q$ less than $n$ (which is $z$ itself) so 
+that $q\equiv z \text{mod}(n)$. If $z>n$, then $z=qn+r$ 
+where $0\leq r<n$, which also means that, when $r$ is divided by $n$, the remainder is $r$, just like $z$.
+This means $z \equiv r \text{mod}(n)$. From here it is clear that every number in $Z$ would be 
+in the equivalence class of some integer less than $n$. It is also obvious that for any two
+integers less than $n$, they each form unique residue classes. }
+
+From the previous lemma, it is clear to see that all the residue classes,
+or "partitions" of $\ZZ$ under the congruence mod (n) relation, can be succinctly listed out as
+$$\overline{0},\overline{1},\overline{2}\cdots \overline{n-1}$$. 
+\defn{$\ZZ/{n\ZZ}$}{The set of all equivalence classes (or residue classes) under the relation
+defined by $n$ on $\ZZ$ is denoted by $$\ZZ/{n\ZZ} $$ which is basically $\overline{0},\overline{1},\overline{2}\cdots \overline{n-1}$}
+\thmp{}{If $a_1\equiv b_1 \text{mod}(n)$ and $a_2\equiv b_2 \text{mod}(n)$, then
+$a_1+a_2 \in \overline{b_1+b_2}$ and $a_1 a_2 \in \overline{b_1b_2}$}{(1) We have $a_1=b_1+kn$ and $a_2=b_2+ln$
+which gives $a_1+a_2=(k_l)n+b_1+b_2$ where we see that $a_1+a_2$ is integer multiple of $n$ $+$ $b_1+b_2$. Therefore,
+$a_1+a_2 \in \overline{b_1+b_2}$.
+\\\\ Consider $a_1 a_2=(kn+b_1)(ln+b_2)=(kln^2+b_2kn+b_1ln)+b_1b_2$. Obvious from here.}
+
+\defn{Modular Arithmetic}{Treating the residue classes that form $\ZZ/n\ZZ$ as elements with which arithmetic can be done, we define addition and multiplication as follows:
+$$ \overline{a}+\overline{b}=\overline{a+b}$$ i.e, the sum of two residue classes is the residue class of the sum of an element from the class of $a$ and the class of $b$. (This sum is well defined from the previous theorem.)
+$$\overline{a}\overline{b}=\overline{ab}$$ i.e, the product of residue class of $a$ and $b$ is the residue class of the product of an element in the class of $a$ and an element from the class of $b$. (Yet again, well defined) }
+
+\defn{$(\ZZ / n\ZZ)^{*}$}{$$(\ZZ / n \ZZ)^{*}:=\{\overline{a}\in \ZZ /n\ZZ: \exists \overline{c}\in \ZZ / n\ZZ \text{ such that } \overline{c} \cdot \overline{a}=\overline{1}\} $$}
+
+\lemp{}{If $gcd(a,n)=1$, i.e, $a$ and $n$ are coprimes, then every element in the residue class of $a \text{mod}(n)$ is coprimes with $n$}{Consider $z=a+kn$ for some $k$ to be "non coprimes with $n$". i.e, $gcd(z,n)=j \neq 1$. We have $j|a+kn$ and $j|n$. But this means directly that $j|a$ whence we see that $j \neq 1$ is a divisor of $a$ and $n$. Absurd.}
+\lemp{}{If $a \in \overline{a} \in \ZZ /n \ZZ$, $a\leq n$ and if $gcd(a,n)=j$, then for any $z\in \overline{a}$, $gcd(z,n)=j$.}{
+$gcd(a,n)=k$. Consider $gcd(a+gn,n)$. We apply the division 
+algorithm:
+$$(a+gn)=g_0(n)+a$$
+$$ n=g_1a+r_1$$
+$$ \vdots$$
+Notice that after step (1), the procedure is exactly the same
+as the procedure to find $gcd(a,n)$. The last living
+remainder is the GCD, and from here we can clearly see 
+that the gcd are the same.
+
+}
+\lemp{}{If $1\leq a \leq n$, with $n \geq 2$, and $(a,n)=j\neq 1 (\geq 2)$, then there exists a number $1 \leq b<n$ so that $\overline{a} \cdot \overline{b}=\overline{0}$. A corollary of this is that there exists \emph{no} $c \in \ZZ$ so that $\overline{a}\cdot \overline{c}=\overline{1}$}{We know $gcd(a,n)=j \neq 1(\geq 2)$. This means $j\alpha=a$, $j\mu=n$ where $\alpha<a$ and $\mu<n$. We can see that $a\mu=j\mu \alpha=n\alpha$. So the $b$ in the lemma is the $\mu$ here. Therefore, $\overline{a} \cdot \overline{b}=\overline{0}$. Suppose $ac\equiv 1 mod(n)$. This means from the multiplicative property of 
+mod(n), we have $ac(b) \equiv b mod(n)$, but if you commute the multiplication, we see $$c(ab)=\overline{c} \cdot \overline{ab}=\overline{c}\cdot \overline{0}\equiv 0 mod(n) $$ But this would imply $b\equiv 0 mod(n)$ which is not true. Hence, there can be no $c$ so that $ac \equiv 1 mod(n)$.}
+\prop{$\ZZ /n\ZZ^*$ is the same as $\{\overline{a} \in \ZZ/n\ZZ:
+(a,n)=1 \}$}
+\pf{Let $$A=\{\overline{a} \in \ZZ/ n\ZZ:
+\exists \overline{z} \in \ZZ/ n\ZZ \text{ such that }  
+\overline{z} \cdot \overline{a}=\overline{1}\}$$ and 
+$$B=\{\overline{b} \in \ZZ/ n\ZZ:(b,n)=1\}$$
+Consider an arbitrary $\overline{a}$ in $B$ such that $\forall z \in \overline{a}$ we have
+$gcd(z,n)=1$. We know that $z=a+k_z n$. From Bezout Identity,
+we have $x_z$ and $y_z$ so that $x_z(a+k_zn)+y_z(n)=1$
+which gives us $x_za=(-y_z-k_zx_z)(n)+1$. We see That
+$x_za \in \overline{1}$. Consider arbitrary $t \in \overline{x_z}$.
+We have $t=x_z+jn$ or $x_z=t-jn$. Plugging this back we have
+$x_za=(t-jn)a=(-y_z-k_z(t-jn))n+1$ whence we can easily see that $ta \in \overline{1}$.
+Therefore, $\overline{a} \cdot \overline{x}=\overline{1}$. Therefore, if 
+$\overline{b}$ is such that $(b,n)=1$, then an inverse exists for it. Hence, $B \subseteq A$.
+\\\\ We showed that if $x$ is in $B$, it must be in $A$. Consider $x$ not in $B$. i.e, it is not coprimes with $n$. From the previous proposition, we see that there would exist no $c$ so that $\overline{x}\cdot \overline{c}=\overline{1}$, i.e, no inverse element for any $x$ not in $B$. Inexistence in $B$ therefore implies inexistsnce in $A$, which gives us $A \subseteq B$. We can conclude that $A=B$ or in pithy words: 
+\\ \begin{center}"The set of all congruence classes $b$ so that $gcd(b,n)=1$ is the same as the set of all congruence classes $b$ so that there exists another congruence clas $c$ so that $\overline{b} \cdot \overline{c}=\overline{1}$ "
+\end{center}
+
+Symbolically: 
+$$\{\overline{b} \in \ZZ/ n\ZZ: gcd(b,n)=1 \}=\{\overline{b} \in \ZZ/n\ZZ: \exists \overline{c} \in \ZZ/n\ZZ: \overline{b}\cdot \overline{c}=\overline{1} \}=(\ZZ/n\ZZ)* $$
+}
+
+\thmp{Generalised Bezout's Identity}{Suppose $j_1, j_2 \cdots j_n$ are given integers such that $gcd(j_1,j_2 \cdots j_n)=d$, then there exists integers $x_1,x_2 \cdots x_n$ so that $x_1j_1+x_2j_2 \cdots x_nj_n=d$}{We prime decompose each of $j_1,j_2 \cdots j_n$. For $j_k$, we have $$j_k=p_1^{q^k_1}p_2^{q^k_2}\cdots p_{n_k}^{q^k_{n_k}} $$
+We note that the gcd of all these numbers are the minimum of each index for each prime multiplied throughout. An important bit of information will be cricual here: $$ min\{w_1,w_2 \cdots w_k,w_{k+1} \cdots w_n \}=min\{ min\{w_1,w_2 \cdots w_k \}, min\{w_{k+1},w_{k+2} \cdots w_n \} \}$$
+So we split $gcd(j_1,j_2, \cdots j_n)$ into $gcd(gcd(j_1,j_2),gcd(j_3 \cdots ,j_n))=$ some linear combination of $j_1,j_2$ and $gcd(j_3, \cdots j_n)$. Do the same split to $gcc(j_3, \cdots j_n)$, to keep getting linear combinations, until finally you find $gcd(j_1,j_2 \cdots j_n)=x_1j_1+x_2j_2 \cdots x_nj_n$
+}
+
+
+\end{document}
