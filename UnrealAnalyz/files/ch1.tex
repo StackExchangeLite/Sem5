@@ -3,7 +3,15 @@
 \begin{document}
 \chapter{Sets, Real and Complex Number Systems}
 
+\begin{center}
+\emph{"In order to make apple pie from scratch, you must first invent the universe."-Carl Sagan}
+{Here we take up precisely that endeavour.
+}
+\end{center}
+
+
 \section{Prelimnaries}
+
 
 \defn{Prelimnary definitions}{
 \begin{enumerate}
@@ -243,7 +251,7 @@ unrelated in this definition. Whereas, consider the same ordering but in the spa
 \thmp{}{AC $\iff$ Zorn's Lemma}{hmm}
 
 \textbf{Some Corollaries of AC:}
-\thmp{}{Every vector space has a basis}{Let $L$ be a linearly independent set of $V$. Consider $A$, the collection of all linearly independent sets that contains $L$. This set is partially ordered by inclusion. Let $C$ be a chain of sets in $A$. $\cup C$, then, would be a linearly independent set for if not, there would exist a finite subset of $\cup C$ such that its linear combination would be 0, but not all coefficients would be. That means, the linearly independent set that contains all these finite vectors would turn out to be dependent. Hence, we have shown that every chain has a maximal element $\cup C$. Hence, from Zorn's lemma, $A$ has a maximal element $M$. M is, ofcourse, linearly independent. Suppose $M$ does not span $V$. That means that there is an element $\beta \in V$ that is not in $span\{M\}$, which means that $M \cup\{\beta\}$ would be a linearly independent set that is larger than the maximal $M$. Contradiction. Hence, $V$ has a basis.}
+\thmp{}{Every vector space has a basis}{Let $L$ be a linearly independent set of $V$. Consider $A$, the collection of all linearly independent sets that contains $L$. This set is partially ordered by inclusion. Let $C$ be a chain of sets in $A$. $\cup C$, then, would be a linearly independent set for if not, there would exist a finite subset of $\cup C$ such that its linear combination would be 0, but not all coefficients would be. That means, the linearly independent set that contains all these finite vectors would turn out to be dependent. Hence, we have shown that every chain has an upper bound $\cup C$. Hence, from Zorn's lemma, $A$ has a maximal element $M$. M is, ofcourse, linearly independent. Suppose $M$ does not span $V$. That means that there is an element $\beta \in V$ that is not in $span\{M\}$, which means that $M \cup\{\beta\}$ would be a linearly independent set that is larger than the maximal $M$. Contradiction. Hence, $V$ has a basis.}
 \thmp{}{$|S|=|\text{set of all finite subsets of }S|$}{}
 \thmp{}{For an arbitrary dimensioned vector space, every linearly independent set is injective to any spanning set.}{}
 
@@ -337,8 +345,7 @@ $\impliedby$)Contrapositive to prove would be: $\exists \varepsilon_0>0$ such th
 Suppose now that $u^n>y$, we need an $h$ so that $(u-h)^n>y$ or $-(u-h)^n<-y$, which would mean that $u-h$ is the actual supremum, contradicting the assumption. 
 Therefore, we have to show that $u^n-(u-h)^n<u^n-y$. From the identity, we have that $u^n-(u-h)^n \leq n(h)(u)^n$. It would suffice if we find an $h$ so that $nhu^{n-1}<u^n-y$ or $h<\frac{u^n-y}{nu^{n-1}}$. Again, from Density theorem this is possible.\\
 Uniqueness, once existence is established, is trivial since, if $q_1>q_2, (q_1)^n>(q_2)^n$.
-
-}
+\newline \textbf{An ALT PROOF idea:} The setup is the same as before up until where we supposed that $u^n<y$. We want to find a $h$ such that $f(u+h)<y$. We prove this by proving the continuity of $f$. $f(u+h)-f(u)$(note that $f$ is monotone increasing)$=(u+h)^n-u^n=(h)(u^{n-1}+u^{n-2}(u+h)+ \cdots (u+h)^{n-1})\leq n(h)(u+h)^{n-1}$. Choose $h$ smaller than $1$ to get $f(u+h)-f(u)\leq nh (u+1)^{n-1}$. Now we see that $f$ is actually lipschitz.  }
 \fact{\begin{enumerate}
     \item $n>0, q>0$ and $r=\frac{m}{n}=\frac{p}{q}$, then $({b^m})^{\frac{1}{n}}=({b^p})^{\frac{1}{q}}$
     \item $x^{({p+q})}=x^px^q$ for $p,q \in \QQ$
@@ -527,6 +534,21 @@ $\implies$) Suppose $x=\frac{p}{q}$ for $p,q$ integers. Then $xq=p$. Let $k_0$ b
 Now consider $10^{k_1}r_0$, again we have $10^{k_1}r_0=z_1q+r_1$ with $|r_1| <q$. Thus $\frac{r_0}{q}=\frac{z_1}{10^{k_1}}+\frac{r_1}{10^{k_1}q}$. This implies $$\frac{p}{q}=\frac{z_0}{10^{k_0}} + \frac{z_1}{10^{k_0+k_1}}+\frac{r_1}{q 10^{k_0+k_1}}$$. We can keep going on as such, finding $k_n$, and applying Euclid's algorithm so that $$\frac{p}{q}=\frac{z_0}{10^{k_0}} + \frac{z_1}{10^{k_0+k_1}}+\frac{z_2}{10^{k_1+k_2+k_3}} \cdots + \frac{z_n}{10^{k_1+k_2 \dots +k_n}}+ \frac{r_n }{q10^{k_1+k_2...+k_n}}$$
 Since for every $n \in \NN, |r_n| < q$, and $q \in \NN$, only finite amount of remainders are possible when dividing by $q$. Hence, at some point $p \in \NN$, $r_n=r_p$ for a previous $n \in \NN$. This means that, $10^{k_{p+1}}p=z_{p+1}q +r_{p+1} \implies \frac{r_p}{q}=\frac{z_{p+1}}{10^{k^{p+1}}} +\frac{r_{p+1}}{10^{k_{p+1}}q}$ $$\implies \frac{r_n}{q}=\frac{r_p}{q} \implies z_{n+1}=z_{p+1}$$ Hence, we can see that it is recurring. 
 \\\\ We are not yet done though. We showed that one of the representations of $x \in \RR$, i.e, the one derived from long division is recurring. We now consider two different expansions for $x$. First, let us decompose $x$ into $[x]$ and $\{x\}$. We note that the integral parts must be the same, so we can wholly focus on the fractional part. Let $0.a_1a_2\cdots$ and $0.b_1b_2\cdots$ be two expansions (base $p$) of $\{x\}$. Suppose they are different first at $j-$th entry. We then have $\frac{1}{p^j}(a_1a_2 \cdots a_j.a_{j+1}a_{j+2}\cdots)=\frac{1}{p^j}(b_1b_2 \cdots b_j.b_{j+1}b_{j+2}\cdots)$ which we can relabel to give: $$\{x\}=\frac{1}{p^j}e_1e_2\cdots e_j.a^{j+}_1a^{j+}_2a^{j+}_3\cdots=\frac{1}{p^j}e_1e_2\cdots e'_j.b^{j+}_1b^{j+}_2b^{j+}_3\cdots $$ Say $e_j\geq 1+e_j' \implies e_j-e'_j\geq 1 \implies e_1e_2\cdots e_j-e_1e_2\cdots e'_j \geq 1$ WLOG. This means that $p^j\{x\}-e_1e_2\cdots e'_j=0.a^{j+}_1a^{j+}_2a^{j+}_3 \cdots \geq 1$. Note that, given an expansion of the kind $0.c_1c_2 \cdots$ (p-base) where there exists, at index $r$, an integer $c_r$ so that $c_r<p-1$ or $c_r \leq p-1-1$, then $0.c_1c_2\cdots \leq 0.(p-1)(p-1)\cdots(p-1-1(\text{r-th position}))(p-1) \cdots \leq 1-p^{-r}<1$ strictly. So if in an expansion (fractional), even if one of the elements is strictly smaller than $p-1$, the entire sum will be smaller than 1, strictly. This implies that, every element in the expansion of $0.a^{j+}_1a^{2+}_j \cdots$ is indeed $p-1$ so that the sum can be $\geq 1$ instead of being strictly less than $1$. Hence, we are done.} 
+
+
+\lemp{}{Let $p\geq 2$ be a fixed integer and $0<x<1$. If $x$ has finite length decimal expansion, then $x$ has precisely two decimal expansions. If $x$ does not have a finite length decimal expansion, then $x$ has a unique decimal expansion.}{Let $x$ have a finite length decimal expansion and let $$x=a_1/p+a_2/p^2+\cdots a_k/p^k+0/p^{k+1}+\cdots$$
+Suppose that $a_k=(a_k-1)+1$ and let $a_k'=a_k-1$ possibly in the range of $[0,p-2]$. Then we have $$x=a_1/p+a_2/p^2 \cdots a_k'/p^k+ 1/p^k +0/p^{k+1}+ 0/p^{k+2} \cdots $$
+It is at this point that we recall a simple fact: $$1/p^k+0/p^{k+1}_0/p^{k+2}\cdots =1/p^{k}= \sum_{i=k+1}^{\infty} (p-1)/p^i $$
+Thus, we see that $1/p^k+0/p^{k+1}\cdots$ is equal to $0/p^k+(p-1)/p^{k+1}\cdots $ and hence $$x=a_1/p+a_2/p^2 \cdots a_k'/p^k+1/p^k+0/p^{k+1}\cdots =$$ $$a_1/p+a_2/p^2 \cdots a'_k/p^k + 0/p^k +(p-1)/p^{k+1}\cdots $$ So we have established another decimal expansion for our $x$.  
+\\\\
+Now we try to characterise the situation about uniqueness: Let $x=a_1/p^1+a_2/p^2+\cdots$ and also suppose $x=b_1/p^1+b_2/p^2+\cdots$. Suppose (without loss of generality) they differ from the first position [If they don't, we find the first position where they do differ, say $k$, so we multiply $p^{k-1}$, and subtract the two, and the new number we get is essentially 0, with the first decimal place being (supposedly) non zero].
+\\\\ $a_1\neq b_1$. Say $a_1<b_1$, which gives us $x-x=(b_1-a_1)/p^1+ (b_2-a_2)/p^2 \cdots $ which could be rewritten (with a change of notation) as $0=q_1/p^1+q_2/p^2 \cdots $ where $q_i=b_i-a_i$. Note that $q_1\geq 1$. This means that, in order for the whole sum to be $0$, we require $q_2/p^2+q_3/p^3 \cdots$ to be negative, and equal to $-q_1/p$. 
+This amounts to saying $$-q_1=q_2/p+q_3/p^2 \cdots$$
+From here, a few facts are clear: Since $q_1\geq 1$, we have $q_2/p+q_3/p^2 \cdots = -q_1 \leq -1$. Note that, since $-(p-1)\leq -a_i \leq 0$ and $0\leq b_i \leq p-1$, we have that $-(p-1)\leq q_i \leq p-1$. So we see that, speaking "absolutely", i.e, $|q_2|/p+|q_3|/p^2 .... \leq 1$ (since $|q_i|$ are all less than $p-1$). Therefore, $|q_1|\leq |q_2|/p+|q_3|/p^2 \cdots\leq 1$. Hence, the difference $q_1$ cannot exceed 1. But since we assumed it is larger than or equal to 1, we must have that $q_1=1$. Now we may proceed. We have $1=q'_2/p+q'_3/p^2 \cdots$ where $q'_i=-q_i=a_i-b_i$ (These too, follow the same bounds). Note that, if even one of our $q_i'<p-1$, i.e, say for some $k$, $q'_k\leq p-2-2,$ then the sum cannot be equal to $q$. We will prove this: 
+\\\\ Assume at $k+1$, we have $q'_{k+1}<p-1$, then $$q'_2/p+q'_3/p^2 \cdots \leq (p-1)/p+(p-1)/p^2 + \cdots (p-1)/p^{k-1}+ (p-2)/p^{k}+ (p-1)/p^{k+1} \cdots $$ We split this sum into 2 parts: $L_1 + (p-2)/p^{k}+L_2$ where $L_1= (p-1)(1/p+1/p^2 \cdots 1/p^{k-1})$ and $L_2=(p-1)(\sum_{i=k+1}1/p^i)=1/p^k$. Evaluation of $L_1$ is likewise not hard: $(p-1/p)(1+1/p+1/p^2+\cdots 1/p^{k-2})= (p-1/p)(1-1/p^{k-1})/(1-1/p)=1-1/p^{k-1}$. So, $L_1+L_2+(p-2)/p^k$ gives us $$1-1/p^{k-1}+ (p-2)/p^k + 1/p^k=1-1/p^{k-1}+(p-1)/p^k<1$$ (strictly). Therefore, we see that all our $q'_i$ must be equal to $p-1$, which means that $a_i-b_i=p-1 \implies a_i=p-1+b_i$. Since both $a_i$ and $b_i$ are to be bounded above and below (resp.) by $p-1$ and $0$, we must have that the only instance where it is possible for $q'_i=p-1$ is that $a_i=p-1$ and $b_i=0$. Therefore, we have shown that if under the consideration that we do have 2 different decimal expansions, it ought to be the case that one of the expansions must be eventually $0$, and the other consisting of $p-1$ trailing. So if $x $ does not have a finite length expansion, and given that we've seen that two expansions ought to differ by a series $\{q'_i\}$ where each $a_i=b_i+p-1$, we cannot have an instance where any $b_i$ exceeds $0$. Hence, we have shown that if $x$ does not have a finite length expansion, it has a unique expansion.
+}
+
+
 \lemp{}{Given $p\geq 2$ and $a_n \leq p-1: a_n \in \NN$, we have $$\sum_{n=1}^{\infty} \frac{a_n}{p^n}$$ converges to some $x$ in $[0,1]$.}{We note that this is a monotone increasing sequence.
 Note that, since $a_n \leq p-1$, we have $$ \sum_{n=1}^{\infty} \frac{a_n}{p^n} \leq (p-1)\sum_{n=1}^n \frac{1}{p^n}$$ which is $1$. Therefore, this sequence is bounded, and from monotone convergence theorem, is convergent to $x \in [0,1]$.}
 \lemp{}{Conversely, if $x$ is a number in $[0,1]$ and $p$ is an integer $\geq 2$, we have that, there exists $a_1,a_2,\cdots \in \NN$ that are less than $p-1$ so that $x$ can be written as the limit of $$\sum_{n=1}^{\infty} \frac{a_n}{p^n}$$}{The construction is very similar to the decimal expansion proof. Take $a_1$ to be the largest integer such that $\frac{a_1}{p} < x$. Find $a_2$ so that $\frac{a_1}{p}+\frac{a_2}{p^2}<x$. These can be achieved by Archimedean property. Note that $a_1\leq p-1$, as is $a_2$. Inductively define 
@@ -593,4 +615,22 @@ Obviously, $\gamma \geq X^{\omega}$, by the obvious map $o:X^{\omega} \to \gamma
 \\\\ We can generate a surjection from $\gamma$ to $B$, by simply considering the sequence as a set in and of itself. Therefore $\gamma \geq B$. This means $X^{\omega} \geq B$. This concludes that $B$ injects into $X^{\omega}$.
 \\\\ From cantor-schroeder-berstein, we have a bijection between $X^{\omega}$ and $B$. 
 }
+
+
+\thmp{(Partial Result reg |S|=|{set of all finite subsets of }S|)}{$|\NN|=$|Set of all finite subsets of $\NN$| (Assumed use of cantor shroeder berstein)}{First we consider the set $W:=\{(x_1,x_2,\cdots): x_i \in \NN, (x_i)_{i\in \NN}\text{ eventually zero}\}$
+We first order all the primes $p_1<p_2<\cdots$ and define a map $(x_1,x_2,x_3,\cdots)\mapsto \prod_{i=1}^{\infty} p_i^{x_i}$. This map happens to be a bijection:
+To see that it is an injection, let $$\prod_{i=1}^{\infty} p_i^{x_i}=\prod_{i=1}^{\infty} p_i^{y_i}$$
+From fundamental theorem of arithmetic, we see that $x_i=y_i$ and hence $(x_i)_{i\in \NN}=(y_i)_{i\in \NN}$, showing the map is injective.
+Surjection is also obvious from the fundamental theorem, as every natural number has a unique prime decomposition of the form $p_1^{x_1} p_2^{x_2}\cdots$. \textbf{Note:} \emph{We have taken for convenience that 0 is a Natural Number. Also note that the map is well defined precisely since we restrict the sequences be eventually 0.}
+We now see $$\NN \leftrightarrow |W|$$
+But there is an obvious injection from the set of all finite subsets of $\NN$ (denoted $FS$) into $W$, as follows: $$ f: FS \hookrightarrow W $$ given by (first ordering our elements) $$\{x_1,x_2\cdots x_n\}\mapsto (x_1,x_2\cdots x_n,0,0,0 \cdots) $$
+Hence we see that $|FS| \leq |W|=|\NN|$. Moreover, it is easy to see that $|\NN|\leq |FS|$. Hence $|\NN|=|FS|$
+\\\\ \textbf{Alt Idea (Slicker):}
+\\ 
+We can also directly define a map from $FS \hookrightarrow \NN$ as follows: 
+Let $A$ be a finite subset of $\NN$. $A=\{x_1,x_2,\cdots x_n\}$ where $x_i$ are distinct (ascendingly ordered) natural numbers. We send $A$ to $A \mapsto p_{x_1}p_{x_2}\cdots p_{x_n}$ which is a squarefree natural number. To see that this is injective, we note that if $p_{x_1}p_{x_2}\cdots p_{x_n}=p_{y_1}p_{y_2}\cdots p_{y_m}$, from fundamental theorem of arithmetic, we must have that $p_{x_i}=p_{y_i}$ as well as $n=m$. Hence, we have a direct injection. 
+}
+
+
+
 \end{document}

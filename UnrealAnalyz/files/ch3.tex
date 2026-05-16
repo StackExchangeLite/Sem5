@@ -35,6 +35,14 @@ the following holds:
 A space $V(\FF), \langle \cdot \rangle $ is called an \emph{inner product space}. 
 }
 \defn{Norm (From the inner product)}{Given an inner product space $V(\FF), \langle \cdot \rangle$, we define the \emph{norm} or \emph{length} of a vector $x$, given by $|| x||$ as $\sqrt{\langle x|x \rangle}$ }
+\defn{Norm}{A function $||.||: X \to \RR$ where $X$ is a real (or complex) vector space is said to be norm if: 
+\begin{enumerate}
+    \item $||x||=0 \iff x=0$
+    \item $||cx||=|c| ||x||$ for any $x \in X$ and scalar $c$
+    \item $||x+y||\leq ||x||+||y||$(Triangle inequality) 
+\end{enumerate}
+}
+\rmkb{Note that norms need not always come from inner products. For eg. (we shall not prove) the $p-$norm on $\RR^n$ for $p \neq 2$ does not come from an inner product.}
 \exm{$p$-norm is a metric}{The $p$-norm is defined on $\RR^n$ as: $$||\vec x ||_p:=(|x_1|^p+|x_2|^p \cdots |x_n|^p)^{1/p}=(\sum_{i=1}^n |x_i|^p)^{1/p} $$
 We say $d_p(\vec x,\vec y)$, the distance between $\vec x$ and $\vec y$ to be $||x-y||_p=(\sum_{i=1}^n |x_i-y_i|^p)^{1/p}$. From this definition, unique $0$ distance property and reflexivity property are obvious. Consider $d_p(x,z)$ and $d_p(z,y)$. $d_p(x,y)=(\sum_{i=1}^k|(x_i-z_i)+(z_i-y_i)|^p)^{1/p}$ whence from Minkowski we see that $$(\sum_{i=1}^k|(x_i-z_i)+(z_i-y_i)|^p)^{1/p}
 \leq (\sum_{i=1}^n |x_i-z_i|^p)^{1/p}+(\sum_{i=1}^n |z_i-y_i|^p)^{1/p}=d_p(x,z)+d_p(y,z)$$
