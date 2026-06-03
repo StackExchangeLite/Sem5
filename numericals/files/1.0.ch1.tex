@@ -4,7 +4,30 @@
 
 \chapter{Trickery}
 \section{Some Telescoping Trickery}
-
+\subsection{Some easy telescopes}
 \exm{$1(1!)+2(2!)+\cdots+n(n!)=(n+1)!-1$ 
-}{Simple apsplication of \textbf{telescoping} trick. Write $j(j!)=(j+1-1)j!=(j+1)j!-j!=(j+1)!-j!$ which gives us $s=\sum_{j=1}^{n} (j)(j!)=\sum_{j=1}^n (j+1)!-j!$ which is just $(2!-1!)+(3!-2!)+\cdots +(n!-(n-1)!)+(n+1!-n!)=(n+1)!-1$}
+}{Simple application of \textbf{telescoping} trick. Write $j(j!)=(j+1-1)j!=(j+1)j!-j!=(j+1)!-j!$ which gives us $s=\sum_{j=1}^{n} (j)(j!)=\sum_{j=1}^n (j+1)!-j!$ which is just $(2!-1!)+(3!-2!)+\cdots +(n!-(n-1)!)+(n+1!-n!)=(n+1)!-1$}
+\exm{$1/2!+2/3!+3/4!+\cdots n-1/n!$}{We rewrite it as $$(2-1)/2!+(3-1)/3!+(4-1)/4!+\cdots (n-1)/n! $$ whence we get $$(2)/2!+(3)/3!+\cdots (n)/n!-(1/2!+1/3!+\cdots 1/n!)$$ which gives us $$1/1!+1/2!+\cdots 1/(n-1)!-(1/2!+1/3!+\cdots 1/(n-1)!+1/n!)= $$ $$ 1-1/n!$$ }
+\subsection{More telescopes}
+\exm{$(1-1/4)(1-1/9)(1-1/16)\cdots(1-1/n^2)=\prod_{i=1}^{n}(1-1/i^2)$}{Look at $(1-(1/i)^2)=(1-1/i)(1+1/i)=((i-1)/i)((i+1)/i)$
+Which means we have $\prod_{i=1}^n (\frac{i-1}{i})(\frac{i+1}{i})=\frac{2-1}{2}\frac{2+1}{2}\frac{3-1}{3}\frac{3+1}{3}\frac{4-1}{4}\frac{4+1}{4}\cdots\frac{n-1-1}{n-1}\frac{n-1+1}{n-1}\frac{n-1}{n}\frac{n+1}{n} $ which is just $$(\frac{1}{2}\frac{3}{2})(\frac{2}{3}\frac{4}{3})(\frac{3}{4}\frac{5}{4})\cdots (\frac{n-2}{n-1}\frac{n}{n-1})(\frac{n-1}{n}\frac{n+1}{n}) $$ so we cancel all terms of the kind $(3/2)$ and the very next $2/3$, which yields: $$\frac{1}{2}\frac{n+1}{n} $$
+}
+\exm{$\frac{1}{\sqrt{1}+\sqrt{2}}+\frac{1}{\sqrt{2}+\sqrt{3}}+\frac{1}{\sqrt{3}+\sqrt{4}}+\cdots \frac{1}{\sqrt{n}+\sqrt{n+1}}$}{An easy application of rationalizing the denominator yields us a telescope since $1/\sqrt{i}+\sqrt{i+1}=\sqrt{i+1}-\sqrt{i}$. From here we see that the answer is $\sqrt{2}-\sqrt{1}+\sqrt{3}-\sqrt{2}+\sqrt{4}-\sqrt{3}+\cdots +\sqrt{n+1}-\sqrt{n}=\sqrt{n+1}-1$}
+\exm{(Digits of massive sums) What are the last two digits of the sum $$1!+2!+\cdots 2026!$$}{By $10!$, we see that $10!$ and all above factorials have last two digits as 0, so they do not contribute to the last two digits of the sum. We need only calculate $1!+2!+\cdots+9!$ to find the digits. $1!$ modulo $100$ is $1$. $2!$ modulo $100$ is $2$. $3!$ modulo $100$ is $6$, $4!$ modulo $100$ is $24$ but $5!$ modulo $100$ is $120\equiv 20 \pmod{100}$. $6!\equiv 6\cdot 20 \equiv 20 \pmod{100}$. $7!=7\cdot 20 \equiv 40 \pmod{100}$, $8!=8\cdot 40 \equiv 20 \pmod{100}$ and $9!=9\cdot 20 \equiv 80 \pmod{100}$. Just sum these up to get $1+2+6+24+20+20+40+20+80=213\equiv 13 \pmod{100}$ so the last two digits are $13$.\\
+\textbf{Note: This is admittedly not a telescoping problem, but a nice application of modular arithmetic on a seemingly large sum.}
+}
+\exm{$\sum_{k=1}^{n} (k^2+1)k! $}{\textbf{Method 1}: We write $(k^2+1)k!=((k+1-1)^2+1)k!=((k+1)^2+2-2(k+1))k!=(k+1)(k+1)!+2k!-2(k+1)! $. Now write it as a sum: $$\sum_{k=1}^{n}(k+1)(k+1)!+2 \sum_{k=1}^n(k!-(k+1)!)$$ The first term is of the form $$2(2!)+3(3!)+\cdots (n+1)(n+1)! $$ which gives us (by way of an earlier telescoping trick) $(n+2)!-2$. The second term is of the form $$2 [(1!-2!)+2!-3!+\cdots n!-(n+1)!] $$ whence we see the answer is $$(n+2)!-2+2-2(n+1)!=(n+2)!-2(n+1)! $$ 
+\textbf{Method 2:} \emph{\textbf{This ought to be a general scheme, so listen carefully:}} We wish to write $(k^2+1)k!$ in the form of $f(k+1)-f(k)$ of some form, to make our telescope idea easier. We need to find that form. Let us look at $$k^2+1=k(k+1)-(k-1)\implies $$ $$(k^2+1)k!=k(k+1)!-(k-1)k! $$ whence we have found our $f(k)=k(k+1)!$. Whence we see that $\sum_{k=1}^n (k^2+1)k!=\sum_{k=1}^{n} f(k)-f(k-1)=f(1)-f(0)+f(2)-f(1)+\cdots f(n)-f(n-1)=f(n)-f(0)$, you get the idea. (\textbf{Rather important scheme, and is widely applicable to a lot of problems})}   
+
+\exm{(A very simple, yet very interesting presentation) Evaluate $(1+x)(1+x^2)(1+x^4)\cdots(1+x^{2^n})$ }{We note that, if we multiply this by $1-x$, we get $(1-x^2)(1+x^2)(1+x^4)\cdots = (1-x^4)(1+x^4)\cdots=$ $(1-x^{2^n})(1+x^{2^n})=1-x^{2^{n+1}}$. So we have $(1+x)(1+x^2)\cdots = (1-x^{2^{n+1}})/(1-x)$  }
+
+\exm{Sophie Germaine Sum: $\sum_{k=1}^n \frac{2k}{k^4+k^2+1}$}{Note that $k^4+k^2+1$ can be written as $x^2+x+1$ for $k^2=x$. Now look at $(x-1)(x^2+x+1)=x^3+x^2+x-x^2-x-1=x^3-1$. So we have $(k^4+k^2+1)=(k^6-1)/(k+1)(k-1)=(k^3-1)(k^3+1)/(k+1)(k-1)$ . Due to the identity $x^3+1=(x+1)(x^2-x+1)$, we have finally: $$(k^6-1)/((k+1)(k-1))=(k^3-1)(k^3+1)/((k+1)(k-1)) =$$ $$(k-1)(k^2+k+1)(k+1)(k^2-k+1)/(k+1)(k-1)=(k^2+k+1)(k^2-k+1) $$
+So the sum now reads: $$ \sum_{k=1}^n \frac{2k}{(k^2+k+1)(k^2-k+1)}$$ whence we can write the numerator $2k=(k^2+k+1)-(k^2-k+1)$. This immediately gives us 
+$$ \sum_{k=1}^n \frac{(k^2+k+1)-(k^2-k+1)}{(k^2+k+1)(k^2-k+1)}=\sum_{k=1}^n (\frac{1}{k^2-k+1}-\frac{1}{k^2+k+1}) $$
+Now, we still are not done, and it still appears intractable. How do we evaluate \emph{this} sum now? Is this a hidden telescope? Checking for $k=1$ tells us: $$ 1/(1^2-1+1)-1/(1^2+1+1)=1/1-1/3=2/3$$ For $k=2$: $$ 1/(4-2+1)-1/(4+2+1)=1/3-1/7$$
+For $k=3$: $$1/(9-3+1)-1/(9+3+1)=1/7-1/13 $$ So we see that it is indeed a telescope, but how do we realise this formulaically? the idea is that, $1/(k^2+k+1)$ cancels $1/((k+1)^2-(k+1)+1)$. Quick evaluation of the latter actually does indeed give us $1/(k^2+k+1)$, so we indeed have a telescope. So we have the final formulaic form of the sum as $$ \sum_{k=1}^n (\frac{1}{k^2-k+1}-\frac{1}{(k+1)^2-(k+1)+1})$$
+This is the definitive telescope, and now we can evaluate it as $$ 1/(1^2-1+1)-1/((n+1)^2-(n+1)+1)$$ which is just $$ 1-1/(n^2+n+1)$$
+}
+
+\exm{Factorial sum: $\sum_{k=1}^n (k^3+3k^2+2k+1)k!$}{Let us look at the polynomial $k^3+3k^2+2k+1$. ok this seems to be a dead end problem. }
 \end{document}
