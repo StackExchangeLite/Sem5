@@ -19,7 +19,19 @@
 \end{enumerate}
 Such a structure is called a \emph{Field}.
 }
-
+\subsection{Linear Equations and Matrices}
+\defn{System of Linear Equation}{We call a system of linear equations a collection of equations of the form: $$a_{11}x_1+a_{12}x_2\cdots + a_{1n}x_n=y_1$$ $$a_{21}x_1+a_{22}x_2\cdots + a_{2n}x_n=y_2$$ $$\vdots $$ $$ a_{i1}x_1+a_{i2}x_2\cdots +a_{in}x_n=y_i$$ $$ \vdots $$ $$ a_{m1}x_1+a_{m2}x_2\cdots +a_{mn}x_n=y_m $$ where $a_{ij}, y_j\in \mathbb{F}$. This system has $n$ variables $x_j$ taking values (if at all possible) in $\FF$ and $m$ equations. 
+\\ In convenient matrix notation this reads: 
+$$\begin{bmatrix}
+   a_{11} & a_{12} & \cdots & a_{1n} \\ 
+   a_{21} & a_{22} & \cdots & a_{2n}\\
+   \vdots & \vdots & \ddots & \vdots\\
+   a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix} \cdot \begin{bmatrix}
+   x_1\\x_2\\ \vdots \\x_n
+\end{bmatrix}=\begin{bmatrix}
+   y_1\\y_2\\ \vdots \\y_m
+\end{bmatrix} $$  }
 
 
 \end{document}
